@@ -1,0 +1,2 @@
+Title --> Heading/Title
+Image --> Image/Photo/Picture

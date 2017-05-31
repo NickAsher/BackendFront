@@ -1,0 +1,24 @@
+#mainContent_Section_Table table{
+    margin-top: 40px;
+}
+
+#mainContent_Section_Table table th, table td{
+    padding: 10px ;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-size-small{
+    font-size: small;
+}
+
+
+#Section_AddNewItem{
+    text-align: center;
+    background: #d5d5d5;
+    padding: 10px 20px;
+}
+#Section_AddNewItem a{
+    font-size: 16px;
+    color: black;
+}
