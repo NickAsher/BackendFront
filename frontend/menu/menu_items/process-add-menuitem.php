@@ -3,49 +3,91 @@ require_once '../../../utils/constants.php' ;
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php'  ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php'  ;
-require_once '../utils/menu-utils.php';
-
+require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
 
 $DBConnectionBackend = YOLOSqlConnect() ;
 
-
+$ItemName = isSecure_checkPostInput('__item_name') ;
+$ItemDescription = isSecure_checkPostInput('__item_description') ;
 $ItemCategory = isSecure_checkPostInput('__item_category') ;
 $ItemSubCategory = isSecure_checkPostInput('__item_subcategory') ;
-$ItemName = isSecure_checkPostInput('__item_name') ;
-$ItemPriceSize1 = isSecure_checkPostInput('__item_price_size1') ;
-$ItemPriceSize2 = isSecure_checkPostInput('__item_price_size2') ;
-$ItemPriceSize3 = isSecure_checkPostInput('__item_price_size3') ;
-$ItemDescription = isSecure_checkPostInput('__item_description') ;
-
-$CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $ItemCategory) ;
-$NoOfSizeVariations = $CategoryInfoArray['category_no_of_size_variations'] ;
-
-    $ImageFileArrayVariable = $_FILES['__item_image'] ;
-    $Item_ImageName = moveImageToImageFolder($DBConnectionBackend, "$IMAGE_FOLDER_FILE_PATH/", $ImageFileArrayVariable);
-    if($Item_ImageName == -1){
-        die("error in image uoloading") ;
-    }
 
 
-    $Query = "INSERT INTO `menu_items_table` 
-      VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategory',
-       '$NoOfSizeVariations', $ItemPriceSize1, $ItemPriceSize2, $ItemPriceSize3 )  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+$ItemNoOfSizeVariations = isSecure_checkPostInput('__item_no_of_size_variations') ;
 
-    if($QueryResult){
+
+$ImageFileArrayVariable = $_FILES['__item_image'] ;
+$Item_ImageName = moveImageToImageFolder($DBConnectionBackend, "$IMAGE_FOLDER_FILE_PATH/", $ImageFileArrayVariable);
+if($Item_ImageName == -1){
+    die("error in image uoloading") ;
+}
+
+
+
+
+mysqli_begin_transaction($DBConnectionBackend) ;
+try{
+
+
+
+        $Query = "INSERT INTO `menu_items_table` 
+          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategory' )  " ;
+
+        $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+        if(!$QueryResult){
+            throw new Exception("Probelm in the item insert query: ".mysqli_error($DBConnectionBackend)) ;
+        }
+        $NewItemId = mysqli_insert_id($DBConnectionBackend) ; //this is the last insert id (The item id of new product)
+
+
+        $Query2 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategory' ORDER BY `size_sr_no` " ;
+        $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
+        if(!$QueryResult2){
+            throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
+        }
+        foreach ($QueryResult2 as $Record2){
+            $SizeCode = $Record2['size_code'] ;
+            $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeCode") ;
+            $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$NewItemId',  '$ItemPriceForThatSize', '$SizeCode', '$ItemCategory') " ;
+            if(!mysqli_query($DBConnectionBackend, $Query3)){
+                throw new Exception("Problem in price size insert query for size $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+            }
+        }
+
+
+
+
+        mysqli_commit($DBConnectionBackend) ;
+        mysqli_autocommit($DBConnectionBackend, true) ;
         echo "
         Item Successfully added
         <br><br>
         <a href='all-menuitems.php' >Go Back</a>
     " ;
-    } else {
+
+} catch (Exception $e){
+        echo $e ;
+
+        mysqli_rollback($DBConnectionBackend) ;
+        mysqli_autocommit($DBConnectionBackend, true) ;
+
+
+
+        // since we failed to insert the new item in the database,  so here we are deleting the image that we inserted
         $Del1 = deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $Item_ImageName) ;
         if($Del1){
-            echo "unable to insert the new item , so deleted the image  <br><br>".mysqli_error($DBConnectionBackend) ;
+            echo "<br> unable to insert the new item , so deleted the image  <br>" ;
+        } else {
+            echo "<br> unable to insert the new item and image deletion also failed <br>" ;
         }
-        echo "unable to insert the new item and image deletion also failed <br><br>".mysqli_error($DBConnectionBackend) ;
+}
 
-    }
+
+
+
+
+
+
 
 
 

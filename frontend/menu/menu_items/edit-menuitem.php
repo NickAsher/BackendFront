@@ -22,8 +22,9 @@
     require_once '../../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once '../utils/menu-utils.php';
-    require_once '../utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+
 
 
     $MenuItemId = isSecure_checkGetInput('___menu_item_id') ;
@@ -31,7 +32,7 @@
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $MenuItemInfoArray = getSingleMenuItemInfoArray($DBConnectionBackend, $MenuItemId) ;
+    $MenuItemInfoArray = getSingleMenuItemInfoView_Array($DBConnectionBackend, $MenuItemId) ;
 
 
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
@@ -39,23 +40,10 @@
     $MenuItemImage = $MenuItemInfoArray['item_image_name'] ;
     $MenuItemCategoryCode = $MenuItemInfoArray['item_category_code'] ;
     $MenuItemSubCategoryCode = $MenuItemInfoArray['item_subcategory_code'] ;
-    $MenuItemPriceSize1 = $MenuItemInfoArray['item_price_size1'] ;
-    $MenuItemPriceSize2 = $MenuItemInfoArray['item_price_size2'] ;
-    $MenuItemPriceSize3 = $MenuItemInfoArray['item_price_size3'] ;
+    $CategoryName = $MenuItemInfoArray['category_display_name'] ;
+    $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
+    $NoOfSizeVariations = $MenuItemInfoArray['category_no_of_size_variations'] ;
 
-    /*
-     * The reason we are fetching the subcategory info aray is this
-     * From the menu_items_table, we only get the category_code and subcategory_code.
-     * We don't actually get the category name and the subcategory name.
-     * To get these, we had to make two requests, one to subcategory_code and one to category_code, to get there names
-     */
-    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $MenuItemCategoryCode) ;
-    $SubCategoryInfoArray = getSubCategoryInfoArray($DBConnectionBackend, $MenuItemCategoryCode, $MenuItemSubCategoryCode) ;
-
-    $CategoryName = $CategoryInfoArray['category_display_name'] ;
-    $SubCategoryName = $SubCategoryInfoArray['subcategory_display_name'] ;
-
-    $NoOfSizeVariations = $CategoryInfoArray['category_no_of_size_variations'] ;
 
 
 
@@ -95,6 +83,8 @@
 
 
                             <input name="__item_id" type="hidden" value="<?php echo $MenuItemId ?>" >
+                            <input name="__category_no_of_size_variations" type="hidden" value="<?php echo $NoOfSizeVariations ?>" >
+
 
                             <div class="form-group row">
                                 <label for="input-item-category" class="col-3 col-form-label">Item Category</label>
@@ -127,75 +117,49 @@
 
 
 
+
+
+
+
+                            <div id="Div_Price">
+                                <?php
+
+                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$MenuItemCategoryCode' " ;
+                                $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+                                if(!$QueryResult){
+                                    die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
+                                }
+
+                                foreach ($QueryResult as $Record) {
+                                    $SizeName = $Record['size_name'] ;
+                                    $SizeCode = $Record['size_code'] ;
+
+                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_code` = '$SizeCode'  " ;
+                                    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
+                                    if(!$QueryResult2) {
+                                        die("Unable to fetch the record for the item for size $SizeCode :".mysqli_error($DBConnectionBackend) ) ;
+                                    }
+                                    $Record2 = mysqli_fetch_assoc($QueryResult2) ;
+                                    $ItemPrice = $Record2['item_price'] ;
+
+                                    echo "
+                                        <div class='form-group row'>
+                                            <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <div class='col-9'>
+                                                <input name='__item_price_size_$SizeCode' id='input-item-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice'>
+                                            </div>
+                                        </div>  
+                                        " ;
+
+
+                                }
+
+                                ?>
+                            </div>
+
                             <?php
 
-                            switch ($NoOfSizeVariations){
-                                case 1:
-                                    echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size1' class='col-3 col-form-label'>Item Price</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' value='$MenuItemPriceSize1' >
-                                            </div>
-                                        </div>
-                                        
-                                        <input name='__item_price_size2' type='hidden' value='-1'>
-                                        <input name='__item_price_size3' type='hidden' value='-1'>
-                                        
-                                    " ;
-                                    break ;
 
-
-                                case 2:
-                                    echo "
-                                    
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size1' class='col-3 col-form-label'>Item Price(Size1)</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' value='$MenuItemPriceSize1' >
-                                            </div>
-                                        </div>
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size2' class='col-3 col-form-label'>Item Price(Size2)</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size2' id='input-item-price-size2' class='form-control' type='text' value='$MenuItemPriceSize2' >
-                                            </div>
-                                        </div>
-                                        
-                                        <input name='__item_price_size3' type='hidden' value='-1'>
-                                    
-                                    " ;
-                                    break ;
-
-
-                                case 3 :
-                                    echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size1' class='col-3 col-form-label'>Item Price(Size1)</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' value='$MenuItemPriceSize1' >
-                                            </div>
-                                        </div>
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size2' class='col-3 col-form-label'>Item Price(Size2)</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size2' id='input-item-price-size2' class='form-control' type='text' value='$MenuItemPriceSize2' >
-                                            </div>
-                                        </div>
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size3' class='col-3 col-form-label'>Item Price(Size3)</label>
-                                            <div class='col-9'>
-                                                <input name='__item_price_size3' id='input-item-price-size3' class='form-control' type='text' value='$MenuItemPriceSize3' >
-                                            </div>
-                                        </div>
-                                    " ;
-
-                                    break ;
-                                default :
-                                    die("<h1>Unknown Size variation</h1>") ;
-                                    break ;
-
-                            }
 
 
                             ?>

@@ -2,11 +2,11 @@
 
 
 function NewOrder_AcceptOrder($DBConnection, $OrderId){
-    $Query = "SELECT * FROM `daily_order_table` WHERE `order_id` = '$OrderId'   " ;
+    $Query = "SELECT * FROM `order_daily_table` WHERE `order_id` = '$OrderId'   " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
 
-        $Query2 = "UPDATE `daily_order_table` SET `order_status` = 'Working' WHERE `order_id` = '$OrderId'   " ;
+        $Query2 = "UPDATE `order_daily_table` SET `order_status` = 'Working' WHERE `order_id` = '$OrderId'   " ;
         $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
         if($QueryResult2){
             echo "success-$OrderId" ;
@@ -25,11 +25,11 @@ function NewOrder_AcceptOrder($DBConnection, $OrderId){
 
 
 function NewOrder_CancelOrder($DBConnection, $OrderId){
-    $Query = "SELECT * FROM `daily_order_table` WHERE `order_id` = '$OrderId'   " ;
+    $Query = "SELECT * FROM `order_daily_table` WHERE `order_id` = '$OrderId'   " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
 
-        $Query2 = "UPDATE `daily_order_table` SET `order_status` = 'Cancelled' WHERE `order_id` = '$OrderId'   " ;
+        $Query2 = "UPDATE `order_daily_table` SET `order_status` = 'Cancelled' WHERE `order_id` = '$OrderId'   " ;
         $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
         if($QueryResult2){
             echo "success-$OrderId" ;
@@ -48,11 +48,11 @@ function NewOrder_CancelOrder($DBConnection, $OrderId){
 
 
 function WorkingOrder_CompleteOrder($DBConnection, $OrderId){
-    $Query = "SELECT * FROM `daily_order_table` WHERE `order_id` = '$OrderId'   " ;
+    $Query = "SELECT * FROM `order_daily_table` WHERE `order_id` = '$OrderId'   " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
 
-        $Query2 = "UPDATE `daily_order_table` SET `order_status` = 'Completed' WHERE `order_id` = '$OrderId'   " ;
+        $Query2 = "UPDATE `order_daily_table` SET `order_status` = 'Completed' WHERE `order_id` = '$OrderId'   " ;
         $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
         if($QueryResult2){
             echo "success-$OrderId" ;
@@ -71,11 +71,11 @@ function WorkingOrder_CompleteOrder($DBConnection, $OrderId){
 
 
 function WorkingOrder_CancelOrder($DBConnection, $OrderId){
-    $Query = "SELECT * FROM `daily_order_table` WHERE `order_id` = '$OrderId'   " ;
+    $Query = "SELECT * FROM `order_daily_table` WHERE `order_id` = '$OrderId'   " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
 
-        $Query2 = "UPDATE `daily_order_table` SET `order_status` = 'Cancelled' WHERE `order_id` = '$OrderId'   " ;
+        $Query2 = "UPDATE `order_daily_table` SET `order_status` = 'Cancelled' WHERE `order_id` = '$OrderId'   " ;
         $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
         if($QueryResult2){
             echo "success-$OrderId" ;

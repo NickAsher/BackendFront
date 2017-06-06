@@ -3,19 +3,20 @@ require_once '../../../utils/constants.php' ;
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php'  ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php'  ;
-require_once '../utils/menu-utils.php';
-
+require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
 
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 $ItemId = isSecure_checkPostInput('__item_id') ;
 $ItemName = isSecure_checkPostInput('__item_name') ;
 $ItemDescription = isSecure_checkPostInput('__item_description') ;
-$ItemPriceSize1 = isSecure_checkPostInput('__item_price_size1') ;
-$ItemPriceSize2 = isSecure_checkPostInput('__item_price_size2') ;
-$ItemPriceSize3 = isSecure_checkPostInput('__item_price_size3') ;
+$NoOfSizeVariations = isSecure_checkPostInput('__category_no_of_size_variations') ;
+
+
+
 
     $ItemInfoArray = getSingleMenuItemInfoArray($DBConnectionBackend, $ItemId) ;
+    $ItemCategoryCode = $ItemInfoArray['item_category_code'] ;
     $OldDisplayPic_Name = $ItemInfoArray['item_image_name'] ;
     $NewDisplayPic = $_FILES['__new_item_image'] ;
 
@@ -39,15 +40,37 @@ $ItemPriceSize3 = isSecure_checkPostInput('__item_price_size3') ;
 
 
 
-
+mysqli_begin_transaction($DBConnectionBackend) ;
+try{
 
     $Query = "UPDATE `menu_items_table` SET
-                  `item_name` = '$ItemName', `item_description` = '$ItemDescription', `item_price_size1` = '$ItemPriceSize1',
-                   `item_price_size2` = '$ItemPriceSize2', `item_price_size3` = '$ItemPriceSize3', `item_image_name` = '$InsertedDisplayPic_Name'
+                  `item_name` = '$ItemName', `item_description` = '$ItemDescription', `item_image_name` = '$InsertedDisplayPic_Name'
                   WHERE `item_id` = '$ItemId'  " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+    if(!$QueryResult){
+        throw new Exception("Probelm in the item insert query: ".mysqli_error($DBConnectionBackend)) ;
+    }
 
-    if($QueryResult){
+
+    $Query2 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategoryCode' ORDER BY `size_sr_no` " ;
+    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
+    if(!$QueryResult2){
+        throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
+    }
+    foreach ($QueryResult2 as $Record2){
+        $SizeCode = $Record2['size_code'] ;
+        $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeCode") ;
+
+        $Query3 = "UPDATE `menu_meta_rel_size-items_table` SET `item_price` = '$ItemPriceForThatSize' WHERE `item_id` = '$ItemId' AND `size_code` = '$SizeCode' " ;
+        if(!mysqli_query($DBConnectionBackend, $Query3)){
+            throw new Exception("Problem in price update query for size code $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+        }
+    }
+
+
+
+
+
 
         echo "
             Item Successfully Updated
@@ -81,6 +104,8 @@ $ItemPriceSize3 = isSecure_checkPostInput('__item_price_size3') ;
         }
 
 
+    mysqli_commit($DBConnectionBackend) ;
+    mysqli_autocommit($DBConnectionBackend, true) ;
 
 
 
@@ -88,52 +113,42 @@ $ItemPriceSize3 = isSecure_checkPostInput('__item_price_size3') ;
 
 
 
+} catch (Exception $e){
+    echo $e ;
 
-    } else {
+    mysqli_rollback($DBConnectionBackend) ;
+    mysqli_autocommit($DBConnectionBackend, true) ;
 
-        echo "unable to update the new Values <br><br>".mysqli_error($DBConnectionBackend) ;
 
 
-        /*
-             * Now is the case when a image is updated (can be old, can be new, we don't know)
-             * But there is a problem in updating the database.
-             * So what we have to do is just like a transaction, we roll back any changes
-             *
-             * So if the inserted image is new, then we delete it
-             * but if the inserted image was old, then do nothing
-             *
-             */
 
-        if($NewDisplayPic_Boolean == true){
-            // inserted image is new, delete it
-            $Del = deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $NewDisplayPic_Name) ;
-            if($Del){
-                echo "New Display Image is deleted" ;
-            }
 
-        }else{
-            // image uploaded is old so delete nothing
+
+    /*
+         * Now is the case when a image is updated (can be old, can be new, we don't know)
+         * But there is a problem in updating the database.
+         * SO now the transaction is rolled back, so we have to undo any changes to image
+         *
+         * So if the inserted image is new, then we delete it
+         * but if the inserted image was old, then do nothing
+         *
+         */
+
+    if($NewDisplayPic_Boolean == true){
+        // inserted image is new, delete it
+        $Del = deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $NewDisplayPic_Name) ;
+        if($Del){
+            echo "New Display Image is deleted" ;
         }
+
+    }else{
+        // image uploaded is old so delete nothing
     }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
 ?>

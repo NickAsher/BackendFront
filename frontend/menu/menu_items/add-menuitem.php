@@ -30,8 +30,8 @@
     require_once '../../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once '../utils/menu-utils.php';
-    require_once '../utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
@@ -72,6 +72,8 @@
 
                     <div id="Section_AddNewItemForm" class="col-md-10" >
                         <form action="process-add-menuitem.php" method="post" enctype="multipart/form-data">
+
+                            <input name="__item_no_of_size_variations" value='<?php echo $NoOfSizeVariations ?>' type="hidden">
 
 
 
@@ -116,71 +118,24 @@
 
 
                             <div id="Div_Price">
-
                                 <?php
-                                switch ($NoOfSizeVariations){
-                                    case 1 :
+                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_id` " ;
+                                $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+                                if($QueryResult){
+                                    foreach ($QueryResult as $Record){
+                                        $SizeName = $Record['size_name'] ;
+                                        $SizeCode = $Record['size_code'] ;
                                         echo "
-                                            <div class='form-group row'>
-                                                <label for='input-item-price-size1' class='col-3 col-form-label'>Addon-Item Price</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' placeholder='ex. 20'>
-                                                </div>
+                                        <div class='form-group row'>
+                                            <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <div class='col-9'>
+                                                <input name='__item_price_size_$SizeCode' id='input-item-price-size_$SizeCode' class='form-control' type='text' placeholder='ex. 20'>
                                             </div>
-                                             
-                                            <input name='__item_price_size2' type='hidden' value='-1'>
-                                            <input name='__item_price_size3' type='hidden' value='-1'>
-                                        " ;
-                                        break ;
-                                    case 2 :
-                                        echo "
-                                            <div class='form-group row'>
-                                                <label for='input-item-price-size1' class='col-3 col-form-label'>Addon-Item Price-Size1</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' placeholder='40'>
-                                                </div>
-                                            </div>
-                                             
-                                            <div class='form-group row'>
-                                                <label for='input-item-price-size2' class='col-3 col-form-label'>Addon-Item Price-Size2</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size2' id='input-item-price-size2' class='form-control' type='text' placeholder='40'>
-                                                </div>
-                                            </div>
-                                            
-                                            <input name='__item_price_size3' type='hidden' value='-1'>
-                                        " ;
-                                        break ;
-                                    case 3 :
-                                        echo "
-                                            <div class='form-group row'>
-                                                <label for='input-item-price-size1' class='col-3 col-form-label'>Addon-Item Price-Size1</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size1' id='input-item-price-size1' class='form-control' type='text' placeholder='40'>
-                                                </div>
-                                            </div>
-                                             
-                                            <div class='form-group row'>
-                                                <label for='input-item-price-size2' class='col-3 col-form-label'>Addon-Item Price-Size2</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size2' id='input-item-price-size2' class='form-control' type='text' placeholder='40'>
-                                                </div>
-                                            </div>
-                                            
-                                             <div class='form-group row'>
-                                                <label for='input-item-price-size3' class='col-3 col-form-label'>Addon-Item Price-Size3</label>
-                                                <div class='col-9'>
-                                                    <input name='__item_price_size3' id='input-item-price-size3' class='form-control' type='text' placeholder='40'>
-                                                </div>
-                                            </div>
-                                        " ;
-                                        break ;
-
-                                    default :
-                                        echo "
-                                        <h1> Unknown Size Variation type </h1>
-                                        " ;
-                                        break ;
+                                        </div>  
+                                    " ;
+                                    }
+                                } else {
+                                    die("Unable to get the sizes for the item :".mysqli_error($DBConnectionBackend) ) ;
                                 }
 
 

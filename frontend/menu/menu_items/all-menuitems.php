@@ -26,8 +26,8 @@
     require_once '../../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once '../utils/menu-utils.php';
-    require_once '../utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
@@ -107,6 +107,10 @@
                     foreach ($ListOfAllCategories as $CategoryRecord) {
                         $CategoryCode = $CategoryRecord['category_code'];
                         $CategoryName = $CategoryRecord['category_display_name'];
+                        $NoOfSizes = $CategoryRecord['category_no_of_size_variations'] ;
+
+
+
                         $NameDivColumn = "Div_" . $CategoryCode . "_table";
 
                         if($FirstItem){
@@ -133,7 +137,7 @@
                                     foreach($ListOfMenuItemsInCategory as $Record){
                                             $ItemId = $Record['item_id'] ;
                                             $ItemName = $Record['item_name'] ;
-                                            $ItemPriceString = getItemPriceString($Record['item_no_of_size_variations'], $Record['item_price_size1'], $Record['item_price_size2'], $Record['item_price_size3'] ) ;
+                                            $ItemPriceString = getItemPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
                                             $ItemImage = $Record['item_image_name'] ;
                                             $ItemDescription = $Record['item_description'] ;
 

@@ -22,7 +22,7 @@
     require_once '../../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once '../utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
 
     $CategoryCode = isSecure_checkGetInput('___category_code') ;
     $AddonItemId = isSecure_checkGetInput('___addon_item_id') ;
@@ -32,13 +32,10 @@
     $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
     $AddonItemDetailInfoArray = getAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
 
-    $NoOfSizeVariations = intval($CategoryInfoArray['category_no_of_size_variations']) ;
 
     $AddonItemId = $AddonItemDetailInfoArray['item_id'] ;
     $AddonItemName = $AddonItemDetailInfoArray['item_name'] ;
-    $AddonPriceSize1 = $AddonItemDetailInfoArray['item_price_size1'] ;
-    $AddonPriceSize2 = $AddonItemDetailInfoArray['item_price_size2'] ;
-    $AddonPriceSize3 = $AddonItemDetailInfoArray['item_price_size3'] ;
+    $NoOfSizeVariations = intval($AddonItemDetailInfoArray['item_no_of_size_variations']) ;
 
 
 
@@ -88,74 +85,42 @@
                         </div>
 
 
-                        <div>
 
-                        <?php
 
-                        switch ($NoOfSizeVariations){
-                            case 1:
+                        <div id="Div_Price">
+                            <?php
+
+                            $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' " ;
+                            $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+                            if(!$QueryResult){
+                                die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
+                            }
+
+                            foreach ($QueryResult as $Record) {
+                                $SizeName = $Record['size_name'] ;
+                                $SizeCode = $Record['size_code'] ;
+
+                                $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonItemId' AND `size_code` = '$SizeCode'  " ;
+                                $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
+                                if(!$QueryResult2) {
+                                    die("Unable to fetch the record for the item for size $SizeCode :".mysqli_error($DBConnectionBackend) ) ;
+                                }
+                                $Record2 = mysqli_fetch_assoc($QueryResult2) ;
+                                $ItemPrice = $Record2['addon_price'] ;
+
                                 echo "
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size1' class='col-3 col-form-label'>Addon-Item Price</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size1' class='form-control' type='text' value='$AddonPriceSize1' readonly>
-                                        </div>
-                                    </div>
-                                " ;
-                                break ;
+                                        <div class='form-group row'>
+                                            <label for='input-addon-price-size_$SizeCode' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
+                                            <div class='col-9'>
+                                                <input id='input-addon-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice' readonly>
+                                            </div>
+                                        </div>  
+                                        " ;
 
 
-                            case 2:
-                                echo "
-                                
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size1' class='col-3 col-form-label'>Addon-Item Price(Size1)</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size1' class='form-control' type='text' value='$AddonPriceSize1' readonly>
-                                        </div>
-                                    </div>
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size2' class='col-3 col-form-label'>Addon-Item Price(Size2)</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size2' class='form-control' type='text' value='$AddonPriceSize2' readonly>
-                                        </div>
-                                    </div>
-                                
-                                " ;
-                                break ;
+                            }
 
-
-                            case 3 :
-                                echo "
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size1' class='col-3 col-form-label'>Addon-Item Price(Size1)</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size1' class='form-control' type='text' value='$AddonPriceSize1' readonly>
-                                        </div>
-                                    </div>
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size2' class='col-3 col-form-label'>Addon-Item Price(Size2)</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size2' class='form-control' type='text' value='$AddonPriceSize2' readonly>
-                                        </div>
-                                    </div>
-                                    <div class='form-group row'>
-                                        <label for='input-addon-price-size3' class='col-3 col-form-label'>Addon-Item Price(Siz3)</label>
-                                        <div class='col-9'>
-                                            <input id='input-addon-price-size3' class='form-control' type='text' value='$AddonPriceSize3' readonly>
-                                        </div>
-                                    </div>
-                                " ;
-
-                                break ;
-                            default :
-                                echo "<h1>Unknown Size variation</h1>" ;
-                                break ;
-
-                        }
-
-
-                        ?>
+                            ?>
                         </div>
 
 

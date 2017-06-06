@@ -55,7 +55,8 @@
 
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
-                                $ItemPriceString = getItemPriceString($NoOfSizeVariations, $Record2['item_price_size1'], $Record2['item_price_size2'], $Record2['item_price_size3']) ; ;
+//                                $ItemPriceString = getItemPriceString($NoOfSizeVariations, $Record2['item_price_size1'], $Record2['item_price_size2'], $Record2['item_price_size3']) ; ;
+                                $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
 
 
 
@@ -137,7 +138,7 @@
 
                                     $ItemId = $Record2['item_id'] ;
                                     $ItemName = $Record2['item_name'] ;
-                                    $ItemPriceString = getItemPriceString($NoOfSizeVariations, $Record2['item_price_size1'], $Record2['item_price_size2'], $Record2['item_price_size3']) ; ;
+                                    $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
                                     $ItemDefaultStatus = $Record2['item_is_default'] ;
                                     $DetailPageLink = "show_addon.php?___addon_item_id=$ItemId&___category_code=$CategoryCode" ;
 

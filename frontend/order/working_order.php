@@ -31,7 +31,7 @@
         $UserInformation = getUserProfileInformation($DBConnectionBackend, $UserId) ;
         $UserString = $UserInformation['user_name'].'<br>'.$UserInformation['user_phone'].'<br>' ;
 
-        $AddressId = $Record['address_id']   ;
+        $OrderAddressString =  parseOrderAddress($Record['order_address']  ) ;
         $Order_date = $Record['order_date']   ;
         $Order_time = $Record['order_time']   ;
         $Order_total = $Record['order_total']  ;
@@ -49,7 +49,7 @@
         echo "<td class='text-size-small'>".$OrderNo."</td>" ;
         echo "<td class='text-size-small'>".$OrderId."</td>" ;
         echo "<td class='text-size-small'>".$UserString."</td>" ;
-        echo "<td class='text-size-small'>".$AddressId."</td>" ;
+        echo "<td class='text-size-small'>".$OrderAddressString."</td>" ;
         echo "<td> $".$Order_total."</td>" ;
         echo "<td class='text-size-small'>".$DescriptionString."</td>" ;
         echo "<td class='text-size-small'>".'comments'."</td>" ;

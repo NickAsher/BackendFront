@@ -26,8 +26,8 @@
     require_once '../../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once '../utils/menu-utils.php';
-    require_once '../utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
     $CategoryCode = isSecure_checkGetInput('___category_code') ;
     $AddonGroupCode = isSecure_checkGetInput('___addongroup_code') ;
