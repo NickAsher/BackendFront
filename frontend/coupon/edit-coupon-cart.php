@@ -122,7 +122,7 @@
 
                                     <div class="form-group row">
                                         <label for="input-cpn-name" class="col-3 col-form-label">Coupon Name</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_name' id="input-cpn-name" class="form-control" type="text" value="<?php echo $CouponName ; ?>" >
                                         </div>
                                     </div>
@@ -130,28 +130,28 @@
 
                                     <div class="form-group row">
                                         <label for="input-cpn-description" class="col-3 col-form-label">Coupon Description</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_description' id="input-cpn-description" class="form-control" value="<?php echo $CouponDescription ; ?>" >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-description" class="col-3 col-form-label">Coupon Long Notification Message</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_notf_msg_long' id="input-cpn-description" class="form-control" value="<?php echo $CouponLongNotificatopnMsg ; ?>" >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-description" class="col-3 col-form-label">Coupon Short Notification Message</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_notf_msg_short' id="input-cpn-description" class="form-control" value="<?php echo $CouponShortNotificatopnMsg ; ?>" >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-type" class="col-3 col-form-label">Coupon Type</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name='__coupon_type' id="input-cpn-type" class="form-control" value="<?php echo $CouponType ; ?>" readonly >
                                         </div>
                                     </div>
@@ -170,14 +170,14 @@
                                 <div class="card-block">
                                     <div class="form-group row">
                                         <label for="input-cpn-amount" class="col-3 col-form-label">Amount</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_value' id="input-cpn-amount" class="form-control" value="<?php echo $CouponValue ; ?>" >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-expiry" class="col-3 col-form-label">Expiry Time</label>
-                                        <div class="col-9 input-group">
+                                        <div class="col-md-9 input-group">
                                             <input name = '__coupon_expiry' id="input-cpn-expiry" class="form-control" value="<?php echo $CouponExpiryTimestamp ; ?>" >
                                             <button id="btn-input-choose-expiry-time" class="input-group-addon">Choose</button>
                                         </div>
@@ -185,7 +185,7 @@
 
                                     <div class="form-group row">
                                         <label for="input-cpn-min-bill" class="col-3 col-form-label">Min Bill Amount</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_min_bill' id="input-cpn-min-bill" class="form-control" value="<?php echo $CouponMinBill ; ?>" >
                                         </div>
                                     </div>
@@ -203,21 +203,21 @@
                                 <div class="card-block">
                                     <div class="form-group row">
                                         <label for="input-cpn-valid-items" class="col-3 col-form-label">Valid Items</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_items' id="input-cpn-valid-items" class="form-control" value="<?php echo $CouponValidItems ; ?>" >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-valid-users" class="col-3 col-form-label">User Validity</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_valid_user' id="input-cpn-valid-users" class="form-control" value="<?php echo $CouponValidUsers_Formatted ; ?>" readonly >
                                         </div>
                                     </div>
 
                                     <div class="form-group row">
                                         <label for="input-cpn-no-uses" class="col-3 col-form-label">Uses per Coupon</label>
-                                        <div class="col-9">
+                                        <div class="col-md-9">
                                             <input name = '__coupon_max_uses' id="input-cpn-no-uses" class="form-control" value="<?php echo $CouponMaxUses ; ?>" >
 
                                         </div>

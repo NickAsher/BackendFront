@@ -12,7 +12,8 @@ $AddonImage = "empty";
 
 $AddonCategoryCode = isSecure_checkPostInput('__addon_category_code') ;
 $AddonGroupCode = isSecure_checkPostInput('__addon_group_code') ;
-$ItemNoOfSizeVariations = isSecure_checkPostInput('__item_no_of_size_variations') ;
+$ItemNoOfSizeVariations = '0' ;
+$AddonIsActive = isSecure_checkPostInput('__addon_is_active') ;
 
 $AddonIsDefault = 'no' ;
 
@@ -25,7 +26,7 @@ $AddonIsDefault = 'no' ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
     $Query = "INSERT INTO `menu_addons_table` 
-            VALUES ('', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupCode', '$AddonIsDefault', $ItemNoOfSizeVariations)  " ;
+            VALUES ('', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupCode', '$AddonIsDefault', $ItemNoOfSizeVariations, $AddonIsActive)  " ;
 
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){

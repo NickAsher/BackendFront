@@ -65,7 +65,7 @@
 
                             <div class="form-group row">
                                 <label for="__item_category" class="col-3 col-form-label ">Category</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__item_category" id="__item_category" class="form-control validate-isrequired" type="text"  >
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
 
                             <div class="form-group row">
                                 <label for="__item_subcategory" class="col-3 col-form-label">Item Category</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <select name = "__item_subcategory" class="form-control" id="__item_subcategory" >
                                         <option selected disabled>Choose an Item SubCategory</option>
                                         <option value='pizza'>Pizza</option>
@@ -89,7 +89,7 @@
 
                             <div class="form-group row">
                                 <label for="__item_name" class="col-3 col-form-label">Item Name</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__item_name" class="form-control" type="text" id="__item_name" >
                                 </div>
                             </div>
@@ -97,7 +97,7 @@
 
                             <div class='form-group row'>
                                 <label for='__item_price_size' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                <div class='col-9'>
+                                <div class='col-md-9'>
                                     <input name='__item_price_size' id='__item_price_size' class='form-control' type='text' >
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
 
                             <div class='form-group row'>
                                 <label for='__item_email' class='col-3 col-form-label'>Email </label>
-                                <div class='col-9'>
+                                <div class='col-md-9'>
                                     <input name='__item_email' id='__item_email' class='form-control' type='text' >
                                 </div>
                             </div>
@@ -117,14 +117,14 @@
 
                             <div class="form-group row">
                                 <label for="__item_description" class="col-3 col-form-label">Item Description</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <textarea name='__item_description' class="form-control" rows="3" id="__item_description" ></textarea>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="col-3 col-form-label">Item Image</label>
-                                <div class="col-9 input-group">
+                                <div class="col-md-9 input-group">
                                     <input type="file" name="__item_image" style="width:0;" id="hidden-file-chooser">
                                     <input type="text" id="presentation-only-field" class="form-control" >
                                     <button id="btn-file-choose" class="input-group-addon">Browse</button>

@@ -274,6 +274,11 @@ function getSingleMenuItemInfoArray($DBConnection, $MenuItemId){
         die("Unable to fetch the Menu-Item info from the menu_items_table <br> ".mysqli_error($DBConnection)) ;
     }
 
+    $CategoryName = getSingleCategoryInfoArray($DBConnection, $SingleMenuItemInfoArray['item_category_code'])['category_display_name'] ;
+    $SubCategoryName = getSubCategoryInfoArray($DBConnection, $SingleMenuItemInfoArray['item_category_code'], $SingleMenuItemInfoArray['item_subcategory_code']) ['subcategory_display_name'] ;
+    $SingleMenuItemInfoArray['category_display_name'] = $CategoryName ;
+    $SingleMenuItemInfoArray['subcategory_display_name'] = $SubCategoryName ;
+
     return $SingleMenuItemInfoArray ;
 }
 

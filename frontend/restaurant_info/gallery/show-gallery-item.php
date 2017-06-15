@@ -84,7 +84,7 @@
 
 <!--                            <div class="form-group row">-->
 <!--                                <label for="input-image-id" class="col-3 col-form-label">Galley Item Id</label>-->
-<!--                                <div class="col-9">-->
+<!--                                <div class="col-md-9">-->
 <!--                                    <input id="input-image-id" class="form-control" type="text" value='--><?php //echo "$GalleryItem_Id" ; ?><!--' readonly>-->
 <!--                                </div>-->
 <!--                            </div>-->
@@ -105,7 +105,7 @@
 
                             <div class="form-group row">
                                 <label for="input-image-title" class="col-3 col-form-label">Image Title</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input type="text" class="form-control" type="text" value='<?php echo "$GalleryItem_Title" ; ?>' id="input-image-title" >
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
 
                             <div class="form-group row">
                                 <label for="input-image-description" class="col-3 col-form-label">Image Description</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <textarea  class="form-control" rows="3" id="input-image-description" ><?php echo "$GalleryItem_Description" ; ?></textarea>
                                 </div>
                             </div>

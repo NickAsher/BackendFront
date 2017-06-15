@@ -11,6 +11,7 @@
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -78,7 +79,7 @@
 
                             <div class="form-group row">
                                 <label for="input-addon-code" class="col-3 col-form-label">Addon-Group Code</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__addongroup_code" id="input-addon-code" class="form-control" type="text" placeholder="pizza_toppings">
                                 </div>
                             </div>
@@ -86,7 +87,7 @@
 
                             <div class="form-group row">
                                 <label for="input-addon-code" class="col-3 col-form-label">Addon-Group Name</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__addongroup_name" id="input-addon-name" class="form-control" type="text" placeholder="Toppings">
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
 
                             <div class="form-group row">
                                 <label for="input-addon-type" class="col-3 col-form-label">Addon-Group Type</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <select name = "__addongroup_type" id="input-addon-type" class="form-control"  >
                                         <option selected disabled>Choose a Type</option>
                                         <option value="radio">Single-Select</option>
@@ -104,8 +105,16 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="input-addon-active-hidden" class="col-3 col-form-label">Addon-Group Active</label>
+                                <div class="col-md-9">
+                                    <input name="__addongroup_is_active" id="input-addon-active-hidden" class="form-control" type="hidden">
+                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="input-addon-ordering-no" class="col-3 col-form-label">Addon-Group Ordering No</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__addongroup_ordering_no" id="input-addon-ordering-no" class="form-control" type="number" placeholder="5">
                                 </div>
                             </div>
@@ -168,4 +177,23 @@
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap.min.js" ></script>
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_addon.js" ></script>
 <script type="text/javascript"  src="../../../../lib/t3/t3.js"></script>
+<script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
+
+<script>
+
+    function setupToggleButton(PresentationInputId, HiddenInputId){
+        $('#' + PresentationInputId).on('change', function() {
+            if(this.checked){
+                $('#' + HiddenInputId).val('true') ;
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + HiddenInputId).val('false') ;
+            }
+        });
+    }
+    setupToggleButton('input-addon-active-presentation', 'input-addon-active-hidden') ;
+
+
+
+</script>
 </html>

@@ -11,6 +11,7 @@
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -36,7 +37,7 @@
     $DBConnectionBackend = YOLOSqlConnect() ;
 
     $SingleCategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
-    $NoOfSizeVariations = intval($SingleCategoryInfoArray['category_no_of_size_variations']) ;
+//    $NoOfSizeVariations = intval($SingleCategoryInfoArray['category_no_of_size_variations']) ;
 
 
     
@@ -72,14 +73,23 @@
 
                             <input name="__addon_category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?> '>
                             <input name="__addon_group_code" type="hidden" value='<?php echo "$AddonGroupCode" ; ?> '>
-                            <input name="__item_no_of_size_variations" type="hidden" value='<?php echo "$NoOfSizeVariations" ; ?> '>
 
 
 
                             <div id="Div_Name" class="form-group row">
                                 <label for="input-addon-name" class="col-3 col-form-label">Addon-Item Name</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__addon_name" id="input-addon-name" class="form-control" type="text" placeholder="pizza_toppings">
+                                </div>
+                            </div>
+
+
+                            <div id="Div_Name" class="form-group row">
+                                <label for="input-addon-active-hidden" class="col-3 col-form-label">Addon-Item Active</label>
+                                <div class="col-md-9">
+                                    <input name="__addon_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" >
+                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+
                                 </div>
                             </div>
 
@@ -97,7 +107,7 @@
                                         echo "
                                         <div class='form-group row'>
                                             <label for='input-addon-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-9'>
+                                            <div class='col-md-9'>
                                                 <input name='__addon_price_size_$SizeCode' id='input-addon-price-size_$SizeCode' class='form-control' type='text' placeholder='ex. 20'>
                                             </div>
                                         </div>  
@@ -172,5 +182,23 @@
 <script type="text/javascript"  src="../../../lib/jquery/jquery.js"></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_addon.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
 <script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
+<script type="text/javascript">
+
+
+    function setupToggleButton(PresentationInputId, HiddenInputId){
+        $('#' + PresentationInputId).on('change', function() {
+            if(this.checked){
+                $('#' + HiddenInputId).val('true') ;
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + HiddenInputId).val('false') ;
+            }
+        });
+    }
+
+
+    setupToggleButton('input-addon-active-presentation', 'input-addon-active-hidden') ;
+</script>
 </html>

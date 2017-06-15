@@ -11,6 +11,7 @@
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -71,35 +72,43 @@
 
                             <div class="form-group row">
                                 <label for="input-item-category" class="col-3 col-form-label">Category</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input  id="input-item-category" class="form-control" type="text"  value="<?php echo $CategoryName ; ?>" readonly>
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="input-size-code" class="col-3 col-form-label">Size Code</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__size_code" id="input-size-code" class="form-control" type="text"  >
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="input-size-name" class="col-3 col-form-label">Size Name</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__size_name" id="input-size-name" class="form-control" type="text"  >
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="input-size-name_abbr" class="col-3 col-form-label">Size Name Abbreviated</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__size_name_abbr" id="input-size-name_abbr" class="form-control" type="text"  >
                                 </div>
                             </div>
 
                             <div class="form-group row">
+                                <label for="input-size-active-hidden" class="col-3 col-form-label">Size Active</label>
+                                <div class="col-md-9">
+                                    <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden"  >
+                                    <input id="input-size-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="input-size-sr_no" class="col-3 col-form-label">Size Sr No</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__size_sr_no" id="input-size-sr_no" class="form-control" type="number"  >
                                 </div>
                             </div>
@@ -162,6 +171,25 @@
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap.min.js" ></script>
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_addon.js" ></script>
 <script type="text/javascript"  src="../../../../lib/t3/t3.js"></script>
+<script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
+
+<script>
+
+    function setupToggleButton(PresentationInputId, HiddenInputId){
+        $('#' + PresentationInputId).on('change', function() {
+            if(this.checked){
+                $('#' + HiddenInputId).val('true') ;
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + HiddenInputId).val('false') ;
+            }
+        });
+    }
+    setupToggleButton('input-size-active-presentation', 'input-size-active-hidden') ;
+
+
+
+</script>
 <script >
 
 

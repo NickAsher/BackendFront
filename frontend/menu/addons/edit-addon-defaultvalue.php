@@ -72,7 +72,7 @@
 
 
                         <label for="input-cpn-valid-users" class="col-3 col-form-label">User Validity</label>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <div id="input-cpn-valid-users" class="form-check">
 
 

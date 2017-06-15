@@ -138,13 +138,48 @@ function deleteImageFromImageFolder($ImageFolderPath_WithoutSlash, $ImageName){
         return -1 ;
     }
 
-    if(file_exists($ImageFolderPath_WithoutSlash.'/'.$ImageName)){
-        unlink($ImageFolderPath_WithoutSlash.'/'.$ImageName) ;
-        return 1 ;
+    if(is_file($ImageFolderPath_WithoutSlash.'/'.$ImageName)){
+        if(file_exists($ImageFolderPath_WithoutSlash.'/'.$ImageName)){
+            unlink($ImageFolderPath_WithoutSlash.'/'.$ImageName) ;
+            return 1 ;
+        } else {
+            echo "Problem in deleting the image file <br>".$ImageName ;
+            return -1 ;
+        }
     } else {
-        echo "Problem in deleting the image file <br>".$ImageName ;
         return -1 ;
     }
+
+
+}
+
+
+function deleteImageFromImageFolderNew($ImageFolderPath_WithoutSlash, $ImageName){
+
+    if($ImageName == null || empty($ImageName)){
+        throw new Exception("No image to delete, image $ImageName is empty <br> ") ;
+
+    }
+
+    if(!is_file($ImageFolderPath_WithoutSlash.'/'.$ImageName)) {
+        throw new Exception("The given path is not a file: $ImageFolderPath_WithoutSlash/$ImageName <br>") ;
+    }
+
+
+    if(!file_exists($ImageFolderPath_WithoutSlash.'/'.$ImageName)) {
+        throw new Exception("The given file does not exist: $ImageFolderPath_WithoutSlash/$ImageName <br>") ;
+    }
+
+
+    if(unlink($ImageFolderPath_WithoutSlash.'/'.$ImageName)){
+        return true ;
+    } else {
+        throw new Exception("The unlink function failed due to some reason") ;
+    }
+
+
+
+
 }
 
 

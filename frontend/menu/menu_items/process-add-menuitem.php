@@ -11,6 +11,7 @@ $ItemName = isSecure_checkPostInput('__item_name') ;
 $ItemDescription = isSecure_checkPostInput('__item_description') ;
 $ItemCategory = isSecure_checkPostInput('__item_category') ;
 $ItemSubCategory = isSecure_checkPostInput('__item_subcategory') ;
+$ItemIsActive = isSecure_checkPostInput('__item_is_active') ;
 
 
 $ItemNoOfSizeVariations = isSecure_checkPostInput('__item_no_of_size_variations') ;
@@ -31,7 +32,7 @@ try{
 
 
         $Query = "INSERT INTO `menu_items_table` 
-          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategory' )  " ;
+          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategory', $ItemIsActive )  " ;
 
         $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
         if(!$QueryResult){

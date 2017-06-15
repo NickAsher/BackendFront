@@ -48,7 +48,7 @@
                             <div class="card-block">
                                 <div class="form-group row">
                                     <label for="input-notf-label" class="col-3 col-form-label">Notification Label </label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input name = '__notf_label' id="input-notf-label" class="form-control" type="text" placeholder="Label of the Notification" >
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                             <div class="card-block">
                                 <div class="form-group row">
                                     <label for="input-notf-title" class="col-3 col-form-label">Title </label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input name = '__notf_title' id="input-notf-title" class="form-control" type="text" placeholder="Title of the Notification" >
                                     </div>
                                 </div>
@@ -73,14 +73,14 @@
 
                                 <div class="form-group row">
                                     <label for="input-notf-message" class="col-3 col-form-label">Message Id</label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input name = '__notf_message' id="input-notf-message" class="form-control" type="text" placeholder="Message of the Notification" >
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-notf-exp-time" class="col-3 col-form-label">Expiration Date: </label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input name = '__notf_exp_time' id="input-notf-exp-time" class="form-control" type="number" placeholder="Time in Seconds" >
                                     </div>
                                 </div>
@@ -98,7 +98,7 @@
 
                                 <div class="form-group row">
                                     <label for="input-notf-target" class="col-3 col-form-label">Target Devices</label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <div id="input-notf-target" class="form-check-input form-check">
                                             <label class="form-check-label">
                                                 <input name = '__notf_target' onchange='controlTargetRadio_default()'  id="input-notf-target-all" class="form-check-inline" type="radio" value="all" checked="checked">All Users
@@ -115,7 +115,7 @@
 
                                 <div id="hidden_div_target_email" class="form-group row">
                                     <label for="input--user-email" class="col-3 col-form-label">User Email</label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <input name = '__notf_user_email' id="input-user-email" class="form-control" type="text" placeholder="Email Id" >
                                     </div>
                                 </div>
@@ -123,7 +123,7 @@
 
                                 <div id="hidden_div_target_group" class="form-group row">
                                     <label for="input-notf-group" class="col-3 col-form-label">Group: </label>
-                                    <div class="col-9">
+                                    <div class="col-md-9">
                                         <select class="form-control" id="input-notf-group" name="__notf_groups">
                                             <option value="topic0" disabled>Choose Any Topic</option>
                                             <option value="topic1">All Users</option>

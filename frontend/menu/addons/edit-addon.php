@@ -9,6 +9,7 @@
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -34,7 +35,16 @@
     $AddonItemInfoArray = getAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
     
     $AddonItemName = $AddonItemInfoArray['item_name'] ;
-    $NoOfSizeVariations = intval($AddonItemInfoArray['item_no_of_size_variations']) ;
+    $AddonItemIsActive = $AddonItemInfoArray['item_is_active'] ;
+
+    $ActiveCheckedString = null ;
+    if($AddonItemIsActive == 'true'){
+        $ActiveCheckedString = "checked='checked' ";
+    } else if($AddonItemIsActive == 'false'){
+        $ActiveCheckedString = "";
+    }
+
+    //    $NoOfSizeVariations = intval($AddonItemInfoArray['item_no_of_size_variations']) ;
 
 
 
@@ -74,14 +84,21 @@
 
                             <input name='__category_code'  type='hidden' value="<?php echo $CategoryCode ; ?>">
                             <input name='__addon_item_id'  type='hidden' value="<?php echo $AddonItemId ; ?>">
-                            <input name="__item_no_of_size_variations" type="hidden" value='<?php echo "$NoOfSizeVariations" ; ?> '>
 
 
 
                             <div class="form-group row">
-                                <label class="col-3 col-form-label">Addon-Item Name</label>
-                                <div class="col-9">
+                                <label for ='input-item-name' class="col-3 col-form-label">Addon-Item Name</label>
+                                <div class="col-md-9">
                                     <input name="__addon_item_name" id="input-item-name" class="form-control" type="text" value="<?php echo $AddonItemName ; ?>" >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for='input-item-active-hidden' class="col-3 col-form-label">Addon-Item Active</label>
+                                <div class="col-md-9">
+                                    <input name="__addon_is_active" id="input-item-active-hidden" class="form-control" type="hidden" value="<?php echo $AddonItemIsActive ; ?>" >
+                                    <input id="input-item-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
 
@@ -111,7 +128,7 @@
                                     echo "
                                         <div class='form-group row'>
                                             <label for='input-addon-price-size_$SizeCode' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
-                                            <div class='col-9'>
+                                            <div class='col-md-9'>
                                                 <input name='__addon_price_size_$SizeCode'  id='input-addon-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice' >
                                             </div>
                                         </div>  
@@ -174,7 +191,25 @@
 <script type="text/javascript"  src="../../../lib/jquery/jquery.js"></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_addon.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
 <script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
 
+<script type="text/javascript">
+
+
+    function setupToggleButton(PresentationInputId, HiddenInputId){
+        $('#' + PresentationInputId).on('change', function() {
+            if(this.checked){
+                $('#' + HiddenInputId).val('true') ;
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + HiddenInputId).val('false') ;
+            }
+        });
+    }
+
+
+    setupToggleButton('input-item-active-presentation', 'input-item-active-hidden') ;
+</script>
 
 </html>

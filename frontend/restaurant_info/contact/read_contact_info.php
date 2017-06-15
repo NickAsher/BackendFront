@@ -22,7 +22,6 @@
     <link rel="stylesheet"  href="../../common/css/classes.css">
 
 
-    <link rel="stylesheet" href="../css/default_style.css">
 
 
     <?php
@@ -53,7 +52,8 @@
     $Latitude = $TempArray['latitude'] ;
     $Longitude = $TempArray['longitude'] ;
     $RestaurantName = $TempArray['restaurant_name'] ;
-    $ReataurantImage = $TempArray['restaurant_image'] ;
+    $RestaurantImage = $TempArray['restaurant_image'] ;
+    $ReataurantLogo = $TempArray['restaurant_logo'] ;
     $RestaurantAddress1 = $TempArray['restaurant_addr_1'] ;
     $RestaurantAddress2 = $TempArray['restaurant_addr_2'] ;
     $RestaurantAddress3 = $TempArray['restaurant_addr_3'] ;
@@ -80,7 +80,7 @@
     <?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/sidebar.php'; ?>
     <div class="container-fluid t3-push" id="mainContainer">
         <div class="row">
-            <div id = "main_Content" class="col-md-12">
+            <div id = "main_Content" class="col-md-12 " style="background-color: #eee">
 
 
 
@@ -103,15 +103,15 @@
 
                                 <div class="form-group row">
                                     <label for="input-rest-latitude" class="col-3 col-form-label">Latitude</label>
-                                    <div class="col-9">
-                                        <input name="__" class="form-control" type="text" placeholder="ex. 94.147" id="input-rest-latitude" value="<?php echo "$Latitude" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__" class="form-control" type="text" placeholder="ex. 94.147" id="input-rest-latitude" value="<?php echo "$Latitude" ?>" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-longitude" class="col-3 col-form-label">Longitude</label>
-                                    <div class="col-9">
-                                        <input name="__" class="form-control" type="text" placeholder="ex. 120.745" id="input-rest-longitude" value="<?php echo "$Longitude" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__" class="form-control" type="text" placeholder="ex. 120.745" id="input-rest-longitude" value="<?php echo "$Longitude" ?>" disabled>
                                     </div>
                                 </div>
 
@@ -130,15 +130,27 @@
 
                                 <div class="form-group row">
                                     <label for="input-rest-name" class="col-3 col-form-label">Restaurant Name</label>
-                                    <div class="col-9">
-                                        <input name="__restaurant_image" class="form-control" type="text" placeholder="ex. My Restaurant" id="input-rest-name" value="<?php echo "$RestaurantName" ?> " readonly>
+                                    <div class="col-md-9">
+                                        <input name="__restaurant_image" class="form-control" type="text" placeholder="ex. My Restaurant" id="input-rest-name" value="<?php echo "$RestaurantName" ?> " disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-photo" class="col-3 col-form-label">Restaurant Image</label>
-                                    <div class="col-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="Ex. 120.745" id="input-rest-photo" value="<?php echo "$RestaurantName" ?>" readonly>
+                                    <div class="col-md-9 ">
+                                        <div class="col-6 form-control">
+                                            <center><img src="<?php echo "$IMAGE_BACKENDFRONT_LINK_PATH/$RestaurantImage "; ?>" class="img-fluid" width='180'></center>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="input-rest-photo" class="col-3 col-form-label">Restaurant Logo</label>
+                                    <div class="col-md-9 ">
+                                        <div class="col-6 form-control">
+                                            <center><img src="<?php echo "$IMAGE_BACKENDFRONT_LINK_PATH/$ReataurantLogo "; ?>" class="img-fluid" width='180'></center>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -148,22 +160,22 @@
 
                                 <div class="form-group row">
                                     <label for="input-rest-addr1" class="col-3 col-form-label">Address Line 1 </label>
-                                    <div class="col-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="" id="input-rest-addr1" value="<?php echo "$RestaurantAddress1" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__newitem_name" class="form-control" type="text" placeholder="" id="input-rest-addr1" value="<?php echo "$RestaurantAddress1" ?>" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-addr2" class="col-3 col-form-label">Address Line 2</label>
-                                    <div class="col-9">
-                                        <input name="__" class="form-control" type="text" placeholder="" id="input-rest-addr2" value="<?php echo "$RestaurantAddress2" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__" class="form-control" type="text" placeholder="" id="input-rest-addr2" value="<?php echo "$RestaurantAddress2" ?>" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-addr3" class="col-3 col-form-label">Address Line 3</label>
-                                    <div class="col-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="" id="input-rest-addr3" value="<?php echo "$RestaurantAddress3" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__newitem_name" class="form-control" type="text" placeholder="" id="input-rest-addr3" value="<?php echo "$RestaurantAddress3" ?>" disabled>
                                     </div>
                                 </div>
 
@@ -185,15 +197,15 @@
 
                                 <div class="form-group row">
                                     <label for="input-rest-hours1" class="col-3 col-form-label">Monday to Friday</label>
-                                    <div class="col-9">
-                                        <input name="__" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours1" value="<?php echo "$RestaurantHoursMonFri" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours1" value="<?php echo "$RestaurantHoursMonFri" ?>" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-hours2" class="col-3 col-form-label">Saturday and Sunday</label>
-                                    <div class="col-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours2" value="<?php echo "$RestaurantHoursSatSat" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__newitem_name" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours2" value="<?php echo "$RestaurantHoursSatSat" ?>" disabled>
                                     </div>
                                 </div>
 
@@ -213,15 +225,15 @@
 
                                 <div class="form-group row">
                                     <label for="input-rest-phone" class="col-3 col-form-label">Phone no</label>
-                                    <div class="col-9">
-                                        <input name="__" class="form-control" type="text" placeholder="ex. 9780045712" id="input-rest-phone" value="<?php echo "$RestaurantPhoneNum" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__" class="form-control" type="text" placeholder="ex. 9780045712" id="input-rest-phone" value="<?php echo "$RestaurantPhoneNum" ?>" disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label for="input-rest-email" class="col-3 col-form-label">Email Id</label>
-                                    <div class="col-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="ex. example@gmail.com" id="input-rest-email" value="<?php echo "$RestaurantEmail" ?>" readonly>
+                                    <div class="col-md-9">
+                                        <input name="__newitem_name" class="form-control" type="text" placeholder="ex. example@gmail.com" id="input-rest-email" value="<?php echo "$RestaurantEmail" ?>" disabled>
                                     </div>
                                 </div>
 

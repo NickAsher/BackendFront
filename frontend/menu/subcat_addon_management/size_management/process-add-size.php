@@ -11,6 +11,8 @@ $SizeSrNo = isSecure_checkPostInput('__size_sr_no') ;
 $SizeCode = isSecure_checkPostInput('__size_code') ;
 $SizeName = isSecure_checkPostInput('__size_name') ;
 $SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
+$SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
+
 
 
 
@@ -18,7 +20,7 @@ $SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "INSERT INTO `menu_meta_size_table` VALUES ('', '$SizeSrNo', '$CategoryCode', '$SizeCode', '$SizeName', '$SizeNameAbbr')  " ;
+    $Query = "INSERT INTO `menu_meta_size_table` VALUES ('', '$SizeSrNo', '$CategoryCode', '$SizeCode', '$SizeName', '$SizeNameAbbr' , 'false', '$SizeIsActive')  " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("unable to insert the new item  <br><br>".mysqli_error($DBConnectionBackend)) ;

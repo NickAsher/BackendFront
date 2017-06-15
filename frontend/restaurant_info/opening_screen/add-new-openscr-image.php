@@ -65,7 +65,7 @@
 
                     <div class="form-group row">
                         <label for="input-image-id" class="col-3 col-form-label">Image Id</label>
-                        <div class="col-9">
+                        <div class="col-md-9">
                             <input id="input-image-id" class="form-control" type="text" placeholder="Predefault Id…" readonly>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
 
                     <div class="form-group row">
                         <label class="col-3 col-form-label">Image</label>
-                        <div class="col-9 input-group">
+                        <div class="col-md-9 input-group">
                             <input type="file" name="__newimage_imageFile" style="width:0;" id="hidden-file-chooser">
                             <input type="text" id="presentation-only-field" class="form-control" >
                             <button id="btn-file-choose" class="input-group-addon">Browse</button>

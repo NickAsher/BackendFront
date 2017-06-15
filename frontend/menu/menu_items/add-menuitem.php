@@ -11,6 +11,7 @@
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -21,9 +22,6 @@
 
 
 
-
-    <link rel="stylesheet" href="../../items/css/fmenu_default_style.css">
-    <link rel="stylesheet" href="../../items/css/menu.css">
 
     <?php
 
@@ -73,13 +71,12 @@
                     <div id="Section_AddNewItemForm" class="col-md-10" >
                         <form action="process-add-menuitem.php" method="post" enctype="multipart/form-data">
 
-                            <input name="__item_no_of_size_variations" value='<?php echo $NoOfSizeVariations ?>' type="hidden">
 
 
 
                             <div class="form-group row">
                                 <label for="input-item-category" class="col-3 col-form-label">Category</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <input name="__item_category" id="input-item-category" class="form-control" type="text" value="<?php echo $CategoryCode ; ?>" readonly>
                                 </div>
                             </div>
@@ -87,7 +84,7 @@
 
                             <div class="form-group row">
                                 <label for="input-item-subcategory" class="col-3 col-form-label">Item Category</label>
-                                <div class="col-9">
+                                <div class="col-md-9">
                                     <select name = "__item_subcategory" class="form-control" id="input-item-subcategory" >
                                         <option selected disabled>Choose an Item SubCategory</option>
                                         <?php
@@ -109,8 +106,8 @@
 
                             <div class="form-group row">
                                 <label for="input-item-name" class="col-3 col-form-label">Item Name</label>
-                                <div class="col-9">
-                                    <input name="__item_name" class="form-control" type="text" placeholder="Ex. Super Cheesy Pizza" id="input-item-name" >
+                                <div class="col-md-9">
+                                    <input name="__item_name" id="input-item-name" class="form-control" type="text" placeholder="Ex. Super Cheesy Pizza"  >
                                 </div>
                             </div>
 
@@ -128,7 +125,7 @@
                                         echo "
                                         <div class='form-group row'>
                                             <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-9'>
+                                            <div class='col-md-9'>
                                                 <input name='__item_price_size_$SizeCode' id='input-item-price-size_$SizeCode' class='form-control' type='text' placeholder='ex. 20'>
                                             </div>
                                         </div>  
@@ -147,15 +144,26 @@
 
                             <div class="form-group row">
                                 <label for="input-item-description" class="col-3 col-form-label">Item Description</label>
-                                <div class="col-9">
-                                    <textarea name='__item_description' class="form-control" rows="3" id="input-item-description" ></textarea>
+                                <div class="col-md-9">
+                                    <textarea name='__item_description' id="input-item-description" class="form-control" rows="3"  ></textarea>
                                 </div>
                             </div>
 
+
+                            <div class="form-group row">
+                                <label for="input-item-active-hidden" class="col-3 col-form-label">Item Active</label>
+
+                                <div class="col-md-9">
+                                    <input id="input-item-active" class="form-control" type="hidden" value="false"  >
+                                    <input id="input-item-active-presentation" type="checkbox" class="form-control" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                </div>
+                            </div>
+
+
                             <div class="form-group row">
                                 <label class="col-3 col-form-label">Item Image</label>
-                                <div class="col-9 input-group">
-                                    <input type="file" name="__item_image" style="width:0;" id="hidden-file-chooser">
+                                <div class="col-md-9 input-group">
+                                    <input type="file" name="__item_image" style="width:0;padding:0px;" id="hidden-file-chooser">
                                     <input type="text" id="presentation-only-field" class="form-control" >
                                     <button id="btn-file-choose" class="input-group-addon">Browse</button>
                                 </div>
@@ -208,9 +216,11 @@
 
 </body>
 <script type="text/javascript"  src="../../../lib/jquery/jquery.js"></script>
-<script src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
-<script src="../../../lib/bootstrap4/bootstrap_addon.js" ></script>
-<script type="text/javascript" src="../../../lib/t3/t3.js"></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_addon.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
+
+<script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
 <script >
 
     $('#btn-file-choose').click(function (event) {
@@ -224,6 +234,20 @@
 
 
     }) ;
+
+
+
+    function setupToggleButton(PresentationInputId, HiddenInputId){
+        $('#' + PresentationInputId).on('change', function() {
+            if(this.checked){
+                $('#' + HiddenInputId).val('true') ;
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + HiddenInputId).val('false') ;
+            }
+        });
+    }
+    setupToggleButton('input-item-active-presentation', 'input-item-active-hidden') ;
 
 
 

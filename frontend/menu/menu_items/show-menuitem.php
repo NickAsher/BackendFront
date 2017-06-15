@@ -8,6 +8,7 @@
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-reboot.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_addon.css" >
+    <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap_toggle.css" >
 
     <link rel="stylesheet" href="../../../lib/font-awesome/css/font-awesome.css" >
 
@@ -30,7 +31,7 @@
 
 
     $MenuItemId = isSecure_checkGetInput('___menu_item_id') ;
-    $MenuItemInfoArray = getSingleMenuItemInfoView_Array($DBConnectionBackend, $MenuItemId) ;
+    $MenuItemInfoArray = getSingleMenuItemInfoArray($DBConnectionBackend, $MenuItemId) ;
 
 
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
@@ -40,8 +41,17 @@
     $MenuItemSubCategoryCode = $MenuItemInfoArray['item_subcategory_code'] ;
     $CategoryName = $MenuItemInfoArray['category_display_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
+    $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
+    print_r($MenuItemInfoArray) ;
 
-    $NoOfSizeVariations = $MenuItemInfoArray['category_no_of_size_variations'] ;
+
+
+    $ActiveCheckedString = null ;
+    if($MenuItemActive == 'true'){
+        $ActiveCheckedString = "checked='checked' ";
+    } else if($MenuItemActive == 'false'){
+        $ActiveCheckedString = "";
+    }
 
 
 
@@ -57,7 +67,7 @@
 
 
 
-<div><?php require_once "../subcommon/includes/header.php" ?></div>
+<!--<div>--><?php //require_once "../subcommon/includes/header.php" ?><!--</div>-->
 <section>
     <?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/sidebar.php'; ?>
     <div class="container-fluid t3-push" id="mainContainer">
@@ -83,29 +93,37 @@
 
                         <div class="form-group row">
                             <label for="input-item-name" class="col-3 col-form-label">Item Name</label>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input id="input-item-name" class="form-control" type="text" value="<?php echo $MenuItemName ; ?>" readonly>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="input-item-description" class="col-3 col-form-label">Item Description</label>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <textarea  id="input-item-description" class="form-control" rows="5" readonly ><?php echo $MenuItemDescription ; ?></textarea>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="input-item-category" class="col-3 col-form-label">Item Category</label>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input id="input-item-category" class="form-control" type="text" value="<?php echo $CategoryName ; ?>" readonly>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="input-item-category" class="col-3 col-form-label">Item Sub-Category</label>
-                            <div class="col-9">
+                            <div class="col-md-9">
                                 <input id="input-item-category" class="form-control" type="text" value="<?php echo $SubCategoryName ; ?>" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="input-item-active" class="col-3 col-form-label">Item Active</label>
+                            <div class="col-md-9">
+                                <input id="input-item-active" class="form-control" type="hidden" value="<?php echo $MenuItemActive ; ?>" readonly >
+                                <input id="input-item-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> disabled data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                             </div>
                         </div>
 
@@ -137,7 +155,7 @@
                                 echo "
                                         <div class='form-group row'>
                                             <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-9'>
+                                            <div class='col-md-9'>
                                                 <input id='input-item-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice' readonly>
                                             </div>
                                         </div>  
@@ -193,6 +211,7 @@
 <script type="text/javascript"  src="../../../lib/jquery/jquery.js"></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_addon.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
 <script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
 </html>
 

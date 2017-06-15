@@ -20,7 +20,7 @@
 
     <?php
     require_once '../../utils/constants.php';
-    require_once '../menu/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
     require_once 'utils/utils-order-parsing.php';
     ?>
 

@@ -7,8 +7,9 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 $CategoryCode =  isSecure_checkPostInput('__category_code');
 $AddonItemId = isSecure_checkPostInput('__addon_item_id');
 $AddonItemName = isSecure_checkPostInput('__addon_item_name');
+$AddonIsActive = isSecure_checkPostInput('__addon_is_active') ;
 
-$ItemNoOfSizeVariations = isSecure_checkPostInput('__item_no_of_size_variations') ;
+$ItemNoOfSizeVariations = '0' ;
 
 
 
@@ -26,7 +27,7 @@ $DBConnectionBackend = YOLOSqlConnect() ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "UPDATE `menu_addons_table` SET `item_name` = '$AddonItemName' WHERE `item_id` = '$AddonItemId' " ;
+    $Query = "UPDATE `menu_addons_table` SET `item_name` = '$AddonItemName', `item_is_active` = '$AddonIsActive' WHERE `item_id` = '$AddonItemId' " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("Probelm in the item update query: ".mysqli_error($DBConnectionBackend)) ;

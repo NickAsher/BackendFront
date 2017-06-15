@@ -12,6 +12,7 @@ $AddonGroupDisplayName = isSecure_checkPostInput('__addongroup_name') ;
 $AddonGroupType = isSecure_checkPostInput('__addongroup_type') ;
 $AddonGroupNoOfItems = 0 ;
 $AddonGroupOrderingNo = isSecure_checkPostInput('__addongroup_ordering_no') ;
+$AddonGroupIsActive = isSecure_checkPostInput('__addongroup_is_active') ;
 
 
 
@@ -19,7 +20,7 @@ $AddonGroupOrderingNo = isSecure_checkPostInput('__addongroup_ordering_no') ;
 
 
 $Query = "INSERT INTO `menu_meta_rel_category-addon_table` 
-      VALUES ('', '$CategoryCode', '$AddonGroupCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupOrderingNo', '$AddonGroupNoOfItems')  " ;
+      VALUES ('', '$CategoryCode', '$AddonGroupCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupOrderingNo', '$AddonGroupNoOfItems', $AddonGroupIsActive)  " ;
 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
 if($QueryResult){

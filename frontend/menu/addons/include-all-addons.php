@@ -43,6 +43,7 @@
                             <tr class='table-info'>
                                 <th>Item Name</th>
                                 <th>Item Price</th>
+                                <th>Item Active</th>
                                 <th>Item Edit</th>
                                 <th>Item Delete</th>
                             </tr>
@@ -55,8 +56,13 @@
 
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
-//                                $ItemPriceString = getItemPriceString($NoOfSizeVariations, $Record2['item_price_size1'], $Record2['item_price_size2'], $Record2['item_price_size3']) ; ;
                                 $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
+                                $ItemActive = $Record2['item_is_active'] ;
+                                if($ItemActive == 'true'){
+                                    $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
+                                } else if($ItemActive == 'false'){
+                                    $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
+                                }
 
 
 
@@ -66,6 +72,7 @@
                                     <tr>
                                         <td class='addon-link' data-href='$DetailPageLink'> <p class='link-black'>$ItemName</p> </td>
                                         <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
+                                        <td class='addon-link' data-href='$DetailPageLink'>$ActiveButton</td>
                                         <td>
                                             <form action='edit-addon.php' method='get'>
                                                 <input name='___category_code' type='hidden' value='$CategoryCode'>
@@ -125,6 +132,7 @@
                                 <th>Item Name</th>
                                 <th>Item Price</th>
                                 <th>Is Default?</th>
+                                <th>Item Active</th>
                                 <th>Item Edit</th>
                                 <th>Item Delete</th>
                             </tr>
@@ -140,6 +148,14 @@
                                     $ItemName = $Record2['item_name'] ;
                                     $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
                                     $ItemDefaultStatus = $Record2['item_is_default'] ;
+                                    $ItemActive = $Record2['item_is_active'] ;
+                                    if($ItemActive == 'true'){
+                                        $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
+                                    } else if($ItemActive == 'false'){
+                                        $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
+                                    }
+
+
                                     $DetailPageLink = "show_addon.php?___addon_item_id=$ItemId&___category_code=$CategoryCode" ;
 
                                     echo "
@@ -147,6 +163,8 @@
                                             <td class='addon-link' data-href='$DetailPageLink'> <p class='link-black'>$ItemName</p> </td>
                                             <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
                                             <td class='addon-link' data-href='$DetailPageLink'>$ItemDefaultStatus</td>
+                                            <td class='addon-link' data-href='$DetailPageLink'>$ActiveButton</td>
+
                                             
                                             <td>
                                                 <form action='edit-addon.php' method='get'>

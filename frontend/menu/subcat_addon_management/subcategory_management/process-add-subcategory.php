@@ -11,6 +11,7 @@ $SubCategoryCode = isSecure_checkPostInput('__subcategory_code') ;
 $SubCategoryDisplayName = isSecure_checkPostInput('__subcategory_name') ;
 $SubCategoryOrderingNo = isSecure_checkPostInput('__subcategory_ordering_no') ;
 $SubCategoryNoOfItems = 0 ;
+$SubCategoryIsActive = isSecure_checkPostInput('__subcategory_is_active') ;
 
 
 
@@ -18,7 +19,7 @@ $SubCategoryNoOfItems = 0 ;
 
 
 $Query = "INSERT INTO `menu_meta_rel_category-subcategory_table` 
-      VALUES ('', '$CategoryCode', '$SubCategoryCode', '$SubCategoryDisplayName', '$SubCategoryOrderingNo', '$SubCategoryNoOfItems')  " ;
+      VALUES ('', '$CategoryCode', '$SubCategoryCode', '$SubCategoryDisplayName', '$SubCategoryOrderingNo', '$SubCategoryNoOfItems', '$SubCategoryIsActive')  " ;
 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
 if($QueryResult){
