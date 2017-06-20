@@ -29,15 +29,15 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
     require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
-    $CategoryCode = isSecure_checkGetInput('___category_code') ;
-    $AddonGroupCode = isSecure_checkGetInput('___addongroup_code') ;
+    $CategoryCode = isSecure_checkPostInput('__category_code') ;
+    $AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
 
 
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupCode) ;
+    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
 
 
 
@@ -68,7 +68,7 @@
 
                     <div class="form-group row">
                         <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?> ">
-                        <input name="__addongroup_code" type="hidden" value="<?php echo $AddonGroupCode ?> ">
+                        <input name="__addongroup_rel_id" type="hidden" value="<?php echo $AddonGroupRelId ?> ">
 
 
                         <label for="input-cpn-valid-users" class="col-3 col-form-label">User Validity</label>

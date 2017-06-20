@@ -142,9 +142,9 @@
                                             $ItemImage = $Record['item_image_name'] ;
                                             $ItemDescription = $Record['item_description'] ;
                                             $ItemActive = $Record['item_is_active'] ;
-                                            if($ItemActive == 'true'){
+                                            if($ItemActive == 'truey'){
                                                 $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                                            } else if($ItemActive == 'false'){
+                                            } else if($ItemActive == 'falsey'){
                                                 $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
                                             }
 

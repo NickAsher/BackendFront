@@ -12,7 +12,6 @@ $DBConnectionBackend = YOLOSqlConnect() ;
 $ItemId = isSecure_checkPostInput('__item_id') ;
 $ItemName = isSecure_checkPostInput('__item_name') ;
 $ItemDescription = isSecure_checkPostInput('__item_description') ;
-$NoOfSizeVariations = isSecure_checkPostInput('__category_no_of_size_variations') ;
 $ItemIsActive = isSecure_checkPostInput('__item_is_active') ;
 
 
@@ -61,12 +60,12 @@ try{
         throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
     }
     foreach ($QueryResult2 as $Record2){
-        $SizeCode = $Record2['size_code'] ;
-        $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeCode") ;
+        $SizeId = $Record2['size_id'] ;
+        $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeId") ;
 
-        $Query3 = "UPDATE `menu_meta_rel_size-items_table` SET `item_price` = '$ItemPriceForThatSize' WHERE `item_id` = '$ItemId' AND `size_code` = '$SizeCode' " ;
+        $Query3 = "UPDATE `menu_meta_rel_size-items_table` SET `item_price` = '$ItemPriceForThatSize' WHERE `item_id` = '$ItemId' AND `size_id` = '$SizeId' " ;
         if(!mysqli_query($DBConnectionBackend, $Query3)){
-            throw new Exception("Problem in price update query for size code $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+            throw new Exception("Problem in price update query for size code $SizeId : ".mysqli_error($DBConnectionBackend)) ;
         }
     }
 

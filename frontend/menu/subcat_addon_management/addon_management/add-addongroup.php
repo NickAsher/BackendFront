@@ -77,12 +77,7 @@
                             <input name="__category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?>'>
 
 
-                            <div class="form-group row">
-                                <label for="input-addon-code" class="col-3 col-form-label">Addon-Group Code</label>
-                                <div class="col-md-9">
-                                    <input name="__addongroup_code" id="input-addon-code" class="form-control" type="text" placeholder="pizza_toppings">
-                                </div>
-                            </div>
+
 
 
                             <div class="form-group row">
@@ -107,15 +102,15 @@
                             <div class="form-group row">
                                 <label for="input-addon-active-hidden" class="col-3 col-form-label">Addon-Group Active</label>
                                 <div class="col-md-9">
-                                    <input name="__addongroup_is_active" id="input-addon-active-hidden" class="form-control" type="hidden">
-                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                    <input name="__addongroup_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" value="true">
+                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" checked="checked" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label for="input-addon-ordering-no" class="col-3 col-form-label">Addon-Group Ordering No</label>
+                                <label for="input-addon-sr-no" class="col-3 col-form-label">Addon-Group Ordering No</label>
                                 <div class="col-md-9">
-                                    <input name="__addongroup_ordering_no" id="input-addon-ordering-no" class="form-control" type="number" placeholder="5">
+                                    <input name="__addongroup_sr_no" id="input-addon-sr-no" class="form-control" type="number" placeholder="5">
                                 </div>
                             </div>
 

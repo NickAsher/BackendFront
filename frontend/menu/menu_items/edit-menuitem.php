@@ -40,15 +40,14 @@
     $MenuItemDescription = $MenuItemInfoArray['item_description'] ;
     $MenuItemImage = $MenuItemInfoArray['item_image_name'] ;
     $MenuItemCategoryCode = $MenuItemInfoArray['item_category_code'] ;
-    $MenuItemSubCategoryCode = $MenuItemInfoArray['item_subcategory_code'] ;
     $CategoryName = $MenuItemInfoArray['category_display_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
-//    $NoOfSizeVariations = $MenuItemInfoArray['category_no_of_size_variations'] ;
+
     $ActiveCheckedString = null ;
-    if($MenuItemActive == 'true'){
+    if($MenuItemActive == 'truey'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($MenuItemActive == 'false'){
+    } else if($MenuItemActive == 'falsey'){
         $ActiveCheckedString = "";
     }
 
@@ -89,7 +88,6 @@
 
 
                             <input name="__item_id" type="hidden" value="<?php echo $MenuItemId ?>" >
-                            <input name="__category_no_of_size_variations" type="hidden" value="<?php echo $NoOfSizeVariations ?>" >
 
 
                             <div class="form-group row">
@@ -147,21 +145,21 @@
 
                                 foreach ($QueryResult as $Record) {
                                     $SizeName = $Record['size_name'] ;
-                                    $SizeCode = $Record['size_code'] ;
+                                    $SizeId = $Record['size_id'] ;
 
-                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_code` = '$SizeCode'  " ;
+                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_id` = '$SizeId'  " ;
                                     $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
                                     if(!$QueryResult2) {
-                                        die("Unable to fetch the record for the item for size $SizeCode :".mysqli_error($DBConnectionBackend) ) ;
+                                        die("Unable to fetch the record for the item for size $SizeId :".mysqli_error($DBConnectionBackend) ) ;
                                     }
                                     $Record2 = mysqli_fetch_assoc($QueryResult2) ;
                                     $ItemPrice = $Record2['item_price'] ;
 
                                     echo "
                                         <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input name='__item_price_size_$SizeCode' id='input-item-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice'>
+                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice'>
                                             </div>
                                         </div>  
                                         " ;
@@ -267,10 +265,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('truey') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('falsey') ;
             }
         });
     }

@@ -38,7 +38,6 @@
     $MenuItemDescription = $MenuItemInfoArray['item_description'] ;
     $MenuItemImage = $MenuItemInfoArray['item_image_name'] ;
     $MenuItemCategoryCode = $MenuItemInfoArray['item_category_code'] ;
-    $MenuItemSubCategoryCode = $MenuItemInfoArray['item_subcategory_code'] ;
     $CategoryName = $MenuItemInfoArray['category_display_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
@@ -47,9 +46,9 @@
 
 
     $ActiveCheckedString = null ;
-    if($MenuItemActive == 'true'){
+    if($MenuItemActive == 'truey'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($MenuItemActive == 'false'){
+    } else if($MenuItemActive == 'falsey'){
         $ActiveCheckedString = "";
     }
 
@@ -125,7 +124,7 @@
                                 <input id="input-item-active" class="form-control" type="hidden" value="<?php echo $MenuItemActive ; ?>" readonly >
                                 <input id="input-item-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> disabled data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                             </div>
-                        </div>
+                        </div> yolo is <?php echo $ActiveCheckedString ?>
 
 
 
@@ -134,7 +133,11 @@
                         <div id="Div_Price">
                             <?php
 
-                            $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$MenuItemCategoryCode' " ;
+
+
+
+
+                            $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$MenuItemCategoryCode' ORDER BY `size_sr_no` ASC"  ;
                             $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
                             if(!$QueryResult){
                                 die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
@@ -142,21 +145,21 @@
 
                             foreach ($QueryResult as $Record) {
                                 $SizeName = $Record['size_name'] ;
-                                $SizeCode = $Record['size_code'] ;
+                                $SizeId = $Record['size_id'] ;
 
-                                $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_code` = '$SizeCode'  " ;
+                                $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_id` = '$SizeId'  " ;
                                 $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
                                 if(!$QueryResult2) {
-                                    die("Unable to fetch the record for the item for size $SizeCode :".mysqli_error($DBConnectionBackend) ) ;
+                                    die("Unable to fetch the record for the item for size $SizeId  :".mysqli_error($DBConnectionBackend) ) ;
                                 }
                                 $Record2 = mysqli_fetch_assoc($QueryResult2) ;
                                 $ItemPrice = $Record2['item_price'] ;
 
                                 echo "
                                         <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input id='input-item-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice' readonly>
+                                                <input id='input-item-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' readonly>
                                             </div>
                                         </div>  
                                         " ;

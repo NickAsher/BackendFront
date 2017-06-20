@@ -40,12 +40,12 @@ try{
         throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
     }
     foreach ($QueryResult2 as $Record2){
-        $SizeCode = $Record2['size_code'] ;
-        $AddonPriceForThatSize = isSecure_checkPostInput("__addon_price_size_$SizeCode") ;
+        $SizeId = $Record2['size_id'] ;
+        $AddonPriceForThatSize = isSecure_checkPostInput("__addon_price_size_$SizeId") ;
 
-        $Query3 = "UPDATE `menu_meta_rel_size-addons_table` SET `addon_price` = '$AddonPriceForThatSize' WHERE `addon_id` = '$AddonItemId' AND `size_code` = '$SizeCode' " ;
+        $Query3 = "UPDATE `menu_meta_rel_size-addons_table` SET `addon_price` = '$AddonPriceForThatSize' WHERE `addon_id` = '$AddonItemId' AND `size_id` = '$SizeId' " ;
         if(!mysqli_query($DBConnectionBackend, $Query3)){
-            throw new Exception("Problem in price update query for size code $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+            throw new Exception("Problem in price update query for size code $SizeId : ".mysqli_error($DBConnectionBackend)) ;
         }
     }
 

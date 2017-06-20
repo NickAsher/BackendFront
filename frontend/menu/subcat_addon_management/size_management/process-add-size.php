@@ -8,7 +8,6 @@ $DBConnectionBackend = YOLOSqlConnect() ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
 $SizeSrNo = isSecure_checkPostInput('__size_sr_no') ;
-$SizeCode = isSecure_checkPostInput('__size_code') ;
 $SizeName = isSecure_checkPostInput('__size_name') ;
 $SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
 $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
@@ -20,12 +19,13 @@ $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "INSERT INTO `menu_meta_size_table` VALUES ('', '$SizeSrNo', '$CategoryCode', '$SizeCode', '$SizeName', '$SizeNameAbbr' , 'false', '$SizeIsActive')  " ;
+    $Query = "INSERT INTO `menu_meta_size_table` VALUES ('', '$SizeSrNo', '$CategoryCode', '$SizeName', '$SizeNameAbbr' , 'false', '$SizeIsActive')  " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("unable to insert the new item  <br><br>".mysqli_error($DBConnectionBackend)) ;
     }
 
+    $SizeId = mysqli_insert_id($DBConnectionBackend) ;
 
     $Query2 = "SELECT * FROM `menu_items_table` WHERE `item_category_code` = '$CategoryCode' " ;
     $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
@@ -34,7 +34,7 @@ try{
     }
     foreach ($QueryResult2 as $Record2){
         $ItemId = $Record2['item_id'] ;
-        $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$ItemId', '-1', '$SizeCode', '$CategoryCode')" ;
+        $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$ItemId', '-1', '$SizeId', '$CategoryCode')" ;
         $QueryResult3 = mysqli_query($DBConnectionBackend, $Query3) ;
         if(!$QueryResult3){
             throw new Exception("Unable to insert new item price for id $ItemId: ".mysqli_error($DBConnectionBackend)) ;
@@ -48,7 +48,7 @@ try{
     }
     foreach ($QueryResult4 as $Record4){
         $AddonId = $Record4['item_id'] ;
-        $Query5 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$AddonId', '-1', '$SizeCode', '$CategoryCode')" ;
+        $Query5 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$AddonId', '-1', '$SizeId', '$CategoryCode')" ;
         $QueryResult5 = mysqli_query($DBConnectionBackend, $Query5) ;
         if(!$QueryResult5){
             throw new Exception("Unable to insert new addon price for id $AddonId: ".mysqli_error($DBConnectionBackend)) ;

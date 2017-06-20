@@ -98,8 +98,8 @@ function getToppingInformation($DBConnectionBackend, $ItemId){
 }
 
 
-function getSizeInformation($DBConnectionBackend, $ItemCategoryCode, $SizeNo){
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategoryCode' AND `size_sr_no` = '$SizeNo' " ;
+function getSizeInformation($DBConnectionBackend, $ItemCategoryCode, $SizeCode){
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategoryCode' AND `size_code` = '$SizeCode' " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     $SizeInformation = '' ;
     foreach($QueryResult as $Record){

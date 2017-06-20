@@ -7,8 +7,10 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
+$SizeId = isSecure_checkPostInput('__size_id') ;
+
+
 $SizeSrNo = isSecure_checkPostInput('__size_sr_no') ;
-$SizeCode = isSecure_checkPostInput('__size_code') ;
 $SizeName = isSecure_checkPostInput('__size_name') ;
 $SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
 $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
@@ -19,7 +21,7 @@ $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "UPDATE `menu_meta_size_table` SET `size_name` = '$SizeName' , `size_name_short` = '$SizeNameAbbr', `size_sr_no` = '$SizeSrNo', `size_is_active` = '$SizeIsActive'  WHERE `size_code` = '$SizeCode' AND `size_category_code` = '$CategoryCode'  " ;
+    $Query = "UPDATE `menu_meta_size_table` SET `size_name` = '$SizeName' , `size_name_short` = '$SizeNameAbbr', `size_sr_no` = '$SizeSrNo', `size_is_active` = '$SizeIsActive'  WHERE `size_id` = '$SizeId'   " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("unable to update the new item  <br><br>".mysqli_error($DBConnectionBackend)) ;

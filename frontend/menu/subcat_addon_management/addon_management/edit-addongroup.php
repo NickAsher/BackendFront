@@ -35,16 +35,14 @@
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $AddonGroupCode = isSecure_checkPostInput('__addongroup_code') ;
+    $AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
 
-    $AddonGroupInfoArray = getAddonGroupInfoArray($DBConnectionBackend, $CategoryCode, $AddonGroupCode) ;
+    $AddonGroupInfoArray = getSingleAddonGroupInfoArray($DBConnectionBackend, $AddonGroupRelId) ;
     $CategoryCode = $AddonGroupInfoArray['category_code'] ;
-    $AddonGroupCode = $AddonGroupInfoArray['addon_group_code'] ;
     $AddonGroupName = $AddonGroupInfoArray['addon_group_display_name'] ;
     $AddonGroupType = $AddonGroupInfoArray['addon_group_type'] ;
     $AddonGroupIsActive = $AddonGroupInfoArray['addon_group_is_active'] ;
-    $AddonGroupSrNo = $AddonGroupInfoArray['addon_group_ordering_no'] ;
+    $AddonGroupSrNo = $AddonGroupInfoArray['addon_group_sr_no'] ;
 
     $AddonGroupTypeString = null;
     if($AddonGroupType == 'radio'){
@@ -104,7 +102,7 @@
                         <form action="process-edit-addongroup.php" method="post">
 
                             <input name="__category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?>'>
-                            <input name="__addongroup_code" type="hidden" value='<?php echo "$AddonGroupCode" ; ?>'>
+                            <input name="__addongroup_rel_id" type="hidden" value='<?php echo "$AddonGroupRelId" ; ?>'>
 
 
 
@@ -136,7 +134,7 @@
                             <div class="form-group row">
                                 <label for="input-addon-ordering-no" class="col-3 col-form-label">Addon-Group Sr No</label>
                                 <div class="col-md-9">
-                                    <input name="__addongroup_ordering_no" id="input-addon-ordering-no" class="form-control" type="number" value="<?php echo $AddonGroupSrNo ?>">
+                                    <input name="__addongroup_sr_no" id="input-addon-ordering-no" class="form-control" type="number" value="<?php echo $AddonGroupSrNo ?>">
                                 </div>
                             </div>
 

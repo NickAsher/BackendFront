@@ -14,14 +14,21 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
     <div id="Div_Main_Subcategories">
 
 
-        <h1>All Sub-Categories</h1>
+        <div style="display: block">
+            <h1 style="display: inline-block; float: left;" >All Sub-Categories </h1>
+            <form action="subcategory_management/sort-subcategory.php" method="post">
+                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
+            </form>
+            <br><br>
+        </div>
+
         <hr><br><br>
         <div>
         <table class="table table-bordered table-hover" >
 
             <tr class="table-info">
                 <th>Sr. No</th>
-                <th>SubCategory Code</th>
                 <th>SubCategory Name</th>
                 <th>No of Menu-Items</th>
                 <th>SubCategory Active</th>
@@ -35,8 +42,8 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
             <?php
             foreach ($CategorySubCategoriesListArray as $Record){
-                $SubCategorySrNo = $Record['subcategory_ordering_no'] ;
-                $SubCategoryCode = $Record['subcategory_code'] ;
+                $SubCategoryRelId = $Record['rel_id'] ;
+                $SubCategorySrNo = $Record['subcategory_sr_no'] ;
                 $SubCategoryDisplayName = $Record['subcategory_display_name'] ;
                 $NoOfMenuItems = $Record['subcategory_no_of_menuitems'] ;
 
@@ -51,14 +58,13 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                 echo "
                 <tr>
                     <td>$SubCategorySrNo</td>
-                    <td>$SubCategoryCode</td>
                     <td>$SubCategoryDisplayName</td>
                     <td>$NoOfMenuItems</td>
                     <td>$ActiveButton</td>
                     <td>
                         <form action='subcategory_management/edit-subcategory.php' method='post'>
                             <input name='__category_code' type='hidden' value='$CategoryCode'>
-                            <input name='__subcategory_code' type='hidden' value='$SubCategoryCode'>
+                            <input name='__subcategory_rel_id' type='hidden' value='$SubCategoryRelId'>
                             <button class='btn btn-info' type='submit'>
                                 <i class='fa fa-edit'></i>  &nbsp; | &nbsp; Edit
                             </button>                                           
@@ -67,7 +73,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                     <td>
                         <form action='subcategory_management/confirm-delete-subcategory.php' method='post'>
                             <input name='__category_code' type='hidden' value='$CategoryCode'>
-                            <input name='__subcategory_code' type='hidden' value='$SubCategoryCode'>
+                            <input name='__subcategory_rel_id' type='hidden' value='$SubCategoryRelId'>
                             <button class='btn btn-danger' type='submit'>
                                 <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete
                             </button>                                           
@@ -119,7 +125,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
             <tr class="table-info">
                 <th>Sr. No</th>
-                <th>Addon-Group Code</th>
                 <th>Addon-Group Name</th>
                 <th>Addon-Group Type</th>
                 <th>No of Addon-Items</th>
@@ -134,8 +139,8 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
         <?php
         foreach ($CategoryAddonsListArray as $Record){
-            $AddonGroupCategorySrNo = $Record['addon_group_ordering_no'] ;
-            $AddonGroupCode = $Record['addon_group_code'] ;
+            $AddonGroupRelId = $Record['rel_id'] ;
+            $AddonGroupCategorySrNo = $Record['addon_group_sr_no'] ;
             $AddonGroupDisplayName = $Record['addon_group_display_name'] ;
             $NoOfItems = $Record['addon_group_no_of_items'] ;
 
@@ -160,15 +165,13 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
             echo "
                 <tr>
                     <td>$AddonGroupCategorySrNo</td>
-                    <td>$AddonGroupCode</td>
                     <td>$AddonGroupDisplayName</td>
                     <td>$AddonGroupTypeString</td>
                     <td>$NoOfItems</td>
                     <td>$ActiveButton</td>
                     <td>
                         <form action='addon_management/edit-addongroup.php' method='post'>
-                            <input name='__category_code' type='hidden' value='$CategoryCode'>
-                            <input name='__addongroup_code' type='hidden' value='$AddonGroupCode'>
+                            <input name='__addongroup_rel_id' type='hidden' value='$AddonGroupRelId'>
                             <button class='btn btn-info' type='submit'>
                                 <i class='fa fa-edit'></i>  &nbsp; | &nbsp; Edit
                             </button>                                           
@@ -177,7 +180,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                     <td>
                         <form action='addon_management/confirm-delete-addongroup.php' method='post'>
                             <input name='__category_code' type='hidden' value='$CategoryCode'>
-                            <input name='__addongroup_code' type='hidden' value='$AddonGroupCode'>
+                            <input name='__addongroup_rel_id' type='hidden' value='$AddonGroupRelId'>
                             <button class='btn btn-danger' type='submit'>
                                 <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete
                             </button>                                           
@@ -225,7 +228,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
                 <tr class="table-info">
                     <th>Sr. No</th>
-                    <th>Size  Code</th>
+
                     <th>Size  Name</th>
                     <th>Size  Abbreviated Name</th>
                     <th>Is Default</th>
@@ -243,7 +246,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
                     $SizeId = $Record['size_id'] ;
                     $SizeSrNo = $Record['size_sr_no'] ;
-                    $SizeCode = $Record['size_code'] ;
                     $SizeName = $Record['size_name'] ;
                     $SizeAbbrName = $Record['size_name_short'] ;
                     $SizeIsDefault = $Record['size_is_default'] ;
@@ -261,7 +263,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                     echo "
                         <tr>
                             <td>$SizeSrNo</td>
-                            <td>$SizeCode</td>
                             <td>$SizeName</td>
                             <td>$SizeAbbrName</td>
                             <td>$SizeIsDefault</td>
@@ -270,7 +271,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                                 <form action='size_management/edit-size.php' method='post'>
                                     <input name='__size_id' type='hidden' value='$SizeId'>
                                     <input name='__category_code' type='hidden' value='$CategoryCode'>
-                                    <input name='__size_code' type='hidden' value='$SizeCode'>
 
                                     <button class='btn btn-info' type='submit'>
                                         <i class='fa fa-edit'></i>  &nbsp; | &nbsp; Edit
@@ -280,7 +280,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
                             <td>
                                 <form action='size_management/confirm-delete-size.php' method='post'>
-                                    <input name='__size_code' type='hidden' value='$SizeCode'>
+                                    <input name='__size_id' type='hidden' value='$SizeId'>
                                     <input name='__category_code' type='hidden' value='$CategoryCode' >
                                     <button class='btn btn-danger' type='submit'>
                                         <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete

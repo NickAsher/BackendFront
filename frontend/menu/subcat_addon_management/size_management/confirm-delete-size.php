@@ -5,7 +5,7 @@ require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SizeCode = isSecure_checkPostInput('__size_code') ;
+$SizeId = isSecure_checkPostInput('__size_id') ;
 
 ?>
 
@@ -14,7 +14,7 @@ $SizeCode = isSecure_checkPostInput('__size_code') ;
 
 <form method="post" action="process-delete-size.php">
     <input type="hidden" name="__category_code" value='<?php echo "$CategoryCode" ; ?>' > ;
-    <input type="hidden" name="__size_code" value='<?php echo "$SizeCode" ;  ?>'> ;
+    <input type="hidden" name="__size_id" value='<?php echo "$SizeId" ;  ?>'> ;
 
     <input type="submit" name="__is_delete" value="Yes, Delete it">
 </form>

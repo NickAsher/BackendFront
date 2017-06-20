@@ -7,11 +7,10 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$AddonGroupCode = isSecure_checkPostInput('__addongroup_code') ;
 $AddonGroupDisplayName = isSecure_checkPostInput('__addongroup_name') ;
 $AddonGroupType = isSecure_checkPostInput('__addongroup_type') ;
 $AddonGroupNoOfItems = 0 ;
-$AddonGroupOrderingNo = isSecure_checkPostInput('__addongroup_ordering_no') ;
+$AddonGroupSrNo = isSecure_checkPostInput('__addongroup_sr_no') ;
 $AddonGroupIsActive = isSecure_checkPostInput('__addongroup_is_active') ;
 
 
@@ -20,7 +19,7 @@ $AddonGroupIsActive = isSecure_checkPostInput('__addongroup_is_active') ;
 
 
 $Query = "INSERT INTO `menu_meta_rel_category-addon_table` 
-      VALUES ('', '$CategoryCode', '$AddonGroupCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupOrderingNo', '$AddonGroupNoOfItems', $AddonGroupIsActive)  " ;
+      VALUES ('', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupSrNo', '$AddonGroupNoOfItems', '$AddonGroupIsActive')  " ;
 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
 if($QueryResult){

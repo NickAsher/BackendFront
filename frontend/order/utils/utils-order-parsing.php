@@ -21,7 +21,7 @@ function parseOrderDescriptionString($DBConnectionBackend, $IndividualOrderCartI
 function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $IndividualOrderCartItemArray, $ItemCategory){
     $CustomizationString = null ;
 
-    $SizeInformation = getSizeInformation($DBConnectionBackend, $ItemCategory, $IndividualOrderCartItemArray['item_size']) ;
+    $SizeInformation = getSizeInformation($DBConnectionBackend, $ItemCategory, $IndividualOrderCartItemArray['item_size_code']) ;
     $SizeName = $SizeInformation['size_name'] ;
     if($SizeName == "Normal"){
         $SizeString  = "" ;
@@ -33,7 +33,7 @@ function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $In
      *
      * "item_id":"41002",
      * "item_quantity":"1",
-     * "item_size":"3",
+     * "item_size_code":"small",
      * "item_addon":[
      *     {
      *          "addon_group_code":"pizza_crusts",
@@ -71,59 +71,6 @@ function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $In
 
 
 
-//    switch ($ItemCategory){
-//        case 'pizza':
-//            $SizeString = null;$Addon1String = null ; $Addon2String = null ;
-//
-//            $ItemVart1Type = $IndividualOrderCartItemArray['item_size'] ;
-//            if($ItemVart1Type!=null){
-//                $SizeString = "-($ItemVart1Type)" ;
-//            }
-//
-//            $ItemAddon1Json = $IndividualOrderCartItemArray['item_addon1_json'] ;
-//            if($ItemAddon1Json!=null){
-//                foreach ($ItemAddon1Json as $Addon1ItemId){
-//                    $Addon1ItemName = getToppingInformation($DBConnectionBackend, $Addon1ItemId)['item_name'] ;
-//                    $Addon1String .= $Addon1ItemName.", " ;
-//                }
-//                $Addon1String = rtrim($Addon1String, ", ") ;
-//                $Addon1String = "-($Addon1String) " ;
-//
-//            }
-//
-//
-//
-//            $Addon2Json = $IndividualOrderCartItemArray['item_addon2_json'] ;
-//            if($Addon2Json != null){
-//                foreach ($Addon2Json as $Addon2ItemId){
-//                    $Addon2ItemName = getToppingInformation($DBConnectionBackend, $Addon2ItemId)['item_name'] ;
-//                    $Addon2String .= $Addon2ItemName.", " ;
-//                }
-//                $Addon2String = rtrim($Addon2String, ", ") ;
-//                $Addon2String = "-($Addon2String) " ;
-//            }
-//
-//
-//
-//            $CustomizationString = $SizeString.$Addon1String.$Addon2String ;
-//
-//
-//
-//            break ;
-//        case 'burger':
-//            $CustomizationString = "" ;
-//            break ;
-//        case 'sides':
-//            $CustomizationString = "" ;
-//            break ;
-//        case 'drinks':
-//            $CustomizationString = "" ;
-//            break ;
-//        default :
-//            $CustomizationString = "" ;
-//            break ;
-//    }
-//    return $CustomizationString ;
 
     return "$SizeString <br> $AddonDescriptionString" ;
 }

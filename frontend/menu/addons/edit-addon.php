@@ -32,7 +32,7 @@
 
     
     $DBConnectionBackend = YOLOSqlConnect() ;
-    $AddonItemInfoArray = getAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
+    $AddonItemInfoArray = getSingleAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
     
     $AddonItemName = $AddonItemInfoArray['item_name'] ;
     $AddonItemIsActive = $AddonItemInfoArray['item_is_active'] ;
@@ -107,7 +107,7 @@
                             <div id="Div_Price">
                                 <?php
 
-                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' " ;
+                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` ASC " ;
                                 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
                                 if(!$QueryResult){
                                     die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
@@ -115,21 +115,21 @@
 
                                 foreach ($QueryResult as $Record) {
                                     $SizeName = $Record['size_name'] ;
-                                    $SizeCode = $Record['size_code'] ;
+                                    $SizeId = $Record['size_id'] ;
 
-                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonItemId' AND `size_code` = '$SizeCode'  " ;
+                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonItemId' AND `size_id` = '$SizeId'  " ;
                                     $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
                                     if(!$QueryResult2) {
-                                        die("Unable to fetch the record for the item for size $SizeCode :".mysqli_error($DBConnectionBackend) ) ;
+                                        die("Unable to fetch the record for the item for size $SizeId :".mysqli_error($DBConnectionBackend) ) ;
                                     }
                                     $Record2 = mysqli_fetch_assoc($QueryResult2) ;
                                     $ItemPrice = $Record2['addon_price'] ;
 
                                     echo "
                                         <div class='form-group row'>
-                                            <label for='input-addon-price-size_$SizeCode' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
+                                            <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input name='__addon_price_size_$SizeCode'  id='input-addon-price-size_$SizeCode' class='form-control' type='text' value='$ItemPrice' >
+                                                <input name='__addon_price_size_$SizeId'  id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' >
                                             </div>
                                         </div>  
                                         " ;

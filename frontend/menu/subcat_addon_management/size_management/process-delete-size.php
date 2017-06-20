@@ -7,7 +7,8 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 $CategoryCode = isSecure_checkPostInput('__category_code');
-$SizeCode = isSecure_checkPostInput('__size_code');
+$SizeId = isSecure_checkPostInput('__size_id');
+
 if(!isset($_POST['__is_delete'])){
     die("The delete action is not set") ;
 }
@@ -20,20 +21,20 @@ $DBConnectionBackend = YOLOSqlConnect() ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "DELETE FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' AND `size_code` = '$SizeCode'  ";
+    $Query = "DELETE FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' AND `size_id` = '$SizeId'  ";
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("unable to delete the item from menu_meta_size_table  <br><br>".mysqli_error($DBConnectionBackend)) ;
     }
 
 
-    $Query2 = "DELETE FROM `menu_meta_rel_size-items_table` WHERE `item_category_code` = '$CategoryCode' AND `size_code` = '$SizeCode' " ;
+    $Query2 = "DELETE FROM `menu_meta_rel_size-items_table` WHERE `item_category_code` = '$CategoryCode' AND `size_id` = '$SizeId' " ;
     $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
     if(!$QueryResult2){
         throw new Exception("Unable to delete the items from the menu_meta_rel_size-items_table: ".mysqli_error($DBConnectionBackend)) ;
     }
 
-    $Query3 = "DELETE FROM `menu_meta_rel_size-addons_table` WHERE `category_code` = '$CategoryCode' AND `size_code` = '$SizeCode' " ;
+    $Query3 = "DELETE FROM `menu_meta_rel_size-addons_table` WHERE `category_code` = '$CategoryCode' AND `size_id` = '$SizeId' " ;
     $QueryResult3 = mysqli_query($DBConnectionBackend, $Query3) ;
     if(!$QueryResult3){
         throw new Exception("Unable to delete the items from the menu_meta_rel_size-items_table: ".mysqli_error($DBConnectionBackend)) ;

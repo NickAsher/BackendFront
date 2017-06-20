@@ -6,12 +6,12 @@ require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
 require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$AddonGroupCode = isSecure_checkPostInput('__addongroup_code') ;
+$AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
 $AddonDefaultItemId = isSecure_checkPostInput('__addon_id') ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 
-$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupCode) ;
+$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
 foreach ($ListAllAddonItemInAddonGroup as $AddonItemRecord){
     $AddonItemId = $AddonItemRecord['item_id'] ;
     if($AddonItemId==$AddonDefaultItemId){

@@ -77,12 +77,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-size-code" class="col-3 col-form-label">Size Code</label>
-                                <div class="col-md-9">
-                                    <input name="__size_code" id="input-size-code" class="form-control" type="text"  >
-                                </div>
-                            </div>
+
 
                             <div class="form-group row">
                                 <label for="input-size-name" class="col-3 col-form-label">Size Name</label>
@@ -101,8 +96,8 @@
                             <div class="form-group row">
                                 <label for="input-size-active-hidden" class="col-3 col-form-label">Size Active</label>
                                 <div class="col-md-9">
-                                    <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden"  >
-                                    <input id="input-size-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                    <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden" value="false" >
+                                    <input id="input-size-active-presentation" type="checkbox" class="form-control"  data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
 

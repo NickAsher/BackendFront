@@ -1,0 +1,244 @@
+<?php
+
+$RestaurantName = 'RestaurantName' ;
+$RestaurantAddrLine1 = 'Next Step Webs, Inc.' ;
+$RestaurantAddrLine2 = '12345 Sunny Road' ;
+$RestaurantAddrLine3 = 'Sunnyville, TX 12345 ' ;
+$RestaurantImageFileName = '../../../images/restaurant_logo.png' ;
+
+
+$OrderNo = '123' ;
+$OrderDate = 'January 1, 2015' ;
+$OrderTime = '7:00 PM' ;
+
+
+?>
+
+<!doctype html>
+
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>A simple, clean, and responsive HTML invoice template</title>
+    <link rel='stylesheet' href='../../../lib/bootstrap4/bootstrap-reboot.min.css' type="text/css" media='all'>
+    <link rel='stylesheet' href='../../../lib/bootstrap4/bootstrap.min.css' type="text/css" media='all'>
+    <link rel='stylesheet' href='../../../lib/bootstrap4/bootstrap-grid.min.css' type="text/css" media='all'>
+
+    <style media='all'>
+        .invoice-box{
+            max-width:800px;
+            margin:auto;
+            padding:30px;
+            border:1px solid #eee;
+            box-shadow:0 0 10px rgba(0, 0, 0, .15);
+            font-size:16px;
+            line-height:24px;
+            font-family:'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color:#555;
+        }
+
+        .left{
+            text-align: left;  }
+        .center{
+            text-align: center;  }
+        .right{
+            text-align: right;  }
+
+
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td{
+                width:100%;
+                display:block;
+                text-align:center;
+            }
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+<br><br>
+<div class='invoice-box' id="outerbox">
+
+    <!--    <br><br>-->
+
+
+
+
+    <table class='table'>
+        <tr>
+            <td style='border:none';>
+                <img src='<?php echo $RestaurantImageFileName ?>'  style='width:100%; max-width:150px;'>
+
+            </td>
+
+            <td style='border:none; text-align: right;'>
+                <br>
+                <?php echo $RestaurantName ?><br>
+                <?php echo $RestaurantAddrLine1 ?><br>
+                <?php echo $RestaurantAddrLine2 ?><br>
+                <?php echo $RestaurantAddrLine3 ?><br>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Order No : <?php echo $OrderNo ?><br>
+                Date: <?php echo $OrderDate ?><br>
+                Time: <?php echo $OrderTime ?>
+            </td>
+
+            <td style='text-align: right;'>
+                Mr. Rafique Gagneja<br>
+                9780673002<br>
+                john@example.com
+            </td>
+        </tr>
+    </table>
+    <br>
+
+
+
+
+    <!-- ******************************************************* -->
+
+    <table class='table table-sm '>
+        <tr>
+
+            <th>Qty</th>
+            <th>Description</th>
+            <th class='right'>Price</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>XL Reg Dbl Cheese Marg.</td>
+            <td class='right'>350</td>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>S Reg Cheese Marg.</td>
+            <td class='right'>150</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Coke</td>
+            <td class='right'>105</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Reg Burger</td>
+            <td class='right'>200</td>
+        </tr>
+
+    </table>
+    <br>
+
+
+    <!-- ******************************************************* -->
+    <div class='row' id="pricetable">
+        <div class='col-6 col-sm-6 col-md-6'></div>
+        <div class=' col-6 col-sm-6 col-md-6'>
+            <table class='table table-sm borderless'>
+                <tr>
+
+                    <th >Net Price</th>
+                    <th class='right'>805</th>
+
+                </tr>
+
+                <tr>
+                    <th>Coupon Discount</th>
+                    <th  class='right'>105</th>
+                </tr>
+
+                <tr>
+                    <th>Sub Total</th>
+                    <th  class='right'>700</th>
+                </tr>
+
+                <tr>
+                    <th>VAT</th>
+                    <th  class='right'>50</th>
+                </tr>
+
+
+
+                <tr>
+                    <th>Service Tax</th>
+                    <th  class='right'>25</th>
+                </tr>
+
+
+                <tr>
+                    <td colspan='2'></td>
+                </tr>
+
+
+                <tr>
+                    <td><h5>Grand Total</h5></td>
+                    <td  class='right'><h5>775.145</h5></td>
+                </tr>
+
+                <tr>
+                    <th>Paid</th>
+                    <th  class='right'>800</th>
+                </tr>
+
+                <tr>
+                    <th>Change </th>
+                    <th  class='right'>- 24.855</th>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+
+    <!-- ******************************************************* -->
+    <br>
+    <div>
+        <center>
+            Have a nice day !!
+        </center>
+    </div>
+
+</div>
+
+
+<br><br>
+<button id="mybtn">Click to PRint</button>
+</body>
+<script type="text/javascript"  src="../../../lib/jquery/jquery.js" ></script>
+<script type="text/javascript"  src="../../../lib/jquery/jquery.print.js" ></script>
+<script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+
+    $('#mybtn').click(function () {
+
+
+        $('#outerbox').print({
+            globalStyles: true,
+            mediaPrint: false,
+            stylesheet: null,
+            noPrintSelector: ".no-print",
+            iframe: true,
+            append: null,
+            prepend: null,
+            manuallyCopyFormValues: true,
+            deferred: $.Deferred(),
+            timeout: 750,
+            title: null,
+            doctype: '<!doctype html>'
+        });
+
+    }) ;
+</script>
+</html>

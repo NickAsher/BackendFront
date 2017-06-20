@@ -28,8 +28,9 @@ function getItemPriceString($DBConnection, $CategoryCode, $ItemId){
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
         foreach ($QueryResult as $Record){
-            $CategorySizeCode = $Record['size_code'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$ItemId' AND `size_code` = '$CategorySizeCode' " ;
+            $SizeRelId = $Record['size_id'] ;
+//            $CategorySizeCode = $Record['size_code'] ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$ItemId' AND `size_id` = '$SizeRelId' " ;
             $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
             if($QueryResult2){
                 if(mysqli_num_rows($QueryResult2) == 0){
@@ -87,8 +88,8 @@ function getAddonPriceString($DBConnection, $CategoryCode, $AddonId){
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
         foreach ($QueryResult as $Record){
-            $CategorySizeCode = $Record['size_code'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonId' AND `size_code` = '$CategorySizeCode' " ;
+            $SizeRelId = $Record['size_id'] ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonId' AND `size_id` = '$SizeRelId' " ;
             $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
             if($QueryResult2){
                 if(mysqli_num_rows($QueryResult2) == 0){

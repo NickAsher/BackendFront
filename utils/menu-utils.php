@@ -67,7 +67,7 @@ function getListOfAllSubCategory_InACategory_Array($DBConnection, $CategoryCode)
     $CategorySubCategoriesListArray = array() ;
 
     $Query1 =  "SELECT * FROM `menu_meta_rel_category-subcategory_table`
-                  WHERE `category_code` = '$CategoryCode' ORDER BY `subcategory_ordering_no` ASC" ;
+                  WHERE `category_code` = '$CategoryCode' ORDER BY `subcategory_sr_no` ASC" ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
 
     if($QueryResult1){
@@ -87,12 +87,12 @@ function getListOfAllSubCategory_InACategory_Array($DBConnection, $CategoryCode)
 
 
 
-function getSubCategoryInfoArray($DBConnection, $CategoryCode, $SubCategoryCode){
+function getSingleSubCategoryInfoArray($DBConnection, $SubCategoryRelId){
 
     $SingleSubCategoryInfoArray = null ;
 
     $Query1 = "SELECT * FROM `menu_meta_rel_category-subcategory_table`
-                WHERE `category_code` = '$CategoryCode' AND `subcategory_code` = '$SubCategoryCode' " ;
+                WHERE `rel_id` = '$SubCategoryRelId'  " ;
 //    echo $Query1 ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
     $NumOfRows = mysqli_num_rows($QueryResult1) ;
@@ -114,10 +114,12 @@ function getSubCategoryInfoArray($DBConnection, $CategoryCode, $SubCategoryCode)
 
 
 
+
+
 function getListOfAllAddonGroupsInACategory_Array($DBConnection, $CategoryCode){
     $CategoryAddonGroupsListArray = array() ;
     $Query1 =  "SELECT * FROM `menu_meta_rel_category-addon_table`
-                WHERE `category_code` = '$CategoryCode' ORDER BY `addon_group_ordering_no` ASC" ;
+                WHERE `category_code` = '$CategoryCode' ORDER BY `addon_group_sr_no` ASC" ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
 
     if($QueryResult1){
@@ -134,12 +136,12 @@ function getListOfAllAddonGroupsInACategory_Array($DBConnection, $CategoryCode){
 
 
 
-function getAddonGroupInfoArray($DBConnection, $CategoryCode, $AddonGroupCode){
+function getSingleAddonGroupInfoArray($DBConnection, $AddonGroupRelId){
     /*
      *
      *
      */
-    $Query1 = "SELECT * FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode' AND `addon_group_code` = '$AddonGroupCode' " ;
+    $Query1 = "SELECT * FROM `menu_meta_rel_category-addon_table` WHERE `rel_id` = '$AddonGroupRelId' " ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
     $NumOfRows = mysqli_num_rows($QueryResult1) ;
     if($NumOfRows != 1){
@@ -159,7 +161,7 @@ function getAddonGroupInfoArray($DBConnection, $CategoryCode, $AddonGroupCode){
 
 
 
-function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, $AddonGroupCode){
+function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, $AddonGroupRelId){
 
     /*
      *
@@ -168,7 +170,7 @@ function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, 
     $AddonItemsInGroupArray = array() ;
 
     $Query1 = "SELECT * FROM `menu_addons_table`
-                WHERE `item_category_code` = '$CategoryCode' AND `item_addon_group_code` = '$AddonGroupCode'
+                WHERE `item_category_code` = '$CategoryCode' AND `item_addon_group_rel_id` = '$AddonGroupRelId'
                 ORDER BY `item_id` " ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
     if($QueryResult1){
@@ -188,7 +190,7 @@ function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, 
 
 
 
-function getAddonItemInfoArray($DBConnection, $CategoryCode, $AddonItemId){
+function getSingleAddonItemInfoArray($DBConnection, $CategoryCode, $AddonItemId){
 
     /*
      *
@@ -275,7 +277,7 @@ function getSingleMenuItemInfoArray($DBConnection, $MenuItemId){
     }
 
     $CategoryName = getSingleCategoryInfoArray($DBConnection, $SingleMenuItemInfoArray['item_category_code'])['category_display_name'] ;
-    $SubCategoryName = getSubCategoryInfoArray($DBConnection, $SingleMenuItemInfoArray['item_category_code'], $SingleMenuItemInfoArray['item_subcategory_code']) ['subcategory_display_name'] ;
+    $SubCategoryName = getSingleSubCategoryInfoArray($DBConnection, $SingleMenuItemInfoArray['item_subcategory_rel_id']) ['subcategory_display_name'] ;
     $SingleMenuItemInfoArray['category_display_name'] = $CategoryName ;
     $SingleMenuItemInfoArray['subcategory_display_name'] = $SubCategoryName ;
 

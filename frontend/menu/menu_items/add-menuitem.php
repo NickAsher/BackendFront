@@ -39,8 +39,7 @@
     $ListoFSubCatetgoriesForCategory = getListOfAllSubCategory_InACategory_Array($DBConnectionBackend ,$CategoryCode) ;
     
     $CategoryName = $CategoryInfoArray['category_display_name'] ;
-    $NoOfSizeVariations = intval($CategoryInfoArray['category_no_of_size_variations']) ;
-    
+
 
     ?>
 
@@ -85,14 +84,14 @@
                             <div class="form-group row">
                                 <label for="input-item-subcategory" class="col-3 col-form-label">Item Category</label>
                                 <div class="col-md-9">
-                                    <select name = "__item_subcategory" class="form-control" id="input-item-subcategory" >
+                                    <select name = "__item_subcategory_rel_id" class="form-control" id="input-item-subcategory" >
                                         <option selected disabled>Choose an Item SubCategory</option>
                                         <?php
                                         foreach ($ListoFSubCatetgoriesForCategory as $Record) {
-                                            $SubCategoryCode = $Record['subcategory_code'] ;
+                                            $SubCategoryRelId = $Record['rel_id'] ;
                                             $SubcategoryName = $Record['subcategory_display_name'] ;
                                             echo "
-                                            <option value='$SubCategoryCode'>$SubcategoryName</option>
+                                            <option value='$SubCategoryRelId'>$SubcategoryName</option>
                                             " ;
                                         }
                                         ?>
@@ -121,12 +120,12 @@
                                 if($QueryResult){
                                     foreach ($QueryResult as $Record){
                                         $SizeName = $Record['size_name'] ;
-                                        $SizeCode = $Record['size_code'] ;
+                                        $SizeId = $Record['size_id'] ;
                                         echo "
                                         <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input name='__item_price_size_$SizeCode' id='input-item-price-size_$SizeCode' class='form-control' type='text' placeholder='ex. 20'>
+                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' placeholder='ex. 20'>
                                             </div>
                                         </div>  
                                     " ;
@@ -154,7 +153,7 @@
                                 <label for="input-item-active-hidden" class="col-3 col-form-label">Item Active</label>
 
                                 <div class="col-md-9">
-                                    <input id="input-item-active" class="form-control" type="hidden" value="false"  >
+                                    <input name="__item_is_active" id="input-item-active-hidden" class="form-control" type="hidden" value="falsey"  >
                                     <input id="input-item-active-presentation" type="checkbox" class="form-control" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
@@ -240,10 +239,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('truey') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('falsey') ;
             }
         });
     }

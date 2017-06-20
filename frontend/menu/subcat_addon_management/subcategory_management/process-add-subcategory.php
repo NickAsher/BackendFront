@@ -7,19 +7,30 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SubCategoryCode = isSecure_checkPostInput('__subcategory_code') ;
 $SubCategoryDisplayName = isSecure_checkPostInput('__subcategory_name') ;
-$SubCategoryOrderingNo = isSecure_checkPostInput('__subcategory_ordering_no') ;
 $SubCategoryNoOfItems = 0 ;
 $SubCategoryIsActive = isSecure_checkPostInput('__subcategory_is_active') ;
 
 
+/*
+ *
+ * $Query = "INSERT INTO `menu_meta_rel_category-subcategory_table`
+      VALUES ('', '$CategoryCode', '$SubCategoryCode', '$SubCategoryDisplayName', '$SubCategorySrNo', '$SubCategoryNoOfItems', '$SubCategoryIsActive')  " ;
 
 
+ * This is a Old syntax as opposed to the new syntax. The new syntax is used because
+ * With this we can get the max(subcategory_sr_no) in one query
+ *
+ * This is the INSERT INTO SELECT () FROM ``    syntax
+ *
+ *
+ */
+
+$Query = "INSERT INTO `menu_meta_rel_category-subcategory_table` (`subcategory_sr_no`, `rel_id`, `category_code`, `subcategory_display_name`, `subcategory_no_of_menuitems`, `subcategory_is_active` )
+  SELECT MAX( `subcategory_sr_no` ) + 1, '', '$CategoryCode', '$SubCategoryDisplayName', '$SubCategoryNoOfItems', '$SubCategoryIsActive'
+  FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = '$CategoryCode'    " ;
 
 
-$Query = "INSERT INTO `menu_meta_rel_category-subcategory_table` 
-      VALUES ('', '$CategoryCode', '$SubCategoryCode', '$SubCategoryDisplayName', '$SubCategoryOrderingNo', '$SubCategoryNoOfItems', '$SubCategoryIsActive')  " ;
 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
 if($QueryResult){

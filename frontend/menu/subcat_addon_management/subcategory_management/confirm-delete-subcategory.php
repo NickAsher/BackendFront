@@ -5,7 +5,7 @@ require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SubCategoryCode = isSecure_checkPostInput('__subcategory_code') ;
+$SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
 
 ?>
 
@@ -14,7 +14,7 @@ $SubCategoryCode = isSecure_checkPostInput('__subcategory_code') ;
 
 <form method="post" action="process-delete-subcategory.php">
     <input type="hidden" name="__category_code" value='<?php echo "$CategoryCode" ; ?>'> ;
-    <input type="hidden" name="__subcategory_code" value='<?php echo "$SubCategoryCode" ; ?>'> ;
+    <input type="hidden" name="__subcategory_rel_id" value='<?php echo "$SubCategoryRelId" ; ?>'> ;
 
     <input type="submit" name="__is_delete" value="Yes, Delete it">
 </form>

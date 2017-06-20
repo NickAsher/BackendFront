@@ -1,6 +1,3 @@
-<?php
-
-?>
 <html>
 <head>
     <title>HomeFlavor | Backend</title>
@@ -34,14 +31,14 @@
     $DBConnectionBackend = YOLOSqlConnect() ;
 
     $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $SubCategoryCode = isSecure_checkPostInput('__subcategory_code') ;
+    $SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
 
-    $SubCategoryInfoArray = getSubCategoryInfoArray($DBConnectionBackend, $CategoryCode, $SubCategoryCode) ;
+    $SubCategoryInfoArray = getSingleSubCategoryInfoArray($DBConnectionBackend, $SubCategoryRelId) ;
+    $RelId = $SubCategoryInfoArray['rel_id'] ;
     $CategoryCode = $SubCategoryInfoArray['category_code'] ;
-    $SubCategoryCode = $SubCategoryInfoArray['subcategory_code'] ;
     $SubCategoryName = $SubCategoryInfoArray['subcategory_display_name'] ;
     $SubCategoryIsActive = $SubCategoryInfoArray['subcategory_is_active'] ;
-    $SubCategorySrNo = $SubCategoryInfoArray['subcategory_ordering_no'] ;
+    $SubCategorySrNo = $SubCategoryInfoArray['subcategory_sr_no'] ;
 
     $ActiveCheckedString = null ;
     if($SubCategoryIsActive == 'true'){
@@ -58,7 +55,7 @@
 </head>
 <body>
 
-<div><?php require_once "../../subcommon/includes/header.php" ?></div>
+<!--<div>--><?php //require_once "../../subcommon/includes/header.php" ?><!--</div>-->
 
 <section>
     <?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/sidebar.php'; ?>
@@ -81,8 +78,7 @@
                     <div class="col-md-10" >
                         <form action="process-edit-subcategory.php" method="post">
 
-                            <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ; ?>">
-                            <input name="__subcategory_code" type="hidden" value="<?php echo $SubCategoryCode ; ?>">
+                            <input name="__rel_id" type="hidden" value="<?php echo $RelId ; ?>">
 
 
 
@@ -103,12 +99,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-subcat-ordering-no" class="col-3 col-form-label">Subcategory Sr No</label>
-                                <div class="col-md-9">
-                                    <input name="__subcategory_ordering_no" id="input-subcat-ordering-no" class="form-control" type="number" value='<?php echo $SubCategorySrNo ; ?>'>
-                                </div>
-                            </div>
 
 
 

@@ -71,14 +71,6 @@
 
 
                             <div class="form-group row">
-                                <label for="input-subcat-code" class="col-3 col-form-label">Subcategory Code</label>
-                                <div class="col-md-9">
-                                    <input name="__subcategory_code" id="input-subcat-name" class="form-control" type="text" placeholder="simple_pizza">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group row">
                                 <label for="input-subcat-code" class="col-3 col-form-label">Subcategory Name</label>
                                 <div class="col-md-9">
                                     <input name="__subcategory_name" id="input-subcat-name" class="form-control" type="text" placeholder="Simple Pizza">
@@ -88,17 +80,12 @@
                             <div class="form-group row">
                                 <label for="input-subcat-active-hidden" class="col-3 col-form-label">Subcategory Active</label>
                                 <div class="col-md-9">
-                                    <input name="__subcategory_is_active" id="input-subcat-active-hidden" class="form-control" type="hidden">
-                                    <input id="input-subcat-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                    <input name="__subcategory_is_active" id="input-subcat-active-hidden" class="form-control" type="hidden" value="true">
+                                    <input id="input-subcat-active-presentation" type="checkbox" class="form-control" checked="checked" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-subcat-ordering-no" class="col-3 col-form-label">Subcategory Sr No</label>
-                                <div class="col-md-9">
-                                    <input name="__subcategory_ordering_no" id="input-subcat-ordering-no" class="form-control" type="number" placeholder="5">
-                                </div>
-                            </div>
+
 
 
 

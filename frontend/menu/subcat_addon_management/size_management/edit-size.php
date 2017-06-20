@@ -31,12 +31,12 @@
     $DBConnectionBackend = YOLOSqlConnect() ;
 
     $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
-    $SizeCode = isSecure_checkPostInput('__size_code') ;
+    $SizeId = isSecure_checkPostInput('__size_id') ;
 
+    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
     $CategoryName = $CategoryInfoArray['category_display_name'] ;
 
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_code` = '$SizeCode' " ;
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_id` = '$SizeId' " ;
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         die("Unable to get the size information ".mysqli_error($DBConnectionBackend)) ;
@@ -44,7 +44,7 @@
     $Record = mysqli_fetch_assoc($QueryResult) ;
 
 
-    $SizeCode = $Record['size_code'] ;
+    $SizeId = $Record['size_id'] ;
     $SizeName = $Record['size_name'] ;
     $SizeNameAbbr = $Record['size_name_short'] ;
     $SizeIsActive = $Record['size_is_active'] ;
@@ -89,7 +89,7 @@
                         <form action="process-edit-size.php" method="post" enctype="multipart/form-data">
 
                             <input name="__category_code"  class="form-control" type="hidden" value="<?php echo $CategoryCode ; ?>" >
-
+                            <input name="__size_id"  class="form-control" type="hidden" value="<?php echo $SizeId ; ?>" >
 
 
                             <div class="form-group row">
@@ -99,12 +99,6 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-size-code" class="col-3 col-form-label">Size Code</label>
-                                <div class="col-md-9">
-                                    <input name="__size_code" id="input-size-code" class="form-control" type="text" value="<?php echo $SizeCode ; ?> " >
-                                </div>
-                            </div>
 
                             <div class="form-group row">
                                 <label for="input-size-name" class="col-3 col-form-label">Size Name</label>

@@ -31,7 +31,7 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
 
     $CategoryCode = isSecure_checkGetInput('___category_code') ;
-    $AddonGroupCode = isSecure_checkGetInput('___addongroup_code') ;
+    $AddonGroupRelId = isSecure_checkGetInput('___addongroup_rel_id') ;
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
@@ -72,7 +72,7 @@
 
 
                             <input name="__addon_category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?> '>
-                            <input name="__addon_group_code" type="hidden" value='<?php echo "$AddonGroupCode" ; ?> '>
+                            <input name="___addongroup_rel_id" type="hidden" value='<?php echo "$AddonGroupRelId" ; ?> '>
 
 
 
@@ -87,8 +87,8 @@
                             <div id="Div_Name" class="form-group row">
                                 <label for="input-addon-active-hidden" class="col-3 col-form-label">Addon-Item Active</label>
                                 <div class="col-md-9">
-                                    <input name="__addon_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" >
-                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                    <input name="__addon_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" value="true" >
+                                    <input id="input-addon-active-presentation" type="checkbox" class="form-control" checked="checked" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
 
                                 </div>
                             </div>
@@ -98,17 +98,17 @@
 
                             <div id="Div_Price">
                                 <?php
-                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_id` " ;
+                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` " ;
                                 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
                                 if($QueryResult){
                                     foreach ($QueryResult as $Record){
                                         $SizeName = $Record['size_name'] ;
-                                        $SizeCode = $Record['size_code'] ;
+                                        $SizeId = $Record['size_id'] ;
                                         echo "
                                         <div class='form-group row'>
-                                            <label for='input-addon-price-size_$SizeCode' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input name='__addon_price_size_$SizeCode' id='input-addon-price-size_$SizeCode' class='form-control' type='text' placeholder='ex. 20'>
+                                                <input name='__addon_price_size_$SizeId' id='input-addon-price-size_$SizeId' class='form-control' type='text' placeholder='ex. 20'>
                                             </div>
                                         </div>  
                                     " ;

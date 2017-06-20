@@ -7,23 +7,15 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 $CategoryCode = isSecure_checkPostInput('__category_code');
-$AddonGroupCode = isSecure_checkPostInput('__addongroup_code');
+$AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
 
 
 $DBConnectionBackend = YOLOSqlConnect() ;
 
-$Query1 = "SELECT * FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode' AND `addon_group_code` = '$AddonGroupCode' " ;
-$QueryResult1 = mysqli_query($DBConnectionBackend, $Query1) ;
-$NumOfRows = mysqli_num_rows($QueryResult1) ;
-if($NumOfRows != 1){
-    die("Addon-Group not Found") ;
-}
 
 
 
-
-
-$Query2 = "DELETE FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode' AND `addon_group_code` = '$AddonGroupCode'  ";
+$Query2 = "DELETE FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode' AND `rel_id` = '$AddonGroupRelId'  ";
 $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2);
 
 if ($QueryResult2) {

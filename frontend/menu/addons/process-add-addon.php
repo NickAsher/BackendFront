@@ -11,8 +11,7 @@ $AddonName = isSecure_checkPostInput('__addon_name') ;
 $AddonImage = "empty";
 
 $AddonCategoryCode = isSecure_checkPostInput('__addon_category_code') ;
-$AddonGroupCode = isSecure_checkPostInput('__addon_group_code') ;
-$ItemNoOfSizeVariations = '0' ;
+$AddonGroupRelId = isSecure_checkPostInput('___addongroup_rel_id') ;
 $AddonIsActive = isSecure_checkPostInput('__addon_is_active') ;
 
 $AddonIsDefault = 'no' ;
@@ -26,7 +25,7 @@ $AddonIsDefault = 'no' ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
     $Query = "INSERT INTO `menu_addons_table` 
-            VALUES ('', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupCode', '$AddonIsDefault', $ItemNoOfSizeVariations, $AddonIsActive)  " ;
+            VALUES ('', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupRelId', '$AddonIsDefault', '$AddonIsActive')  " ;
 
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
@@ -41,11 +40,11 @@ try{
         throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
     }
     foreach ($QueryResult2 as $Record2){
-        $SizeCode = $Record2['size_code'] ;
-        $AddonPriceForThatSize = isSecure_checkPostInput("__addon_price_size_$SizeCode") ;
-        $Query3 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$NewItemId',  '$AddonPriceForThatSize', '$SizeCode', '$AddonCategoryCode') " ;
+        $SizeId = $Record2['size_id'] ;
+        $AddonPriceForThatSize = isSecure_checkPostInput("__addon_price_size_$SizeId") ;
+        $Query3 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$NewItemId',  '$AddonPriceForThatSize', '$SizeId', '$AddonCategoryCode') " ;
         if(!mysqli_query($DBConnectionBackend, $Query3)){
-            throw new Exception("Problem in price size insert query for size $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+            throw new Exception("Problem in price size insert query for size $SizeId : ".mysqli_error($DBConnectionBackend)) ;
         }
     }
 

@@ -10,11 +10,10 @@ $DBConnectionBackend = YOLOSqlConnect() ;
 $ItemName = isSecure_checkPostInput('__item_name') ;
 $ItemDescription = isSecure_checkPostInput('__item_description') ;
 $ItemCategory = isSecure_checkPostInput('__item_category') ;
-$ItemSubCategory = isSecure_checkPostInput('__item_subcategory') ;
+$ItemSubCategoryRelId = isSecure_checkPostInput('__item_subcategory_rel_id') ;
 $ItemIsActive = isSecure_checkPostInput('__item_is_active') ;
 
 
-$ItemNoOfSizeVariations = isSecure_checkPostInput('__item_no_of_size_variations') ;
 
 
 $ImageFileArrayVariable = $_FILES['__item_image'] ;
@@ -32,7 +31,7 @@ try{
 
 
         $Query = "INSERT INTO `menu_items_table` 
-          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategory', $ItemIsActive )  " ;
+          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategoryRelId', '$ItemIsActive' )  " ;
 
         $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
         if(!$QueryResult){
@@ -47,11 +46,13 @@ try{
             throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
         }
         foreach ($QueryResult2 as $Record2){
-            $SizeCode = $Record2['size_code'] ;
-            $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeCode") ;
-            $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$NewItemId',  '$ItemPriceForThatSize', '$SizeCode', '$ItemCategory') " ;
+
+            $SizeId = $Record2['size_id'] ;
+            $SizeName = $Record2['size_name'] ;
+            $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeId") ;
+            $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$NewItemId',  '$ItemPriceForThatSize', '$SizeId', '$ItemCategory') " ;
             if(!mysqli_query($DBConnectionBackend, $Query3)){
-                throw new Exception("Problem in price size insert query for size $SizeCode : ".mysqli_error($DBConnectionBackend)) ;
+                throw new Exception("Problem in price size insert query for size $SizeName : ".mysqli_error($DBConnectionBackend)) ;
             }
         }
 

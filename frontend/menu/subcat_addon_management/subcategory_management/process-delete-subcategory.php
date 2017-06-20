@@ -6,13 +6,13 @@ require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$CategoryCode = isSecure_checkPostInput('__category_code');
-$SubCategoryCode = isSecure_checkPostInput('__subcategory_code');
+$CategoryCode = isSecure_checkPostInput('__category_code') ;
+$SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
 
 
 $DBConnectionBackend = YOLOSqlConnect() ;
 
-$Query1 = "SELECT * FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = '$CategoryCode' AND `subcategory_code` = '$SubCategoryCode' " ;
+$Query1 = "SELECT * FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = '$CategoryCode' AND `rel_id` = '$SubCategoryRelId' " ;
 $QueryResult1 = mysqli_query($DBConnectionBackend, $Query1) ;
 $NumOfRows = mysqli_num_rows($QueryResult1) ;
 if($NumOfRows != 1){
@@ -23,7 +23,7 @@ if($NumOfRows != 1){
 
 
 
-$Query2 = "DELETE FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = '$CategoryCode' AND `subcategory_code` = '$SubCategoryCode'  ";
+$Query2 = "DELETE FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = '$CategoryCode' AND `rel_id` = '$SubCategoryRelId'  ";
 $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2);
 
 if ($QueryResult2) {
