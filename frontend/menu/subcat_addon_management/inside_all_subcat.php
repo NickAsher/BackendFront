@@ -117,7 +117,16 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
 
     <div id="Div_Main_AddonGroups">
-        <h1>All Addon-Groups</h1>
+
+        <div style="display: block">
+            <h1 style="display: inline-block; float: left;" >All Addon Groups</h1>
+            <form action="addon_management/sort-addongroup.php" method="post">
+                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
+            </form>
+            <br><br>
+        </div>
+
         <hr><br><br>
         <div>
 
@@ -221,14 +230,23 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
 
     <br><br><br><br>
     <div id="Div_Main_Sizes">
-        <h1>All Sizes</h1>
+
+        <div style="display: block">
+            <h1 style="display: inline-block; float: left;" >All Sizes</h1>
+            <form action="size_management/sort-size.php" method="post">
+                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
+            </form>
+            <br><br>
+        </div>
+
+
         <hr><br><br>
         <div>
             <table class="table table-bordered table-hover" >
 
                 <tr class="table-info">
                     <th>Sr. No</th>
-
                     <th>Size  Name</th>
                     <th>Size  Abbreviated Name</th>
                     <th>Is Default</th>

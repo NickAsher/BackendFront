@@ -34,7 +34,15 @@
             echo "
             
                 <div>
-                    <h1>$AddonGroupDisplayName <span>(Multi-Select)</span></h1>
+                    <div style='display: block'>
+                        <h1 style='display: inline-block; float: left;' >$AddonGroupDisplayName <span>(Multi-Select)</span></h1>
+                        <form action='sort-addon.php' method='post'>
+                            <input name='__addongroup_rel_id' type='hidden' value=' $AddonGroupRelId'>
+                            
+                            <input type='submit' class='btn btn -info' style='display: inline-block;float: right' value='Sort This'>
+                        </form>
+                        <br><br>
+                    </div>
                     <hr><br><br>
                     <div>
                         <table class='table table-bordered table-hover' >
@@ -50,7 +58,7 @@
             " ;
 
 
-                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
+                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
                             foreach($AllAddonsInAGroup as $Record2){
 
                                 $ItemId = $Record2['item_id'] ;
@@ -123,7 +131,16 @@
             echo "
             
                 <div>
-                    <h1>$AddonGroupDisplayName <span>(Single-Select)</span> </h1>
+                    <div style='display: block'>
+                        <h1 style='display: inline-block; float: left;' >$AddonGroupDisplayName <span>(Single-Select)</span></h1>
+                        <form action='sort-addon.php' method='post'>
+                            <input name='__addongroup_rel_id' type='hidden' value=' $AddonGroupRelId'>
+                            
+                            <input type='submit' class='btn btn -info' style='display: inline-block;float: right' value='Sort This'>
+                        </form>
+                        <br><br>
+                    </div>
+                    
                     <hr><br><br>
                     <div>
                         <table class='table table-bordered table-hover' >
@@ -138,7 +155,7 @@
                             </tr>
                             
             " ;
-                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
+                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
 
                             foreach($AllAddonsInAGroup as $Record2){
 

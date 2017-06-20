@@ -11,7 +11,7 @@ $AddonDefaultItemId = isSecure_checkPostInput('__addon_id') ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 
-$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
+$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
 foreach ($ListAllAddonItemInAddonGroup as $AddonItemRecord){
     $AddonItemId = $AddonItemRecord['item_id'] ;
     if($AddonItemId==$AddonDefaultItemId){

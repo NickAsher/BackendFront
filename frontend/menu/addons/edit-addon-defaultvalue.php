@@ -37,7 +37,7 @@
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $CategoryCode, $AddonGroupRelId) ;
+    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
 
 
 

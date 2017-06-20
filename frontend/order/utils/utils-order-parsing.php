@@ -21,7 +21,7 @@ function parseOrderDescriptionString($DBConnectionBackend, $IndividualOrderCartI
 function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $IndividualOrderCartItemArray, $ItemCategory){
     $CustomizationString = null ;
 
-    $SizeInformation = getSizeInformation($DBConnectionBackend, $ItemCategory, $IndividualOrderCartItemArray['item_size_code']) ;
+    $SizeInformation = getSingleSizeInfoArray($DBConnectionBackend, $IndividualOrderCartItemArray['item_size_id']) ;
     $SizeName = $SizeInformation['size_name'] ;
     if($SizeName == "Normal"){
         $SizeString  = "" ;
@@ -33,15 +33,15 @@ function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $In
      *
      * "item_id":"41002",
      * "item_quantity":"1",
-     * "item_size_code":"small",
+     * "item_size_id":"1",
      * "item_addon":[
      *     {
-     *          "addon_group_code":"pizza_crusts",
+     *          "addon_group_id":"1",                      // crusts
      *          "addon_items_array":["48015"],
      *          "addon_group_price":40
      *      },
      *      {
-     *          "addon_group_code":"pizza_toppings",
+     *          "addon_group_id":"2",                     // toppings
      *          "addon_items_array":["48001","48002"],
      *          "addon_group_price":100
      *      }
@@ -53,13 +53,19 @@ function parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $In
     $AddonDescriptionString = '' ;
 
     if($ItemAddonArray != '') {
+
+
         foreach ($ItemAddonArray as $AddonData) {
-            $AddonGroupCode = $AddonData['addon_group_code'];
-            $AddonGroupName = getAddonGroupInfoArray($DBConnectionBackend, $ItemCategory, $AddonGroupCode)['addon_group_display_name'];
+            if(count($AddonData['addon_items_array']) == 0){
+                continue ;
+            }
+
+            $AddonGroupId = $AddonData['addon_group_id'];
+            $AddonGroupName = getSingleAddonGroupInfoArray($DBConnectionBackend, $AddonGroupId)['addon_group_display_name'];
             $AddonDescriptionString .= "$AddonGroupName : ";
 
             foreach ($AddonData['addon_items_array'] as $AddonItemId) {
-                $AddonItemInfo = getAddonItemInfoArray($DBConnectionBackend, $ItemCategory, $AddonItemId);
+                $AddonItemInfo = getSingleAddonItemInfoArray($DBConnectionBackend, $ItemCategory, $AddonItemId);
                 $AddonItemName = $AddonItemInfo['item_name'];
                 $AddonDescriptionString .= "$AddonItemName, ";
             }

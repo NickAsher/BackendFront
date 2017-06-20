@@ -107,7 +107,6 @@
                     foreach ($ListOfAllCategories as $CategoryRecord) {
                         $CategoryCode = $CategoryRecord['category_code'];
                         $CategoryName = $CategoryRecord['category_display_name'];
-                        $NoOfSizes = $CategoryRecord['category_no_of_size_variations'] ;
 
 
 
@@ -120,82 +119,13 @@
                         }
                         $FirstItem = false ;
                         
-                        echo "
-                            <div id='$NameDivColumn' class = 'tab-pane fade $ActiveShowString'>
-                                <table  class='table table-bordered table-hover' >
 
-                                    <tr class='table-info'>
-                                        <th>Item Image</th>
-                                        <th>Item Name</th>
-                                        <th>Item Price</th>
-                                        <th>Item Active</th>
-                                        <th>Item Edit</th>
-                                        <th>Item Delete</th>
-                                    </tr>
-                        " ;
 
-                                    $ListOfMenuItemsInCategory = getListOfAllMenuItemsInCategory_Array($DBConnectionBackend, $CategoryCode) ;
-                                    foreach($ListOfMenuItemsInCategory as $Record){
-                                            $ItemId = $Record['item_id'] ;
-                                            $ItemName = $Record['item_name'] ;
-                                            $ItemPriceString = getItemPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
-                                            $ItemImage = $Record['item_image_name'] ;
-                                            $ItemDescription = $Record['item_description'] ;
-                                            $ItemActive = $Record['item_is_active'] ;
-                                            if($ItemActive == 'truey'){
-                                                $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                                            } else if($ItemActive == 'falsey'){
-                                                $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
-                                            }
+                        echo " <div id='$NameDivColumn' class = 'tab-pane fade $ActiveShowString'> " ;
 
-                                            $DetailPageLink = "show-menuitem.php?___menu_item_id=$ItemId" ;
+                            require 'include-all_menuitem.php' ;
 
-                                            echo "
-                                                    <tr >
-                                                        <td class='addon-link' data-href='$DetailPageLink'><img src='$IMAGE_BACKENDFRONT_LINK_PATH/$ItemImage' class='img-fluid' width = '80px' ></td>
-                                                        <td class='addon-link' data-href='$DetailPageLink'><p class='link-black'>$ItemName</p></td>
-                                                        <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
-                                                        <td class='addon-link' data-href='$DetailPageLink'>$ActiveButton</td>
-                                                        <td>
-                                                            <form method='get' action='edit-menuitem.php'>
-                                                                <input type='hidden' name='___menu_item_id' value='$ItemId'>
-                                                                <input type='submit' class='btn btn-info' value='Edit' >
-                                                            </form>
-                                                        </td>                                
-                                                        <td>
-                                                            <form method='post' action='confirm-delete-menuitem.php'>
-                                                                <input type='hidden' name='__menu_item_id' value='$ItemId'>
-                                                                <input type='submit' class='btn btn-danger' value='Delete' >
-                                                            </form>
-                                                        </td>                     
-                                                    </tr>
-                                                    ";
-                                    }
-
-                        echo "
-                                </table>
-                                
-                                
-                                <br><br>
-                                <div class='row'>
-                                    <div class='col-4'></div>
-                                    <a class='col-4 btn btn-outline-info' href='add-menuitem.php?___category_code=$CategoryCode'>
-                                        Add New Item
-                                    </a>
-                                    <div class='col-4'></div>
-                                </div>
-                                
-                                
-                            </div>
-                            
-                            
-                            
-                            
-                            
-                            
-                            
-                        
-                        " ;
+                        echo "</div>" ;
                     
                         
                         

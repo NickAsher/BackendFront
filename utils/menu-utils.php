@@ -161,7 +161,7 @@ function getSingleAddonGroupInfoArray($DBConnection, $AddonGroupRelId){
 
 
 
-function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, $AddonGroupRelId){
+function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $AddonGroupRelId){
 
     /*
      *
@@ -169,9 +169,7 @@ function getListOfAllAddonItemsInAddonGroup_Array($DBConnection, $CategoryCode, 
 
     $AddonItemsInGroupArray = array() ;
 
-    $Query1 = "SELECT * FROM `menu_addons_table`
-                WHERE `item_category_code` = '$CategoryCode' AND `item_addon_group_rel_id` = '$AddonGroupRelId'
-                ORDER BY `item_id` " ;
+    $Query1 = "SELECT * FROM `menu_addons_table` WHERE `item_addon_group_rel_id` = '$AddonGroupRelId' ORDER BY `item_sr_no` ASC " ;
     $QueryResult1 = mysqli_query($DBConnection, $Query1) ;
     if($QueryResult1){
         $i = 0 ;
@@ -238,6 +236,17 @@ function getListOfAllSizesInCategory($DBConnection, $CategoryCode){
 }
 
 
+function getSingleSizeInfoArray($DBConnectionBackend, $SizeId){
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_id` = '$SizeId'  " ;
+    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+    $SizeInformation = '' ;
+    foreach($QueryResult as $Record){
+        $SizeInformation = $Record ;
+    }
+    return $SizeInformation ;
+}
+
+
 
 function getListOfAllMenuItemsInCategory_Array($DBConnection, $CategoryCode) {
     $ListOfMenuItemsInCategory = array();
@@ -256,6 +265,26 @@ function getListOfAllMenuItemsInCategory_Array($DBConnection, $CategoryCode) {
     }
 
     return $ListOfMenuItemsInCategory ;
+
+}
+
+function getListOfAllMenuItemsInSubCategory_Array($DBConnection, $SubCategoryRelId){
+    $ListOfMenuItemsInSubCategory = array();
+
+    $Query = "SELECT * FROM `menu_items_table` WHERE `item_subcategory_rel_id` = '$SubCategoryRelId' ORDER BY `item_sr_no` ASC ";
+    $QueryResult = mysqli_query($DBConnection, $Query);
+
+    if ($QueryResult) {
+        $i = 0;
+        foreach ($QueryResult as $Record) {
+            $ListOfMenuItemsInSubCategory[$i] = $Record;
+            $i++;
+        }
+    } else {
+        die("Unable to fetch the Menu Item for the Subcategory $SubCategoryRelId :<br> " . mysqli_error($DBConnection));
+    }
+
+    return $ListOfMenuItemsInSubCategory ;
 
 }
 
