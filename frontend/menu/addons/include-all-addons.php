@@ -21,6 +21,7 @@
 <?php
     foreach ($CategoryAddonGroupsListArray as $Record){
         $AddonGroupRelId = $Record['rel_id'] ;
+
         $AddonGroupDisplayName = $Record['addon_group_display_name'] ;
         $AddonGroupType = $Record['addon_group_type'] ;
 
@@ -48,6 +49,7 @@
                         <table class='table table-bordered table-hover' >
     
                             <tr class='table-info'>
+                                <th>Sr No</th>
                                 <th>Item Name</th>
                                 <th>Item Price</th>
                                 <th>Item Active</th>
@@ -61,6 +63,7 @@
                             $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
                             foreach($AllAddonsInAGroup as $Record2){
 
+                                $ItemSrNo = $Record2['item_sr_no'] ;
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
                                 $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
@@ -77,6 +80,7 @@
 
                                 echo "
                                     <tr>
+                                        <td class='addon-link' data-href='$DetailPageLink'>$ItemSrNo</td>
                                         <td class='addon-link' data-href='$DetailPageLink'> <p class='link-black'>$ItemName</p> </td>
                                         <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
                                         <td class='addon-link' data-href='$DetailPageLink'>$ActiveButton</td>
@@ -92,8 +96,9 @@
                                         
                                         <td>
                                             <form action='confirm-delete-addon.php' method='post'>
-                                                <input name='__category_code' type='hidden' value='$CategoryCode'>
+                                                <input name='__addon_group_rel_id' type='hidden' value='$AddonGroupRelId'>
                                                 <input name='__addon_id' type='hidden' value='$ItemId'>
+                                                
                                                 <button type='submit' class='btn btn-danger'>
                                                     <i class='fa fa-trash'></i> | Delete
                                                 </button>
@@ -146,6 +151,7 @@
                         <table class='table table-bordered table-hover' >
     
                             <tr class='table-info'>
+                                <th>Sr No</th>
                                 <th>Item Name</th>
                                 <th>Item Price</th>
                                 <th>Is Default?</th>
@@ -159,6 +165,7 @@
 
                             foreach($AllAddonsInAGroup as $Record2){
 
+                                $ItemSrNo = $Record2['item_sr_no'] ;
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
                                 $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
@@ -175,6 +182,7 @@
 
                                 echo "
                                                         <tr>
+                                                            <td class='addon-link' data-href='$DetailPageLink'>$ItemSrNo</td>
                                                             <td class='addon-link' data-href='$DetailPageLink'> <p class='link-black'>$ItemName</p> </td>
                                                             <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
                                                             <td class='addon-link' data-href='$DetailPageLink'>$ItemDefaultStatus</td>
@@ -193,7 +201,7 @@
                                                             
                                                             <td>
                                                                 <form action='confirm-delete-addon.php' method='post'>
-                                                                    <input name='__category_code' type='hidden' value='$CategoryCode'>
+                                                                    <input name='__addon_group_rel_id' type='hidden' value='$AddonGroupRelId'>
                                                                     <input name='__addon_id' type='hidden' value='$ItemId'>
                                                                     <button type='submit' class='btn btn-danger'>
                                                                         <i class='fa fa-trash'></i> | Delete

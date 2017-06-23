@@ -29,32 +29,43 @@ mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
 
+//
+//        $Query = "INSERT INTO `menu_items_table`
+//          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategoryRelId', '$ItemIsActive' )  " ;
+//
 
-        $Query = "INSERT INTO `menu_items_table` 
-          VALUES ('', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategoryRelId', '$ItemIsActive' )  " ;
+        $Query = "INSERT INTO `menu_items_table` (`item_sr_no`, `item_id`, `item_name`, `item_description`, `item_image_name`, `item_category_code`, `item_subcategory_rel_id`, `item_is_active` )
+      SELECT MAX( `item_sr_no` ) + 1, '', '$ItemName', '$ItemDescription', '$Item_ImageName', '$ItemCategory', '$ItemSubCategoryRelId', '$ItemIsActive'
+      FROM `menu_items_table` WHERE `item_category_code` = '$ItemCategory'    " ;
 
-        $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-        if(!$QueryResult){
-            throw new Exception("Probelm in the item insert query: ".mysqli_error($DBConnectionBackend)) ;
-        }
-        $NewItemId = mysqli_insert_id($DBConnectionBackend) ; //this is the last insert id (The item id of new product)
+    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+    if(!$QueryResult){
+        throw new Exception("Probelm in the item insert query: ".mysqli_error($DBConnectionBackend)) ;
+    }
+    $NewItemId = mysqli_insert_id($DBConnectionBackend) ; //this is the last insert id (The item id of new product)
 
 
-        $Query2 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategory' ORDER BY `size_sr_no` " ;
-        $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-        if(!$QueryResult2){
-            throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
-        }
-        foreach ($QueryResult2 as $Record2){
 
-            $SizeId = $Record2['size_id'] ;
-            $SizeName = $Record2['size_name'] ;
-            $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeId") ;
-            $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$NewItemId',  '$ItemPriceForThatSize', '$SizeId', '$ItemCategory') " ;
-            if(!mysqli_query($DBConnectionBackend, $Query3)){
-                throw new Exception("Problem in price size insert query for size $SizeName : ".mysqli_error($DBConnectionBackend)) ;
-            }
-        }
+
+
+    $Query2 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$ItemCategory' ORDER BY `size_sr_no` " ;
+    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
+    if(!$QueryResult2){
+        throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
+    }
+
+    $VALUES = '' ;
+
+    foreach ($QueryResult2 as $Record2){
+        $SizeId = $Record2['size_id'] ;
+        $ItemPriceForThatSize = isSecure_checkPostInput("__item_price_size_$SizeId") ;
+        $VALUES .= "('', '$NewItemId',  '$ItemPriceForThatSize', '$SizeId', '$ItemCategory'), " ;
+    }
+    $VALUES = rtrim($VALUES, ", ") ;
+    $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES $VALUES " ;
+    if(!mysqli_query($DBConnectionBackend, $Query3)){
+        throw new Exception("Problem in price size insert query ".mysqli_error($DBConnectionBackend)) ;
+    }
 
 
 

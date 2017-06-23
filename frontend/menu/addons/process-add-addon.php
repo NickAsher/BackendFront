@@ -24,8 +24,12 @@ $AddonIsDefault = 'no' ;
 
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
-    $Query = "INSERT INTO `menu_addons_table` 
-            VALUES ('', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupRelId', '$AddonIsDefault', '$AddonIsActive')  " ;
+    $Query = "INSERT INTO `menu_addons_table` (`item_sr_no`, `item_id`, `item_name`, `item_image`, `item_category_code`, `item_addon_group_rel_id`, `item_is_default`, `item_is_active` )
+      SELECT MAX( `item_sr_no` ) + 1, '', '$AddonName', '$AddonImage', '$AddonCategoryCode', '$AddonGroupRelId', '$AddonIsDefault', '$AddonIsActive'
+      FROM `menu_addons_table` WHERE `item_category_code` = '$AddonCategoryCode'    " ;
+
+
+
 
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
@@ -39,14 +43,24 @@ try{
     if(!$QueryResult2){
         throw new Exception("Probelm in the fetching the different sizes from menu_meta_size_table : ".mysqli_error($DBConnectionBackend)) ;
     }
+
+    $VALUES = '' ;
+
     foreach ($QueryResult2 as $Record2){
         $SizeId = $Record2['size_id'] ;
         $AddonPriceForThatSize = isSecure_checkPostInput("__addon_price_size_$SizeId") ;
-        $Query3 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$NewItemId',  '$AddonPriceForThatSize', '$SizeId', '$AddonCategoryCode') " ;
-        if(!mysqli_query($DBConnectionBackend, $Query3)){
-            throw new Exception("Problem in price size insert query for size $SizeId : ".mysqli_error($DBConnectionBackend)) ;
-        }
+        $VALUES .= "('', '$NewItemId',  '$AddonPriceForThatSize', '$SizeId', '$AddonCategoryCode'), " ;
     }
+    $VALUES = rtrim($VALUES, ", ") ;
+    $Query3 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES $VALUES " ;
+    if(!mysqli_query($DBConnectionBackend, $Query3)){
+        throw new Exception("Problem in price size insert query ".mysqli_error($DBConnectionBackend)) ;
+    }
+
+
+
+
+
 
 
 

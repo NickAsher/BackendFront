@@ -7,7 +7,6 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 $DBConnectionBackend = YOLOSqlConnect() ;
 
 $CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SizeSrNo = isSecure_checkPostInput('__size_sr_no') ;
 $SizeName = isSecure_checkPostInput('__size_name') ;
 $SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
 $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
@@ -19,7 +18,11 @@ $SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
 mysqli_begin_transaction($DBConnectionBackend) ;
 try{
 
-    $Query = "INSERT INTO `menu_meta_size_table` VALUES ('', '$SizeSrNo', '$CategoryCode', '$SizeName', '$SizeNameAbbr' , 'false', '$SizeIsActive')  " ;
+
+    $Query = "INSERT INTO `menu_meta_size_table` (`size_sr_no`, `size_id`, `size_category_code`, `size_name`, `size_name_short`, `size_is_default`, `size_is_active` )
+      SELECT MAX( `size_sr_no` ) + 1, '', '$CategoryCode', '$SizeName', '$SizeNameAbbr', 'false', '$SizeIsActive'
+      FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode'    " ;
+
     $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
     if(!$QueryResult){
         throw new Exception("unable to insert the new item  <br><br>".mysqli_error($DBConnectionBackend)) ;
@@ -32,28 +35,51 @@ try{
     if(!$QueryResult2){
         throw new Exception("Unable to fetch the items in menu_items_table for the category $CategoryCode <br>: ".mysqli_error($DBConnectionBackend)) ;
     }
+    $VALUES = '' ;
+
     foreach ($QueryResult2 as $Record2){
         $ItemId = $Record2['item_id'] ;
-        $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES('', '$ItemId', '-1', '$SizeId', '$CategoryCode')" ;
-        $QueryResult3 = mysqli_query($DBConnectionBackend, $Query3) ;
-        if(!$QueryResult3){
-            throw new Exception("Unable to insert new item price for id $ItemId: ".mysqli_error($DBConnectionBackend)) ;
-        }
+        $VALUES .= "('', '$ItemId', '-1', '$SizeId', '$CategoryCode'), " ;
     }
+    $VALUES = rtrim($VALUES, ", ") ;
+    $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES $VALUES " ;
+    if(!mysqli_query($DBConnectionBackend, $Query3)){
+        throw new Exception("Problem in price size insert query for items ".mysqli_error($DBConnectionBackend)) ;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     $Query4 = "SELECT * FROM `menu_addons_table` WHERE `item_category_code` = '$CategoryCode' " ;
     $QueryResult4 = mysqli_query($DBConnectionBackend, $Query4) ;
     if(!$QueryResult4){
         throw new Exception("Unable to fetch the addons in menu_addons_table for the category $CategoryCode <br>: ".mysqli_error($DBConnectionBackend)) ;
     }
+    $VALUES = '' ;
+
     foreach ($QueryResult4 as $Record4){
         $AddonId = $Record4['item_id'] ;
-        $Query5 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES('', '$AddonId', '-1', '$SizeId', '$CategoryCode')" ;
-        $QueryResult5 = mysqli_query($DBConnectionBackend, $Query5) ;
-        if(!$QueryResult5){
-            throw new Exception("Unable to insert new addon price for id $AddonId: ".mysqli_error($DBConnectionBackend)) ;
-        }
+        $VALUES .= "('', '$AddonId', '-1', '$SizeId', '$CategoryCode'), " ;
     }
+    $VALUES = rtrim($VALUES, ", ") ;
+    $Query5 = "INSERT INTO `menu_meta_rel_size-addons_table` VALUES $VALUES " ;
+    if(!mysqli_query($DBConnectionBackend, $Query5)){
+        throw new Exception("Problem in price size insert query for Addons ".mysqli_error($DBConnectionBackend)) ;
+    }
+
+
+
+
 
 
 

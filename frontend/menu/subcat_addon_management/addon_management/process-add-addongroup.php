@@ -10,16 +10,21 @@ $CategoryCode = isSecure_checkPostInput('__category_code') ;
 $AddonGroupDisplayName = isSecure_checkPostInput('__addongroup_name') ;
 $AddonGroupType = isSecure_checkPostInput('__addongroup_type') ;
 $AddonGroupNoOfItems = 0 ;
-$AddonGroupSrNo = isSecure_checkPostInput('__addongroup_sr_no') ;
 $AddonGroupIsActive = isSecure_checkPostInput('__addongroup_is_active') ;
 
 
 
 
 
+//
+//$Query = "INSERT INTO `menu_meta_rel_category-addon_table`
+//      VALUES ('', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupSrNo', '$AddonGroupNoOfItems', '$AddonGroupIsActive')  " ;
 
-$Query = "INSERT INTO `menu_meta_rel_category-addon_table` 
-      VALUES ('', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupSrNo', '$AddonGroupNoOfItems', '$AddonGroupIsActive')  " ;
+
+$Query = "INSERT INTO `menu_meta_rel_category-addon_table` (`addon_group_sr_no`, `rel_id`, `category_code`, `addon_group_display_name`, `addon_group_type`, `addon_group_no_of_items`, `addon_group_is_active` )
+  SELECT MAX( `addon_group_sr_no` ) + 1, '', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupNoOfItems',  '$AddonGroupIsActive'
+  FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode'    " ;
+
 $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
 if($QueryResult){

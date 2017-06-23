@@ -119,4 +119,37 @@ function getAddonPriceString($DBConnection, $CategoryCode, $AddonId){
 
 
 
+
+
+//function sort_menuItems($DBConnection, $SubCategoryRelId){
+//    $ListOfAllMenuItemsInASubCategory = getListOfAllMenuItemsInSubCategory_Array($DBConnection, $SubCategoryRelId) ;
+//    $NoOfItems = count($ListOfAllMenuItemsInASubCategory) ;
+//
+//    $CaseStatement = '' ;
+//    for($i = 0;$i<=$NoOfItems;$i++){
+//        $ThisItem_ItemId = $ListOfAllMenuItemsInASubCategory[$i]['item_id'] ;
+//        $RealSortNo = $i + 1 ;
+//        $CaseStatement .= "WHEN `item_id` = '$ThisItem_ItemId' THEN '$RealSortNo' " ;
+//
+//    }
+//
+//    $Query = "UPDATE `menu_items_table` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_subcategory_rel_id` = '$SubCategoryRelId'  " ;
+//    $QueryResult = mysqli_query($DBConnection, $Query) ;
+//    if(!$QueryResult){
+//        die("error in case statement") ;
+//    }
+//
+//    echo "Success" ;
+//
+//
+//}
+
+
+
+
+
+
+
+
+
 ?>

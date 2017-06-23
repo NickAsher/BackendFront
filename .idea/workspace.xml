@@ -5,24 +5,86 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced062f7-50c4-4a1b-8536-f7523a92ece3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/dem.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000111_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000111_.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000113_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000113_.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000114_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000114_.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170619_0000000122_.jpg" afterPath="$PROJECT_DIR$/images/20170619_0000000122_.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images_user/10001_1495672426.jpg" afterPath="$PROJECT_DIR$/images_user/10001_1495672426.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/BackendFront.iml" afterPath="$PROJECT_DIR$/.idea/BackendFront.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/dem.php" afterPath="$PROJECT_DIR$/demo/dem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/demo_move.php" afterPath="$PROJECT_DIR$/demo/demo_move.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/procedure.sql" afterPath="$PROJECT_DIR$/demo/procedure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/validation.php" afterPath="$PROJECT_DIR$/demo/validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/common/css/sort.css" afterPath="$PROJECT_DIR$/frontend/common/css/sort.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php" afterPath="$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/menu-utils.php" afterPath="$PROJECT_DIR$/utils/menu-utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/history/order_history.php" afterPath="$PROJECT_DIR$/frontend/order/history/order_history.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/demo.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/demo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/receipt2.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/receipt2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/receipt_2.html" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/receipt_2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/thermal1.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/thermal1.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/thermal_receipt_1.html" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/thermal_receipt_1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/settings.php" afterPath="$PROJECT_DIR$/frontend/settings/settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/add-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/add-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/all-taxes.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/all-taxes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/confirm-start.php" afterPath="$PROJECT_DIR$/frontend/start-stop/confirm-start.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/confirm-stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/confirm-stop.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/process-start.php" afterPath="$PROJECT_DIR$/frontend/start-stop/process-start.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/process-stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/process-stop.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/start_stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/start_stop.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/start_stop_utils.php" afterPath="$PROJECT_DIR$/frontend/start-stop/start_stop_utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css.map" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.scss" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.css" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.js" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jquery/jquery.print.js" afterPath="$PROJECT_DIR$/lib/jquery/jquery.print.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/additional-methods.js" afterPath="$PROJECT_DIR$/lib/validate/additional-methods.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/additional-methods.min.js" afterPath="$PROJECT_DIR$/lib/validate/additional-methods.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/jquery.validate.js" afterPath="$PROJECT_DIR$/lib/validate/jquery.validate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/jquery.validate.min.js" afterPath="$PROJECT_DIR$/lib/validate/jquery.validate.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/security/demo.php" afterPath="$PROJECT_DIR$/security/demo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/security/validation.php" afterPath="$PROJECT_DIR$/security/validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/all-items.php" afterPath="$PROJECT_DIR$/sortable/all-items.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/process-save-sort.php" afterPath="$PROJECT_DIR$/sortable/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/sort.php" afterPath="$PROJECT_DIR$/sortable/sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/menu_item-utils.php" afterPath="$PROJECT_DIR$/utils/menu_item-utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/paginator.php" afterPath="$PROJECT_DIR$/utils/paginator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/updater-utils.php" afterPath="$PROJECT_DIR$/utils/updater-utils.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +98,97 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="process-delete-size.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="53" column="104" lean-forward="false" selection-start-line="53" selection-start-column="104" selection-end-line="53" selection-end-column="104" />
+              <folding>
+                <marker date="1498240681008" expanded="true" signature="1491:1559" ph="SELECT * FRO... $" />
+                <marker date="1498240681008" expanded="true" signature="1491:1585" ph="SELECT * FRO... ${$Table1}" />
+                <marker date="1498240681008" expanded="true" signature="2024:2128" ph="UPDATE `${$T... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="include-all-addons.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="100" column="48" lean-forward="true" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
+              <folding>
+                <marker date="1498240710434" expanded="true" signature="755:1932" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="789:803" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="804:1359" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="841:876" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="1002:1299" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="1214:1248" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="1418:1932" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="1491:1932" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="1549:1890" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="3158:5199" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="3666:4315" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="3754:4268" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="4072:4216" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="4401:5116" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="4500:5069" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="4870:5017" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="5472:5870" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="5689:5773" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6055:7307" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="6089:6103" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6104:6660" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="6141:6176" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6303:6600" ph="..." />
+                <marker date="1498240710434" expanded="false" signature="6515:6549" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6740:7307" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6813:7307" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="6871:7265" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="8634:11339" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="9455:10264" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="9563:10197" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="9941:10125" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="10390:11216" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="10509:11149" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="10890:11077" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="11720:12819" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="12016:12100" ph="..." />
+                <marker date="1498240710434" expanded="true" signature="12346:12702" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="process-delete-addon.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <marker date="1498240878892" expanded="true" signature="953:1055" ph="SELECT * FRO... ${$Table1}" />
+                <marker date="1498240878892" expanded="true" signature="1537:1649" ph="UPDATE `${$T... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="process-delete-menuitem.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="16" column="65" lean-forward="false" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+              <folding>
+                <marker date="1498240965332" expanded="true" signature="1440:1521" ph="SELECT * FRO... " />
+                <marker date="1498240965332" expanded="true" signature="1440:1547" ph="SELECT * FRO... ${$Table1}" />
+                <marker date="1498240965332" expanded="true" signature="2029:2146" ph="UPDATE `${$T... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -78,15 +230,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend/common/css/sort.css" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php" />
-        <option value="$PROJECT_DIR$/demo/procedure.sql" />
-        <option value="$PROJECT_DIR$/utils/menu_item-utils.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/show-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/edit-menuitem.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-edit-menuitem2.php" />
@@ -95,21 +240,14 @@
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/confirm-delete-subcategory.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/add-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/edit-addon.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" />
@@ -123,12 +261,26 @@
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" />
         <option value="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" />
         <option value="$PROJECT_DIR$/utils/menu-utils.php" />
         <option value="$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php" />
+        <option value="$PROJECT_DIR$/demo/procedure.sql" />
+        <option value="$PROJECT_DIR$/utils/menu_item-utils.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" />
       </list>
     </option>
   </component>
@@ -146,10 +298,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="xampp php" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="55" />
-    <option name="y" value="24" />
-    <option name="width" value="1311" />
-    <option name="height" value="744" />
+    <option name="x" value="64" />
+    <option name="y" value="-11" />
+    <option name="width" value="1303" />
+    <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -169,6 +321,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,7 +377,125 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="order" />
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subcat_addon_management" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subcat_addon_management" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="size_management" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="subcat_addon_management" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addon_management" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu_items" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addons" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -243,15 +515,13 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="/usr/local/bin/sass" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
@@ -270,6 +540,18 @@
       <recent name="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management" />
       <recent name="$PROJECT_DIR$/frontend/order/print_receipt" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="JavaScript Debug.all-menuitems.php">
     <configuration default="false" name="all-menuitems.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/menu/menu_items/all-menuitems.php">
@@ -505,18 +787,22 @@
       <workItem from="1497920115576" duration="4238000" />
       <workItem from="1497958105478" duration="2581000" />
       <workItem from="1497967786457" duration="9962000" />
+      <workItem from="1498167247763" duration="46000" />
+      <workItem from="1498171681568" duration="1477000" />
+      <workItem from="1498174109493" duration="6440000" />
+      <workItem from="1498193620365" duration="11693000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="612880000" />
+    <option name="totallyTimeSpent" value="632536000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="55" y="24" width="1311" height="744" extended-state="6" />
-    <editor active="false" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29366896" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28516525" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5057208" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -583,7 +869,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php</url>
-          <line>45</line>
+          <line>46</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
@@ -592,31 +878,171 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="36" column="113" lean-forward="false" selection-start-line="36" selection-start-column="113" selection-end-line="36" selection-end-column="113" />
+        <state relative-caret-position="105">
+          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="117" lean-forward="false" selection-start-line="25" selection-start-column="117" selection-end-line="25" selection-end-column="117" />
+        <state relative-caret-position="-765">
+          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/confirm-delete-subcategory.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        <state relative-caret-position="210">
+          <caret line="74" column="46" lean-forward="false" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="195">
+          <caret line="13" column="126" lean-forward="false" selection-start-line="13" selection-start-column="126" selection-end-line="13" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/demo_move.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-585">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/dem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="130" column="13" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="130" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/all-addons.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1110">
+          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-446">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/sort-addon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="37" column="67" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-329">
+          <caret line="59" column="24" lean-forward="false" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/order/ajax_page.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-495">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/order/order_management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-315">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/backend_utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/menu-utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="239" column="79" lean-forward="false" selection-start-line="239" selection-start-column="79" selection-end-line="239" selection-end-column="79" />
         </state>
       </provider>
     </entry>
@@ -624,69 +1050,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-690">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-180">
-          <caret line="36" column="97" lean-forward="true" selection-start-line="36" selection-start-column="97" selection-end-line="36" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="98" column="144" lean-forward="false" selection-start-line="98" selection-start-column="144" selection-end-line="98" selection-end-column="144" />
+          <folding>
+            <marker date="1498167005753" expanded="true" signature="482:665" ph="UPDATE `menu... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/procedure.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="56" column="12" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="186" />
+        <state relative-caret-position="505">
+          <caret line="60" column="178" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="474" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/all-subcat.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="86" lean-forward="true" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="86" />
-          <folding>
-            <marker date="1496335072055" expanded="true" signature="2931:3238" ph="..." />
-            <marker date="1496335072055" expanded="true" signature="3069:3188" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
+        <state relative-caret-position="-1260">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="33" lean-forward="false" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+        <state relative-caret-position="480">
+          <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1497923648039" expanded="true" signature="660:855" ph="INSERT INTO `menu_meta_rel_category-addon_table`... " />
+            <marker date="1498167005753" expanded="true" signature="1030:1169" ph="UPDATE `menu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="53" selection-end-column="16" />
+          <folding>
+            <marker date="1498167005749" expanded="true" signature="1037:1159" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
@@ -696,70 +1104,21 @@
         <state relative-caret-position="285">
           <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
           <folding>
-            <marker date="1497923647843" expanded="true" signature="559:782" ph="UPDATE `menu... " />
+            <marker date="1498167005753" expanded="true" signature="559:782" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php">
+    <entry file="file://$PROJECT_DIR$/utils/menu_item-utils.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="37" column="70" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state relative-caret-position="349">
+          <caret line="129" column="23" lean-forward="false" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
           <folding>
-            <marker date="1497923647979" expanded="true" signature="424:546" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/add-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="33" column="67" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="67" />
-          <folding>
-            <marker date="1497924841011" expanded="true" signature="3794:3897" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497924841011" expanded="true" signature="4375:4868" ph="..." />
-            <marker date="1497924841011" expanded="true" signature="4590:4821" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="92" lean-forward="false" selection-start-line="27" selection-start-column="92" selection-end-line="27" selection-end-column="92" />
-          <folding>
-            <marker date="1497924840679" expanded="true" signature="605:769" ph="INSERT INTO `menu_addons_table`... " />
-            <marker date="1497924840679" expanded="true" signature="1077:1185" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497924840679" expanded="true" signature="1616:1746" ph="INSERT INTO `menu_meta_rel_size-addons_table`... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-765">
-          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-          <folding>
-            <marker date="1497924840943" expanded="true" signature="4093:4200" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497924840943" expanded="true" signature="4756:4863" ph="SELECT * FRO... menu_meta_rel_size-addons_table" />
-            <marker date="1497924840943" expanded="true" signature="5475:5969" ph="..." />
-            <marker date="1497924840943" expanded="true" signature="5691:5922" ph="..." />
+            <marker date="1498194708525" expanded="true" signature="961:1064" ph="SELECT * FRO... menu_meta_size_table" />
+            <marker date="1498194708525" expanded="true" signature="1317:1420" ph="SELECT * FRO... menu_meta_rel_size-items_table" />
+            <marker date="1498194708525" expanded="true" signature="3415:3518" ph="SELECT * FRO... menu_meta_size_table" />
+            <marker date="1498194708525" expanded="true" signature="3714:3820" ph="SELECT * FRO... menu_meta_rel_size-addons_table" />
+            <marker date="1498194708525" expanded="true" signature="5318:5440" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
@@ -768,414 +1127,259 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1497892943280" expanded="true" signature="636:767" ph="UPDATE `menu... " />
-            <marker date="1497892943280" expanded="true" signature="985:1088" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497892943280" expanded="true" signature="1520:1665" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-359">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="331">
+          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="112" column="75" lean-forward="true" selection-start-line="112" selection-start-column="75" selection-end-line="112" selection-end-column="75" />
           <folding>
-            <marker date="1496675157448" expanded="true" signature="466:530" ph="DELETE FROM " />
-            <marker date="1496675157448" expanded="true" signature="764:843" ph="DELETE FROM " />
+            <marker date="1498167005749" expanded="true" signature="2976:3283" ph="..." />
+            <marker date="1498167005749" expanded="true" signature="3114:3233" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
+        <state relative-caret-position="1284">
           <caret line="155" column="95" lean-forward="false" selection-start-line="155" selection-start-column="95" selection-end-line="155" selection-end-column="95" />
           <folding>
-            <marker date="1497890556177" expanded="true" signature="4568:4668" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497890556177" expanded="true" signature="5146:5636" ph="..." />
-            <marker date="1497890556177" expanded="true" signature="5360:5589" ph="..." />
+            <marker date="1498167005749" expanded="true" signature="4568:4668" ph="SELECT * FRO... menu_meta_size_table" />
+            <marker date="1498167005749" expanded="true" signature="5146:5636" ph="..." />
+            <marker date="1498167005749" expanded="true" signature="5360:5589" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/add-addon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="74" column="46" lean-forward="false" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
-          <folding>
-            <marker date="1497975940334" expanded="true" signature="2845:3025" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="126" lean-forward="false" selection-start-line="13" selection-start-column="126" selection-end-line="13" selection-end-column="126" />
-          <folding>
-            <marker date="1497975940546" expanded="true" signature="834:922" ph="UPDATE `menu... " />
-            <marker date="1497975940546" expanded="true" signature="1085:1181" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="-705">
+          <caret line="33" column="67" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="67" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-60">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1497968067000" expanded="true" signature="1030:1163" ph="UPDATE `menu... " />
+            <marker date="1498199742796" expanded="true" signature="598:794" ph="INSERT INTO `menu_meta_rel_category-addon_table`... " />
+            <marker date="1498199742796" expanded="true" signature="812:1248" ph="INSERT INTO `menu_meta_rel_category-addon_table`... " />
+            <marker date="1498199742796" expanded="true" signature="1013:1248" ph="SELECT MAX( menu_meta_rel_category-subcategory_table" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-          <folding>
-            <marker date="1497969093324" expanded="true" signature="1031:1148" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/demo_move.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-585">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/dem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="300">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
-            <marker date="1497975940422" expanded="true" signature="993:1074" ph="UPDATE `` SE... " />
+            <marker date="1498167005753" expanded="true" signature="980:1395" ph="INSERT INTO `menu_meta_rel_category-subcategory_table`... " />
+            <marker date="1498167005753" expanded="true" signature="1171:1395" ph="SELECT MAX( menu_meta_rel_category-subcategory_table" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="130" column="13" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="130" selection-end-column="13" />
+        <state relative-caret-position="390">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#form#0;n#div#0;n#div#2;n#div#0;n#!!top" expanded="true" />
-            <marker date="1497968664096" expanded="true" signature="2117:3585" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="2328:2921" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="2426:2891" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="2697:2816" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="2759:2765" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="2768:2774" ph=" " />
-            <marker date="1497968664096" expanded="true" signature="2946:3554" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="3054:3524" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="3327:3449" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="3390:3396" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="3399:3405" ph=" " />
-            <marker date="1497968664096" expanded="true" signature="6302:7710" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="6566:7055" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="6657:7025" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="6831:6950" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="6893:6899" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="6902:6908" ph=" " />
-            <marker date="1497968664096" expanded="true" signature="7080:7679" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="7181:7649" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="7452:7574" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="7515:7521" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="7524:7530" ph=" " />
-            <marker date="1497968664096" expanded="true" signature="10100:11613" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="10381:10957" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="10473:10923" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="10748:10883" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="10818:10824" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="10827:10833" ph=" " />
-            <marker date="1497968664096" expanded="true" signature="10991:11582" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="11093:11548" ph="..." />
-            <marker date="1497968664096" expanded="true" signature="11370:11508" ph="..." />
-            <marker date="1497968664096" expanded="false" signature="11441:11447" ph=" " />
-            <marker date="1497968664096" expanded="false" signature="11450:11456" ph=" " />
+            <marker date="1498232103083" expanded="true" signature="592:937" ph="INSERT INTO `menu_meta_size_table`... " />
+            <marker date="1498232103083" expanded="true" signature="751:937" ph="SELECT MAX( menu_addons_table" />
+            <marker date="1498232103083" expanded="true" signature="1219:1296" ph="SELECT * FRO... menu_items_table" />
+            <marker date="1498232103083" expanded="true" signature="1783:1835" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
+            <marker date="1498232103083" expanded="true" signature="2050:2128" ph="SELECT * FRO... menu_addons_table" />
+            <marker date="1498232103083" expanded="true" signature="2619:2672" ph="INSERT INTO `menu_meta_rel_size-addons_table`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/all-addons.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1110">
-          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        <state relative-caret-position="150">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <marker date="1496673544164" expanded="true" signature="2930:3237" ph="..." />
-            <marker date="1496673544164" expanded="true" signature="3068:3187" ph="..." />
+            <marker date="1498230859907" expanded="true" signature="605:1006" ph="INSERT INTO `menu_addons_table`... " />
+            <marker date="1498230859907" expanded="true" signature="783:1006" ph="SELECT MAX( menu_items_table" />
+            <marker date="1498230859907" expanded="true" signature="1319:1427" ph="SELECT * FRO... menu_meta_size_table" />
+            <marker date="1498230859907" expanded="true" signature="2022:2075" ph="INSERT INTO `menu_meta_rel_size-addons_table`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-446">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="480">
+          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
           <folding>
-            <marker date="1497975041326" expanded="true" signature="1039:1161" ph="UPDATE `menu... " />
+            <marker date="1498230477903" expanded="true" signature="979:1145" ph="INSERT INTO `menu_items_table`... " />
+            <marker date="1498230477903" expanded="true" signature="1173:1576" ph="INSERT INTO `menu_items_table`... " />
+            <marker date="1498230477903" expanded="true" signature="1356:1576" ph="SELECT MAX( menu_meta_rel_category-addon_table" />
+            <marker date="1498230477903" expanded="true" signature="1917:2020" ph="SELECT * FRO... menu_meta_size_table" />
+            <marker date="1498230477903" expanded="true" signature="2607:2658" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
+            <marker date="1498230477903" expanded="true" signature="2607:2659" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <marker date="1498240680472" expanded="true" signature="516:530" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="531:993" ph="..." />
+            <marker date="1498240680472" expanded="false" signature="560:595" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="682:949" ph="..." />
+            <marker date="1498240680472" expanded="false" signature="872:906" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="1139:1491" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="1189:1486" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="2437:3723" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="3003:3306" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="3074:3280" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="3363:3680" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="3445:3654" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="3896:4163" ph="..." />
+            <marker date="1498240680472" expanded="true" signature="4048:4102" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="66" column="106" lean-forward="false" selection-start-line="66" selection-start-column="106" selection-end-line="66" selection-end-column="106" />
+          <folding>
+            <marker date="1498240680648" expanded="true" signature="485:578" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
+            <marker date="1498240680648" expanded="true" signature="1743:1801" ph="DELETE FROM " />
+            <marker date="1498240680648" expanded="true" signature="2141:2204" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240680648" expanded="true" signature="2141:2237" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240680648" expanded="true" signature="2692:2798" ph="UPDATE `menu... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="69" column="106" lean-forward="false" selection-start-line="69" selection-start-column="106" selection-end-line="69" selection-end-column="106" />
+          <folding>
+            <marker date="1498240680528" expanded="true" signature="625:684" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
+            <marker date="1498240680528" expanded="true" signature="1664:1721" ph="DELETE FROM " />
+            <marker date="1498240680528" expanded="true" signature="2022:2085" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240680528" expanded="true" signature="2022:2118" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240680528" expanded="true" signature="2571:2677" ph="UPDATE `${$T... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="53" column="104" lean-forward="false" selection-start-line="53" selection-start-column="104" selection-end-line="53" selection-end-column="104" />
+          <folding>
+            <marker date="1498240681008" expanded="true" signature="1491:1559" ph="SELECT * FRO... $" />
+            <marker date="1498240681008" expanded="true" signature="1491:1585" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240681008" expanded="true" signature="2024:2128" ph="UPDATE `${$T... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="35" column="21" lean-forward="false" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        <state relative-caret-position="495">
+          <caret line="100" column="48" lean-forward="true" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
           <folding>
-            <marker date="1497976280002" expanded="true" signature="754:1884" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="788:802" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="803:1358" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="840:875" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="1001:1298" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="1213:1247" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="1417:1884" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="1490:1884" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="1548:1842" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="3041:4919" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="3443:4092" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="3531:4045" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="3849:3993" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="4178:4836" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="4277:4789" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="4590:4737" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5192:5559" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5192:5590" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5409:5493" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5775:6980" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5809:5823" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5824:6380" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="5861:5896" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="6023:6320" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="6235:6269" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="6460:6980" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="6533:6980" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="6591:6938" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="8238:10809" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="8933:9742" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="9041:9675" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="9419:9603" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="9868:10686" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="9987:10619" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="10360:10547" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="11190:12289" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="11486:11570" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="11816:12172" ph="..." />
-            <marker date="1497976280002" expanded="true" signature="11818:12166" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="755:1932" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="789:803" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="804:1359" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="841:876" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="1002:1299" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="1214:1248" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="1418:1932" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="1491:1932" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="1549:1890" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="3158:5199" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="3666:4315" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="3754:4268" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="4072:4216" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="4401:5116" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="4500:5069" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="4870:5017" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="5472:5870" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="5689:5773" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6055:7307" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="6089:6103" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6104:6660" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="6141:6176" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6303:6600" ph="..." />
+            <marker date="1498240710434" expanded="false" signature="6515:6549" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6740:7307" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6813:7307" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="6871:7265" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="8634:11339" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="9455:10264" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="9563:10197" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="9941:10125" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="10390:11216" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="10509:11149" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="10890:11077" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="11720:12819" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="12016:12100" ph="..." />
+            <marker date="1498240710434" expanded="true" signature="12346:12702" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="18" lean-forward="true" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
-            <marker date="1497975247706" expanded="true" signature="516:530" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="531:993" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="560:595" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="682:949" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="872:906" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="1078:1457" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="1139:1456" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="1139:1457" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="1189:1451" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="2292:3496" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="2776:3079" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="2847:3053" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="3136:3453" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="3218:3427" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="3669:3936" ph="..." />
-            <marker date="1497975247706" expanded="true" signature="3821:3875" ph="..." />
+            <marker date="1498240878892" expanded="true" signature="953:1055" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240878892" expanded="true" signature="1537:1649" ph="UPDATE `${$T... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/sort-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="37" column="67" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="47" column="131" lean-forward="false" selection-start-line="47" selection-start-column="131" selection-end-line="47" selection-end-column="131" />
-          <folding>
-            <marker date="1497976279622" expanded="true" signature="1037:1159" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="112" column="75" lean-forward="true" selection-start-line="112" selection-start-column="75" selection-end-line="112" selection-end-column="75" />
-          <folding>
-            <marker date="1497973977911" expanded="true" signature="2976:3283" ph="..." />
-            <marker date="1497973977911" expanded="true" signature="3114:3233" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="59" column="24" lean-forward="false" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/ajax_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1496933588171" expanded="true" signature="506:624" ph="SELECT * FRO... order_daily_table" />
-            <marker date="1496933588171" expanded="true" signature="897:1015" ph="SELECT * FRO... order_daily_table" />
-            <marker date="1496933588171" expanded="true" signature="1296:1416" ph="SELECT * FRO... order_daily_table" />
-            <marker date="1496933588171" expanded="true" signature="1699:1819" ph="SELECT * FRO... order_daily_table" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/order_management.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/backend_utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="1" />
-          <folding>
-            <marker date="1497509103955" expanded="true" signature="89:197" ph="SELECT * FRO... users_identity_table" />
-            <marker date="1497509103955" expanded="true" signature="778:845" ph="SELECT * FRO... users_profile_table" />
-            <marker date="1497509103955" expanded="true" signature="1390:1457" ph="SELECT * FRO... users_profile_table" />
-            <marker date="1497509103955" expanded="true" signature="2101:2161" ph="SELECT * FRO... menu_items_table" />
-            <marker date="1497509103955" expanded="true" signature="2831:2896" ph="SELECT * FRO... items_addon_table" />
-            <marker date="1497509103955" expanded="true" signature="3207:3322" ph="SELECT * FRO... menu_meta_size_table" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/menu-utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="239" column="79" lean-forward="false" selection-start-line="239" selection-start-column="79" selection-end-line="239" selection-end-column="79" />
-          <folding>
-            <marker date="1497981958879" expanded="true" signature="115:182" ph="SELECT * FRO... menu_meta_category_table" />
-            <marker date="1497981958879" expanded="true" signature="904:984" ph="SELECT * FRO... menu_meta_category_table" />
-            <marker date="1497981958879" expanded="true" signature="1984:2131" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
-            <marker date="1497981958879" expanded="true" signature="2695:2804" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
-            <marker date="1497981958879" expanded="true" signature="2695:2805" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
-            <marker date="1497981958879" expanded="true" signature="3460:3599" ph="SELECT * FRO... menu_meta_rel_category-addon_table" />
-            <marker date="1497981958879" expanded="true" signature="4151:4237" ph="SELECT * FRO... menu_meta_rel_category-addon_table" />
-            <marker date="1497981958879" expanded="true" signature="4151:4238" ph="SELECT * FRO... menu_meta_rel_category-addon_table" />
-            <marker date="1497981958879" expanded="true" signature="4881:4967" ph="SELECT * FRO... menu_addons_table" />
-            <marker date="1497981958879" expanded="true" signature="4881:4993" ph="SELECT * FRO... menu_addons_table" />
-            <marker date="1497981958879" expanded="true" signature="5557:5682" ph="SELECT * FRO... menu_addons_table" />
-            <marker date="1497981958879" expanded="true" signature="6263:6366" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497981958879" expanded="true" signature="6843:6907" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497981958879" expanded="true" signature="6843:6908" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497981958879" expanded="true" signature="7257:7353" ph="SELECT * FRO... menu_items_table" />
-            <marker date="1497981958879" expanded="true" signature="7903:8015" ph="SELECT * FRO... menu_items_table" />
-            <marker date="1497981958879" expanded="true" signature="8553:8617" ph="SELECT * FRO... menu_items_table" />
-            <marker date="1497981958879" expanded="true" signature="9632:9695" ph="SELECT * FRO... menu_items_view" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/menu_item-utils.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
-          <caret line="121" column="2" lean-forward="true" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="2" />
+          <caret line="16" column="65" lean-forward="false" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
           <folding>
-            <element signature="n#getItemPriceString#0;n#!!top" expanded="false" />
-            <element signature="n#getAddonPriceString#0;n#!!top" expanded="false" />
-            <marker date="1497887537225" expanded="true" signature="961:1064" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497887537225" expanded="true" signature="1317:1420" ph="SELECT * FRO... menu_meta_rel_size-items_table" />
-            <marker date="1497887537225" expanded="true" signature="3415:3518" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1497887537225" expanded="true" signature="3714:3820" ph="SELECT * FRO... menu_meta_rel_size-addons_table" />
+            <marker date="1498240965332" expanded="true" signature="1440:1521" ph="SELECT * FRO... " />
+            <marker date="1498240965332" expanded="true" signature="1440:1547" ph="SELECT * FRO... ${$Table1}" />
+            <marker date="1498240965332" expanded="true" signature="2029:2146" ph="UPDATE `${$T... " />
           </folding>
         </state>
       </provider>

@@ -13,6 +13,7 @@ $MenuItemId = isSecure_checkPostInput('__menu_item_id') ;
 
 <form method="post" action="process-delete-menuitem.php">
     <input type="hidden" name="__menu_item_id" value='<?php echo "$MenuItemId"  ?>'>
+
     <input type="submit" name="__is_delete" value="Yes, Delete it">
 </form>
 

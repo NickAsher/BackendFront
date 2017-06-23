@@ -55,3 +55,7 @@ INSERT INTO
 
 
 UPDATE `menu_items_table` m INNER JOIN `menu_meta_rel_category-subcategory_table` s ON `m`.`item_subcategory_code` = `s`.`subcategory_code` SET `m`.`item_subcategory_code` = `s`.`rel_id`
+
+
+
+DELETE `menu_meta_rel_category-subcategory_table` , `menu_items_table` , `menu_meta_rel_size-items_table` FROM `menu_meta_rel_category-subcategory_table`   INNER JOIN `menu_items_table`  INNER JOIN `menu_meta_rel_size-items_table`  ON `menu_meta_rel_category-subcategory_table`.`rel_id` = `menu_items_table`.`item_subcategory_rel_id`AND `menu_items_table`.`item_id` = `menu_meta_rel_size-items_table`.`item_id` WHERE `menu_meta_rel_category-subcategory_table`.`rel_id` = '8'

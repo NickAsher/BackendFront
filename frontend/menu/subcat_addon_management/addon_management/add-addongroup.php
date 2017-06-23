@@ -107,12 +107,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-addon-sr-no" class="col-3 col-form-label">Addon-Group Ordering No</label>
-                                <div class="col-md-9">
-                                    <input name="__addongroup_sr_no" id="input-addon-sr-no" class="form-control" type="number" placeholder="5">
-                                </div>
-                            </div>
+
 
 
 

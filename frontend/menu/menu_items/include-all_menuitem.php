@@ -30,6 +30,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
             <table  class='table table-bordered table-hover' >
         
                 <tr class='table-info'>
+                    <th>Sr No</th>
                     <th>Item Image</th>
                     <th>Item Name</th>
                     <th>Item Price</th>
@@ -44,11 +45,14 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
 
 
     foreach($ListOfMenuItemsInSubCategory as $Record){
+        $SrNo = $Record['item_sr_no'] ;
         $ItemId = $Record['item_id'] ;
         $ItemName = $Record['item_name'] ;
         $ItemPriceString = getItemPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
         $ItemImage = $Record['item_image_name'] ;
         $ItemDescription = $Record['item_description'] ;
+
+        $ItemSubcategoryRelId = $Record['item_subcategory_rel_id'] ;
 
 
         $ItemActive = $Record['item_is_active'] ;
@@ -63,6 +67,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
 
         echo "
                 <tr >
+                    <td class='addon-link' data-href='$DetailPageLink'>$SrNo</td>
                     <td class='addon-link' data-href='$DetailPageLink'><img src='$IMAGE_BACKENDFRONT_LINK_PATH/$ItemImage' class='img-fluid' width = '80px' ></td>
                     <td class='addon-link' data-href='$DetailPageLink'><p class='link-black'>$ItemName</p></td>
                     <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
