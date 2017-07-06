@@ -1,25 +1,25 @@
 <?php
 require_once '../../../../utils/constants.php';
 
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
+require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$CategoryCode = isSecure_checkPostInput('__category_code');
-$SizeId = isSecure_checkPostInput('__size_id');
+$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code');
+$SizeId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__size_id');
 
 if(!isset($_POST['__is_delete'])){
     die("The delete action is not set") ;
 }
 
 
-$DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 
 
-mysqli_begin_transaction($DBConnectionBackend) ;
 try{
+    $DBConnectionBackend->beginTransaction() ;
 
 
     $Table1 = "menu_meta_size_table" ;
@@ -31,14 +31,36 @@ try{
       FROM `$Table1`   INNER JOIN `$Table2`  INNER JOIN `$Table3`  
       ON `$Table1`.`size_id` =  `$Table2`.`size_id`  AND `$Table1`.`size_id` = `$Table3`.`size_id` 
         AND `$Table1`.`size_category_code` =  `$Table2`.`item_category_code`  AND `$Table1`.`size_category_code` = `$Table3`.`category_code`
-      WHERE `$Table1`.`size_category_code` = '$CategoryCode' AND `$Table1`.`size_id` = '$SizeId'  ";
+      WHERE `$Table1`.`size_category_code` = :category_code AND `$Table1`.`size_id` = :size_id  ";
 
+    try {
+        $QueryResult1 = $DBConnectionBackend->prepare($Query1);
+        $QueryResult1->execute([
+            'category_code' => $CategoryCode,
+            'size_id' => $SizeId
+        ]);
+    } catch (Exception $e) {
+        throw new Exception("Problem in the delete query for size table ".$e->getMessage()) ;
 
-    if(!mysqli_query($DBConnectionBackend, $Query1)){
-        throw new Exception("Problem in the delete query for size table   <br><br>".mysqli_error($DBConnectionBackend)) ;
     }
 
-//    $NumOfAffectedRows = mysqli_affected_rows($DBConnectionBackend) ;
+
+
+    /*
+     * This is the case when there is not a single menu item and not a sngle addon item
+     * Then the Query1  will delete 0 rows. So in that case we just have to delete the size from menu_meta_size_table
+     */
+    if($QueryResult1->rowCount() == 0){
+        $Query2 = "DELETE FROM $Table1 WHERE `size_id` = :size_id  " ;
+        try {
+            $QueryResult2 = $DBConnectionBackend->prepare($Query2);
+            $QueryResult2->execute([
+                'size_id' => $SizeId
+            ]);
+        } catch (Exception $e) {
+            throw new Exception("Unable to delete the item from size table: ".$e->getMessage()) ;
+        }
+    }
 
 
 
@@ -49,34 +71,32 @@ try{
     /*
      * This query is used to re-sort the Sr No of the Sizes
      */
+    $AllSizesInThisCategory = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
+    if(count($AllSizesInThisCategory) != 0) {
 
+        $CaseStatement = '';
+        $RealSortNo = 1;
+        foreach ($AllSizesInThisCategory as $Record2) {
+            $ThisSize_SizeId = $Record2['size_id'];
+            $CaseStatement .= "WHEN `size_id` = '$ThisSize_SizeId' THEN '$RealSortNo' ";
+            $RealSortNo++;
+        }
 
-    $Query2 = "SELECT * FROM `$Table1` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` ASC " ;
-    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-    if(!$QueryResult2){
-        throw new Exception("Unable to fetch the sizes to sort") ;
+        $Query3 = "UPDATE `$Table1` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_code` = :category_code  ";
+        try {
+            $QueryResult3 = $DBConnectionBackend->prepare($Query3);
+            $QueryResult3->execute(['category_code' => $CategoryCode]);
+        } catch (Exception $e) {
+            throw new Exception("Error in sorting the new Subcategories: " . $e->getMessage() );
+        }
+
     }
 
-    $CaseStatement = '' ;
-    $RealSortNo = 1 ;
-    foreach ($QueryResult2 as $Record2){
-        $ThisSize_SizeId = $Record2['size_id'] ;
-        $CaseStatement .= "WHEN `size_id` = '$ThisSize_SizeId' THEN '$RealSortNo' " ;
-        $RealSortNo ++ ;
-    }
-
-    $Query = "UPDATE `$Table1` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_code` = '$CategoryCode'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        throw new Exception("Error in sorting the new Subcategories: ".mysqli_error($DBConnectionBackend)) ;
-    }
 
 
 
 
-
-    mysqli_commit($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+    $DBConnectionBackend->commit() ;
 
 
     echo " 
@@ -86,9 +106,8 @@ try{
     ";
 
 } catch (Exception $e){
-    echo $e ;
-    mysqli_rollback($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+    echo "Unable to delete the size variation: ".$e->getMessage() ;
+    $DBConnectionBackend->rollBack() ;
 
 
 }

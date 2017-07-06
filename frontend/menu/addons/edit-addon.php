@@ -23,28 +23,33 @@
     <?php
 
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
-    $CategoryCode = isSecure_checkGetInput('___category_code') ;
-    $AddonItemId = isSecure_checkGetInput('___addon_item_id') ;
+    $PostAddonItemId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___addon_item_id') ;
 
     
-    $DBConnectionBackend = YOLOSqlConnect() ;
-    $AddonItemInfoArray = getSingleAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+    try {
+        $AddonItemInfoArray = getSingleAddonItemInfoArray_PDO($DBConnectionBackend, $PostAddonItemId);
+    } catch (Exception $e) {
+        die($e->getMessage()) ;
+    }
+
+    $CategoryCode = $AddonItemInfoArray['item_category_code'] ; //fetched to avoid prepared statements
+    $AddonItemId = $AddonItemInfoArray['item_id'] ; // fetched to avoid prepared statements
     
     $AddonItemName = $AddonItemInfoArray['item_name'] ;
     $AddonItemIsActive = $AddonItemInfoArray['item_is_active'] ;
 
     $ActiveCheckedString = null ;
-    if($AddonItemIsActive == 'true'){
+    if($AddonItemIsActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($AddonItemIsActive == 'false'){
+    } else if($AddonItemIsActive == 'no'){
         $ActiveCheckedString = "";
     }
 
-    //    $NoOfSizeVariations = intval($AddonItemInfoArray['item_no_of_size_variations']) ;
 
 
 
@@ -105,39 +110,62 @@
 
 
                             <div id="Div_Price">
+
                                 <?php
 
-                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` ASC " ;
-                                $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                                if(!$QueryResult){
-                                    die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
+                                $Query = "SELECT `b`.*, `a`.`size_name` 
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size-addons_table` AS `b`
+                                ON `a`.`size_id` = `b`.`size_id`  
+                                WHERE `b`.`addon_id` = :addon_id ORDER BY `a`.`size_sr_no` ASC  " ;
+
+                                try {
+                                    $QueryResult = $DBConnectionBackend->prepare($Query);
+                                    $QueryResult->execute(['addon_id' => $AddonItemId]);
+                                    $AllSizesPriceList = $QueryResult->fetchAll();
+                                }catch (Exception $e){
+                                    die("Error in getting the size price list : ".$e->getMessage()) ;
                                 }
 
-                                foreach ($QueryResult as $Record) {
+                                foreach($AllSizesPriceList as $Record){
                                     $SizeName = $Record['size_name'] ;
                                     $SizeId = $Record['size_id'] ;
+                                    $AddonPrice = $Record['addon_price'] ;
 
-                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonItemId' AND `size_id` = '$SizeId'  " ;
-                                    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-                                    if(!$QueryResult2) {
-                                        die("Unable to fetch the record for the item for size $SizeId :".mysqli_error($DBConnectionBackend) ) ;
-                                    }
-                                    $Record2 = mysqli_fetch_assoc($QueryResult2) ;
-                                    $ItemPrice = $Record2['addon_price'] ;
 
-                                    echo "
+                                    if($AddonPrice == '-1'){
+                                        echo "
                                         <div class='form-group row'>
                                             <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
                                             <div class='col-md-9'>
-                                                <input name='__addon_price_size_$SizeId'  id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' >
+                                                <input name='__addon_price_size_$SizeId'  id='input-addon-price-size_$SizeId' class='form-control' type='text' placeholder='Empty' >
                                             </div>
                                         </div>  
                                         " ;
 
 
+                                    } else {
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
+                                            <div class='col-md-9'>
+                                                <input name='__addon_price_size_$SizeId'  id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$AddonPrice' >
+                                            </div>
+                                        </div>  
+                                        " ;
+                                    }
+
+
+
                                 }
 
+
+
+                                //
+
                                 ?>
+
+
+
                             </div>
 
 
@@ -200,10 +228,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

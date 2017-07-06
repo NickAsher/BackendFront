@@ -23,16 +23,15 @@
 
 
     <?php require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/security/input-security.php'  ;
+
     require_once 'utils/gallery-utils.php';
 
-    if(  !isset($_GET['___gallery_id'])  || empty($_GET['___gallery_id'])  ){
-        die("Gallery Item id is empty or not set") ;
-    }
 
-    $GalleryItemId = $_GET['___gallery_id'] ;
+    $GalleryItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '___gallery_id') ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
     $GalleryItemInfo = getGalleryItemInfo($DBConnectionBackend, $GalleryItemId) ;
     if($GalleryItemInfo == -1){
         die("Problem in getting the Gallery item info") ;
@@ -82,12 +81,7 @@
 
 
 
-<!--                            <div class="form-group row">-->
-<!--                                <label for="input-image-id" class="col-3 col-form-label">Galley Item Id</label>-->
-<!--                                <div class="col-md-9">-->
-<!--                                    <input id="input-image-id" class="form-control" type="text" value='--><?php //echo "$GalleryItem_Id" ; ?><!--' readonly>-->
-<!--                                </div>-->
-<!--                            </div>-->
+
 
 
 

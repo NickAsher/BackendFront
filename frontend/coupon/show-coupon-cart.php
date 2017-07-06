@@ -26,20 +26,19 @@
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
-    $CouponId = isSecure_checkGetInput('___coupon_id') ;
-    $Query = "SELECT * FROM `coupon_coupons_discount_table` WHERE `id` = '$CouponId'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    $Temp = '' ;
-    if($QueryResult) {
-        foreach ($QueryResult as $Record) {
-            $Temp = $Record;
-        }
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+    $CouponId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___coupon_id') ;
 
-    } else{
-        die("Problem in getting the blogpost from blogs_table <br> ".mysqli_error($DBConnectionBackend)) ;
 
+    $Query = "SELECT * FROM `coupon_coupons_discount_table` WHERE `id` = :cpn_id  " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['cpn_id' => $CouponId]);
+        $Temp = $QueryResult->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        die("Unable to fetch the coupon from coupon discount table ".$e) ;
     }
+
 
 
 

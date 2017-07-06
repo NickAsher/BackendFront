@@ -26,23 +26,18 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
-
-
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
     $Query = "SELECT * FROM `info_about_table` WHERE `restaurant_id` = '1' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
+    try{
+        $QueryResult = $DBConnectionBackend->query($Query) ;
+        $TempArray = $QueryResult->fetch(PDO::FETCH_ASSOC) ;
 
-    $TempArray = '' ;
-    if($QueryResult) {
-        foreach($QueryResult as $Record){
-            $TempArray = $Record ;
-        }
-    } else {
-        echo "Error in getting the variables <br> ".mysqli_error($DBConnectionBackend) ;
+    } catch (Exception $e){
+        die("Error in getting the info : ".$e->getMessage()) ;
     }
 
 

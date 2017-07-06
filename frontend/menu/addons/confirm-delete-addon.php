@@ -4,8 +4,8 @@ require_once '../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$AddonGroupRelId = isSecure_checkPostInput('__addon_group_rel_id');
-$AddonItemId = isSecure_checkPostInput('__addon_id') ;
+$AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addon_group_rel_id');
+$AddonItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addon_id') ;
 
 ?>
 

@@ -6,7 +6,7 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 
-$ItemId = isSecure_checkPostInput('__gallery_id') ;
+$ItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__gallery_id') ;
 
 ?>
 

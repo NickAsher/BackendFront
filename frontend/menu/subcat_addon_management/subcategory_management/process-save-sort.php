@@ -1,31 +1,22 @@
 <?php
 require_once '../../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 $SortedIdsArray = isSecure_checkPostInput('__sortarray') ;
-$CategoryCode = isSecure_checkPostInput('__category_code') ;
+$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
 
 
-$DBConnection = YOLOSqlConnect() ;
+
+foreach ($SortedIdsArray as $sortNo=>$ItemId){
+    isSecure_isValidPositiveInteger(GetPostConst::None, $ItemId) ;
+}
 
 
-//print_r($SortedIdsArray) ;
-
-//foreach ($SortedIdsArray as $sortNo=>$Id){
-//    $RealSortNo = $sortNo + 1 ;
-//    $Query = "UPDATE `demo` SET `item_sr_no` = '$RealSortNo' WHERE `item_id` = '$Id' " ;
-//    $QueryResult = mysqli_query($DBConnection, $Query) ;
-//    if($QueryResult){
-//        continue ;
-//    } else {
-//        die("error in sorting for id $Id") ;
-//    }
-//}
+$DBConnection = YOPDOSqlConnect() ;
 
 
-$CaseStatement = '' ;
 /*
  * SortedIdsArray
  *      Array(
@@ -36,19 +27,26 @@ $CaseStatement = '' ;
  *
  *          )
  */
+$CaseStatement = '' ;
+$CaseValues = array() ;
 foreach ($SortedIdsArray as $sortNo=>$RelId){
     $RealSortNo = $sortNo + 1 ;
-    $CaseStatement .= "WHEN `rel_id` = '$RelId' THEN '$RealSortNo' " ;
+    $CaseStatement .= "WHEN `rel_id` = ? THEN ? " ;
+    array_push($CaseValues, $RelId) ;
+    array_push($CaseValues, $RealSortNo) ;
 
 }
 
 
 
 
-$Query = "UPDATE `menu_meta_rel_category-subcategory_table` SET `subcategory_sr_no` = CASE $CaseStatement END WHERE `category_code` = '$CategoryCode'  " ;
-$QueryResult = mysqli_query($DBConnection, $Query) ;
-if(!$QueryResult){
-    die("error in case statement") ;
+$Query = "UPDATE `menu_meta_rel_category-subcategory_table` SET `subcategory_sr_no` = CASE $CaseStatement END WHERE `category_code` = ?  " ;
+array_push($CaseValues, $CategoryCode) ;
+try{
+    $QueryResult = $DBConnection->prepare($Query) ;
+    $QueryResult->execute($CaseValues) ;
+}catch(Exception $e){
+    die("error in case statement");
 }
 
 echo "Success" ;

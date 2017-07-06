@@ -23,20 +23,24 @@ class Paginator{
 
 
         // Calculating the MaxPageNo
-        if($TotalNoOfItems%$NoOfItemsPerPage == 0){
-            $MaxPageNo = $TotalNoOfItems/$NoOfItemsPerPage ;
-        } else {
-            $MaxPageNo = intval($TotalNoOfItems/$NoOfItemsPerPage) + 1 ;
+        if($TotalNoOfItems == 0){
+            $this->MaxPageNo = 1 ;
+        }else{
+            if($TotalNoOfItems%$NoOfItemsPerPage == 0){
+                $this->MaxPageNo = $TotalNoOfItems/$NoOfItemsPerPage ;
+            } else {
+                $this->MaxPageNo = intval($TotalNoOfItems/$NoOfItemsPerPage) + 1 ;
+            }
         }
-        $this->MaxPageNo = $MaxPageNo ;
+
 
 
 
         //calculating the real Page No
         if($CurrentPageNo < 1) {
             $this->CurrentPageNo = 1;
-        } else if ($CurrentPageNo > $this->MaxPageNo){
-            $this->CurrentPageNo = $MaxPageNo ;
+        } else if ($CurrentPageNo >= $this->MaxPageNo){
+            $this->CurrentPageNo = $this->MaxPageNo ;
         }else {
             $this->CurrentPageNo = $CurrentPageNo ;
         }

@@ -26,18 +26,22 @@
     <?php
 
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryCode = isSecure_checkGetInput('___category_code') ;
-    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
-    $ListoFSubCatetgoriesForCategory = getListOfAllSubCategory_InACategory_Array($DBConnectionBackend ,$CategoryCode) ;
-    
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Get, '___category_code') ;
+    try {
+
+    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
+    $ListoFSubCatetgoriesForCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend ,$CategoryCode) ;
+    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode);
+    } catch (Exception $e) {
+        die($e) ;
+    }
     $CategoryName = $CategoryInfoArray['category_display_name'] ;
 
 
@@ -115,10 +119,9 @@
 
                             <div id="Div_Price">
                                 <?php
-                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_id` " ;
-                                $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                                if($QueryResult){
-                                    foreach ($QueryResult as $Record){
+
+
+                                    foreach ($AllSizes as $Record){
                                         $SizeName = $Record['size_name'] ;
                                         $SizeId = $Record['size_id'] ;
                                         echo "
@@ -130,9 +133,7 @@
                                         </div>  
                                     " ;
                                     }
-                                } else {
-                                    die("Unable to get the sizes for the item :".mysqli_error($DBConnectionBackend) ) ;
-                                }
+
 
 
                                 ?>
@@ -153,7 +154,7 @@
                                 <label for="input-item-active-hidden" class="col-3 col-form-label">Item Active</label>
 
                                 <div class="col-md-9">
-                                    <input name="__item_is_active" id="input-item-active-hidden" class="form-control" type="hidden" value="falsey"  >
+                                    <input name="__item_is_active" id="input-item-active-hidden" class="form-control" type="hidden" value="no"  >
                                     <input id="input-item-active-presentation" type="checkbox" class="form-control" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
@@ -239,10 +240,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('truey') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('falsey') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

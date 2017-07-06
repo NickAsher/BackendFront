@@ -28,7 +28,7 @@
 <body>
 
 
-<?php require_once 'includes/header3.php'; ?>
+<?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/header.php'; ?>
 
 
 

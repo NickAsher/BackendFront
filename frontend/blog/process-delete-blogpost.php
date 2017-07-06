@@ -2,62 +2,58 @@
 require_once '../../utils/constants.php';
 
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
+require_once $ROOT_FOLDER_PATH.'/utils/image-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
+require_once 'utils/utils-blogpost.php' ;
 
 require_once 'utils/utils-blogpost.php';
 
 
-$BlogId = isSecure_checkPostInput('__blog_id') ;
+$BlogId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__blog_id') ;
+
+
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 
 
+try{
+
+    $BlogInfoArray = getBlogInfo($DBConnectionBackend,$BlogId) ;
+    $BlogDisplayPic_Name = $BlogInfoArray['blog_display_image'] ;
 
 
-$DBConnectionBackend = YOLOSqlConnect() ;
-$Query = "SELECT * FROM `blogs_table` WHERE `blog_id` = '$BlogId'  " ;
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-$BlogInfoArray = '' ;
-if($QueryResult) {
-    foreach ($QueryResult as $Record) {
-        $BlogInfoArray = $Record;
+    deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $BlogDisplayPic_Name) ;
+
+
+
+    $Query = "DELETE FROM `blogs_table` WHERE `blog_id` = :blog_id  " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute([
+            'blog_id' => $BlogId
+        ]);
+    } catch (Exception $e) {
+        throw new Exception("Unable to delete the blog post, but image is now deleted: ".$e) ;
     }
 
-} else{
-    die("Problem in getting the blogpost from blogs_table <br> ".mysqli_error($DBConnectionBackend)) ;
 
+    echo "
+        <div >
+            Succesfully deleted the item
+            <a href='all-blogpost.php'>
+                Show All posts
+            </a>
+        </div>
+    " ;
+
+
+} catch (Exception $j) {
+    die($j) ;
 }
-
-
-$BlogDisplayPic_Name = $BlogInfoArray['blog_display_image'] ;
-
-
-$Del1 = deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $BlogDisplayPic_Name) ;
-
-
-if($Del1 == -1 ) {
-    die("Unable to delete the image from the image folder so can't delete the item ") ;
-}
-
-
-$Query = "DELETE FROM `blogs_table` WHERE `blog_id` = '$BlogId'  " ;
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-if($QueryResult){
-    echo "Succesfully deleted the item " ;
-} else {
-    echo "unable to delete the blog post, but image is now deleted <br> ".mysqli_error($DBConnectionBackend) ;
-}
-
-
-
 
 
 
 
 ?>
 
-<div >
-    <a href='all-blogpost.php'>
-        Show All posts
-    </a>
-</div>
+

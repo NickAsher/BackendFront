@@ -1,59 +1,68 @@
 <?php
 require_once '../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
+require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 require_once 'utils/utils-blogpost.php';
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
+require_once $ROOT_FOLDER_PATH.'/utils/image-utils-pdo.php' ;
 
 
 
+$BlogTitle = isSecure_IsValidText(GetPostConst::Post, '__blog_title') ;
+$BlogDisplayImageArrayVariable = $_FILES['__blog_display_image'] ;
+$BlogContent = isSecure_checkPostInput_String('__blog_content') ;
+$CreationTimeStamp = date("Y-m-d H:i:s") ;
 
 
-if(isset($_POST['__blog_title']) ){
-    if(!empty($_POST['__blog_title'])){
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 
-        $DBConnectionBackend = YOLOSqlConnect() ;
+try {
 
-        $CreationTimeStamp = date("Y-m-d H:i:s") ;
-        $ModifiedTimeStamp = date("Y-m-d H:i:s") ;
-        $BlogTitle = $_POST['__blog_title'] ;
-        $BlogDisplayImageArrayVariable = $_FILES['__blog_display_image'] ;
-        $BlogContent = $_POST['__blog_content'] ;
-        $BlogContent = mysqli_real_escape_string($DBConnectionBackend, $BlogContent) ;
+    // this will throw an exception if unsuccessfull and page will not move any further
+    $BlogDisplayImage_Name = moveImageToImageFolder($IMAGE_FOLDER_FILE_PATH, $BlogDisplayImageArrayVariable);
 
 
 
-        $BlogDisplayImage_Name = moveImageToImageFolder($DBConnectionBackend, $IMAGE_FOLDER_FILE_PATH, $BlogDisplayImageArrayVariable) ;
-        if($BlogDisplayImage_Name == -1){
-            die("Problem in moving the uploaded files") ;
+    $Query = "INSERT INTO `blogs_table` VALUES ('', :creation_timestamp, :blog_title, :blog_image_name, :blog_content)  ";
 
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute([
+            'creation_timestamp' => $CreationTimeStamp,
+            'blog_title' => $BlogTitle,
+            'blog_image_name' => $BlogDisplayImage_Name,
+            'blog_content' => $BlogContent
+        ]);
+    } catch (Exception $e) {
+
+        try {
+            deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $BlogDisplayImage_Name);
+        } catch (Exception $e) {
+            throw new Exception("There is an error and so blog is not inserted and an error has arised in deleting the inserted image: ".$e) ;
         }
-
-        $Query = "INSERT INTO `blogs_table` VALUES ('', '$CreationTimeStamp', '$ModifiedTimeStamp',
-          '$BlogTitle', '$BlogDisplayImage_Name', '$BlogContent')  " ;
-
-        $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-        if($QueryResult){
-            echo "Successfully inserted the blog values " ;
-
-        } else {
-            deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $BlogDisplayImage_Name) ;
-            echo "Problem in inserting the blog values into the table <br> ".mysqli_error($DBConnectionBackend) ;
-
-        }
-
+        throw new Exception("Problem in inserting the blog values into the table, but deleted the image " . $e);
     }
+
+
+
+    echo "
+        <div>
+            <a href='all-blogpost.php'>
+                Show All Blogposts
+            </a>
+        </div>
+        
+    " ;
+
+
+
+
+}catch(Exception $j){
+    die($j) ;
 }
 
 
 
 
-
-
-
 ?>
-<div>
-    <a href="all-blogpost.php">
-        Show All Blogposts
-    </a>
-</div>
+

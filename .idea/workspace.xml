@@ -5,40 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ced062f7-50c4-4a1b-8536-f7523a92ece3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000111_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000111_.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000113_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000113_.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170612_0000000114_.jpg" afterPath="$PROJECT_DIR$/images/20170612_0000000114_.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images/20170619_0000000122_.jpg" afterPath="$PROJECT_DIR$/images/20170619_0000000122_.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/images_user/10001_1495672426.jpg" afterPath="$PROJECT_DIR$/images_user/10001_1495672426.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/tolo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/yolo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/background_fetcher.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/init.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/o.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/print_service.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/receipt2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/print_service/receipt_parser.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/order/utils/print_service.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-save-sort.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/sort-gallery-item.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-save-sort.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/sort-openscr.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/utils-openscr.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/settings/social-media/edit-socialmedia.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/settings/social-media/process-edit-socialmedia.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/settings/social-media/read-socialmedia.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/settings/tax/process-save-sort.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/settings/tax/sort-tax.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/frontend/start-stop/things_to_do" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/jquery/moment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/t3/t3_components_btn.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/t3/t3_components_list.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sql/sqlconnection2.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/SuccessError.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/image-utils-pdo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/menu-utils-pdo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/menu_item-utils-pdo.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/utils/user-utils.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/demo/dem.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/restaurant_info/contact/process-edit-contact_info.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/show-openscr-image.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/coupon/service-refresh-coupon.php" afterPath="$PROJECT_DIR$/demo/successpage.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/menu/addons/confirm-edit-addon.php" afterPath="$PROJECT_DIR$/demo/back_validation.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-edit-menuitem2.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-edit-menuitem.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/receipt_2.html" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/receipt2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/BackendFront.iml" afterPath="$PROJECT_DIR$/.idea/BackendFront.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/dem.php" afterPath="$PROJECT_DIR$/demo/dem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/demo_move.php" afterPath="$PROJECT_DIR$/demo/demo_move.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/procedure.sql" afterPath="$PROJECT_DIR$/demo/procedure.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/validation.php" afterPath="$PROJECT_DIR$/demo/validation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/all-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/all-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/confirm-delete-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/confirm-delete-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/edit-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/edit-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/includes/header.php" afterPath="$PROJECT_DIR$/frontend/blog/includes/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/process-add-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/process-add-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/process-delete-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/process-delete-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/process-edit-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/process-edit-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/show-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/show-blogpost.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/blog/utils/utils-blogpost.php" afterPath="$PROJECT_DIR$/frontend/blog/utils/utils-blogpost.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/common/css/sort.css" afterPath="$PROJECT_DIR$/frontend/common/css/sort.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/common/includes/header.php" afterPath="$PROJECT_DIR$/frontend/common/includes/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/all-coupons.php" afterPath="$PROJECT_DIR$/frontend/coupon/all-coupons.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/confirm-delete-coupon.php" afterPath="$PROJECT_DIR$/frontend/coupon/confirm-delete-coupon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/edit-coupon-cart.php" afterPath="$PROJECT_DIR$/frontend/coupon/edit-coupon-cart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/process-add-coupon-cart.php" afterPath="$PROJECT_DIR$/frontend/coupon/process-add-coupon-cart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/process-delete-coupon.php" afterPath="$PROJECT_DIR$/frontend/coupon/process-delete-coupon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/process-edit-coupon.php" afterPath="$PROJECT_DIR$/frontend/coupon/process-edit-coupon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/coupon/show-coupon-cart.php" afterPath="$PROJECT_DIR$/frontend/coupon/show-coupon-cart.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/add-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/add-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/all-addons.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/all-addons.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/edit-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/edit-addon.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/show_addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/show_addon.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" afterPath="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/edit-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/edit-menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/show-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/show-menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" afterPath="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/all-subcat.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/all-subcat.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" />
@@ -47,44 +103,59 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/confirm-delete-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/confirm-delete-subcategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" afterPath="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/menu/subcommon/includes/header.php" afterPath="$PROJECT_DIR$/frontend/menu/subcommon/includes/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/notification/all-notifications.php" afterPath="$PROJECT_DIR$/frontend/notification/all-notifications.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/ajax_page.php" afterPath="$PROJECT_DIR$/frontend/order/ajax_page.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/history/order_history.php" afterPath="$PROJECT_DIR$/frontend/order/history/order_history.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/order_management.php" afterPath="$PROJECT_DIR$/frontend/order/order_management.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/demo.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/demo.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/receipt2.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/receipt2.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/receipt_2.html" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/receipt_2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/thermal1.php" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/thermal1.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/order/print_receipt/thermal_receipt_1.html" afterPath="$PROJECT_DIR$/frontend/order/print_receipt/thermal_receipt_1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/about/edit_about_us.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/about/edit_about_us.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/about/process-edit-about_us.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/about/process-edit-about_us.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/about/read_about_us.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/about/read_about_us.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/contact/edit_contact_info.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/contact/edit_contact_info.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/contact/process-edit-contact_info2.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/contact/process-edit-contact_info2.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/contact/read_contact_info.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/contact/read_contact_info.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/add-new-gallery-item.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/add-new-gallery-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/all-gallery-items.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/all-gallery-items.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/confirm-delete-gallery-item.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/confirm-delete-gallery-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-add-new-gallery-item.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-add-new-gallery-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-delete-gallery-item.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-delete-gallery-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/show-gallery-item.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/show-gallery-item.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/gallery/utils/gallery-utils.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/gallery/utils/gallery-utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/includes/header.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/includes/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/add-new-openscr-image.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/add-new-openscr-image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/all-openscr-images.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/all-openscr-images.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/confirm-delete-openscr-image.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/confirm-delete-openscr-image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-add-new-openscr-image.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-add-new-openscr-image.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-delete-openscr-image.php" afterPath="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-delete-openscr-image.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/settings.php" afterPath="$PROJECT_DIR$/frontend/settings/settings.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/add-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/add-tax.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/all-taxes.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/all-taxes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/confirm-start.php" afterPath="$PROJECT_DIR$/frontend/start-stop/confirm-start.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/confirm-stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/confirm-stop.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/process-start.php" afterPath="$PROJECT_DIR$/frontend/start-stop/process-start.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/process-stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/process-stop.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/start_stop.php" afterPath="$PROJECT_DIR$/frontend/start-stop/start_stop.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/start-stop/start_stop_utils.php" afterPath="$PROJECT_DIR$/frontend/start-stop/start_stop_utils.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css.map" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.css.map" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.scss" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_addon2.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.css" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.js" afterPath="$PROJECT_DIR$/lib/bootstrap4/bootstrap_toggle.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jquery/jquery.print.js" afterPath="$PROJECT_DIR$/lib/jquery/jquery.print.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/additional-methods.js" afterPath="$PROJECT_DIR$/lib/validate/additional-methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/additional-methods.min.js" afterPath="$PROJECT_DIR$/lib/validate/additional-methods.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/jquery.validate.js" afterPath="$PROJECT_DIR$/lib/validate/jquery.validate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/validate/jquery.validate.min.js" afterPath="$PROJECT_DIR$/lib/validate/jquery.validate.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/confirm-delete-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/confirm-delete-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/edit-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/edit-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/process-add-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/process-add-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/process-delete-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/process-delete-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/process-edit-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/process-edit-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/frontend/settings/tax/show-tax.php" afterPath="$PROJECT_DIR$/frontend/settings/tax/show-tax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/t3/t3.css" afterPath="$PROJECT_DIR$/lib/t3/t3.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/t3/t3.css.map" afterPath="$PROJECT_DIR$/lib/t3/t3.css.map" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/t3/t3.js" afterPath="$PROJECT_DIR$/lib/t3/t3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/t3/t3.scss" afterPath="$PROJECT_DIR$/lib/t3/t3.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/security/demo.php" afterPath="$PROJECT_DIR$/security/demo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/security/validation.php" afterPath="$PROJECT_DIR$/security/validation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/all-items.php" afterPath="$PROJECT_DIR$/sortable/all-items.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/process-save-sort.php" afterPath="$PROJECT_DIR$/sortable/process-save-sort.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sortable/sort.php" afterPath="$PROJECT_DIR$/sortable/sort.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/menu_item-utils.php" afterPath="$PROJECT_DIR$/utils/menu_item-utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/security/input-security.php" afterPath="$PROJECT_DIR$/security/input-security.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/backend_utils.php" afterPath="$PROJECT_DIR$/utils/backend_utils.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/constants.php" afterPath="$PROJECT_DIR$/utils/constants.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/menu-utils.php" afterPath="$PROJECT_DIR$/utils/menu-utils.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/paginator.php" afterPath="$PROJECT_DIR$/utils/paginator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/utils/updater-utils.php" afterPath="$PROJECT_DIR$/utils/updater-utils.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -93,96 +164,59 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <pharPath>/usr/local/bin/composer</pharPath>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="BackendFront" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="process-delete-size.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php">
+      <file leaf-file-name="sort-openscr.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/sort-openscr.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="53" column="104" lean-forward="false" selection-start-line="53" selection-start-column="104" selection-end-line="53" selection-end-column="104" />
+            <state relative-caret-position="885">
+              <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
               <folding>
-                <marker date="1498240681008" expanded="true" signature="1491:1559" ph="SELECT * FRO... $" />
-                <marker date="1498240681008" expanded="true" signature="1491:1585" ph="SELECT * FRO... ${$Table1}" />
-                <marker date="1498240681008" expanded="true" signature="2024:2128" ph="UPDATE `${$T... " />
+                <marker date="1499349568519" expanded="true" signature="2785:2799" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="include-all-addons.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php">
+      <file leaf-file-name="sort-gallery-item.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/sort-gallery-item.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="100" column="48" lean-forward="true" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
+            <state relative-caret-position="420">
+              <caret line="103" column="36" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="103" selection-end-column="36" />
               <folding>
-                <marker date="1498240710434" expanded="true" signature="755:1932" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="789:803" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="804:1359" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="841:876" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="1002:1299" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="1214:1248" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="1418:1932" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="1491:1932" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="1549:1890" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="3158:5199" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="3666:4315" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="3754:4268" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="4072:4216" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="4401:5116" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="4500:5069" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="4870:5017" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="5472:5870" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="5689:5773" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6055:7307" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="6089:6103" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6104:6660" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="6141:6176" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6303:6600" ph="..." />
-                <marker date="1498240710434" expanded="false" signature="6515:6549" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6740:7307" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6813:7307" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="6871:7265" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="8634:11339" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="9455:10264" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="9563:10197" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="9941:10125" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="10390:11216" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="10509:11149" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="10890:11077" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="11720:12819" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="12016:12100" ph="..." />
-                <marker date="1498240710434" expanded="true" signature="12346:12702" ph="..." />
+                <marker date="1499336886423" expanded="true" signature="2763:2777" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="process-delete-addon.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php">
+      <file leaf-file-name="process-save-sort.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-save-sort.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="690">
+              <caret line="46" column="62" lean-forward="false" selection-start-line="46" selection-start-column="62" selection-end-line="46" selection-end-column="62" />
               <folding>
-                <marker date="1498240878892" expanded="true" signature="953:1055" ph="SELECT * FRO... ${$Table1}" />
-                <marker date="1498240878892" expanded="true" signature="1537:1649" ph="UPDATE `${$T... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="process-delete-menuitem.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" column="65" lean-forward="false" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
-              <folding>
-                <marker date="1498240965332" expanded="true" signature="1440:1521" ph="SELECT * FRO... " />
-                <marker date="1498240965332" expanded="true" signature="1440:1547" ph="SELECT * FRO... ${$Table1}" />
-                <marker date="1498240965332" expanded="true" signature="2029:2146" ph="UPDATE `${$T... " />
+                <marker date="1499349568647" expanded="true" signature="867:946" ph="UPDATE `open... " />
               </folding>
             </state>
           </provider>
@@ -195,8 +229,8 @@
       <list>
         <option value="SCSS File" />
         <option value="TypeScript File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="CSS File" />
       </list>
     </option>
@@ -211,14 +245,38 @@
       <find>$DBConnectionPlayground</find>
       <find>email</find>
       <find>col-9</find>
+      <find>\&quot;</find>
+      <find>true</find>
+      <find>truey</find>
+      <find>fa</find>
+      <find>fal</find>
+      <find>falsey</find>
+      <find>'</find>
+      <find>'true</find>
+      <find>'true'</find>
       <find>&quot;</find>
+      <find>P</find>
+      <find>Pagint</find>
+      <find>Pagin</find>
+      <find>Paginator</find>
+      <find>$</find>
+      <find>$Get</find>
+      <find>$Ps</find>
+      <find>$P</find>
+      <find>$Pos</find>
+      <find>$Post</find>
+      <find>FirstItem</find>
     </findStrings>
     <replaceStrings>
       <replace>BackendFront</replace>
       <replace>blogs_table</replace>
       <replace>$DBConnectionBackend</replace>
       <replace>col-md-9</replace>
+      <replace>yes</replace>
+      <replace>no</replace>
       <replace>'</replace>
+      <replace>Get</replace>
+      <replace>Post</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\xampp2\htdocs\BackendFront</dir>
@@ -230,57 +288,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/show-menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/about/process-edit-about_us.php" />
+        <option value="$PROJECT_DIR$/utils/updater-utils.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/add-new-gallery-item.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/confirm-delete-gallery-item.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/show-gallery-item.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/add-new-openscr-image.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/confirm-delete-openscr-image.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/show-openscr-image.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/contact/process-edit-contact_info2.php" />
+        <option value="$PROJECT_DIR$/demo/tolo.php" />
+        <option value="$PROJECT_DIR$/frontend/blog/edit-blogpost.php" />
+        <option value="$PROJECT_DIR$/utils/image-utils-pdo.php" />
+        <option value="$PROJECT_DIR$/frontend/blog/process-delete-blogpost.php" />
+        <option value="$PROJECT_DIR$/frontend/blog/process-add-blogpost.php" />
+        <option value="$PROJECT_DIR$/frontend/blog/process-edit-blogpost.php" />
+        <option value="$PROJECT_DIR$/frontend/coupon/confirm-delete-coupon.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-add-new-gallery-item.php" />
+        <option value="$PROJECT_DIR$/frontend/coupon/process-delete-coupon.php" />
+        <option value="$PROJECT_DIR$/frontend/coupon/process-add-coupon-cart.php" />
+        <option value="$PROJECT_DIR$/frontend/coupon/process-edit-coupon.php" />
+        <option value="$PROJECT_DIR$/sql/sqlconnection2.php" />
+        <option value="$PROJECT_DIR$/frontend/notification/all-notifications.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/add-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/confirm-delete-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/process-add-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/process-delete-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/process-edit-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/show-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/edit-tax.php" />
         <option value="$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/edit-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-edit-menuitem2.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/show_addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/edit-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-edit-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/confirm-delete-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/confirm-delete-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/edit-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/add_size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/edit-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/add-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/edit-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/all-gallery-items.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/sort-gallery-item.php" />
+        <option value="$PROJECT_DIR$/security/input-security.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-save-sort.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php" />
         <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/demo/dem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/sort-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php" />
-        <option value="$PROJECT_DIR$/utils/menu-utils.php" />
-        <option value="$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php" />
-        <option value="$PROJECT_DIR$/demo/procedure.sql" />
-        <option value="$PROJECT_DIR$/utils/menu_item-utils.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php" />
-        <option value="$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php" />
+        <option value="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/process-save-sort.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/all-taxes.php" />
+        <option value="$PROJECT_DIR$/frontend/settings/tax/sort-tax.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/gallery/process-delete-gallery-item.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/utils-openscr.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/all-openscr-images.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-add-new-openscr-image.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-delete-openscr-image.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-save-sort.php" />
+        <option value="$PROJECT_DIR$/frontend/restaurant_info/opening_screen/sort-openscr.php" />
       </list>
     </option>
   </component>
@@ -296,12 +354,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="xampp php" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="xampp php">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/respect/validation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+    </include_path>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="1303" />
-    <option name="height" value="780" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1301" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -321,8 +385,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -345,7 +407,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="frontend" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -360,6 +422,116 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="settings" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="settings" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tax" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="restaurant_info" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="opening_screen" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="restaurant_info" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="restaurant_info" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gallery" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BackendFront" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="frontend" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="restaurant_info" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="about" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -378,80 +550,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subcat_addon_management" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subcat_addon_management" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="size_management" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subcat_addon_management" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="addon_management" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -477,68 +575,40 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="frontend" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="addons" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BackendFront" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="demo" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="database.data.csv.formats" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../RestaurantApi" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="nodejs_interpreter_path" value="/usr/bin/node" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/restaurant_info/opening_screen" />
+      <recent name="$PROJECT_DIR$/frontend/settings/tax" />
+      <recent name="$PROJECT_DIR$/frontend/restaurant_info/gallery" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/frontend/menu/menu_items" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/frontend/order/utils" />
       <recent name="$PROJECT_DIR$/frontend/settings" />
       <recent name="$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management" />
       <recent name="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/frontend/menu/utils" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/frontend/menu/addons" />
-      <recent name="$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management" />
-      <recent name="$PROJECT_DIR$/frontend/menu/menu_items" />
-      <recent name="$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management" />
-      <recent name="$PROJECT_DIR$/frontend/order/print_receipt" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -553,20 +623,31 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.all-menuitems.php">
-    <configuration default="false" name="all-menuitems.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/menu/menu_items/all-menuitems.php">
+  <component name="RunManager" selected="JavaScript Debug.sort-tax.php">
+    <configuration default="false" name="all-blogpost.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/blog/all-blogpost.php">
       <method />
     </configuration>
-    <configuration default="false" name="all-subcat.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/menu/subcat_addon_management/all-subcat.php">
+    <configuration default="false" name="all-notifications.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/notification/all-notifications.php">
       <method />
     </configuration>
-    <configuration default="false" name="sort-subcategory.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php">
+    <configuration default="false" name="all-gallery-items.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/restaurant_info/gallery/all-gallery-items.php">
       <method />
     </configuration>
-    <configuration default="false" name="dem.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/demo/dem.php">
+    <configuration default="false" name="sort-gallery-item.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/restaurant_info/gallery/sort-gallery-item.php">
       <method />
     </configuration>
-    <configuration default="false" name="order_management.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/order/order_management.php">
+    <configuration default="false" name="sort-tax.php" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost/BackendFront/frontend/settings/tax/sort-tax.php">
+      <method />
+    </configuration>
+    <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
+      <PhpTestRunnerSettings />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
@@ -626,19 +707,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.all-menuitems.php" />
-      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.all-subcat.php" />
-      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.sort-subcategory.php" />
-      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.dem.php" />
-      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.order_management.php" />
+      <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.all-blogpost.php" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.all-notifications.php" />
+      <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.all-gallery-items.php" />
+      <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.sort-gallery-item.php" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.sort-tax.php" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.all-menuitems.php" />
-        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.order_management.php" />
-        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.dem.php" />
-        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.all-subcat.php" />
-        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.sort-subcategory.php" />
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.sort-tax.php" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.sort-gallery-item.php" />
+        <item index="2" class="java.lang.String" itemvalue="JavaScript Debug.all-gallery-items.php" />
+        <item index="3" class="java.lang.String" itemvalue="JavaScript Debug.all-notifications.php" />
+        <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.all-blogpost.php" />
       </list>
     </recent_temporary>
   </component>
@@ -790,28 +871,58 @@
       <workItem from="1498167247763" duration="46000" />
       <workItem from="1498171681568" duration="1477000" />
       <workItem from="1498174109493" duration="6440000" />
-      <workItem from="1498193620365" duration="11693000" />
+      <workItem from="1498193620365" duration="12641000" />
+      <workItem from="1498283600542" duration="783000" />
+      <workItem from="1498300329948" duration="3896000" />
+      <workItem from="1498305152966" duration="16373000" />
+      <workItem from="1498400348883" duration="22994000" />
+      <workItem from="1498474149853" duration="155000" />
+      <workItem from="1498474860690" duration="1346000" />
+      <workItem from="1498525944086" duration="15878000" />
+      <workItem from="1498602686804" duration="3815000" />
+      <workItem from="1498631089002" duration="5515000" />
+      <workItem from="1498641620451" duration="646000" />
+      <workItem from="1498710491133" duration="13448000" />
+      <workItem from="1498810515342" duration="5451000" />
+      <workItem from="1498829424421" duration="10792000" />
+      <workItem from="1498884694943" duration="2690000" />
+      <workItem from="1498891839251" duration="116000" />
+      <workItem from="1498896971932" duration="18625000" />
+      <workItem from="1498991707868" duration="15192000" />
+      <workItem from="1499051094509" duration="6170000" />
+      <workItem from="1499065840072" duration="7474000" />
+      <workItem from="1499088689440" duration="24954000" />
+      <workItem from="1499313404778" duration="7993000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="632536000" />
+    <option name="totallyTimeSpent" value="817790000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28516525" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32111552" sideWeight="0.49455675" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5057208" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32659408" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32735425" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884902" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39910313" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3187251" sideWeight="0.5054432" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -819,7 +930,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TypeScript" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32735425" sideWeight="0.49427918" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.041990668" sideWeight="0.49427918" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -873,513 +984,566 @@
           <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/confirm-delete-addongroup.php">
+    <entry file="file://$PROJECT_DIR$/utils/constants.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="57" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-765">
-          <caret line="39" column="33" lean-forward="true" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/edit-addon-defaultvalue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="74" column="46" lean-forward="false" selection-start-line="74" selection-start-column="46" selection-end-line="74" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-edit-addon-defaultvalue.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="126" lean-forward="false" selection-start-line="13" selection-start-column="126" selection-end-line="13" selection-end-column="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/sort-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="53" column="21" lean-forward="false" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="13" lean-forward="false" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/demo_move.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-585">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/dem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/inside_all_subcat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="130" column="13" lean-forward="true" selection-start-line="120" selection-start-column="8" selection-end-line="130" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/all-addons.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1110">
-          <caret line="33" column="47" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="47" />
+        <state relative-caret-position="75">
+          <caret line="5" column="29" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-446">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="-2006">
+          <caret line="36" column="46" lean-forward="false" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
+    <entry file="file://$PROJECT_DIR$/frontend/common/css/sort.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/sort-size.php">
+    <entry file="file://$PROJECT_DIR$/security/input-security.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="214">
+          <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/sort-menuitem.php">
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <marker date="1499347179658" expanded="true" signature="875:948" ph="UPDATE `gall... " />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php">
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/all-gallery-items.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="315">
+          <caret line="45" column="32" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#section#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1499335775179" expanded="true" signature="2673:3590" ph="..." />
+            <marker date="1499335775179" expanded="true" signature="3158:3552" ph="..." />
+            <marker date="1499335775179" expanded="true" signature="3260:3510" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/addons/sort-addon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="37" column="67" lean-forward="false" selection-start-line="37" selection-start-column="48" selection-end-line="37" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/utils/utils-order-parsing.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-329">
-          <caret line="59" column="24" lean-forward="false" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/ajax_page.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-495">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/order/order_management.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/backend_utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="108" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/menu-utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="239" column="79" lean-forward="false" selection-start-line="239" selection-start-column="79" selection-end-line="239" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-edit-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="210">
+          <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
           <folding>
-            <marker date="1498167005753" expanded="true" signature="482:665" ph="UPDATE `menu... " />
+            <marker date="1499347486106" expanded="true" signature="1257:1376" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/procedure.sql">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="60" column="178" lean-forward="false" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="474" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/sort-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1260">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/add-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="119" column="22" lean-forward="true" selection-start-line="119" selection-start-column="22" selection-end-line="119" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding>
+            <marker date="1499347486298" expanded="true" signature="878:981" ph="UPDATE `menu... " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-90">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1498167005753" expanded="true" signature="1030:1169" ph="UPDATE `menu... " />
+            <marker date="1499347486054" expanded="true" signature="878:1003" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="53" selection-end-column="16" />
+        <state relative-caret-position="169">
+          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
           <folding>
-            <marker date="1498167005749" expanded="true" signature="1037:1159" ph="UPDATE `menu... " />
+            <marker date="1499347486150" expanded="true" signature="861:983" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-edit-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="53" lean-forward="false" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
-          <folding>
-            <marker date="1498167005753" expanded="true" signature="559:782" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/utils/menu_item-utils.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="129" column="23" lean-forward="false" selection-start-line="129" selection-start-column="23" selection-end-line="129" selection-end-column="23" />
-          <folding>
-            <marker date="1498194708525" expanded="true" signature="961:1064" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1498194708525" expanded="true" signature="1317:1420" ph="SELECT * FRO... menu_meta_rel_size-items_table" />
-            <marker date="1498194708525" expanded="true" signature="3415:3518" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1498194708525" expanded="true" signature="3714:3820" ph="SELECT * FRO... menu_meta_rel_size-addons_table" />
-            <marker date="1498194708525" expanded="true" signature="5318:5440" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-edit-addon.php">
+    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/add-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="109" column="0" lean-forward="false" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/all-menuitems.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="112" column="75" lean-forward="true" selection-start-line="112" selection-start-column="75" selection-end-line="112" selection-end-column="75" />
+          <caret line="17" column="1" lean-forward="false" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
-            <marker date="1498167005749" expanded="true" signature="2976:3283" ph="..." />
-            <marker date="1498167005749" expanded="true" signature="3114:3233" ph="..." />
+            <marker date="1499347486242" expanded="true" signature="983:1087" ph="UPDATE `menu... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/add-menuitem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1284">
-          <caret line="155" column="95" lean-forward="false" selection-start-line="155" selection-start-column="95" selection-end-line="155" selection-end-column="95" />
-          <folding>
-            <marker date="1498167005749" expanded="true" signature="4568:4668" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1498167005749" expanded="true" signature="5146:5636" ph="..." />
-            <marker date="1498167005749" expanded="true" signature="5360:5589" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/add-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-705">
-          <caret line="33" column="67" lean-forward="false" selection-start-line="33" selection-start-column="47" selection-end-line="33" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-add-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-60">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <marker date="1498199742796" expanded="true" signature="598:794" ph="INSERT INTO `menu_meta_rel_category-addon_table`... " />
-            <marker date="1498199742796" expanded="true" signature="812:1248" ph="INSERT INTO `menu_meta_rel_category-addon_table`... " />
-            <marker date="1498199742796" expanded="true" signature="1013:1248" ph="SELECT MAX( menu_meta_rel_category-subcategory_table" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-add-subcategory.php">
+    <entry file="file://$PROJECT_DIR$/frontend/settings/tax/sort-tax.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <caret line="77" column="70" lean-forward="false" selection-start-line="77" selection-start-column="70" selection-end-line="77" selection-end-column="70" />
           <folding>
-            <marker date="1498167005753" expanded="true" signature="980:1395" ph="INSERT INTO `menu_meta_rel_category-subcategory_table`... " />
-            <marker date="1498167005753" expanded="true" signature="1171:1395" ph="SELECT MAX( menu_meta_rel_category-subcategory_table" />
+            <marker date="1499348743227" expanded="true" signature="1254:1304" ph="SELECT * FRO... tax_table" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-add-size.php">
+    <entry file="file://$PROJECT_DIR$/frontend/settings/tax/process-save-sort.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state relative-caret-position="600">
+          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
           <folding>
-            <marker date="1498232103083" expanded="true" signature="592:937" ph="INSERT INTO `menu_meta_size_table`... " />
-            <marker date="1498232103083" expanded="true" signature="751:937" ph="SELECT MAX( menu_addons_table" />
-            <marker date="1498232103083" expanded="true" signature="1219:1296" ph="SELECT * FRO... menu_items_table" />
-            <marker date="1498232103083" expanded="true" signature="1783:1835" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
-            <marker date="1498232103083" expanded="true" signature="2050:2128" ph="SELECT * FRO... menu_addons_table" />
-            <marker date="1498232103083" expanded="true" signature="2619:2672" ph="INSERT INTO `menu_meta_rel_size-addons_table`... " />
+            <marker date="1499347702800" expanded="true" signature="866:926" ph="UPDATE `gall... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-add-addon.php">
+    <entry file="file://$PROJECT_DIR$/frontend/settings/tax/all-taxes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="201">
+          <caret line="37" column="32" lean-forward="false" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
           <folding>
-            <marker date="1498230859907" expanded="true" signature="605:1006" ph="INSERT INTO `menu_addons_table`... " />
-            <marker date="1498230859907" expanded="true" signature="783:1006" ph="SELECT MAX( menu_items_table" />
-            <marker date="1498230859907" expanded="true" signature="1319:1427" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1498230859907" expanded="true" signature="2022:2075" ph="INSERT INTO `menu_meta_rel_size-addons_table`... " />
+            <marker date="1499347957551" expanded="true" signature="1012:1062" ph="SELECT * FRO... tax_table" />
+            <marker date="1499347957551" expanded="true" signature="2628:3802" ph="..." />
+            <marker date="1499347957551" expanded="true" signature="2962:3313" ph="..." />
+            <marker date="1499347957551" expanded="true" signature="3041:3275" ph="..." />
+            <marker date="1499347957551" expanded="true" signature="3382:3747" ph="..." />
+            <marker date="1499347957551" expanded="true" signature="3471:3709" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/contact/process-edit-contact_info2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499123145041" expanded="true" signature="3414:3877" ph="UPDATE `info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/contact/edit_contact_info.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-585">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498455569137" expanded="true" signature="1322:1384" ph="SELECT * FRO... info_contact_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/add-new-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1345">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/all-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding>
+            <marker date="1499095243989" expanded="true" signature="1713:1758" ph="SELECT COUNT... blogs_table" />
+            <marker date="1499095243989" expanded="true" signature="2393:2472" ph="SELECT * FRO... blogs_table" />
+            <marker date="1499095243989" expanded="true" signature="3132:3569" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="3178:3528" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="4044:5501" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="4570:5014" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="4653:4970" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="5051:5467" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="5145:5427" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="5943:6411" ph="..." />
+            <marker date="1499095243989" expanded="false" signature="5981:6001" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="6002:6384" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="6054:6353" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="6593:6927" ph="..." />
+            <marker date="1499095243989" expanded="false" signature="6631:6651" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="6652:6900" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="6704:6869" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="7111:7725" ph="..." />
+            <marker date="1499095243989" expanded="false" signature="7149:7169" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="7170:7698" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="7222:7666" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="7910:8390" ph="..." />
+            <marker date="1499095243989" expanded="false" signature="7948:7968" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="7969:8363" ph="..." />
+            <marker date="1499095243989" expanded="true" signature="8021:8331" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/confirm-delete-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/edit-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/process-add-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499139705656" expanded="true" signature="795:899" ph="INSERT INTO `blogs_table`... " />
+            <marker date="1499139705656" expanded="true" signature="1681:1788" ph="..." />
+            <marker date="1499139705656" expanded="true" signature="1721:1773" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/process-delete-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499139705580" expanded="true" signature="680:732" ph="DELETE FROM " />
+            <marker date="1499139705580" expanded="true" signature="1042:1187" ph="..." />
+            <marker date="1499139705580" expanded="true" signature="1124:1172" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/process-edit-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499139749744" expanded="true" signature="1136:1385" ph="UPDATE `blog... " />
+            <marker date="1499139749744" expanded="true" signature="2448:2552" ph="..." />
+            <marker date="1499139749744" expanded="true" signature="2489:2537" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/blog/show-blogpost.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499095934390" expanded="true" signature="1404:1460" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/edit-coupon-cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="34" column="8" lean-forward="false" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+          <folding>
+            <marker date="1499101596460" expanded="true" signature="1197:1263" ph="SELECT * FRO... coupon_coupons_discount_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/confirm-delete-coupon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/all-coupons.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1305">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499073767883" expanded="true" signature="1848:1893" ph="SELECT * FRO... coupon_coupons_discount_table" />
+            <marker date="1499073767883" expanded="true" signature="2774:4745" ph="..." />
+            <marker date="1499073767883" expanded="true" signature="3386:3972" ph="..." />
+            <marker date="1499073767883" expanded="true" signature="3477:3924" ph="..." />
+            <marker date="1499073767883" expanded="true" signature="3668:3832" ph="..." />
+            <marker date="1499073767883" expanded="false" signature="3759:3765" ph=" " />
+            <marker date="1499073767883" expanded="false" signature="3768:3774" ph=" " />
+            <marker date="1499073767883" expanded="true" signature="4013:4668" ph="..." />
+            <marker date="1499073767883" expanded="true" signature="4109:4624" ph="..." />
+            <marker date="1499073767883" expanded="true" signature="4409:4576" ph="..." />
+            <marker date="1499073767883" expanded="false" signature="4501:4507" ph=" " />
+            <marker date="1499073767883" expanded="false" signature="4510:4516" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/add-coupon-cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/process-add-coupon-cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499145976451" expanded="true" signature="1575:1832" ph="INSERT INTO `coupon_coupons_discount_table`... " />
+            <marker date="1499145976451" expanded="true" signature="2657:2762" ph="..." />
+            <marker date="1499145976451" expanded="true" signature="2697:2747" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/process-delete-coupon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499145976387" expanded="true" signature="392:456" ph="DELETE FROM " />
+            <marker date="1499145976387" expanded="true" signature="661:766" ph="..." />
+            <marker date="1499145976387" expanded="true" signature="701:751" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/process-edit-coupon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499146053400" expanded="true" signature="1605:2082" ph="UPDATE `coup... " />
+            <marker date="1499146053400" expanded="true" signature="1605:2089" ph="UPDATE `coup... " />
+            <marker date="1499146053400" expanded="true" signature="2950:3055" ph="..." />
+            <marker date="1499146053400" expanded="true" signature="2990:3040" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/coupon/show-coupon-cart.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499101596036" expanded="true" signature="1271:1337" ph="SELECT * FRO... coupon_coupons_discount_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/notification/all-notifications.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding>
+            <marker date="1499147415285" expanded="true" signature="1987:2056" ph="SELECT * FRO... notifications_table" />
+            <marker date="1499147415285" expanded="true" signature="2964:3601" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/notification/process-send-notification.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-360">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/about/process-edit-about_us.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1499119558941" expanded="true" signature="569:629" ph="SELECT * FRO... info_about_table" />
+            <marker date="1499119558941" expanded="true" signature="1481:1634" ph="UPDATE `info... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/about/read_about_us.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498326824123" expanded="true" signature="1048:1108" ph="SELECT * FRO... info_about_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/utils/gallery-utils.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498344692818" expanded="true" signature="74:138" ph="SELECT * FRO... gallery_table" />
+            <marker date="1498344692818" expanded="true" signature="508:571" ph="SELECT * FRO... gallery_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/process-delete-gallery-item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="75" lean-forward="false" selection-start-line="31" selection-start-column="75" selection-end-line="31" selection-end-column="75" />
+          <folding>
+            <marker date="1499348743343" expanded="true" signature="1048:1119" ph="DELETE FROM " />
+            <marker date="1499348743343" expanded="true" signature="1832:1905" ph="UPDATE `gall... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/about/edit_about_us.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1498326923707" expanded="true" signature="1046:1106" ph="SELECT * FRO... info_about_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/add-new-openscr-image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="840">
+          <caret line="62" column="29" lean-forward="true" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/utils-openscr.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding>
+            <marker date="1499348949809" expanded="true" signature="73:141" ph="SELECT * FRO... opening_screen_image_table" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/confirm-delete-openscr-image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/all-openscr-images.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
+          <folding>
+            <marker date="1499349568579" expanded="true" signature="2302:3025" ph="..." />
+            <marker date="1499349568579" expanded="true" signature="2387:2450" ph="..." />
+            <marker date="1499349568579" expanded="true" signature="2487:2991" ph="..." />
+            <marker date="1499349568579" expanded="true" signature="2586:2953" ph="..." />
+            <marker date="1499349568579" expanded="true" signature="2763:2909" ph="..." />
+            <marker date="1499349568579" expanded="false" signature="2833:2839" ph=" " />
+            <marker date="1499349568579" expanded="false" signature="2842:2848" ph=" " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-add-new-openscr-image.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="23" column="48" lean-forward="false" selection-start-line="23" selection-start-column="48" selection-end-line="23" selection-end-column="48" />
+          <folding>
+            <marker date="1499349568439" expanded="true" signature="703:887" ph="INSERT INTO `opening_screen_image_table`... " />
+            <marker date="1499349568439" expanded="true" signature="786:887" ph="SELECT COALE... opening_screen_image_table" />
+            <marker date="1499349568439" expanded="true" signature="1076:1149" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-add-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="59" column="25" lean-forward="false" selection-start-line="59" selection-start-column="25" selection-end-line="59" selection-end-column="25" />
+        <state relative-caret-position="105">
+          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <marker date="1498230477903" expanded="true" signature="979:1145" ph="INSERT INTO `menu_items_table`... " />
-            <marker date="1498230477903" expanded="true" signature="1173:1576" ph="INSERT INTO `menu_items_table`... " />
-            <marker date="1498230477903" expanded="true" signature="1356:1576" ph="SELECT MAX( menu_meta_rel_category-addon_table" />
-            <marker date="1498230477903" expanded="true" signature="1917:2020" ph="SELECT * FRO... menu_meta_size_table" />
-            <marker date="1498230477903" expanded="true" signature="2607:2658" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
-            <marker date="1498230477903" expanded="true" signature="2607:2659" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
+            <marker date="1499120207737" expanded="true" signature="1620:2037" ph="INSERT INTO `menu_items_table`... " />
+            <marker date="1499120207737" expanded="true" signature="1803:2037" ph="SELECT COALE... menu_items_table" />
+            <marker date="1499120207737" expanded="true" signature="3401:3453" ph="INSERT INTO `menu_meta_rel_size-items_table`... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/confirm-delete-menuitem.php">
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-delete-openscr-image.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/include-all_menuitem.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="-296">
+          <caret line="51" column="4" lean-forward="false" selection-start-line="51" selection-start-column="4" selection-end-line="51" selection-end-column="4" />
           <folding>
-            <marker date="1498240680472" expanded="true" signature="516:530" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="531:993" ph="..." />
-            <marker date="1498240680472" expanded="false" signature="560:595" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="682:949" ph="..." />
-            <marker date="1498240680472" expanded="false" signature="872:906" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="1139:1491" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="1189:1486" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="2437:3723" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="3003:3306" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="3074:3280" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="3363:3680" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="3445:3654" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="3896:4163" ph="..." />
-            <marker date="1498240680472" expanded="true" signature="4048:4102" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/subcategory_management/process-delete-subcategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="66" column="106" lean-forward="false" selection-start-line="66" selection-start-column="106" selection-end-line="66" selection-end-column="106" />
-          <folding>
-            <marker date="1498240680648" expanded="true" signature="485:578" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
-            <marker date="1498240680648" expanded="true" signature="1743:1801" ph="DELETE FROM " />
-            <marker date="1498240680648" expanded="true" signature="2141:2204" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240680648" expanded="true" signature="2141:2237" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240680648" expanded="true" signature="2692:2798" ph="UPDATE `menu... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/confirm-delete-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="51" lean-forward="false" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/addon_management/process-delete-addongroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="69" column="106" lean-forward="false" selection-start-line="69" selection-start-column="106" selection-end-line="69" selection-end-column="106" />
-          <folding>
-            <marker date="1498240680528" expanded="true" signature="625:684" ph="SELECT * FRO... menu_meta_rel_category-subcategory_table" />
-            <marker date="1498240680528" expanded="true" signature="1664:1721" ph="DELETE FROM " />
-            <marker date="1498240680528" expanded="true" signature="2022:2085" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240680528" expanded="true" signature="2022:2118" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240680528" expanded="true" signature="2571:2677" ph="UPDATE `${$T... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/subcat_addon_management/size_management/process-delete-size.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="53" column="104" lean-forward="false" selection-start-line="53" selection-start-column="104" selection-end-line="53" selection-end-column="104" />
-          <folding>
-            <marker date="1498240681008" expanded="true" signature="1491:1559" ph="SELECT * FRO... $" />
-            <marker date="1498240681008" expanded="true" signature="1491:1585" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240681008" expanded="true" signature="2024:2128" ph="UPDATE `${$T... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/include-all-addons.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="100" column="48" lean-forward="true" selection-start-line="100" selection-start-column="48" selection-end-line="100" selection-end-column="48" />
-          <folding>
-            <marker date="1498240710434" expanded="true" signature="755:1932" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="789:803" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="804:1359" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="841:876" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="1002:1299" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="1214:1248" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="1418:1932" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="1491:1932" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="1549:1890" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="3158:5199" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="3666:4315" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="3754:4268" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="4072:4216" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="4401:5116" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="4500:5069" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="4870:5017" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="5472:5870" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="5689:5773" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6055:7307" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="6089:6103" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6104:6660" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="6141:6176" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6303:6600" ph="..." />
-            <marker date="1498240710434" expanded="false" signature="6515:6549" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6740:7307" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6813:7307" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="6871:7265" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="8634:11339" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="9455:10264" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="9563:10197" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="9941:10125" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="10390:11216" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="10509:11149" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="10890:11077" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="11720:12819" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="12016:12100" ph="..." />
-            <marker date="1498240710434" expanded="true" signature="12346:12702" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/menu/addons/process-delete-addon.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding>
-            <marker date="1498240878892" expanded="true" signature="953:1055" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240878892" expanded="true" signature="1537:1649" ph="UPDATE `${$T... " />
+            <marker date="1499349568331" expanded="true" signature="428:497" ph="SELECT * FRO... opening_screen_image_table" />
+            <marker date="1499349568331" expanded="true" signature="1134:1201" ph="DELETE FROM " />
+            <marker date="1499349568331" expanded="true" signature="1906:1984" ph="UPDATE `open... " />
+            <marker date="1499349568331" expanded="true" signature="1906:1985" ph="UPDATE `${$T... " />
+            <marker date="1499349568331" expanded="true" signature="2286:2380" ph="..." />
+            <marker date="1499349568331" expanded="true" signature="2329:2369" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/menu/menu_items/process-delete-menuitem.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="65" lean-forward="false" selection-start-line="16" selection-start-column="65" selection-end-line="16" selection-end-column="65" />
+        <state relative-caret-position="75">
+          <caret line="62" column="4" lean-forward="false" selection-start-line="62" selection-start-column="4" selection-end-line="80" selection-end-column="5" />
           <folding>
-            <marker date="1498240965332" expanded="true" signature="1440:1521" ph="SELECT * FRO... " />
-            <marker date="1498240965332" expanded="true" signature="1440:1547" ph="SELECT * FRO... ${$Table1}" />
-            <marker date="1498240965332" expanded="true" signature="2029:2146" ph="UPDATE `${$T... " />
+            <marker date="1499095243629" expanded="true" signature="2353:2470" ph="UPDATE `${$T... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/process-save-sort.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="62" lean-forward="false" selection-start-line="46" selection-start-column="62" selection-end-line="46" selection-end-column="62" />
+          <folding>
+            <marker date="1499349568647" expanded="true" signature="867:946" ph="UPDATE `open... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/gallery/sort-gallery-item.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="103" column="36" lean-forward="true" selection-start-line="100" selection-start-column="40" selection-end-line="103" selection-end-column="36" />
+          <folding>
+            <marker date="1499336886423" expanded="true" signature="2763:2777" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/restaurant_info/opening_screen/sort-openscr.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="65" column="0" lean-forward="true" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding>
+            <marker date="1499349568519" expanded="true" signature="2785:2799" ph="..." />
           </folding>
         </state>
       </provider>

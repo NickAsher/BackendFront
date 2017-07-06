@@ -27,17 +27,17 @@
     <?php
 
     require_once '../../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
+    $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
-    $AddonGroupInfoArray = getSingleAddonGroupInfoArray($DBConnectionBackend, $AddonGroupRelId) ;
+    $AddonGroupInfoArray = getSingleAddonGroupInfoArray_PDO($DBConnectionBackend, $AddonGroupRelId) ;
     $CategoryCode = $AddonGroupInfoArray['category_code'] ;
     $AddonGroupName = $AddonGroupInfoArray['addon_group_display_name'] ;
     $AddonGroupType = $AddonGroupInfoArray['addon_group_type'] ;
@@ -54,9 +54,9 @@
 
 
     $ActiveCheckedString = null ;
-    if($AddonGroupIsActive == 'true'){
+    if($AddonGroupIsActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($AddonGroupIsActive == 'false'){
+    } else if($AddonGroupIsActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -203,10 +203,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

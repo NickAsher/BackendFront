@@ -32,7 +32,7 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
 
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
     
     
     $DBConnectionBackend = YOLOSqlConnect() ;
@@ -102,7 +102,7 @@
                             <div class="form-group row">
                                 <label for="input-addon-active-hidden" class="col-3 col-form-label">Addon-Group Active</label>
                                 <div class="col-md-9">
-                                    <input name="__addongroup_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" value="true">
+                                    <input name="__addongroup_is_active" id="input-addon-active-hidden" class="form-control" type="hidden" value="yes">
                                     <input id="input-addon-active-presentation" type="checkbox" class="form-control" checked="checked" data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
@@ -174,10 +174,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

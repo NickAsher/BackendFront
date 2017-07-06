@@ -22,26 +22,24 @@
     <?php
 
     require_once '../../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
+//    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $SizeId = isSecure_checkPostInput('__size_id') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $SizeId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__size_id') ;
 
-    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
+    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
     $CategoryName = $CategoryInfoArray['category_display_name'] ;
-
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_id` = '$SizeId' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        die("Unable to get the size information ".mysqli_error($DBConnectionBackend)) ;
+    try {
+        $Record = getSingleSizeInfoArray_PDO($DBConnectionBackend, $SizeId);
+    }catch (Exception $e){
+        die($e->getMessage()) ;
     }
-    $Record = mysqli_fetch_assoc($QueryResult) ;
 
 
     $SizeId = $Record['size_id'] ;
@@ -52,9 +50,9 @@
 
 
     $ActiveCheckedString = null ;
-    if($SizeIsActive == 'true'){
+    if($SizeIsActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($SizeIsActive == 'false'){
+    } else if($SizeIsActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -122,12 +120,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-size-sr_no" class="col-3 col-form-label">Size Sr No</label>
-                                <div class="col-md-9">
-                                    <input name="__size_sr_no" id="input-size-sr_no" class="form-control" type="number"  value="<?php echo $SizeSrNo ?>" >
-                                </div>
-                            </div>
+
 
 
 
@@ -189,10 +182,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

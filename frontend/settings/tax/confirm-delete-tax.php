@@ -4,7 +4,7 @@ require_once '../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$TaxId = isSecure_checkPostInput('__tax_id') ;
+$TaxId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__tax_id') ;
 ?>
 
 

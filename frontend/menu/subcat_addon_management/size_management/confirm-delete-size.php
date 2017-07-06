@@ -4,8 +4,8 @@ require_once '../../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SizeId = isSecure_checkPostInput('__size_id') ;
+$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$SizeId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__size_id') ;
 
 ?>
 

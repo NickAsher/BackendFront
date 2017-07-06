@@ -28,16 +28,16 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
-    $SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+    var_dump($_POST['__subcategory_rel_id']) ;
+    $SubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__subcategory_rel_id') ;
 
-    $ListOfMenuItemsInSubCategory = getListOfAllMenuItemsInSubCategory_Array($DBConnectionBackend, $SubCategoryRelId) ;
+    $ListOfMenuItemsInSubCategory = getListOfAllMenuItemsInSubCategory_Array_PDO($DBConnectionBackend, $SubCategoryRelId) ;
 
 
     ?>
@@ -49,14 +49,14 @@
 
 
 
-<body>
+<body style="background:whitesmoke;">
 <?php require_once "../subcommon/includes/header.php" ?>
 
 <section>
     <?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/sidebar.php'; ?>
     <div class="container-fluid t3-push" id="mainContainer">
         <div class="row">
-            <div class="col-md-12 bg-white">
+            <div class="col-md-12 bg-whitegrey">
 
 
 
@@ -66,50 +66,74 @@
                     <br><br><br>
                 </div>
 
-                <div>
-                    <center><h1>Sort Addon Groups</h1></center>
+
+                    <div class="row">
+                        <div class="push-md-3 col-md-6">
+                            <div class="card">
+                                <div class="card-block">
+                                    <h1 class="text-center">Sort Addon Groups</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <br><br>
-                </div>
 
 
                 <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <ol id="yo" class="hidden-list-numbering" style="display: inline-block;float: left">
-                            <?php
-                            foreach ($ListOfMenuItemsInSubCategory as $Record){
-                                echo "<li></li>" ;
-                            }
-                            ?>
+                    <div class="push-md-3 col-md-6">
+                        <div class="card">
+                            <div class="card-block text-center">
+<!--                                <center>-->
 
-                        </ol>
+                                <ol id="yo" class="hidden-list-numbering" style="display: inline-block;float: left;">
+                                    <?php
+                                    foreach ($ListOfMenuItemsInSubCategory as $Record){
+                                        echo "<li></li>" ;
+                                    }
+                                    ?>
 
-                        <ol id="sorting" class="listo-group">
-                            <?php
-                            foreach ($ListOfMenuItemsInSubCategory as $Record){
-                                $ItemId =  $Record['item_id'] ;
-                                $ItemName = $Record['item_name'] ;
+                                </ol>
 
-                                echo "<li id='$ItemId'>$ItemName</li>" ;
-                            }
-                            ?>
+                                <ol id="sorting" class="listo-group" style="display: inline-block">
+                                    <?php
+                                    foreach ($ListOfMenuItemsInSubCategory as $Record){
+                                        $ItemId =  $Record['item_id'] ;
+                                        $ItemName = $Record['item_name'] ;
 
-                        </ol>
+                                        echo "<li id='$ItemId'>$ItemName</li>" ;
+                                    }
+                                    ?>
+
+                                </ol>
+<!--                                </center>-->
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-4"></div>
                 </div>
+
+
+
 
                 <br><br>
 
-
-                <div class="form-group row">
-                    <div class="col-4" ></div>
-                    <button id="SaveBtn" class=" col-4 btn btn-info" >Save Sort Order</button>
-                    <div class="col-4" ></div>
+                <div class="row">
+                    <div class="push-md-3 col-md-6">
+                        <div class="card">
+                            <div class="card-block" style="text-align: center">
+                                <div class="row">
+                                    <button id="SaveBtn" class="push-md-2 col-md-8 btn btn-info" style="width: inherit" >Save Sort Order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
+
+
+
                 <br>
-                <div id="MessageContainer">
+                <div id="MessageContainer" >
 
                 </div>
 

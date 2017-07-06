@@ -35,7 +35,7 @@
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
 
     $CategorySubCategoriesListArray = getListOfAllSubCategory_InACategory_Array($DBConnectionBackend, $CategoryCode) ;
 

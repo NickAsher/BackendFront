@@ -23,6 +23,8 @@ function getListOfAllCategories_Array($DBConnection){
 
 
 
+
+
 function getSingleCategoryInfoArray($DBConnection, $CategoryCode){
     /*
      * This function returns the Information of a single category like its code, its name, its size variation

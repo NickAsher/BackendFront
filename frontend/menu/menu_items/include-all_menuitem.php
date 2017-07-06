@@ -1,6 +1,6 @@
 <?php
 
-$ListOfAllSubCategoriesInCategory = getListOfAllSubCategory_InACategory_Array($DBConnectionBackend, $CategoryCode) ;
+$ListOfAllSubCategoriesInCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
 
 echo "<div id = 'mainContento' >" ;
 
@@ -9,7 +9,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
 
     $SubCategoryRelId = $SubCategoryRecord['rel_id'] ;
     $SubCategoryName = $SubCategoryRecord['subcategory_display_name'] ;
-    $ListOfMenuItemsInSubCategory = getListOfAllMenuItemsInSubCategory_Array($DBConnectionBackend, $SubCategoryRelId) ;
+    $ListOfMenuItemsInSubCategory = getListOfAllMenuItemsInSubCategory_Array_PDO($DBConnectionBackend, $SubCategoryRelId) ;
 
 
 
@@ -35,8 +35,8 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
                     <th>Item Name</th>
                     <th>Item Price</th>
                     <th>Item Active</th>
-                    <th>Item Edit</th>
-                    <th>Item Delete</th>
+                    <th> Action</th>
+                    
                 </tr>
     " ;
 
@@ -48,7 +48,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
         $SrNo = $Record['item_sr_no'] ;
         $ItemId = $Record['item_id'] ;
         $ItemName = $Record['item_name'] ;
-        $ItemPriceString = getItemPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
+        $ItemPriceString = getItemPriceString_PDO($DBConnectionBackend, $CategoryCode, $ItemId) ;
         $ItemImage = $Record['item_image_name'] ;
         $ItemDescription = $Record['item_description'] ;
 
@@ -56,10 +56,11 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
 
 
         $ItemActive = $Record['item_is_active'] ;
-        $ActiveButton = null ;
-        if($ItemActive == 'truey'){
+
+        $ActiveButton = '' ;
+        if($ItemActive == 'yes'){
             $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-        } else if($ItemActive == 'falsey'){
+        } else if($ItemActive == 'no'){
             $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
         }
 
@@ -73,17 +74,23 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
                     <td class='addon-link' data-href='$DetailPageLink'>$ItemPriceString</td>
                     <td class='addon-link' data-href='$DetailPageLink'>$ActiveButton</td>
                     <td>
+                        <div style='display: inline-block'>
                         <form method='get' action='edit-menuitem.php'>
                             <input type='hidden' name='___menu_item_id' value='$ItemId'>
-                            <input type='submit' class='btn btn-info' value='Edit' >
+                            <button type='submit' class='btn btn-info'><i class='fa  fa-edit' ></i></button>
                         </form>
-                    </td>                                
-                    <td>
+                        </div>
+                        &nbsp; &nbsp; 
+                        <div style='display: inline-block'>
                         <form method='post' action='confirm-delete-menuitem.php'>
                             <input type='hidden' name='__menu_item_id' value='$ItemId'>
-                            <input type='submit' class='btn btn-danger' value='Delete' >
+                            <button type='submit' class='btn btn-danger'><i class='fa fa-trash'></i></button>
                         </form>
-                    </td>                     
+                        </div>
+                        
+                        
+                    </td>                                
+                                        
                 </tr>
                 ";
     }

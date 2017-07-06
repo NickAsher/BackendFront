@@ -1,37 +1,44 @@
 <?php
 require_once '../../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php'  ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
-$CategoryCode = isSecure_checkPostInput('__category_code') ;
-$SizeId = isSecure_checkPostInput('__size_id') ;
+$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$SizeId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__size_id') ;
 
 
-$SizeSrNo = isSecure_checkPostInput('__size_sr_no') ;
-$SizeName = isSecure_checkPostInput('__size_name') ;
-$SizeNameAbbr = isSecure_checkPostInput('__size_name_abbr') ;
-$SizeIsActive = isSecure_checkPostInput('__size_is_active') ;
-
+$SizeName = isSecure_IsValidText(GetPostConst::Post, '__size_name') ;
+$SizeNameAbbr = isSecure_IsValidText(GetPostConst::Post, '__size_name_abbr') ;
+$SizeIsActive = isSecure_IsYesNo(GetPostConst::Post, '__size_is_active') ;
 
 
 
-mysqli_begin_transaction($DBConnectionBackend) ;
+
 try{
+    $DBConnectionBackend->beginTransaction() ;
 
-    $Query = "UPDATE `menu_meta_size_table` SET `size_name` = '$SizeName' , `size_name_short` = '$SizeNameAbbr', `size_sr_no` = '$SizeSrNo', `size_is_active` = '$SizeIsActive'  WHERE `size_id` = '$SizeId'   " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        throw new Exception("unable to update the new item  <br><br>".mysqli_error($DBConnectionBackend)) ;
+    $Query = "UPDATE `menu_meta_size_table` 
+        SET `size_name` = :size_name , `size_name_short` = :size_name_abbr, `size_is_active` = :size_is_active  
+        WHERE `size_id` = :size_id   " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute([
+            'size_name' => $SizeName,
+            'size_name_abbr' => $SizeNameAbbr,
+            'size_is_active' => $SizeIsActive,
+            'size_id' => $SizeId
+        ]);
+    } catch (Exception $e) {
+        throw new Exception("unable to update the new item : ".$e->getMessage() ) ;
     }
 
 
 
 
-    mysqli_commit($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+
+    $DBConnectionBackend->commit() ;
 
 
     echo " 
@@ -41,9 +48,8 @@ try{
     ";
 
 } catch (Exception $e){
-    echo $e ;
-    mysqli_rollback($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+    $DBConnectionBackend->rollBack() ;
+    echo "Unable to edit the size variation: ".$e->getMessage() ;
 
 
 }

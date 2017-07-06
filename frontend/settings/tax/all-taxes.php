@@ -27,13 +27,15 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
     require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
     $Query = "SELECT * FROM `tax_table` ORDER BY `tax_sr_no` ASC" ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        die("Unable to fetch the taxes from the tax_table".mysqli_error($DBConnectionBackend)) ;
+    try {
+        $QueryResult = $DBConnectionBackend->query($Query);
+        $AllTaxes = $QueryResult->fetchAll() ;
+    } catch (Exception $e) {
+        die("Unable to fetch the taxes from the tax_table: ".$e) ;
     }
 
 
@@ -79,8 +81,7 @@
 
 
                     <?php
-                    $FirstItem = true ;
-                    foreach ($QueryResult as $Record) {
+                    foreach ($AllTaxes as $Record) {
                         $TaxId = $Record['tax_id'];
                         $TaxName = $Record['tax_name'];
                         $TaxPercentage = $Record['tax_percentage'] ;

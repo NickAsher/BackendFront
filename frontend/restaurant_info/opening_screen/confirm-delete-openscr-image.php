@@ -1,12 +1,12 @@
 <?php
 
 require_once '../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+//require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 
-$ItemId = isSecure_checkPostInput('__item_id') ;
+$ItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__item_id') ;
 
 ?>
 

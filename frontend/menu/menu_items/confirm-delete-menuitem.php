@@ -4,7 +4,7 @@ require_once '../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$MenuItemId = isSecure_checkPostInput('__menu_item_id') ;
+$MenuItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__menu_item_id') ;
 
 ?>
 

@@ -5,11 +5,19 @@
 <head>
     <title>HomeFlavor | Backend</title>
     <meta charset="utf-16">
-    <link rel="stylesheet" href="../common/css/reset.css" >
+<!--    <link rel="stylesheet" href="../common/css/reset.css" >-->
 
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-grid.min.css" >
     <link rel = "stylesheet" href="../../../lib/bootstrap4/bootstrap-reboot.min.css" >
+
+
+    <link rel = "stylesheet" href="../../../lib/jquery_ui/jquery-ui.css" >
+    <link rel = "stylesheet" href="../../../lib/jquery_ui/jquery-ui.structure.css" >
+    <link rel = "stylesheet" href="../../../lib/jquery_ui/jquery-ui.theme.css" >
+
+    <link rel = "stylesheet" href="../../../bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.css" />
+
 
 
     <link rel="stylesheet" href="../../../lib/font-awesome/css/font-awesome.css" >
@@ -25,20 +33,18 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+
+
 
     $Query = "SELECT * FROM `info_contact_table` WHERE `restaurant_id` = '1' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-
-    $TempArray = '' ;
-    if($QueryResult) {
-        foreach($QueryResult as $Record){
-            $TempArray = $Record ;
-        }
-    } else {
-        echo "Error in getting the variables <br> ".mysqli_error($DBConnectionBackend) ;
+    try{
+        $QueryResult = $DBConnectionBackend->query($Query) ;
+        $TempArray = $QueryResult->fetch(PDO::FETCH_ASSOC) ;
+    }catch (Exception $e){
+        throw new Exception("Error in getting the contact information: ".$e->getMessage()) ;
     }
 
 
@@ -55,7 +61,24 @@
     $RestaurantAddress1 = $TempArray['restaurant_addr_1'] ;
     $RestaurantAddress2 = $TempArray['restaurant_addr_2'] ;
     $RestaurantAddress3 = $TempArray['restaurant_addr_3'] ;
-    $RestaurantHoursMonFri = $TempArray['restaurant_hours_monfri'] ;
+
+    $RestHours = json_decode($TempArray['restaurant_hours'], true) ;
+
+    $RestHours_MonStart = $RestHours[0]['start_time'] ;
+    $RestHours_MonEnd = $RestHours[0]['end_time'] ;
+    $RestHours_TueStart = $RestHours[1]['start_time'] ;
+    $RestHours_TueEnd = $RestHours[1]['end_time'] ;
+    $RestHours_WedStart = $RestHours[2]['start_time'] ;
+    $RestHours_WedEnd = $RestHours[2]['end_time'] ;
+    $RestHours_ThuStart = $RestHours[3]['start_time'] ;
+    $RestHours_ThuEnd = $RestHours[3]['end_time'] ;
+    $RestHours_FriStart = $RestHours[4]['start_time'] ;
+    $RestHours_FriEnd = $RestHours[4]['end_time'] ;
+    $RestHours_SatStart = $RestHours[5]['start_time'] ;
+    $RestHours_SatEnd = $RestHours[5]['end_time'] ;
+    $RestHours_SunStart = $RestHours[6]['start_time'] ;
+    $RestHours_SunEnd = $RestHours[6]['end_time'] ;
+
     $RestaurantHoursSatSat = $TempArray['restaurant_hours_satsun'] ;
     $RestaurantPhoneNum = $TempArray['restaurant_phone'] ;
     $RestaurantFax = $TempArray['restaurant_email'] ;
@@ -226,18 +249,90 @@
                             <div class="card-block">
 
                                 <div class="form-group row">
-                                    <label for="input-item-name" class="col-3 col-form-label">Monday to Friday</label>
-                                    <div class="col-md-9">
-                                        <input name="__rest_hours1" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-item-name" value="<?php echo "$RestaurantHoursMonFri" ?>" >
+                                    <label for="input-rest-hours-mon" class="col-3 col-form-label">Monday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_mon_start" id="input-rest-hours-mon-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_MonStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_mon_end" id="input-rest-hours-mon-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_MonEnd" ?>" >
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="input-item-name" class="col-3 col-form-label">Saturday and Sunday</label>
-                                    <div class="col-md-9">
-                                        <input name="__rest_hours2" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-item-name" value="<?php echo "$RestaurantHoursSatSat" ?>" >
+                                    <label for="input-rest-hours-tue" class="col-3 col-form-label">Tuesday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_tue_start" id="input-rest-hours-tue-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_TueStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_tue_end" id="input-rest-hours-tue-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_TueEnd" ?>" >
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-wed" class="col-3 col-form-label">Wednesday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_wed_start" id="input-rest-hours-wed-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_WedStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_wed_end" id="input-rest-hours-wed-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_WedEnd" ?>" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-thu" class="col-3 col-form-label">Thursday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_thu_start" id="input-rest-hours-thu-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_ThuStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_thu_end" id="input-rest-hours-thu-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_ThuEnd" ?>" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-fri" class="col-3 col-form-label">Friday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_fri_start" id="input-rest-hours-fri-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_FriStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_fri_end" id="input-rest-hours-fri-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_FriEnd" ?>" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-sat" class="col-3 col-form-label">Saturday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_sat_start" id="input-rest-hours-sat-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_SatStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_sat_end" id="input-rest-hours-sat-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_SatEnd" ?>" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-sun" class="col-3 col-form-label">Sunday</label>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_sun_start" id="input-rest-hours-mon-start" class="form-control timopicker" type="text" value="<?php echo "$RestHours_SunStart" ?>" >
+                                    </div>
+                                    <div class="col-md-3 text-center">To
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input name="__rest_hours_sun_end" id="input-rest-hours-mon-end" class="form-control timopicker" type="text"  value="<?php echo "$RestHours_SunEnd" ?>" >
+                                    </div>
+                                </div>
+
+
 
 
 
@@ -321,6 +416,9 @@
 </body>
 <script type="text/javascript"  src="../../../lib/jquery/jquery.js"></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js" ></script>
+<script type="text/javascript"  src="../../../bower_components/jquery-ui/jquery-ui.js" ></script>
+<script type="text/javascript"  src="../../../bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.js"></script>
+
 <script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
 <script type="text/javascript">
     function handleBrowseButton(ButtonId, HiddenInputId, PresentationInputId){
@@ -339,6 +437,125 @@
 
     handleBrowseButton("btn-file-choose-main_image","hidden-file-chooser-main_image","presentation-only-field-main_image") ;
     handleBrowseButton("btn-file-choose-logo_image","hidden-file-chooser-logo_image","presentation-only-field-logo_image") ;
+
+
+
+
+
+    var RestHours_MonStart = '<?php echo "$RestHours_MonStart" ?>' ;
+    var RestHours_MonEnd = '<?php echo "$RestHours_MonEnd" ?>' ;
+    var RestHours_TueStart = '<?php echo "$RestHours_TueStart" ?>' ;
+    var RestHours_TueEnd = '<?php echo "$RestHours_TueEnd" ?>' ;
+    var RestHours_WedStart = '<?php echo "$RestHours_WedStart" ?>' ;
+    var RestHours_WedEnd = '<?php echo "$RestHours_WedEnd" ?>' ;
+    var RestHours_ThuStart = '<?php echo "$RestHours_ThuStart" ?>' ;
+    var RestHours_ThuEnd = '<?php echo "$RestHours_ThuEnd" ?>' ;
+    var RestHours_FriStart = '<?php echo "$RestHours_FriStart" ?>' ;
+    var RestHours_FriEnd = '<?php echo "$RestHours_FriEnd" ?>' ;
+    var RestHours_SatStart = '<?php echo "$RestHours_SatStart" ?>' ;
+    var RestHours_SatEnd = '<?php echo "$RestHours_SatEnd" ?>' ;
+    var RestHours_SunStart = '<?php echo "$RestHours_SunStart" ?>' ;
+    var RestHours_SunEnd = '<?php echo "$RestHours_SunEnd" ?>' ;
+
+
+
+
+    $('.timopicker').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+
+    $('#input-rest-hours-mon-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-mon-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-tue-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-tue-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-wed-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-wed-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-thu-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-thu-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-fri-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-fri-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-sat-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-sat-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-sun-start').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+    $('#input-rest-hours-sun-end').timepicker({
+        timeFormat: "hh:mm tt"
+    });
+
+
+
+
+    $('#input-rest-hours-mon-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_MonStart ) );
+    $('#input-rest-hours-mon-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_MonEnd ) );
+    $('#input-rest-hours-tue-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_TueStart ) );
+    $('#input-rest-hours-tue-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_TueEnd ) );
+    $('#input-rest-hours-wed-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_WedStart ) );
+    $('#input-rest-hours-wed-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_WedEnd ) );
+    $('#input-rest-hours-thu-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_ThuStart ) );
+    $('#input-rest-hours-thu-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_ThuEnd ) );
+    $('#input-rest-hours-fri-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_FriStart ) );
+    $('#input-rest-hours-fri-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_FriEnd ) );
+    $('#input-rest-hours-sat-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_SatStart ) );
+    $('#input-rest-hours-sat-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_SatEnd ) );
+    $('#input-rest-hours-sun-start').datetimepicker('setDate', ("2017 12 12 " + RestHours_SunStart ) );
+    $('#input-rest-hours-sun-end').datetimepicker('setDate', ("2017 12 12 " + RestHours_SunEnd ) );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </html>

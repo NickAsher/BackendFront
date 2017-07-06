@@ -7,11 +7,7 @@ Tax Settings -- Tax table -- Tax Classes
 
 
 
-Items
-    Enabled/Disabled
 
-Categoru
-    Enabled/Disabled
 
 
 

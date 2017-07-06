@@ -6,7 +6,7 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 
-$BlogId = isSecure_checkPostInput('__blog_id') ;
+$BlogId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__blog_id') ;
 
 ?>
 

@@ -15,23 +15,25 @@
     <link rel="stylesheet" href="../../../lib/t3/t3.css" />
 
 
-    <link rel="stylesheet" href="../subcommon/css/fmenu_default_style.css">
-    <link rel="stylesheet" href="../subcommon/css/menu.css">
+<!--    <link rel="stylesheet" href="../subcommon/css/fmenu_default_style.css">-->
+<!--    <link rel="stylesheet" href="../subcommon/css/menu.css">-->
 
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
-    $MenuItemId = isSecure_checkGetInput('___menu_item_id') ;
-    $MenuItemInfoArray = getSingleMenuItemInfoArray($DBConnectionBackend, $MenuItemId) ;
+    $MenuItemId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___menu_item_id') ;
+
+
+
+    $MenuItemInfoArray = getSingleMenuItemInfo_EXTRAArray_PDO($DBConnectionBackend, $MenuItemId) ;
 
 
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
@@ -41,14 +43,14 @@
     $CategoryName = $MenuItemInfoArray['category_display_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
-    print_r($MenuItemInfoArray) ;
+//    print_r($MenuItemInfoArray) ;
 
 
 
     $ActiveCheckedString = null ;
-    if($MenuItemActive == 'truey'){
+    if($MenuItemActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($MenuItemActive == 'falsey'){
+    } else if($MenuItemActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -62,11 +64,11 @@
 
 
 
-<body>
+<body style="background: whitesmoke;">
 
 
 
-<!--<div>--><?php //require_once "../subcommon/includes/header.php" ?><!--</div>-->
+<?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/header.php'; ?>
 <section>
     <?php require_once $ROOT_FOLDER_PATH.'/frontend/common/includes/sidebar.php'; ?>
     <div class="container-fluid t3-push" id="mainContainer">
@@ -78,18 +80,35 @@
 
 
                 <div id="space_below_header">
-                    <br><br><br><br><br>
+                    <br><br><br>
                 </div>
+
+
+
+                <div class="row">
+                    <div class="push-md-1 col-md-10">
+                        <div class="card">
+                            <div class="card-block">
+                                <h1 class="text-center">Menu Item:  <?php echo $MenuItemName ?></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br><br>
 
 
 
 
                 <div class="row">
-                    <div class = col-md-1></div>
-                    <div class="col-md-10" >
+<!--                    <div class = col-md-1></div>-->
+                    <div class="push-md-1 col-md-10" >
+                        <div class="card">
+                            <div class="card-block">
 
 
-
+                        <br>
                         <div class="form-group row">
                             <label for="input-item-name" class="col-3 col-form-label">Item Name</label>
                             <div class="col-md-9">
@@ -124,7 +143,7 @@
                                 <input id="input-item-active" class="form-control" type="hidden" value="<?php echo $MenuItemActive ; ?>" readonly >
                                 <input id="input-item-active-presentation" type="checkbox" class="form-control" <?php echo $ActiveCheckedString ?> disabled data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                             </div>
-                        </div> yolo is <?php echo $ActiveCheckedString ?>
+                        </div>
 
 
 
@@ -133,27 +152,24 @@
                         <div id="Div_Price">
                             <?php
 
+                            $Query = "SELECT `b`.*, `a`.`size_name` 
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size-items_table` AS `b`
+                                ON `a`.`size_id` = `b`.`size_id`  
+                                WHERE `b`.`item_id` = :item_id ORDER BY `a`.`size_sr_no` ASC  " ;
 
-
-
-
-                            $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$MenuItemCategoryCode' ORDER BY `size_sr_no` ASC"  ;
-                            $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                            if(!$QueryResult){
-                                die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
+                            try {
+                                $QueryResult = $DBConnectionBackend->prepare($Query);
+                                $QueryResult->execute(['item_id' => $MenuItemId]);
+                                $AllSizesPriceList = $QueryResult->fetchAll();
+                            }catch (Exception $e){
+                                die("Error in getting the size price list : ".$e->getMessage()) ;
                             }
 
-                            foreach ($QueryResult as $Record) {
+                            foreach ($AllSizesPriceList as $Record){
                                 $SizeName = $Record['size_name'] ;
                                 $SizeId = $Record['size_id'] ;
+                                $ItemPrice = $Record['item_price'] ;
 
-                                $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_id` = '$SizeId'  " ;
-                                $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-                                if(!$QueryResult2) {
-                                    die("Unable to fetch the record for the item for size $SizeId  :".mysqli_error($DBConnectionBackend) ) ;
-                                }
-                                $Record2 = mysqli_fetch_assoc($QueryResult2) ;
-                                $ItemPrice = $Record2['item_price'] ;
 
                                 echo "
                                         <div class='form-group row'>
@@ -167,6 +183,12 @@
 
                             }
 
+
+
+
+
+
+
                             ?>
                         </div>
 
@@ -176,22 +198,36 @@
 
                         <div class="form-group row">
                             <label  class="col-3 col-form-label">Item Image</label>
-                            <div class="col-6">
+                            <div class="col-6 ">
+
                                 <center><img src="<?php echo "$IMAGE_BACKENDFRONT_LINK_PATH/$MenuItemImage "; ?>" class="img-fluid" width='180'></center>
                             </div>
                         </div>
 
                         <br><br><br>
 
-                        <div class="row">
-                            <div class="col-4" ></div>
-                            <a id="btn-edit" class="col-4 btn btn-info" href="edit-menuitem.php?___menu_item_id=<?php echo $MenuItemId ; ?>"  >Edit this Item</a>
-                            <div class="col-4" ></div>
+
+
+
+
+                            </div>
                         </div>
-
-
                     </div>
-                    <div class="col-md-1"></div>
+<!--                    <div class="col-md-1"></div>-->
+                </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="push-md-1 col-md-10">
+                        <div class="card">
+                            <div class="card-block" style="text-align: center">
+                                <div class="row">
+                                    <a id="btn-edit" class="push-md-2 col-md-8 btn btn-info" href="edit-menuitem.php?___menu_item_id=<?php echo $MenuItemId ; ?>"  >Edit this Item</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 

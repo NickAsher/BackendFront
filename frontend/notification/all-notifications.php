@@ -27,7 +27,7 @@
     require_once '../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
 
-    $DBConnectionFCM = YOLOSqlFCMConnect() ;
+    $DBConnectionFCM = YOPDOSqlFCMConnect() ;
 
 
     ?>
@@ -81,7 +81,7 @@
                 <?php
 
                 $Query = "SELECT * FROM `notifications_table` ORDER BY `date` DESC, `time` DESC" ;
-                $QueryResult = mysqli_query($DBConnectionFCM, $Query) ;
+                $QueryResult = $DBConnectionFCM->query($Query) ;
                 if($QueryResult){
 
                     foreach($QueryResult as $Record){
@@ -98,17 +98,19 @@
 
 
 
-                        echo "<tr>" ;
-                        echo "<td> $NotificationLabel </td>" ;
-                        echo "<td> $NotificationTitle </td>" ;
-                        echo "<td> $NotificationMessage </td>" ;
-                        echo "<td> $NotificationImage </td>" ;
-                        echo "<td> $NotificationExpiryTime </td>" ;
-                        echo "<td> $NotificationDate <br> $NotificationTime </td>" ;
-                        echo "<td> $NotificationTarget </td>" ;
-                        echo "<td> $NotificationTargetExtra </td>" ;
-                        echo "<td> $NotificationDevicesReached </td>" ;
-                        echo "</tr>" ;
+                        echo "
+                            <tr>
+                                <td> $NotificationLabel </td>
+                                <td> $NotificationTitle </td>
+                                <td> $NotificationMessage </td>
+                                <td> $NotificationImage </td>
+                                <td> $NotificationExpiryTime </td>
+                                <td> $NotificationDate <br> $NotificationTime </td>
+                                <td> $NotificationTarget </td>
+                                <td> $NotificationTargetExtra </td>
+                                <td> $NotificationDevicesReached </td>
+                            </tr>
+                        " ;
                     }
                 }
 

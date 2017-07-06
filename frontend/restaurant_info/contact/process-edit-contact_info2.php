@@ -5,20 +5,56 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php'  ;
 require_once $ROOT_FOLDER_PATH.'/utils/updater-utils.php';
 
 
-$DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
+$DBConnectionBackend_Old = YOLOSqlConnect() ;
 
 
 
-$NewLatitude = isSecure_checkPostInput('__rest_latitude') ;
-$NewLongitude = isSecure_checkPostInput('__rest_longitude') ;
-$NewRestaurantName = isSecure_checkPostInput('__rest_name') ;
-$NewRestaurantAddress1 = isSecure_checkPostInput('__rest_addr1') ;
-$NewRestaurantAddress2 = isSecure_checkPostInput('__rest_addr2') ;
-$NewRestaurantAddress3 = isSecure_checkPostInput('__rest_addr3') ;
-$NewRestaurantHoursMonFri = isSecure_checkPostInput('__rest_hours1') ;
-$NewRestaurantHoursSatSat = isSecure_checkPostInput('__rest_hours2') ;
-$NewRestaurantPhoneNum = isSecure_checkPostInput('__rest_phone') ;
-$NewRestaurantEmail = isSecure_checkPostInput('__rest_email') ;
+$NewLatitude = isSecure_isValidDecimal(GetPostConst::Post, '__rest_latitude') ;
+$NewLongitude = isSecure_isValidDecimal(GetPostConst::Post, '__rest_longitude') ;
+$NewRestaurantName = isSecure_IsValidText(GetPostConst::Post, '__rest_name') ;
+$NewRestaurantAddress1 = isSecure_IsValidText(GetPostConst::Post, '__rest_addr1') ;
+$NewRestaurantAddress2 = isSecure_IsValidText(GetPostConst::Post, '__rest_addr2') ;
+$NewRestaurantAddress3 = isSecure_IsValidText(GetPostConst::Post, '__rest_addr3') ;
+
+$NewRestaurantPhoneNum = isSecure_isValidPhoneNum(GetPostConst::Post, '__rest_phone') ;
+$NewRestaurantEmail = isSecure_isValidEmail(GetPostConst::Post, '__rest_email') ;
+
+
+$RestHours = array(
+
+        array(
+           'start_time'=>isSecure_checkPostInput('__rest_hours_mon_start'),
+           'end_time'=>isSecure_checkPostInput('__rest_hours_mon_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_tue_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_tue_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_wed_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_wed_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_thu_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_thu_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_fri_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_fri_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_sat_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_sat_end')
+        ),
+        array(
+            'start_time'=>isSecure_checkPostInput('__rest_hours_sun_start'),
+            'end_time'=>isSecure_checkPostInput('__rest_hours_sun_end')
+        )
+
+) ;
+
+$RestHours = json_encode($RestHours) ;
 
 
 $OldRestaurantMainImage_Name = isSecure_checkPostInput('__rest_old_main_image') ;
@@ -28,8 +64,8 @@ $NewRestaurantMainImage = $_FILES['__rest_main_image'] ;
 $NewRestaurantLogoImage = $_FILES['__rest_logo_image'] ;
 
 
-$ImageUpdater1 = new ImageUpdater($DBConnectionBackend, $IMAGE_FOLDER_FILE_PATH, $OldRestaurantMainImage_Name, $NewRestaurantMainImage) ;
-$ImageUpdater2 = new ImageUpdater($DBConnectionBackend, $IMAGE_FOLDER_FILE_PATH, $OldRestaurantLogoImage_Name, $NewRestaurantLogoImage) ;
+$ImageUpdater1 = new ImageUpdater($DBConnectionBackend_Old, $IMAGE_FOLDER_FILE_PATH, $OldRestaurantMainImage_Name, $NewRestaurantMainImage) ;
+$ImageUpdater2 = new ImageUpdater($DBConnectionBackend_Old, $IMAGE_FOLDER_FILE_PATH, $OldRestaurantLogoImage_Name, $NewRestaurantLogoImage) ;
 
 
 try{
@@ -56,20 +92,36 @@ $isNewImageInserted2 = $ImageUpdater2->isNewImageInserted() ;
 
 
 
-mysqli_begin_transaction($DBConnectionBackend) ;
 try {
+    $DBConnectionBackend->beginTransaction() ;
 
 
-    $Query = "UPDATE `info_contact_table` SET `latitude` = '$NewLatitude', `longitude` = '$NewLongitude',
-          `restaurant_name` = '$NewRestaurantName', `restaurant_image` = '$InsertedDisplayPic_Name1', `restaurant_logo`='$InsertedDisplayPic_Name2',
-          `restaurant_addr_1` = '$NewRestaurantAddress1', `restaurant_addr_2` = '$NewRestaurantAddress2', `restaurant_addr_3` = '$NewRestaurantAddress3',
-          `restaurant_hours_monfri` = '$NewRestaurantHoursMonFri', `restaurant_hours_satsun` = '$NewRestaurantHoursSatSat',
-          `restaurant_phone` = '$NewRestaurantPhoneNum', `restaurant_email` = '$NewRestaurantEmail'
+    $Query = "UPDATE `info_contact_table` SET `latitude` = :latitude, `longitude` = :longitude,
+          `restaurant_name` = :rest_name, `restaurant_image` = :rest_image, `restaurant_logo`= :rest_logo,
+          `restaurant_addr_1` = :rest_addr1, `restaurant_addr_2` = :rest_addr2, `restaurant_addr_3` = :rest_addr3,
+          `restaurant_hours` = :rest_hours,
+          `restaurant_phone` = :rest_phone, `restaurant_email` = :rest_email
            WHERE `restaurant_id` = '1'   ";
 
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query);
-    if (!$QueryResult) {
-        throw new Exception("Error in Setting the new values for the restaurant contact info <br> " . mysqli_error($DBConnectionBackend)) ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute([
+            'latitude' => $NewLatitude,
+            'longitude' => $NewLongitude,
+            'rest_name' => $NewRestaurantName,
+            'rest_image' => $InsertedDisplayPic_Name1,
+            'rest_logo' => $InsertedDisplayPic_Name2,
+            'rest_addr1' => $NewRestaurantAddress1,
+            'rest_addr2' => $NewRestaurantAddress2,
+            'rest_addr3' => $NewRestaurantAddress3,
+            'rest_hours' => $RestHours,
+            'rest_phone' => $NewRestaurantPhoneNum,
+            'rest_email' => $NewRestaurantEmail
+
+
+        ]);
+    } catch (Exception $e) {
+        throw new Exception("Error in Setting the new values for the restaurant contact info <br> " . $e) ;
     }
 
 
@@ -77,8 +129,7 @@ try {
 
 
 
-    mysqli_commit($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+    $DBConnectionBackend->commit() ;
 
     echo "
             Item Successfully Updated
@@ -107,23 +158,22 @@ try {
 } catch (Exception $j){
     echo $j ;
 
-    mysqli_rollback($DBConnectionBackend) ;
-    mysqli_autocommit($DBConnectionBackend, true) ;
+    $DBConnectionBackend->rollBack() ;
 
 
 
     try{
         $ImageUpdater1->revertBackChanges() ;
-        echo "Reverted Changes" ;
+        echo "Reverted Changes for image updater 1" ;
     }catch (Exception $e){
-        die("Problem in reverting back the changes for main: ".$e->getMessage()) ;
+        die("Problem in reverting back the changes for updater 1: ".$e->getMessage()) ;
     }
 
     try{
         $ImageUpdater2->revertBackChanges() ;
-        echo "Reverted Changes" ;
+        echo "Reverted Changes for image updater 2" ;
     }catch (Exception $e){
-        die("Problem in reverting back the changes for logo but did it right for main: ".$e->getMessage()) ;
+        die("Problem in reverting back the changes for updater 2 but did it right for updater 1: ".$e->getMessage()) ;
     }
 
 

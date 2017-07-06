@@ -20,24 +20,22 @@
     <?php
 
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $TaxId = isSecure_checkGetInput('___tax_id') ;
+    $TaxId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___tax_id') ;
 
-    $Query = "SELECT * FROM `tax_table` WHERE `tax_id` = '$TaxId' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        die("Unable to fetch the tax from tax_table".mysqli_error($DBConnectionBackend)) ;
+    $Query = "SELECT * FROM `tax_table` WHERE `tax_id` = :tax_id " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['tax_id' => $TaxId]);
+        $Record = $QueryResult->fetch(PDO::FETCH_ASSOC) ;
+    } catch (Exception $e) {
+        die("Unable to fetch the tax from tax_table: ".$e) ;
     }
-    $Record = mysqli_fetch_assoc($QueryResult) ;
-
-
 
     ?>
 

@@ -25,10 +25,11 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
+    require_once 'utils-openscr.php' ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
     ?>
@@ -76,24 +77,25 @@
                     <?php
 
 
-                    $Query = "SELECT * FROM `opening_screen_image_table` " ;
-                    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                    if($QueryResult){
-                        foreach($QueryResult as $Record){
+
+                    try {
+                        $AllOpeningScrImages = getAllOpeningScreenImages($DBConnectionBackend) ;
+                    } catch (Exception $e) {
+                        die("Problem in fetching the Records from gallery table : ".$e );
+                    }
+
+                        foreach($AllOpeningScrImages as $Record){
                             $Id = $Record['item_id'] ;
                             $Name = $Record['item_image'] ;
 
 
                             $ImageLinkPath = "$IMAGE_FOLDER_LINK_PATH/$Name" ;
-                            $DetailPageLink = "show-openscr-image.php?___item_id=$Id" ;
 
                             echo "
 
                             <tr>
-                                <td class='addon-link' data-href='$DetailPageLink'> $Id </td>
-                                <td class='addon-link' data-href='$DetailPageLink'>
-                                    <img src='$ImageLinkPath' width='90px' class='img-fluid' >
-                                </td>
+                                <td > $Id </td>
+                                <td><img src='$ImageLinkPath' width='90px' class='img-fluid' ></td>
                                 <td>
                                     <form method='post' action='confirm-delete-openscr-image.php'>
                                         <input type='hidden' name='__item_id' value='$Id'>
@@ -109,9 +111,7 @@
 
 
                         }
-                    } else {
-                        echo "Problem in fetching the Records from gallery table <br>".mysqli_error($DBConnectionBackend) ;
-                    }
+
 
 
 

@@ -30,7 +30,7 @@
 
     $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
     $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
 
     $CategoryName = $CategoryInfoArray['category_display_name'] ;
@@ -96,17 +96,12 @@
                             <div class="form-group row">
                                 <label for="input-size-active-hidden" class="col-3 col-form-label">Size Active</label>
                                 <div class="col-md-9">
-                                    <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden" value="false" >
+                                    <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden" value="no" >
                                     <input id="input-size-active-presentation" type="checkbox" class="form-control"  data-toggle="toggle" data-width="100" data-onstyle="success" data-offstyle="danger" data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-size-sr_no" class="col-3 col-form-label">Size Sr No</label>
-                                <div class="col-md-9">
-                                    <input name="__size_sr_no" id="input-size-sr_no" class="form-control" type="number"  >
-                                </div>
-                            </div>
+
 
 
 
@@ -173,10 +168,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

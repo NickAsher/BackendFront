@@ -27,9 +27,9 @@
     <?php
     require_once '../../utils/constants.php';
 
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
     ?>
@@ -81,9 +81,12 @@
 
                     <?php
 
-                    $Query = "SELECT * FROM `coupon_coupons_discount_table` WHERE `active` = '1' " ;
-                    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                    if($QueryResult){
+                    $Query = "SELECT * FROM `coupon_coupons_discount_table` " ;
+                    try {
+                        $QueryResult = $DBConnectionBackend->query($Query);
+                    } catch (Exception $e) {
+                        die( "Problem in fetching entries from coupon_table: ".$e) ;
+                    }
                         foreach($QueryResult as $Record){
                             $CouponId = $Record['id'] ;
                             $CouponName = $Record['name'] ;
@@ -127,9 +130,7 @@
 
 
                         }
-                    } else {
-                        echo "Problem in fetching entries from coupon_table <br>".mysqli_error($DBConnectionBackend) ;
-                    }
+
 
 
                     ?>

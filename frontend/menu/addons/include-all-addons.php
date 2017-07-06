@@ -1,8 +1,8 @@
 <?php
 
-    $SingleCategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
+    $SingleCategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
 
-    $CategoryAddonGroupsListArray = getListOfAllAddonGroupsInACategory_Array($DBConnectionBackend, $CategoryCode) ;
+    $CategoryAddonGroupsListArray = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
 
 
 
@@ -60,17 +60,18 @@
             " ;
 
 
-                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
+                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnectionBackend, $AddonGroupRelId) ;
                             foreach($AllAddonsInAGroup as $Record2){
 
                                 $ItemSrNo = $Record2['item_sr_no'] ;
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
-                                $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
+                                $ItemPriceString = getAddonPriceString_PDO($DBConnectionBackend, $CategoryCode, $ItemId) ;
                                 $ItemActive = $Record2['item_is_active'] ;
-                                if($ItemActive == 'true'){
+                                $ActiveButton = '' ;
+                                if($ItemActive == 'yes'){
                                     $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                                } else if($ItemActive == 'false'){
+                                } else if($ItemActive == 'no'){
                                     $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
                                 }
 
@@ -161,19 +162,20 @@
                             </tr>
                             
             " ;
-                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
+                            $AllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnectionBackend, $AddonGroupRelId) ;
 
                             foreach($AllAddonsInAGroup as $Record2){
 
                                 $ItemSrNo = $Record2['item_sr_no'] ;
                                 $ItemId = $Record2['item_id'] ;
                                 $ItemName = $Record2['item_name'] ;
-                                $ItemPriceString = getAddonPriceString($DBConnectionBackend, $CategoryCode, $ItemId) ;
+                                $ItemPriceString = getAddonPriceString_PDO($DBConnectionBackend, $CategoryCode, $ItemId) ;
                                 $ItemDefaultStatus = $Record2['item_is_default'] ;
                                 $ItemActive = $Record2['item_is_active'] ;
-                                if($ItemActive == 'true'){
+                                $ActiveButton = '' ;
+                                if($ItemActive == 'yes'){
                                     $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                                } else if($ItemActive == 'false'){
+                                } else if($ItemActive == 'no'){
                                     $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
                                 }
 

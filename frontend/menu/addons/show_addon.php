@@ -21,17 +21,17 @@
     <?php
 
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
-    $CategoryCode = isSecure_checkGetInput('___category_code') ;
-    $AddonItemId = isSecure_checkGetInput('___addon_item_id') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Get, '___category_code') ;
+    $AddonItemId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___addon_item_id') ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryInfoArray = getSingleCategoryInfoArray($DBConnectionBackend, $CategoryCode) ;
-    $AddonItemDetailInfoArray = getAddonItemInfoArray($DBConnectionBackend, $CategoryCode, $AddonItemId) ;
+    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
+    $AddonItemDetailInfoArray = getSingleAddonItemInfoArray_PDO($DBConnectionBackend, $AddonItemId) ;
 
 
     $AddonItemId = $AddonItemDetailInfoArray['item_id'] ;
@@ -39,9 +39,9 @@
     $AddonItemIsActive = $AddonItemDetailInfoArray['item_is_active'] ;
 
     $ActiveCheckedString = null ;
-    if($AddonItemIsActive == 'true'){
+    if($AddonItemIsActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($AddonItemIsActive == 'false'){
+    } else if($AddonItemIsActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -107,32 +107,27 @@
                         <div id="Div_Price">
                             <?php
 
-                            $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` ASC " ;
-                            $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                            if(!$QueryResult){
-                                die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
-                            }
+                            $ListOfAllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
 
-                            foreach ($QueryResult as $Record) {
-                                $SizeName = $Record['size_name'] ;
-                                $SizeId = $Record['size_id'] ;
+                            foreach ($ListOfAllSizes as $Record) {
+                                $SizeName = $Record['size_name'];
+                                $SizeId = $Record['size_id'];
 
-                                $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonItemId' AND `size_id` = '$SizeId'  " ;
-                                $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-                                if(!$QueryResult2) {
-                                    die("Unable to fetch the record for the item for size $SizeId :".mysqli_error($DBConnectionBackend) ) ;
-                                }
-                                $Record2 = mysqli_fetch_assoc($QueryResult2) ;
-                                $ItemPrice = $Record2['addon_price'] ;
 
-                                echo "
-                                        <div class='form-group row'>
-                                            <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' readonly>
-                                            </div>
-                                        </div>  
-                                        " ;
+                                $AddonSizePriceInfo = getSingleAddonItemPriceInfoArray_PDO($DBConnectionBackend, $AddonItemId, $SizeId);
+
+                                    $ItemPrice = $AddonSizePriceInfo['addon_price'];
+
+                                    echo "
+                                            <div class='form-group row'>
+                                                <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
+                                                <div class='col-md-9'>
+                                                    <input id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' readonly>
+                                                </div>
+                                            </div>  
+                                            ";
+
+
 
 
                             }

@@ -1,8 +1,8 @@
 
 <?php
-$CategorySubCategoriesListArray = getListOfAllSubCategory_InACategory_Array($DBConnectionBackend, $CategoryCode) ;
-$CategoryAddonsListArray = getListOfAllAddonGroupsInACategory_Array($DBConnectionBackend, $CategoryCode) ;
-$CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $CategoryCode) ;
+$CategorySubCategoriesListArray = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
+$CategoryAddonsListArray = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
+$CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
 
 
 ?>
@@ -48,10 +48,10 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                 $NoOfMenuItems = $Record['subcategory_no_of_menuitems'] ;
 
                 $SubCategoryActive = $Record['subcategory_is_active'] ;
-                $ActiveButton = null ;
-                if($SubCategoryActive == 'true'){
+                $ActiveButton = '' ;
+                if($SubCategoryActive == 'yes'){
                     $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                } else if($SubCategoryActive == 'false'){
+                } else if($SubCategoryActive == 'no'){
                     $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
                 }
 
@@ -164,10 +164,10 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
             }
 
             $AddonGroupActive = $Record['addon_group_is_active'] ;
-            $ActiveButton = null ;
-            if($AddonGroupActive == 'true'){
+            $ActiveButton = '' ;
+            if($AddonGroupActive == 'yes'){
                 $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-            } else if($AddonGroupActive == 'false'){
+            } else if($AddonGroupActive == 'no'){
                 $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
             }
 
@@ -268,10 +268,10 @@ $CategorySizesListArray = getListOfAllSizesInCategory($DBConnectionBackend, $Cat
                     $SizeAbbrName = $Record['size_name_short'] ;
                     $SizeIsDefault = $Record['size_is_default'] ;
                     $SizeActive = $Record['size_is_active'] ;
-                    $ActiveButton = null ;
-                    if($SizeActive == 'true'){
+                    $ActiveButton = '' ;
+                    if($SizeActive == 'yes'){
                         $ActiveButton = "<div class='btn btn-success' disabled><i class='fa fa-check'></i></div>" ;
-                    } else if($SizeActive == 'false'){
+                    } else if($SizeActive == 'no'){
                         $ActiveButton = "<div class='btn btn-danger' disabled><i class='fa fa-times'></i></div>" ;
                     }
 

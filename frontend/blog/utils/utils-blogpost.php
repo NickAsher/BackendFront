@@ -16,17 +16,14 @@
  */
 
 function getBlogInfo($DBConnectionBackend, $BlogId){
-    $Query = "SELECT * FROM `blogs_table` WHERE `id` = '$BlogId'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    $Temp = '' ;
-    if($QueryResult){
-        foreach ($QueryResult as $Record){
-            $Temp = $Record ;
-        }
-        return $Temp ;
-    } else {
-        echo "Problem in getting the values for blog from blog table <br>".mysqli_error($DBConnectionBackend) ;
-        return -1 ;
+    $Query = "SELECT * FROM `blogs_table` WHERE `blog_id` = :blog_id  " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['blog_id' => $BlogId]);
+        $BlogInfoArray = $QueryResult->fetch(PDO::FETCH_ASSOC);
+        return $BlogInfoArray ;
+    } catch (Exception $e) {
+        die("Unable to fetch the blog from the blog_table: ".$e) ;
     }
 
 

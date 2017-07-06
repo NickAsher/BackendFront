@@ -1,6 +1,6 @@
 <?php
-
-$ROOT_FOLDER_PATH = $_SERVER['DOCUMENT_ROOT']."/BackendFront" ;
+$ROOT_FOLDER_PATH = "/opt/lampp/htdocs/BackendFront" ;
+//$ROOT_FOLDER_PATH = $_SERVER['DOCUMENT_ROOT']."/BackendFront" ;
 $IMAGE_FOLDER_FILE_PATH = $ROOT_FOLDER_PATH.'/images' ;
 
 $IMAGE_BACKENDFRONT_LINK_PATH ='http://localhost/BackendFront/images' ;

@@ -1,0 +1,12 @@
+{
+    "name": "root/backend-front",
+    "require": {
+        "respect/validation": "^1.1"
+    },
+    "authors": [
+        {
+            "name": "Nick Asher",
+            "email": "auzumk@gmail.com"
+        }
+    ]
+}

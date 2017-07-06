@@ -1,31 +1,22 @@
 <?php
 require_once '../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 $SortedIdsArray = isSecure_checkPostInput('__sortarray') ;
-$AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
+$AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
 
-$DBConnection = YOLOSqlConnect() ;
+foreach ($SortedIdsArray as $sortNo=>$ItemId){
+    isSecure_isValidPositiveInteger(GetPostConst::None, $ItemId) ;
+}
 
 
-//print_r($SortedIdsArray) ;
-
-//foreach ($SortedIdsArray as $sortNo=>$Id){
-//    $RealSortNo = $sortNo + 1 ;
-//    $Query = "UPDATE `demo` SET `item_sr_no` = '$RealSortNo' WHERE `item_id` = '$Id' " ;
-//    $QueryResult = mysqli_query($DBConnection, $Query) ;
-//    if($QueryResult){
-//        continue ;
-//    } else {
-//        die("error in sorting for id $Id") ;
-//    }
-//}
-
+$DBConnection = YOPDOSqlConnect() ;
 
 $CaseStatement = '' ;
+$CaseValues =array() ;
 /*
  * SortedIdsArray
  *      Array(
@@ -38,7 +29,9 @@ $CaseStatement = '' ;
  */
 foreach ($SortedIdsArray as $sortNo=>$ItemId){
     $RealSortNo = $sortNo + 1 ;
-    $CaseStatement .= "WHEN `item_id` = '$ItemId' THEN '$RealSortNo' " ;
+    $CaseStatement .= "WHEN `item_id` = ? THEN  ? " ;
+    array_push($CaseValues, $ItemId, $RealSortNo) ;
+
 
 }
 
@@ -46,11 +39,14 @@ foreach ($SortedIdsArray as $sortNo=>$ItemId){
 
 
 $Query = "UPDATE `menu_addons_table` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_addon_group_rel_id` = '$AddonGroupRelId'  " ;
-$QueryResult = mysqli_query($DBConnection, $Query) ;
-if(!$QueryResult){
-    die("error in case statement") ;
+array_push($CaseValues, $AddonGroupRelId) ;
+try {
+    $QueryResult = $DBConnection->prepare($Query);
+    $QueryResult->execute($CaseValues);
+} catch (Exception $e) {
+    die("error in case statement: ".$e) ;
 }
-
 echo "Success" ;
+
 
 

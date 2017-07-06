@@ -26,10 +26,11 @@
     <?php
     require_once '../../../utils/constants.php';
 
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
+    require_once 'utils/gallery-utils.php' ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
     ?>
@@ -58,6 +59,7 @@
 
 
 
+                <a href="sort-gallery-item.php" style="float: right" class="btn btn-primary">Change Order</a>
 
 
                 <table  class="table table-bordered table-hover" >
@@ -65,7 +67,7 @@
 
 
                     <tr class="table-info">
-                        <th>Image Id </th>
+                        <th>Sr No </th>
                         <th>Item </th>
                         <th>Title</th>
                         <th>Description</th>
@@ -78,11 +80,10 @@
 
                     <?php
 
-
-                    $Query = "SELECT * FROM `gallery_table` " ;
-                    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                    if($QueryResult){
-                        foreach($QueryResult as $Record){
+                    try{
+                        $ListOfAllGalleryItems = getListOfAllGalleryItems($DBConnectionBackend) ;
+                        foreach($ListOfAllGalleryItems as $Record){
+                            $SrNo = $Record['gallery_item_sr_no'] ;
                             $Id = $Record['gallery_item_id'] ;
                             $Name = $Record['gallery_item_image_name'] ;
                             $Title = $Record['gallery_item_title'] ;
@@ -94,7 +95,7 @@
 
                             echo "
                                 <tr>
-                                    <td class='td-link' data-href='$DetailPageLink'>$Id</td>
+                                    <td class='td-link' data-href='$DetailPageLink'>$SrNo</td>
                                     <td class='td-link' data-href='$DetailPageLink'><img src='$ImageLinkPath' width='90px' class='img-fluid' ></td>
                                     <td class='td-link' data-href='$DetailPageLink'> $Title </td>
                                     <td class='td-link' data-href='$DetailPageLink'> $Description</td>
@@ -107,8 +108,8 @@
                                 </tr>
                             " ;
                         }
-                    } else{
-                        echo "Problem in fetching the Records from gallery table <br>".mysqli_error($DBConnectionBackend) ;
+                    } catch (Exception $e){
+                        die("Problem in fetching the Records from gallery table <br>".$e->getMessage() );
                     }
 
 

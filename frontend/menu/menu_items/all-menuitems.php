@@ -24,14 +24,14 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils-pdo.php';
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $ListOfAllCategories = getListOfAllCategories_Array($DBConnectionBackend) ;
+    $ListOfAllCategories = getListOfAllCategories_Array_PDO($DBConnectionBackend) ;
 
 
     ?>

@@ -21,23 +21,22 @@
 
     <?php
     require_once '../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
-    $CouponId = isSecure_checkPostInput('__coupon_id') ;
-    $Query = "SELECT * FROM `coupon_coupons_discount_table` WHERE `id` = '$CouponId'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    $Temp = '' ;
-    if($QueryResult) {
-        foreach ($QueryResult as $Record) {
-            $Temp = $Record;
-        }
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+    $CouponId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__coupon_id') ;
 
-    } else{
-        die("Problem in getting the blogpost from blogs_table <br> ".mysqli_error($DBConnectionBackend)) ;
 
+    $Query = "SELECT * FROM `coupon_coupons_discount_table` WHERE `id` = :cpn_id  " ;
+
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['cpn_id' > $CouponId]);
+        $Temp = $QueryResult->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        die("Unable to fetch the coupon details: ".$e) ;
     }
 
 

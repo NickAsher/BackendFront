@@ -1,49 +1,99 @@
 <?php
 
 require_once '../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$ItemId = isSecure_checkPostInput('__item_id') ;
+$ItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__item_id') ;
 
 
 
-$DBConnectionBackend = YOLOSqlConnect() ;
-$GalleryInfoArray = null ;
-$Query = "SELECT * FROM `opening_screen_image_table` WHERE `item_id` = '$ItemId' " ;
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-if($QueryResult){
-    if(mysqli_num_rows($QueryResult) != 1){
-        die("No of rows returned is not 1") ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
+
+try{
+    $DBConnectionBackend->beginTransaction() ;
+
+
+
+    $Query = "SELECT * FROM `opening_screen_image_table` WHERE `item_id` = :item_id " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['item_id'=>$ItemId]) ;
+        $GalleryInfoArray = $QueryResult->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        throw new Exception("Problem in fetching the Record from opening screen table : ".$e );
     }
 
 
-} else {
-    die("error in fetching the item <br> ".mysqli_error($DBConnectionBackend)) ;
-}
+    $GalleryItem_ImageName = $GalleryInfoArray['item_image'] ;
 
-$GalleryInfoArray = mysqli_fetch_assoc($QueryResult) ;
-
-
-
-$GalleryItem_ImageName = $GalleryInfoArray['item_image'] ;
-
-
-$Del1 = deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $GalleryItem_ImageName) ;
-
-
-if($Del1 != -1  ){
-    $Query = "DELETE FROM `opening_screen_image_table` WHERE `item_id` = '$ItemId'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if($QueryResult){
-        echo "Succesfully deleted the item " ;
-    } else {
-        echo "unable to delete the opening screen image <br> ".mysqli_error($DBConnectionBackend) ;
+    try {
+        $Del1 = deleteImageFromImageFolderNew($IMAGE_FOLDER_FILE_PATH, $GalleryItem_ImageName);
+    }catch (Exception $e){
+        throw new Exception("Unable to delete the image from image folder : ".$e );
     }
-}
 
+
+
+
+    $Query2 = "DELETE FROM `opening_screen_image_table` WHERE `item_id` = :item_id  " ;
+    try {
+        $QueryResult2 = $DBConnectionBackend->prepare($Query2);
+        $QueryResult2->execute(['item_id' => $ItemId]);
+    } catch (Exception $e) {
+        throw new Exception("Problem in deleting the Record from opening screen table : ".$e );
+    }
+
+
+
+
+
+
+    $AllOpeningScrImages = getAllOpeningScreenImages($DBConnectionBackend) ;
+    if(count($AllOpeningScrImages) != 0 ){
+
+
+        $CaseStatement = '' ;
+        $RealSortNo = 1 ;
+        foreach ($AllOpeningScrImages as $Record2){
+            $ThisItem_ItemId = $Record2['item_id'] ;
+            $CaseStatement .= "WHEN `item_id` = '$ThisItem_ItemId' THEN '$RealSortNo' " ;
+            $RealSortNo ++ ;
+        }
+
+        $Query3 = "UPDATE `opening_screen_image_table` SET `item_sr_no` = CASE $CaseStatement END   " ;
+        try {
+            $QueryResult3 = $DBConnectionBackend->query($Query3);
+        }catch (Exception $e){
+            throw new Exception("Error in sorting the new Opening Screen Images: ". $e->getMessage());
+        }
+    }
+
+
+    $DBConnectionBackend->commit() ;
+
+
+
+
+
+
+
+    echo "
+    <div >
+        <a href='all-openscr-images.php'>
+            Show All posts
+        </a>
+    </div>
+    " ;
+
+
+
+} catch(Exception $j){
+    $DBConnectionBackend->rollBack() ;
+    die($j) ;
+}
 
 
 
@@ -51,8 +101,4 @@ if($Del1 != -1  ){
 
 ?>
 
-<div >
-    <a href='all-openscr-images.php'>
-        Show All posts
-    </a>
-</div>
+

@@ -26,16 +26,19 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $TaxId = isSecure_checkPostInput('__tax_id') ;
+    $TaxId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__tax_id') ;
 
-    $Query = "SELECT * FROM `tax_table` WHERE `tax_id` = '$TaxId' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if(!$QueryResult){
-        die("Unable to fetch the tax from tax_table".mysqli_error($DBConnectionBackend)) ;
+
+    $Query = "SELECT * FROM `tax_table` WHERE `tax_id` = :tax_id " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['tax_id' => $TaxId]);
+        $Record = $QueryResult->fetch(PDO::FETCH_ASSOC) ;
+    } catch (Exception $e) {
+        die("Unable to fetch the tax from tax_table: ".$e) ;
     }
-    $Record = mysqli_fetch_assoc($QueryResult) ;
 
 
 
@@ -90,12 +93,7 @@
                         </div>
 
 
-                        <div class="form-group row">
-                            <label for="input-tax-sr_no" class="col-3 col-form-label">Tax Sr No</label>
-                            <div class="col-md-9">
-                                <input name="__tax_sr_no" id="input-tax-sr_no" class="form-control" type="number" value="<?php echo $Record['tax_sr_no']?>" >
-                            </div>
-                        </div>
+
 
 
                         <br><br>

@@ -35,7 +35,7 @@
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
-    $AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
+    $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
     $ListOfAllAddonsInAGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
 

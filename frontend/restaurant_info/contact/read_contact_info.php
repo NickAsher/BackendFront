@@ -26,23 +26,21 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
 
     $Query = "SELECT * FROM `info_contact_table` WHERE `restaurant_id` = '1' " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-
-    $TempArray = '' ;
-    if($QueryResult) {
-        foreach($QueryResult as $Record){
-            $TempArray = $Record ;
-        }
-    } else {
-        echo "Error in getting the variables <br> ".mysqli_error($DBConnectionBackend) ;
+    try{
+        $QueryResult = $DBConnectionBackend->query($Query) ;
+        $TempArray = $QueryResult->fetch(PDO::FETCH_ASSOC) ;
+    }catch (Exception $e){
+        throw new Exception("Error in getting the contact information: ".$e->getMessage()) ;
     }
+
+
 
 
 
@@ -57,8 +55,17 @@
     $RestaurantAddress1 = $TempArray['restaurant_addr_1'] ;
     $RestaurantAddress2 = $TempArray['restaurant_addr_2'] ;
     $RestaurantAddress3 = $TempArray['restaurant_addr_3'] ;
-    $RestaurantHoursMonFri = $TempArray['restaurant_hours_monfri'] ;
-    $RestaurantHoursSatSat = $TempArray['restaurant_hours_satsun'] ;
+
+    $RestaurantHours = json_decode($TempArray['restaurant_hours'], true) ;
+
+//    $RestaurantHoursMon = $TempArray['restaurant_hours_mon'] ;
+//    $RestaurantHoursTue = $TempArray['restaurant_hours_tue'] ;
+//    $RestaurantHoursWed = $TempArray['restaurant_hours_wed'] ;
+//    $RestaurantHoursThu = $TempArray['restaurant_hours_thu'] ;
+//    $RestaurantHoursFri = $TempArray['restaurant_hours_fri'] ;
+//    $RestaurantHoursSat = $TempArray['restaurant_hours_sat'] ;
+//    $RestaurantHoursSun = $TempArray['restaurant_hours_sun'] ;
+
     $RestaurantPhoneNum = $TempArray['restaurant_phone'] ;
     $RestaurantEmail = $TempArray['restaurant_email'] ;
 
@@ -196,16 +203,51 @@
                             <div class="card-block">
 
                                 <div class="form-group row">
-                                    <label for="input-rest-hours1" class="col-3 col-form-label">Monday to Friday</label>
+                                    <label for="input-rest-hours-mon" class="col-3 col-form-label">Monday</label>
                                     <div class="col-md-9">
-                                        <input name="__" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours1" value="<?php echo "$RestaurantHoursMonFri" ?>" disabled>
+                                        <input id="input-rest-hours-mon" class="form-control" type="text"   value='<?php echo $RestaurantHours[0]["start_time"]." to ".$RestaurantHours[0]["end_time"] ?>' disabled>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="input-rest-hours2" class="col-3 col-form-label">Saturday and Sunday</label>
+                                    <label for="input-rest-hours-tue" class="col-3 col-form-label">Tuesday</label>
                                     <div class="col-md-9">
-                                        <input name="__newitem_name" class="form-control" type="text" placeholder="ex. 8:00 a.m - 10:30 p.m" id="input-rest-hours2" value="<?php echo "$RestaurantHoursSatSat" ?>" disabled>
+                                        <input id="input-rest-hours-tue" class="form-control" type="text"  value='<?php echo $RestaurantHours[1]["start_time"]." to ".$RestaurantHours[1]["end_time"] ?>' disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-wed" class="col-3 col-form-label">Wednesday</label>
+                                    <div class="col-md-9">
+                                        <input id="input-rest-hours-wed" class="form-control" type="text"  value='<?php echo $RestaurantHours[2]["start_time"]." to ".$RestaurantHours[2]["end_time"] ?>' disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-thu" class="col-3 col-form-label">Thursday</label>
+                                    <div class="col-md-9">
+                                        <input id="input-rest-hours-thu" class="form-control" type="text"  value='<?php echo $RestaurantHours[3]["start_time"]." to ".$RestaurantHours[3]["end_time"] ?>' disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-fri" class="col-3 col-form-label">Friday</label>
+                                    <div class="col-md-9">
+                                        <input id="input-rest-hours-fri" class="form-control" type="text"  value='<?php echo $RestaurantHours[4]["start_time"]." to ".$RestaurantHours[4]["end_time"] ?>' disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-sat" class="col-3 col-form-label">Saturday</label>
+                                    <div class="col-md-9">
+                                        <input id="input-rest-hours-sat" class="form-control" type="text"  value='<?php echo $RestaurantHours[5]["start_time"]." to ".$RestaurantHours[5]["end_time"] ?>' disabled>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="input-rest-hours-sun" class="col-3 col-form-label">Sunday</label>
+                                    <div class="col-md-9">
+                                        <input id="input-rest-hours-sun" class="form-control" type="text"  value='<?php echo $RestaurantHours[6]["start_time"]." to ".$RestaurantHours[6]["end_time"] ?>' disabled>
                                     </div>
                                 </div>
 

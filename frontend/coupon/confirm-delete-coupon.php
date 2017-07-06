@@ -1,13 +1,13 @@
 <?php
 
 require_once '../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+//require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 
-$CouponType = isSecure_checkPostInput('__coupon_type') ;
-$CouponId = isSecure_checkPostInput('__coupon_id') ;
+$CouponType = isSecure_IsValidText(GetPostConst::Post, '__coupon_type') ;
+$CouponId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__coupon_id') ;
 ?>
 
 

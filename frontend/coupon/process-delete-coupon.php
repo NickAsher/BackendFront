@@ -1,45 +1,37 @@
 <?php
 
 require_once '../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$CouponType = isSecure_checkPostInput('__coupon_type') ;
-$CouponId = isSecure_checkPostInput('__coupon_id') ;
 
-$CouponType = "$CouponType" ;
-
-echo $CouponType."<br> CART_DISC_MON <br>" ;
-
-$DBConnectionBackend = YOLOSqlConnect() ;
-
-//echo strcmp($CouponType, "CART_DISC_MON") ;
+$CouponType = isSecure_IsValidText(GetPostConst::Post, '__coupon_type') ;
+$CouponId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__coupon_id') ;
 
 
-if(strcmp($CouponType, "CART_DISC_PERC") == 0 || strcmp($CouponType, "CART_DISC_MON") == 0){
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $Query = "DELETE FROM `coupon_coupons_discount_table` WHERE `id` = '$CouponId'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    if($QueryResult){
-        echo "Succesfully deleted the item " ;
-    } else {
-        echo "unable to delete the Coupon entry  <br> ".mysqli_error($DBConnectionBackend) ;
+
+
+
+    $Query = "DELETE FROM `coupon_coupons_discount_table` WHERE `id` = :cpn_id " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['cpn_id' => $CouponId]);
+
+
+        echo "Successfully deleted values from the table 
+        <div >
+            <a href='all-coupons.php'>
+                Show All Coupons
+            </a>
+        </div> 
+        " ;
+    } catch (Exception $e) {
+        die("unable to delete the Coupon entry: " .$e) ;
     }
-
-
-} else if ($CouponType == 'PROD_DISC_PERC' || $CouponType == 'PROD_DISC_MON'){
-
-} else {
-    echo "Unknown coupon type" ;
-}
 
 
 
 
 ?>
-
-<div >
-    <a href='all-coupons.php'>
-        Show All Coupons
-    </a>
-</div>

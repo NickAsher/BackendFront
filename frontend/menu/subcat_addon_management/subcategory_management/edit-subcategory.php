@@ -24,16 +24,16 @@
     <?php
 
     require_once '../../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $SubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__subcategory_rel_id') ;
 
-    $SubCategoryInfoArray = getSingleSubCategoryInfoArray($DBConnectionBackend, $SubCategoryRelId) ;
+    $SubCategoryInfoArray = getSingleSubCategoryInfoArray_PDO($DBConnectionBackend, $SubCategoryRelId) ;
     $RelId = $SubCategoryInfoArray['rel_id'] ;
     $CategoryCode = $SubCategoryInfoArray['category_code'] ;
     $SubCategoryName = $SubCategoryInfoArray['subcategory_display_name'] ;
@@ -41,9 +41,9 @@
     $SubCategorySrNo = $SubCategoryInfoArray['subcategory_sr_no'] ;
 
     $ActiveCheckedString = null ;
-    if($SubCategoryIsActive == 'true'){
+    if($SubCategoryIsActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($SubCategoryIsActive == 'false'){
+    } else if($SubCategoryIsActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -165,10 +165,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

@@ -23,34 +23,23 @@
 </head>
 <?php
 require_once '../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
+require_once $ROOT_FOLDER_PATH.'/utils/image-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
+require_once 'utils/utils-blogpost.php' ;
+
+$BlogId = isSecure_isValidPositiveInteger(GetPostConst::Get, '__blog_id') ;
+
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 
-$BlogId = isSecure_checkGetInput('__blog_id') ;
-
-$DBConnectionBackend = YOLOSqlConnect() ;
-
-$Query = "SELECT * FROM `blogs_table` WHERE `blog_id` = '$BlogId'  " ;
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-$Temp = '' ;
-if($QueryResult) {
-    foreach ($QueryResult as $Record) {
-        $Temp = $Record;
-    }
-} else {
-    die("Problem in getting the blogpost from blogs_table <br> ".mysqli_error($DBConnectionBackend)) ;
-}
-
-
-
+$Temp = getBlogInfo($DBConnectionBackend, $BlogId) ;
 
 $BlogId = $Temp['blog_id'];
 $BlogTitle = $Temp['blog_title'];
 $BlogDisplayImage = $Temp['blog_display_image'];
 $BlogContent = $Temp['blog_content'] ;
-
+$BlogCreationDate = $Temp['blog_creation_date'] ;
 
 
 ?>
@@ -88,6 +77,15 @@ $BlogContent = $Temp['blog_content'] ;
                             <div class="card-block">
 
                                 <div id="Div_BlogTitle">
+                                    <label for="input-blog-date" class="col-form-label">Creation Date:</label>
+                                    <div>
+                                        <input name = '__new_blog_date' id="input-blog-date" class="form-control" type="text" value="<?php echo $BlogCreationDate; ?>" >
+                                    </div>
+                                    <br><br>
+                                </div>
+
+
+                                <div id="Div_BlogTitle">
                                     <label for="input-blog-title" class="col-form-label">Blog Title:</label>
                                     <div>
                                         <input name = '__new_blog_title' id="input-blog-title" class="form-control" type="text" value="<?php echo $BlogTitle; ?>" >
@@ -102,7 +100,7 @@ $BlogContent = $Temp['blog_content'] ;
                                 <div id="Div_BlogDisplayImage">
                                     <label for="presentation-only-field-display" class="col-form-label">Blog DisplayImage: </label>
 
-                                    <div class="row">
+                                    <div class="row form-control" style="margin-left: 0px">
                                         <div class="col-6">
                                             <img class="img-fluid" src='<?php echo "$IMAGE_FOLDER_LINK_PATH/$BlogDisplayImage" ; ?>' alt="<?php echo "$IMAGE_FOLDER_LINK_PATH/$BlogDisplayImage"; ?>"  />
                                         </div>

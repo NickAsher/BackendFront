@@ -1,36 +1,37 @@
 <?php
 require_once '../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
 
 $DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnection = YOPDOSqlConnect() ;
 
 isSecure_checkPostInput('__new_about_us_description') ;
+
+$NewAboutUs = isSecure_checkPostInput('__new_about_us_description') ;
+$NewAboutUsImage = $_FILES['__new_about_us_image'] ;
+
+
 
 
 
     $Query = "SELECT * FROM `info_about_table` WHERE `restaurant_id` = '1'  " ;
-    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-    $AboutInfoArray = '' ;
-    if($QueryResult) {
-        foreach ($QueryResult as $Record) {
-            $AboutInfoArray = $Record;
-        }
-
-    } else{
-        die("Problem in getting the Aboutus info from info_about_table <br> ".mysqli_error($DBConnectionBackend)) ;
-
+    try {
+        $QueryResult = $DBConnection->query($Query);
+        $AboutInfoArray = $QueryResult->fetch(PDO::FETCH_ASSOC);
+    } catch (Exception $e){
+        die("Problem in getting the Aboutus info from info_about_table".$e->getMessage()) ;
     }
+
 
 
 
 $OldDisplayImage_Name = $AboutInfoArray['about_us_image'] ;
 
 
-$NewAboutUs = $_POST['__new_about_us_description'] ;
-$NewAboutUs = mysqli_real_escape_string($DBConnectionBackend, $NewAboutUs) ;
-$NewAboutUsImage = $_FILES['__new_about_us_image'] ;
+
 
 
 
@@ -52,13 +53,41 @@ if($NewAboutUsImage['size'] == 0 || $NewAboutUsImage['error'] == 4){
 
 
 $Query = "UPDATE `info_about_table` 
-            SET `about_us1` = '$NewAboutUs', `about_us_image` = '$InsertedDisplayPic_Name' 
+            SET `about_us1` = :about_us_description, `about_us_image` = :about_us_image 
           WHERE `restaurant_id` = '1'   " ;
 
+try {
+    $QueryResult = $DBConnection->prepare($Query);
+    $QueryResult->execute(['about_us_description' => $NewAboutUs, 'about_us_image' => $InsertedDisplayPic_Name]) ;
+}catch (Exception $e){
 
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-if($QueryResult){
-    echo "Successfully updated the about us values " ;
+    /*
+     * Now is the case when a image is update (can be old, can be new, we don't know)
+     * But there is a problem in updating the database.
+     * So what we have to do is just like a transaction, we roll back any changes
+     *
+     * So if the inserted image is new, then we delete it
+     * but if the inserted image was old, then do nothing
+     *
+     */
+
+    if($NewAboutUsImage_Boolean == true){
+        // inserted image is new, delete it
+        deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $InsertedDisplayPic_Name) ;
+        echo "New Display Image is deleted" ;
+
+    }else{
+        // image uploaded is old so delete nothing
+    }
+
+
+
+
+
+    die("Unable to update the about us values") ;
+}
+
+
 
 
     /*
@@ -85,35 +114,11 @@ if($QueryResult){
         // Inserted Image is old so delete nothing
     }
 
-
-}
-
-
-else {
-    echo "Error in Setting the new values for the restaurant about us info <br> ".mysqli_error($DBConnectionBackend) ;
-
-    /*
-     * Now is the case when a image is update (can be old, can be new, we don't know)
-     * But there is a problem in updating the database.
-     * So what we have to do is just like a transaction, we roll back any changes
-     *
-     * So if the inserted image is new, then we delete it
-     * but if the inserted image was old, then do nothing
-     *
-     */
-
-    if($NewAboutUsImage_Boolean == true){
-        // inserted image is new, delete it
-        deleteImageFromImageFolder($IMAGE_FOLDER_FILE_PATH, $InsertedDisplayPic_Name) ;
-        echo "New Display Image is deleted" ;
-
-    }else{
-        // image uploaded is old so delete nothing
-    }
+    echo "Successfully updated the about us values <a href='read_about_us.php'>Go Back</a>" ;
 
 
 
-}
+
 
 
 

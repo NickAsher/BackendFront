@@ -1,28 +1,33 @@
+/*
+ * This is the class for the space that is shown between list items
+ */
 .highlight {
     background-color: #333333;
     width: 300px;
     padding: 5px ;
 }
 
-
+/*
+ * This is the list which is hidden behind the original list whih provides the numbers
+ */
 .hidden-list-numbering li{
-    background-color: lightgreen;
     color: black;
     font-weight: 700;
     padding: 5px 0;
     margin: 2px;
-    width: 0px;
-    border: 1px solid black;
+    width: 0;
+    /*border: 0px solid black;*/
 }
 .ui-sortable-handle{
-    background-color: lightgreen;
-    color: whitesmoke;
+    background-color: #eee;
+    color: #555;
     font-weight: 700;
     padding: 5px;
     margin: 2px;
     width: 300px;
     list-style-type: none;
-    border: 1px solid black;
+    border: 1px solid darkgrey;
+    cursor: hand;
 }
 
 .listo-group{

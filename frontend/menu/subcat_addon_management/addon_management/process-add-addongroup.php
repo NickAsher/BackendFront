@@ -1,33 +1,41 @@
 <?php
 require_once '../../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php'  ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
-$CategoryCode = isSecure_checkPostInput('__category_code') ;
-$AddonGroupDisplayName = isSecure_checkPostInput('__addongroup_name') ;
-$AddonGroupType = isSecure_checkPostInput('__addongroup_type') ;
+$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$AddonGroupDisplayName = isSecure_IsValidText(GetPostConst::Post, '__addongroup_name') ;
+$AddonGroupType = isSecure_IsValidText(GetPostConst::Post, '__addongroup_type') ;
 $AddonGroupNoOfItems = 0 ;
-$AddonGroupIsActive = isSecure_checkPostInput('__addongroup_is_active') ;
+$AddonGroupIsActive = isSecure_IsYesNo(GetPostConst::Post, '__addongroup_is_active') ;
 
 
 
 
-
-//
-//$Query = "INSERT INTO `menu_meta_rel_category-addon_table`
-//      VALUES ('', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupSrNo', '$AddonGroupNoOfItems', '$AddonGroupIsActive')  " ;
 
 
 $Query = "INSERT INTO `menu_meta_rel_category-addon_table` (`addon_group_sr_no`, `rel_id`, `category_code`, `addon_group_display_name`, `addon_group_type`, `addon_group_no_of_items`, `addon_group_is_active` )
-  SELECT MAX( `addon_group_sr_no` ) + 1, '', '$CategoryCode', '$AddonGroupDisplayName', '$AddonGroupType', '$AddonGroupNoOfItems',  '$AddonGroupIsActive'
-  FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = '$CategoryCode'    " ;
+  SELECT COALESCE( (MAX( `addon_group_sr_no` ) + 1), 1), '', :category_code, :adngrp_displayname, :adngrp_type, :adngrp_noitems, :adngrp_isactive 
+  FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = :category_code_02  " ;
 
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
 
-if($QueryResult){
+
+try{
+
+    $QueryResult = $DBConnectionBackend->prepare($Query) ;
+    $QueryResult->execute([
+        'category_code'=>$CategoryCode,
+        'adngrp_displayname'=>$AddonGroupDisplayName,
+        'adngrp_type'=>$AddonGroupType,
+        'adngrp_noitems'=>$AddonGroupNoOfItems,
+        'adngrp_isactive'=>$AddonGroupIsActive,
+        'category_code_02'=>$CategoryCode
+
+    ]) ;
+
+
     echo " 
         Addon-Group Successfully added
         <br><br>
@@ -35,8 +43,8 @@ if($QueryResult){
     
     
     ";
-} else {
-    echo "unable to insert the new item  <br><br>".mysqli_error($DBConnectionBackend) ;
+} catch(Exception $e) {
+    die( "unable to insert the new item  <br><br>".$e->getMessage()) ;
 }
 
 

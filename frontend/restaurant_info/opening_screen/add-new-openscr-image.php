@@ -23,11 +23,7 @@
 
 
     <?php require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
 
-
-    //    $DBConnectionTest = YOLOSqlDemoConnect() ;
-    $DBConnectionBackend = YOLOSqlConnect() ;
 
     ?>
 

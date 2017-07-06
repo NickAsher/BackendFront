@@ -1,33 +1,30 @@
 <?php
 require_once '../../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
+require_once $ROOT_FOLDER_PATH.'/vendor/autoload.php' ;
 
 
 $SortedIdsArray = isSecure_checkPostInput('__sortarray') ;
-$SubCategoryRelId = isSecure_checkPostInput('__subcategory_rel_id') ;
+$SubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__subcategory_rel_id') ;
 
 
-$DBConnection = YOLOSqlConnect() ;
+$DBConnection = YOPDOSqlConnect() ;
 
 
-//print_r($SortedIdsArray) ;
 
-//foreach ($SortedIdsArray as $sortNo=>$Id){
-//    $RealSortNo = $sortNo + 1 ;
-//    $Query = "UPDATE `demo` SET `item_sr_no` = '$RealSortNo' WHERE `item_id` = '$Id' " ;
-//    $QueryResult = mysqli_query($DBConnection, $Query) ;
-//    if($QueryResult){
-//        continue ;
-//    } else {
-//        die("error in sorting for id $Id") ;
-//    }
-//}
+foreach ($SortedIdsArray as $sortNo=>$ItemId){
+    isSecure_isValidPositiveInteger(GetPostConst::None, $ItemId) ;
+}
 
 
-$CaseStatement = '' ;
+
+
+
+
 /*
  * SortedIdsArray
+ *
  *      Array(
  *          [0] => 5,
  *          [1] => 6,
@@ -35,20 +32,27 @@ $CaseStatement = '' ;
  *
  *
  *          )
+ *
+ *      $sortNo=>$ItemId
  */
+$CaseStatement = '' ;
+$CaseValues = array() ;
 foreach ($SortedIdsArray as $sortNo=>$ItemId){
     $RealSortNo = $sortNo + 1 ;
-    $CaseStatement .= "WHEN `item_id` = '$ItemId' THEN '$RealSortNo' " ;
+    $CaseStatement .= "WHEN `item_id` = ? THEN ? " ;
+    array_push($CaseValues, $ItemId) ;
+    array_push($CaseValues, $RealSortNo) ;
+
 
 }
 
-
-
-
-$Query = "UPDATE `menu_items_table` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_subcategory_rel_id` = '$SubCategoryRelId'  " ;
-$QueryResult = mysqli_query($DBConnection, $Query) ;
-if(!$QueryResult){
-    die("error in case statement") ;
+$Query = "UPDATE `menu_items_table` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_subcategory_rel_id` = ?  " ;
+array_push($CaseValues, $SubCategoryRelId) ; //this if for the SubcateogryRelId in the query
+try{
+$QueryResult = $DBConnection->prepare($Query) ;
+$QueryResult->execute($CaseValues) ;
+}catch (Exception $e){
+    die( "Unable to sort the items : ".$e->getMessage() );
 }
 
 echo "Success" ;

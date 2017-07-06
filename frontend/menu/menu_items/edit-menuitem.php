@@ -15,25 +15,24 @@
     <link rel="stylesheet" href="../../../lib/t3/t3.css" />
 
 
-    <link rel="stylesheet" href="../subcommon/css/fmenu_default_style.css">
-    <link rel="stylesheet" href="../subcommon/css/menu.css">
+<!--    <link rel="stylesheet" href="../subcommon/css/fmenu_default_style.css">-->
+<!--    <link rel="stylesheet" href="../subcommon/css/menu.css">-->
 
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
 
 
-    $MenuItemId = isSecure_checkGetInput('___menu_item_id') ;
+    $MenuItemId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___menu_item_id') ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $MenuItemInfoArray = getSingleMenuItemInfoArray($DBConnectionBackend, $MenuItemId) ;
+    $MenuItemInfoArray = getSingleMenuItemInfo_EXTRAArray_PDO($DBConnectionBackend, $MenuItemId) ;
 
 
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
@@ -45,9 +44,9 @@
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
 
     $ActiveCheckedString = null ;
-    if($MenuItemActive == 'truey'){
+    if($MenuItemActive == 'yes'){
         $ActiveCheckedString = "checked='checked' ";
-    } else if($MenuItemActive == 'falsey'){
+    } else if($MenuItemActive == 'no'){
         $ActiveCheckedString = "";
     }
 
@@ -58,7 +57,7 @@
 
 
 
-<body>
+<body style="background: whitesmoke;">
 
 
 
@@ -74,17 +73,33 @@
 
 
                 <div id="space_below_header">
-                    <br><br><br><br><br>
+                    <br><br><br>
                 </div>
+
+
+                <div class="row">
+                    <div class="push-md-1 col-md-10">
+                        <div class="card">
+                            <div class="card-block">
+                                <h1 class="text-center">Edit Menu Item:  <?php echo $MenuItemName ?></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <form action="process-edit-menuitem.php" method="post" enctype="multipart/form-data" >
 
 
 
 
                 <div class="row">
-                    <div class = col-md-1></div>
-                    <div class="col-md-10" >
 
-                        <form action="process-edit-menuitem2.php" method="post" enctype="multipart/form-data" >
+                    <div class="push-md-1 col-md-10" >
+                        <div class="card">
+                            <div class="card-block">
+
 
 
                             <input name="__item_id" type="hidden" value="<?php echo $MenuItemId ?>" >
@@ -137,25 +152,36 @@
                             <div id="Div_Price">
                                 <?php
 
-                                $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$MenuItemCategoryCode' " ;
-                                $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                                if(!$QueryResult){
-                                    die("Unable to get the sizes for the item: ".mysqli_error($DBConnectionBackend)) ;
+                                $Query = "SELECT `b`.*, `a`.`size_name` 
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size-items_table` AS `b`
+                                ON `a`.`size_id` = `b`.`size_id`  
+                                WHERE `b`.`item_id` = :item_id ORDER BY `a`.`size_sr_no` ASC  " ;
+
+                                try {
+                                    $QueryResult = $DBConnectionBackend->prepare($Query);
+                                    $QueryResult->execute(['item_id' => $MenuItemId]);
+                                    $AllSizesPriceList = $QueryResult->fetchAll();
+                                }catch (Exception $e){
+                                    die("Error in getting the size price list : ".$e->getMessage()) ;
                                 }
 
-                                foreach ($QueryResult as $Record) {
+                                foreach($AllSizesPriceList as $Record){
                                     $SizeName = $Record['size_name'] ;
                                     $SizeId = $Record['size_id'] ;
+                                    $ItemPrice = $Record['item_price'] ;
 
-                                    $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$MenuItemId' AND `size_id` = '$SizeId'  " ;
-                                    $QueryResult2 = mysqli_query($DBConnectionBackend, $Query2) ;
-                                    if(!$QueryResult2) {
-                                        die("Unable to fetch the record for the item for size $SizeId :".mysqli_error($DBConnectionBackend) ) ;
-                                    }
-                                    $Record2 = mysqli_fetch_assoc($QueryResult2) ;
-                                    $ItemPrice = $Record2['item_price'] ;
 
-                                    echo "
+                                    if($ItemPrice == '-1'){
+                                        echo "
+                                        <div class='form-group row'>
+                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
+                                            <div class='col-md-9'>
+                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' placeholder='Empty' >
+                                            </div>
+                                        </div>  
+                                        " ;
+                                    } else {
+                                        echo "
                                         <div class='form-group row'>
                                             <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
                                             <div class='col-md-9'>
@@ -163,19 +189,20 @@
                                             </div>
                                         </div>  
                                         " ;
+                                    }
+
 
 
                                 }
 
+
+
+//
+
                                 ?>
+
+
                             </div>
-
-                            <?php
-
-
-
-
-                            ?>
 
 
 
@@ -208,20 +235,29 @@
 
 
 
-                            <div class="row">
-                                <div class="col-4" ></div>
-                                <input type="submit" class=" col-4 btn btn-outline-info" value="Save Edits">
-                                <div class="col-4" ></div>
+
+
                             </div>
-
-
-
-                        </form>
-
+                        </div>
 
                     </div>
-                    <div class="col-md-1"></div>
                 </div>
+
+                <br><br>
+
+                <div class="row">
+                    <div class="push-md-1 col-md-10">
+                        <div class="card">
+                            <div class="card-block" style="text-align: center">
+                                <div class="row">
+                                    <button type="submit"  class="push-md-2 col-md-8 btn btn-info"  >Save Edits</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                </form>
 
 
 
@@ -265,10 +301,10 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('truey') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('falsey') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }

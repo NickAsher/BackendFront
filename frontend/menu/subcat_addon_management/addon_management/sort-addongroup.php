@@ -35,7 +35,7 @@
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
 
     $AllAddonGroupInCategoryListArray = getListOfAllAddonGroupsInACategory_Array($DBConnectionBackend, $CategoryCode) ;
 

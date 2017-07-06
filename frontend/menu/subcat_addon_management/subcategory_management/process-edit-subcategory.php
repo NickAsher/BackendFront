@@ -1,38 +1,45 @@
 <?php
 require_once '../../../../utils/constants.php';
 
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
-require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$RelId = isSecure_checkPostInput('__rel_id');
+$RelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__rel_id');
 
-$SubCategoryName = isSecure_checkPostInput('__subcategory_name') ;
-$SubCategoryIsActive = isSecure_checkPostInput('__subcategory_is_active');
+$SubCategoryName = isSecure_IsValidText(GetPostConst::Post, '__subcategory_name') ;
+$SubCategoryIsActive = isSecure_IsYesNo(GetPostConst::Post, '__subcategory_is_active');
 
 
-$DBConnectionBackend = YOLOSqlConnect() ;
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 $Query1 = "UPDATE `menu_meta_rel_category-subcategory_table` 
-  SET `subcategory_display_name` = '$SubCategoryName' , `subcategory_is_active` = '$SubCategoryIsActive'
-  WHERE `rel_id` = '$RelId' " ;
+  SET `subcategory_display_name` = :subcategory_display_name , `subcategory_is_active` = :subcategory_is_active
+  WHERE `rel_id` = :rel_id " ;
 
-$QueryResult1 = mysqli_query($DBConnectionBackend, $Query1) ;
-if($QueryResult1){
+try {
+    $QueryResult1 = $DBConnectionBackend->prepare($Query1);
+    $QueryResult1->execute([
+        'subcategory_display_name' => $SubCategoryName,
+        'subcategory_is_active' => $SubCategoryIsActive,
+        'rel_id' => $RelId
+    ]);
+
     echo "
         Subcategory Successfully Updated
         <br><br>
         <a href='../all-subcat.php' >Go Back</a>
     ";
 
-} else {
-    echo "error in Updating Subcategory <br>" . mysqli_error($DBConnectionBackend)."
+} catch (Exception $e) {
+    echo "error in Updating Subcategory <br>" . $e->getMessage()."
         
         <br><br>
         <a href='../all-subcat.php' >Go Back</a>
     ";
 }
+
+
 
 
 

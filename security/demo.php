@@ -5,7 +5,7 @@
 
 
 $String = "123" ;
-$RegularExpression = "/^[0-9]+\$/" ;
+$RegularExpression = "/^[0-9]+$/" ;
 
 
 if( preg_match($RegularExpression, $String) ){

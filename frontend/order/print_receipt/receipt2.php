@@ -1,21 +1,27 @@
 <?php
-
-$RestaurantName = 'RestaurantName' ;
-$RestaurantAddrLine1 = 'Next Step Webs, Inc.' ;
-$RestaurantAddrLine2 = '12345 Sunny Road' ;
-$RestaurantAddrLine3 = 'Sunnyville, TX 12345 ' ;
-$RestaurantImageFileName = '../../../images/restaurant_logo.png' ;
+require_once '../../../utils/constants.php' ;
+require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$OrderNo = '123' ;
-$OrderDate = 'January 1, 2015' ;
-$OrderTime = '7:00 PM' ;
+
+$RestaurantInfo = isSecure_checkPostInput('__restaurant_info') ;
+$OrderInfo = isSecure_checkPostInput('__order_info') ;
+
+
+$RestaurantInfo = json_decode($RestaurantInfo, true) ;
+$OrderInfo = json_decode($OrderInfo, true) ;
+
+
+$Cart = $OrderInfo['cart'] ;
+$Tax = $OrderInfo['tax'] ;
+
+
+
+
+
 
 
 ?>
-
-<!doctype html>
-
 <html>
 <head>
     <meta charset='utf-8'>
@@ -61,9 +67,9 @@ $OrderTime = '7:00 PM' ;
 <body>
 
 <br><br>
-<div class='invoice-box' id="outerbox">
+<div  id="outer-box">
+    <div class='invoice-box' id="inner-box">
 
-    <!--    <br><br>-->
 
 
 
@@ -71,30 +77,30 @@ $OrderTime = '7:00 PM' ;
     <table class='table'>
         <tr>
             <td style='border:none';>
-                <img src='<?php echo $RestaurantImageFileName ?>'  style='width:100%; max-width:150px;'>
+                <img src='<?php echo $RestaurantInfo['rest_image']  ?>'  style='width:100%; max-width:150px;'>
 
             </td>
 
             <td style='border:none; text-align: right;'>
                 <br>
-                <?php echo $RestaurantName ?><br>
-                <?php echo $RestaurantAddrLine1 ?><br>
-                <?php echo $RestaurantAddrLine2 ?><br>
-                <?php echo $RestaurantAddrLine3 ?><br>
+                <?php echo $RestaurantInfo['rest_name']  ?><br>
+                <?php echo $RestaurantInfo['rest_addr_1']  ?><br>
+                <?php echo $RestaurantInfo['rest_addr_2']  ?><br>
+                <?php echo $RestaurantInfo['rest_addr_3']  ?><br>
             </td>
         </tr>
 
         <tr>
             <td>
-                Order No : <?php echo $OrderNo ?><br>
-                Date: <?php echo $OrderDate ?><br>
-                Time: <?php echo $OrderTime ?>
+                Order No : <?php echo $OrderInfo['order_num'] ?><br>
+                Date: <?php echo $OrderInfo['order_date'] ?><br>
+                Time: <?php echo $OrderInfo['order_time'] ?>
             </td>
 
             <td style='text-align: right;'>
-                Mr. Rafique Gagneja<br>
-                9780673002<br>
-                john@example.com
+                <?php echo $OrderInfo['customer_name'] ?><br>
+                <?php echo $OrderInfo['customer_num'] ?><br>
+                <?php echo $OrderInfo['customer_email'] ?>
             </td>
         </tr>
     </table>
@@ -113,32 +119,29 @@ $OrderTime = '7:00 PM' ;
             <th class='right'>Price</th>
         </tr>
 
-        <tr>
-            <td>1</td>
-            <td>XL Reg Dbl Cheese Marg.</td>
-            <td class='right'>350</td>
-        </tr>
+        <?php
+        foreach ($Cart as $Record){
+            $ItemQt = $Record['item_qt'] ;
+            $ItemName = $Record['item_name'] ;
+            $ItemPrice = $Record['item_price'] ;
 
-        <tr>
-            <td>1</td>
-            <td>S Reg Cheese Marg.</td>
-            <td class='right'>150</td>
-        </tr>
+            echo "
+                <tr>
+                    <td>$ItemQt</td>
+                    <td>$ItemName</td>
+                    <td class='right'>$ItemPrice</td>
+                </tr>
+            
+            " ;
+        }
+        ?>
 
-        <tr>
-            <td>3</td>
-            <td>Coke</td>
-            <td class='right'>105</td>
-        </tr>
 
-        <tr>
-            <td>2</td>
-            <td>Reg Burger</td>
-            <td class='right'>200</td>
-        </tr>
 
     </table>
     <br>
+
+
 
 
     <!-- ******************************************************* -->
@@ -149,31 +152,36 @@ $OrderTime = '7:00 PM' ;
                 <tr>
 
                     <th >Net Price</th>
-                    <th class='right'>805</th>
+                    <th class='right'><?php echo $OrderInfo['net_price'] ?></th>
 
                 </tr>
 
                 <tr>
                     <th>Coupon Discount</th>
-                    <th  class='right'>105</th>
+                    <th  class='right'><?php echo $OrderInfo['coupon_discount'] ?></th>
                 </tr>
 
                 <tr>
                     <th>Sub Total</th>
-                    <th  class='right'>700</th>
+                    <th  class='right'><?php echo $OrderInfo['net_price_after_coupn'] ?></th>
                 </tr>
 
-                <tr>
-                    <th>VAT</th>
-                    <th  class='right'>50</th>
-                </tr>
+                <?php
+                foreach ($Tax as $Record){
+                    $TaxName = $Record['tax_name'] ;
+                    $TaxPercentage = $Record['tax_percentage'] ;
+                    $TaxValue = $Record['tax_value'] ;
+
+                    echo "
+                        <tr>
+                            <th>$TaxName ($TaxPercentage)</th>
+                            <th class='right'>$TaxValue</th>
+                        </tr>
+                    " ;
 
 
-
-                <tr>
-                    <th>Service Tax</th>
-                    <th  class='right'>25</th>
-                </tr>
+                }
+                ?>
 
 
                 <tr>
@@ -183,18 +191,10 @@ $OrderTime = '7:00 PM' ;
 
                 <tr>
                     <td><h5>Grand Total</h5></td>
-                    <td  class='right'><h5>775.145</h5></td>
+                    <td  class='right'><h5><?php echo $OrderInfo['order_total'] ?></h5></td>
                 </tr>
 
-                <tr>
-                    <th>Paid</th>
-                    <th  class='right'>800</th>
-                </tr>
 
-                <tr>
-                    <th>Change </th>
-                    <th  class='right'>- 24.855</th>
-                </tr>
 
             </table>
         </div>
@@ -203,10 +203,13 @@ $OrderTime = '7:00 PM' ;
 
     <!-- ******************************************************* -->
     <br>
+
     <div>
         <center>
             Have a nice day !!
         </center>
+    </div>
+
     </div>
 
 </div>
@@ -219,26 +222,6 @@ $OrderTime = '7:00 PM' ;
 <script type="text/javascript"  src="../../../lib/jquery/jquery.print.js" ></script>
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap.min.js"></script>
 
-<script type="text/javascript">
-
-    $('#mybtn').click(function () {
 
 
-        $('#outerbox').print({
-            globalStyles: true,
-            mediaPrint: false,
-            stylesheet: null,
-            noPrintSelector: ".no-print",
-            iframe: true,
-            append: null,
-            prepend: null,
-            manuallyCopyFormValues: true,
-            deferred: $.Deferred(),
-            timeout: 750,
-            title: null,
-            doctype: '<!doctype html>'
-        });
-
-    }) ;
-</script>
 </html>

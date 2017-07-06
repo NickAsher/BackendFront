@@ -24,11 +24,19 @@
 
     <?php
     require_once '../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/utils/paginator.php' ;
+    require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
+    $DBConnectionBackend = YOPDOSqlConnect();
 
+
+    if(isset($_GET['___page_no'])){
+        $PageNo = isSecure_isValidPositiveInteger(GetPostConst::Get, '___page_no') ;
+    } else {
+        $PageNo = 1 ;
+    }
 
     ?>
 
@@ -62,22 +70,30 @@
 
                 $NoOfItemsPerPage = 8 ;
                 $Query1 = "SELECT COUNT(*) AS `total` FROM `blogs_table` " ;
-                $Queryresult1 = mysqli_query($DBConnectionBackend, $Query1) or die("Error fetch count <br>".mysqli_error($DBConnectionBackend)) ;
-                $TotalNumOfItems = mysqli_fetch_assoc($Queryresult1)['total'] ;
-
-
-                $PageNo = null ;
-                if(isset($_GET['___page_no'])){
-                    $PageNo = $_GET['___page_no'] ;
-                    if($PageNo < 1){
-                        $PageNo = 1 ;
-                    }
-
-                } else {
-                    $PageNo = 1 ;
+                try {
+                    $QueryResult1 = $DBConnectionBackend->query($Query1);
+                    $TotalNumOfItems = $QueryResult1->fetch(PDO::FETCH_ASSOC)['total'];
+                } catch (Exception $e) {
+                    die("Error in getting the total count of blog items : ".$e) ;
                 }
 
-                $Offset = ($PageNo-1) * $NoOfItemsPerPage ;
+                $Paginator = new Paginator($TotalNumOfItems, $NoOfItemsPerPage, $PageNo) ;
+                $Offset = $Paginator->getOffset() ;
+                $MaxPageNo = $Paginator->getMaxPageNo() ;
+                $RealCurrentPageNo = $Paginator->getRealCurrentPageNo() ;
+
+
+                $Query2 = "SELECT * FROM `blogs_table` ORDER BY `blog_id` DESC LIMIT :limit OFFSET :offset " ;
+                try {
+                    $QueryResult2 = $DBConnectionBackend->prepare($Query2);
+                    $QueryResult2->bindParam('limit', $NoOfItemsPerPage, PDO::PARAM_INT);
+                    $QueryResult2->bindParam('offset', $Offset, PDO::PARAM_INT);
+                    $QueryResult2->execute();
+                    $BlogItems = $QueryResult2->fetchAll();
+                } catch (Exception $e) {
+                    die("Error in fetching all the items: ".$e) ;
+                }
+
 
 
 
@@ -105,46 +121,40 @@
 
 
 
-                    $Query = "SELECT * FROM `blogs_table` ORDER BY `blog_id` DESC LIMIT $NoOfItemsPerPage OFFSET $Offset " ;
-                    $QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-                    if($QueryResult){
+                    foreach($BlogItems as $Record){
+                        $BlogId= $Record['blog_id'] ;
+                        $CreationTimeStamp = $Record['blog_creation_date'] ;
+                        $BlogTitle = $Record['blog_title'] ;
+                        $BlogImageName = $Record['blog_display_image'] ;
 
-                        foreach($QueryResult as $Record){
-                            $BlogId= $Record['blog_id'] ;
-                            $CreationTimeStamp = $Record['blog_creation_timestamp'] ;
-                            $LastModifiedTimestamp = $Record['blog_last_modified_timestamp'] ;
-                            $BlogTitle = $Record['blog_title'] ;
-                            $BlogImageName = $Record['blog_display_image'] ;
-
-                            $DetailPageLink = "show-blogpost.php?___blog_id=$BlogId" ;
+                        $DetailPageLink = "show-blogpost.php?___blog_id=$BlogId" ;
 
 
 
 
-                            echo "
-                                <tr> 
-                                    <td class='addon-link' data-href='$DetailPageLink'>  $BlogId </td>
-                                    <td class='addon-link' data-href='$DetailPageLink'>  $CreationTimeStamp</td>
-                                    <td class='addon-link' data-href='$DetailPageLink'>  $LastModifiedTimestamp </td>
-                                    <td class='addon-link' data-href='$DetailPageLink'>  $BlogTitle  </td> 
-                                    <td class='addon-link-link' data-href='$DetailPageLink'><img src='$IMAGE_FOLDER_LINK_PATH/$BlogImageName' class='img-fluid' width='90px' ></td>
-                                    <td>
-                                        <form action='edit-blogpost.php' method='get'>
-                                            <input type='hidden' name='__blog_id' value='$BlogId'>
-                                            <button type='submit' class='btn btn-info' ><span><i class='fa fa-edit'></i></span> Edit</button>
-                                           
-                                        </form>      
-                                    </td>
-                                    <td>
-                                        <form action='confirm-delete-blogpost.php' method='post'>
-                                            <input type='hidden' name='__blog_id' value='$BlogId'>
-                                            <button type='submit' class='btn btn-danger' ><span><i class='fa fa-trash'></i></span> Delete</button>
-                                        </form>  
-                                    </td>
-                                </tr>
-                                " ;
-                        }
+                        echo "
+                            <tr> 
+                                <td class='addon-link' data-href='$DetailPageLink'>  $BlogId </td>
+                                <td class='addon-link' data-href='$DetailPageLink'>  $CreationTimeStamp</td>
+                                <td class='addon-link' data-href='$DetailPageLink'>  $BlogTitle  </td> 
+                                <td class='addon-link-link' data-href='$DetailPageLink'><img src='$IMAGE_FOLDER_LINK_PATH/$BlogImageName' class='img-fluid' width='90px' ></td>
+                                <td>
+                                    <form action='edit-blogpost.php' method='get'>
+                                        <input type='hidden' name='__blog_id' value='$BlogId'>
+                                        <button type='submit' class='btn btn-info' ><span><i class='fa fa-edit'></i></span> Edit</button>
+                                       
+                                    </form>      
+                                </td>
+                                <td>
+                                    <form action='confirm-delete-blogpost.php' method='post'>
+                                        <input type='hidden' name='__blog_id' value='$BlogId'>
+                                        <button type='submit' class='btn btn-danger' ><span><i class='fa fa-trash'></i></span> Delete</button>
+                                    </form>  
+                                </td>
+                            </tr>
+                            " ;
                     }
+
 
 
 
@@ -152,13 +162,15 @@
                 echo "</table>" ;
 
 
+                $PageNo = $RealCurrentPageNo ;
 
                 $NextPage = $PageNo + 1 ;
                 $PrevPage = $PageNo - 1 ;
-                $FirstPageNo = 1 ;
-                $LastPageNo = intval($TotalNumOfItems/$NoOfItemsPerPage) + 1 ;
 
-                if( $PageNo == 1){
+                $FirstPageNo = 1 ;
+                $LastPageNo = $MaxPageNo ;
+
+                if( $PageNo == 1 && $PageNo != $LastPageNo){
 
                     echo "
                     <div class='text-center'>
@@ -166,6 +178,18 @@
                             <ul class='pagination' >
                                 <li class='page-item active'><a class='page-link' href='all-blogpost.php?___page_no=1'>1</a></li>
                                 <li class='page-item'><a class='page-link' href='all-blogpost.php?___page_no=$NextPage'>Next</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    " ;
+                }
+                else if( $PageNo == 1 && $PageNo == $LastPageNo){
+
+                    echo "
+                    <div class='text-center'>
+                        <div style='display:inline-block'>
+                            <ul class='pagination' >
+                                <li class='page-item active'><a class='page-link' href='all-blogpost.php?___page_no=1'>1</a></li>
                             </ul>
                         </div>
                     </div>

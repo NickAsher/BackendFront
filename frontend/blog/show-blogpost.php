@@ -23,34 +23,23 @@
 </head>
 <?php
 require_once '../../utils/constants.php';
-require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
-$DBConnectionBackend = YOLOSqlConnect() ;
+require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
+require_once 'utils/utils-blogpost.php' ;
+require_once $ROOT_FOLDER_PATH.'/security/input-security.php'  ;
 
-if(  !isset($_GET['___blog_id']) || empty($_GET['___blog_id']) ) {
-    die("Blog id is not set");
-}
+$DBConnectionBackend = YOPDOSqlConnect() ;
 
 
-$BlogId = $_GET['___blog_id'] ;
 
-$Query = "SELECT * FROM `blogs_table` WHERE `blog_id` = '$BlogId'  " ;
-$QueryResult = mysqli_query($DBConnectionBackend, $Query) ;
-$Temp = '' ;
-if($QueryResult) {
-    foreach ($QueryResult as $Record) {
-        $Temp = $Record;
-    }
 
-} else{
-    die("Problem in getting the blogpost from blogs_table <br> ".mysqli_error($DBConnectionBackend)) ;
+$BlogId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___blog_id') ;
 
-}
 
+$Temp = getBlogInfo($DBConnectionBackend, $BlogId) ;
 
 
 $BlogId = $Temp['blog_id'];
-$CreationTimeStamp = $Temp['blog_creation_timestamp'] ;
-$LastModifiedTimeStamp = $Temp['blog_last_modified_timestamp'] ;
+$CreationTimeStamp = $Temp['blog_creation_date'] ;
 $BlogTitle = $Temp['blog_title'];
 $BlogDisplayImage = $Temp['blog_display_image'];
 $BlogContent = $Temp['blog_content'] ;
@@ -100,14 +89,14 @@ $SomeVar = "<p>This is some <strong>bold for you</strong> and some <em>Italics
                     <div class = col-md-1></div>
                     <div class="col-md-10" >
 
-                        <label class="col-form-label">Metadata: </label>
-                        <div class="form-group row bg-faded" >
-                            <label class="col-6 col-form-label">
-                                <?php echo "Created on: &nbsp; &nbsp; &nbsp; &nbsp; $CreationTimeStamp" ; ?>
-                            </label>
-                            <label class="col-6 col-form-label">
-                                <?php echo "Last Modified on: &nbsp; &nbsp; &nbsp; &nbsp; $LastModifiedTimeStamp" ; ?>
-                            </label>
+
+
+
+                        <div id="Div_BlogDate">
+                            <label for="input-blog-date" class="col-form-label">Creation Date:</label>
+                            <div>
+                                <input id="input-blog-date" class="form-control" type="text" value="<?php echo $CreationTimeStamp; ?>" readonly >
+                            </div>
                         </div>
 
 

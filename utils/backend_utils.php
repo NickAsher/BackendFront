@@ -79,6 +79,25 @@ function getUserProfileInformation($DBConnectionBackend, $UserId){
 
     }
 
+function getItemInformation_PDO($DBConnectionBackend, $ItemId){
+    /**
+     * This function returns the details of an item
+     * it is basically a select statement in the items_table
+     *
+     *
+     */
+
+    $Query = "SELECT * FROM `menu_items_table` WHERE `item_id` = :item_id   " ;
+    try {
+        $QueryResult = $DBConnectionBackend->prepare($Query);
+        $QueryResult->execute(['item_id' => $ItemId]);
+        $ItemInformation = $QueryResult->fetch(PDO::FETCH_ASSOC);
+        return $ItemInformation ;
+    } catch (Exception $e){
+        throw new Exception("Unable to fetch the menu item information: ".$e->getMessage()) ;
+    }
+}
+
 
 function getToppingInformation($DBConnectionBackend, $ItemId){
     /*
@@ -107,6 +126,9 @@ function getSizeInformation($DBConnectionBackend, $ItemCategoryCode, $SizeCode){
     }
     return $SizeInformation ;
 }
+
+
+
 
 
 

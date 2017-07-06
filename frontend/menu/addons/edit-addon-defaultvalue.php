@@ -24,20 +24,21 @@
 
     <?php
     require_once '../../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php' ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
-    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php';
-    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
+//    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
-    $CategoryCode = isSecure_checkPostInput('__category_code') ;
-    $AddonGroupRelId = isSecure_checkPostInput('__addongroup_rel_id') ;
-
-
+    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
 
-    $DBConnectionBackend = YOLOSqlConnect() ;
 
-    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
+
+    $DBConnectionBackend = YOPDOSqlConnect() ;
+    $AddonGroupInfo = getSingleAddonGroupInfoArray_PDO($DBConnectionBackend, $AddonGroupRelId) ;
+
+    $AllAddonItemsInGroup = getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnectionBackend, $AddonGroupRelId) ;
 
 
 
@@ -64,6 +65,12 @@
                     <br><br><br>
                 </div>
 
+                <div id="heading">
+                    <br>
+                    <h1 class="text-center">Choose Default value for Addon Group <?php echo $AddonGroupInfo['addon_group_display_name']?></h1>
+                    <br><br>
+                </div>
+
                 <form action="process-edit-addon-defaultvalue.php" method="post">
 
                     <div class="form-group row">
@@ -71,7 +78,7 @@
                         <input name="__addongroup_rel_id" type="hidden" value="<?php echo $AddonGroupRelId ?> ">
 
 
-                        <label for="input-cpn-valid-users" class="col-3 col-form-label">User Validity</label>
+                        <label for="input-cpn-valid-users" class="col-3 col-form-label">Default Value</label>
                         <div class="col-md-9">
                             <div id="input-cpn-valid-users" class="form-check">
 
@@ -82,11 +89,22 @@
                                 $AddonId = $AddonRecord['item_id'];
                                 $AddonName = $AddonRecord['item_name'];
                                 $AddonIsDefault = $AddonRecord['item_is_default'];
-                                echo "
-                                    <label class='form-check-label'>
-                                        <input name = '__addon_id'  class='form-check-inline' type='radio' value='$AddonId'>$AddonName
-                                    </label>
-                                " ;
+
+                                if($AddonIsDefault == 'yes'){
+                                    echo "
+                                        <label class='form-check-label'>
+                                            <input checked='checked' name = '__addon_id'  class='form-check-inline' type='radio' value='$AddonId'>$AddonName
+                                        </label>
+                                        <br>
+                                    " ;
+                                } else if ($AddonIsDefault == 'no') {
+                                    echo "
+                                        <label class='form-check-label'>
+                                            <input name = '__addon_id'  class='form-check-inline' type='radio' value='$AddonId'>$AddonName
+                                        </label>
+                                        <br>
+                                    ";
+                                }
 
 
                             }
