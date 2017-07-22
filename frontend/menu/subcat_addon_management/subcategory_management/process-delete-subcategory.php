@@ -6,7 +6,7 @@ require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 $SubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__subcategory_rel_id') ;
 
 
@@ -21,9 +21,9 @@ try{
 
 
 
-    $Table1 = "menu_meta_rel_category-subcategory_table" ;
+    $Table1 = "menu_meta_subcategory_table" ;
     $Table2 = "menu_items_table" ;
-    $Table3 = "menu_meta_rel_size-items_table" ;
+    $Table3 = "menu_meta_rel_size_items_table" ;
 
     $Query2 = "DELETE `$Table1` , `$Table2` , `$Table3` 
       FROM `$Table1`   INNER JOIN `$Table2`  INNER JOIN `$Table3`  
@@ -68,7 +68,7 @@ try{
      */
 
 
-    $ListOfAllSubcategories = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
+    $ListOfAllSubcategories = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryId) ;
 
     if(count($ListOfAllSubcategories) != 0) {
 
@@ -82,8 +82,8 @@ try{
             $RealSortNo++;
         }
 
-        $Query5 = "UPDATE `$Table1` SET `subcategory_sr_no` = CASE $CaseStatement END WHERE `category_code` = ?  ";
-        array_push($CaseValues, $CategoryCode) ;
+        $Query5 = "UPDATE `$Table1` SET `subcategory_sr_no` = CASE $CaseStatement END WHERE `category_id` = ?  ";
+        array_push($CaseValues, $CategoryId) ;
 
 
         try {

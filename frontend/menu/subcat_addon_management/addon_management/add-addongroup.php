@@ -32,7 +32,7 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
 
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
     
     
     $DBConnectionBackend = YOLOSqlConnect() ;
@@ -74,7 +74,7 @@
                     <div class="col-md-10" >
                         <form action="process-add-addongroup.php" method="post">
 
-                            <input name="__category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?>'>
+                            <input name="__category_id" type="hidden" value='<?php echo "$CategoryId" ; ?>'>
 
 
 

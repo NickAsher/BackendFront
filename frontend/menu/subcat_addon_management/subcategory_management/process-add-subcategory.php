@@ -5,27 +5,25 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 $DBConnectionBackend = YOPDOSqlConnect() ;
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 $SubCategoryDisplayName = isSecure_IsValidText(GetPostConst::Post, '__subcategory_name') ;
-$SubCategoryNoOfItems = 0 ;
 $SubCategoryIsActive = isSecure_IsYesNo(GetPostConst::Post, '__subcategory_is_active') ;
 
 
 
 
-$Query = "INSERT INTO `menu_meta_rel_category-subcategory_table` (`subcategory_sr_no`, `rel_id`, `category_code`, `subcategory_display_name`, `subcategory_no_of_menuitems`, `subcategory_is_active` )
-  SELECT COALESCE( (MAX( `subcategory_sr_no` ) + 1), 1), '', :category_code, :subcategory_display_name, :subcategory_no_of_items, :subcateogry_is_active
-  FROM `menu_meta_rel_category-subcategory_table` WHERE `category_code` = :category_code_02    " ;
+$Query = "INSERT INTO `menu_meta_subcategory_table` (`subcategory_sr_no`, `rel_id`, `category_id`, `subcategory_display_name`, `subcategory_is_active` )
+  SELECT COALESCE( (MAX( `subcategory_sr_no` ) + 1), 1), '', :category_id, :subcategory_display_name, :subcateogry_is_active
+  FROM `menu_meta_subcategory_table` WHERE `category_id` = :category_id_02    " ;
 
 
 try {
     $QueryResult = $DBConnectionBackend->prepare($Query);
     $QueryResult->execute([
-        'category_code' => $CategoryCode,
+        'category_id' => $CategoryId,
         'subcategory_display_name' => $SubCategoryDisplayName,
-        'subcategory_no_of_items' => $SubCategoryNoOfItems,
         'subcateogry_is_active' => $SubCategoryIsActive,
-        'category_code_02' => $CategoryCode
+        'category_id_02' => $CategoryId
     ]);
 
     echo "

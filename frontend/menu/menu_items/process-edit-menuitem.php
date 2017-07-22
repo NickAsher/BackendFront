@@ -32,7 +32,7 @@ $ItemIsActive = isSecure_IsYesNo(GetPostConst::Post, '__item_is_active') ;
 
 
     $ItemInfoArray = getSingleMenuItemInfoArray_PDO($DBConnectionBackend, $ItemId) ;
-    $ItemCategoryCode = $ItemInfoArray['item_category_code'] ;
+    $ItemCategoryCode = $ItemInfoArray['item_category_id'] ;
     $OldDisplayPic_Name = $ItemInfoArray['item_image_name'] ;
     $NewDisplayPic = $_FILES['__new_item_image'] ;
 
@@ -79,26 +79,50 @@ try{
 
 
     $AllSizesList = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $ItemCategoryCode) ;
-    foreach ($AllSizesList as $Record2){
-        $SizeId = $Record2['size_id'] ;
+
+
+
+    $CaseStatement_SizeActive = '' ;
+    $CaseStatement_SizePrice = '' ;
+    $CaseValues_Total = array() ;
+
+
+    foreach ($AllSizesList as $Record){
+        $SizeId = $Record['size_id'] ;
         $ItemPriceForThatSize = isSecure_IsValidPositiveDecimal(GetPostConst::Post, "__item_price_size_$SizeId") ;
 
-
-
-
-        $Query3 = "UPDATE `menu_meta_rel_size-items_table`
-          SET `item_price` = :item_price WHERE `item_id` = :item_id AND `size_id` = :size_id " ;
-        try {
-            $QueryResult3 = $DBConnectionBackend->prepare($Query3);
-            $QueryResult3->execute([
-                'item_price' => $ItemPriceForThatSize,
-                'item_id' => $ItemId,
-                'size_id' => $SizeId
-            ]);
-        }catch (Exception $e){
-            throw new Exception("Problem in price update query for size code $SizeId : ".$e->getMessage()) ;
-        }
+        $CaseStatement_SizePrice .= "WHEN `size_id` = '$SizeId' THEN ? " ;
+        array_push($CaseValues_Total, $ItemPriceForThatSize) ;
     }
+
+    foreach ($AllSizesList as $Record){
+        $SizeId = $Record['size_id'] ;
+        $ItemActiveForThatSize = isSecure_IsYesNo(GetPostConst::Post, "__item_size_active_$SizeId") ;
+
+        $CaseStatement_SizeActive .= "WHEN `size_id` = '$SizeId' THEN ? " ;
+        array_push($CaseValues_Total, $ItemActiveForThatSize) ;
+
+    }
+
+
+
+    $Query3 = "UPDATE `menu_meta_rel_size_items_table` 
+        SET `item_price` = CASE $CaseStatement_SizePrice END,  `item_size_active` = CASE $CaseStatement_SizeActive END
+        WHERE `item_id` = ?" ;
+    try {
+        $QueryResult3 = $DBConnectionBackend->prepare($Query3);
+        array_push($CaseValues_Total, $ItemId) ;
+        $QueryResult3->execute($CaseValues_Total);
+    }catch (Exception $e){
+        throw new Exception("Problem in Item Size Price Active Update query  : ".$e->getMessage()) ;
+    }
+
+
+
+
+
+
+
 
 
 

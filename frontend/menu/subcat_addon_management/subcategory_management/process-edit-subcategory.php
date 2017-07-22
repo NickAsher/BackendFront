@@ -13,7 +13,7 @@ $SubCategoryIsActive = isSecure_IsYesNo(GetPostConst::Post, '__subcategory_is_ac
 
 $DBConnectionBackend = YOPDOSqlConnect() ;
 
-$Query1 = "UPDATE `menu_meta_rel_category-subcategory_table` 
+$Query1 = "UPDATE `menu_meta_subcategory_table` 
   SET `subcategory_display_name` = :subcategory_display_name , `subcategory_is_active` = :subcategory_is_active
   WHERE `rel_id` = :rel_id " ;
 

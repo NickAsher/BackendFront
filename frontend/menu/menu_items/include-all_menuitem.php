@@ -1,6 +1,6 @@
 <?php
 
-$ListOfAllSubCategoriesInCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
+$ListOfAllSubCategoriesInCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryId) ;
 
 echo "<div id = 'mainContento' >" ;
 
@@ -48,7 +48,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
         $SrNo = $Record['item_sr_no'] ;
         $ItemId = $Record['item_id'] ;
         $ItemName = $Record['item_name'] ;
-        $ItemPriceString = getItemPriceString_PDO($DBConnectionBackend, $CategoryCode, $ItemId) ;
+        $ItemPriceString = getItemPriceString_PDO($DBConnectionBackend, $CategoryId, $ItemId) ;
         $ItemImage = $Record['item_image_name'] ;
         $ItemDescription = $Record['item_description'] ;
 
@@ -109,7 +109,7 @@ foreach ($ListOfAllSubCategoriesInCategory as $SubCategoryRecord){
             <br><br>
             <div class='row'>
                 <div class='col-4'></div>
-                <a class='col-4 btn btn-outline-info' href='add-menuitem.php?___category_code=$CategoryCode'>
+                <a class='col-4 btn btn-outline-info' href='add-menuitem.php?___category_id=$CategoryId'>
                     Add New Item
                 </a>
                 <div class='col-4'></div>

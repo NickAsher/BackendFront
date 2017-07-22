@@ -3,10 +3,12 @@ require_once '../../../../utils/constants.php';
 
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
+require_once $ROOT_FOLDER_PATH.'/utils/image-utils-pdo.php' ;
+
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code');
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id');
 $SizeId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__size_id');
 
 if(!isset($_POST['__is_delete'])){
@@ -21,22 +23,27 @@ $DBConnectionBackend = YOPDOSqlConnect() ;
 try{
     $DBConnectionBackend->beginTransaction() ;
 
+    try {
+        deleteImageFromImageFolder("$IMAGE_FOLDER_FILE_PATH/", getSingleSizeInfoArray_PDO($DBConnectionBackend, $SizeId)['size_image']);
+    }catch (Exception $e){
+        throw new Exception("Unable to delete the message".$e) ;
+    }
 
     $Table1 = "menu_meta_size_table" ;
-    $Table2 = "menu_meta_rel_size-items_table" ;
-    $Table3 = "menu_meta_rel_size-addons_table" ;
+    $Table2 = "menu_meta_rel_size_items_table" ;
+    $Table3 = "menu_meta_rel_size_addons_table" ;
 
 
     $Query1 = "DELETE `$Table1` , `$Table2` , `$Table3` 
       FROM `$Table1`   INNER JOIN `$Table2`  INNER JOIN `$Table3`  
       ON `$Table1`.`size_id` =  `$Table2`.`size_id`  AND `$Table1`.`size_id` = `$Table3`.`size_id` 
-        AND `$Table1`.`size_category_code` =  `$Table2`.`item_category_code`  AND `$Table1`.`size_category_code` = `$Table3`.`category_code`
-      WHERE `$Table1`.`size_category_code` = :category_code AND `$Table1`.`size_id` = :size_id  ";
+        AND `$Table1`.`size_category_id` =  `$Table2`.`item_category_id`  AND `$Table1`.`size_category_id` = `$Table3`.`category_id`
+      WHERE `$Table1`.`size_category_id` = :category_id AND `$Table1`.`size_id` = :size_id  ";
 
     try {
         $QueryResult1 = $DBConnectionBackend->prepare($Query1);
         $QueryResult1->execute([
-            'category_code' => $CategoryCode,
+            'category_id' => $CategoryId,
             'size_id' => $SizeId
         ]);
     } catch (Exception $e) {
@@ -44,6 +51,12 @@ try{
 
     }
 
+
+    /*
+     * TODO Two cases are left,
+     *      when there are menu items but no addon items
+     *      When there are no menu items but addon items
+     */
 
 
     /*
@@ -71,7 +84,7 @@ try{
     /*
      * This query is used to re-sort the Sr No of the Sizes
      */
-    $AllSizesInThisCategory = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
+    $AllSizesInThisCategory = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryId) ;
     if(count($AllSizesInThisCategory) != 0) {
 
         $CaseStatement = '';
@@ -82,10 +95,10 @@ try{
             $RealSortNo++;
         }
 
-        $Query3 = "UPDATE `$Table1` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_code` = :category_code  ";
+        $Query3 = "UPDATE `$Table1` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_id` = :category_id  ";
         try {
             $QueryResult3 = $DBConnectionBackend->prepare($Query3);
-            $QueryResult3->execute(['category_code' => $CategoryCode]);
+            $QueryResult3->execute(['category_id' => $CategoryId]);
         } catch (Exception $e) {
             throw new Exception("Error in sorting the new Subcategories: " . $e->getMessage() );
         }
@@ -108,6 +121,8 @@ try{
 } catch (Exception $e){
     echo "Unable to delete the size variation: ".$e->getMessage() ;
     $DBConnectionBackend->rollBack() ;
+
+
 
 
 }

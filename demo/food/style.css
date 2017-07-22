@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'pluzumk-food';
+  src:  url('fonts/pluzumk-food.eot?vmmaoz');
+  src:  url('fonts/pluzumk-food.eot?vmmaoz#iefix') format('embedded-opentype'),
+    url('fonts/pluzumk-food.ttf?vmmaoz') format('truetype'),
+    url('fonts/pluzumk-food.woff?vmmaoz') format('woff'),
+    url('fonts/pluzumk-food.svg?vmmaoz#pluzumk-food') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="pluzumk-food-"], [class*=" pluzumk-food-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'pluzumk-food' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pluzumk-food-pizza:before {
+  content: "\e900";
+}
+.pluzumk-food-fries:before {
+  content: "\e901f";
+}
+.pluzumk-food-burger:before {
+  content: "\e902";
+}
+.pluzumk-food-burger2:before {
+  content: "\e903";
+}

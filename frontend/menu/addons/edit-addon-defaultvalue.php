@@ -29,7 +29,7 @@
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 //    require_once $ROOT_FOLDER_PATH.'/utils/menu_item-utils.php';
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
     $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
 
@@ -74,7 +74,7 @@
                 <form action="process-edit-addon-defaultvalue.php" method="post">
 
                     <div class="form-group row">
-                        <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?> ">
+                        <input name="__category_id" type="hidden" value="<?php echo $CategoryId ?> ">
                         <input name="__addongroup_rel_id" type="hidden" value="<?php echo $AddonGroupRelId ?> ">
 
 

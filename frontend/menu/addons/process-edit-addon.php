@@ -4,7 +4,7 @@ require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
-$CategoryCode =  isSecure_IsValidItemCode(GetPostConst::Post, '__category_code');
+$CategoryId =  isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id');
 $AddonItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addon_item_id');
 $AddonItemName = isSecure_IsValidText(GetPostConst::Post, '__addon_item_name');
 $AddonIsActive = isSecure_IsYesNo(GetPostConst::Post, '__addon_is_active') ;
@@ -40,26 +40,41 @@ try{
     }
 
 
-    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
-    $CaseStatement = '' ;
-    $CaseValues =array() ;
+    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryId) ;
+
+
+    $CaseStatement_Price = '' ;
+    $CaseStatement_SizeActive = '' ;
+    $CaseValues_Total = array() ;
 
 
     foreach ($AllSizes as $Record2){
         $SizeId = $Record2['size_id'] ;
         $AddonPriceForThatSize = isSecure_IsValidPositiveDecimal(GetPostConst::Post, "__addon_price_size_$SizeId") ;
 
-        $CaseStatement .= "WHEN `size_id` = '$SizeId' THEN ? " ;
-        array_push($CaseValues, $AddonPriceForThatSize) ;
+        $CaseStatement_Price .= "WHEN `size_id` = '$SizeId' THEN ? " ;
+        array_push($CaseValues_Total, $AddonPriceForThatSize) ;
     }
 
-    $Query3 = "UPDATE `menu_meta_rel_size-addons_table` SET `addon_price` = CASE $CaseStatement END WHERE `addon_id` = ?  " ;
-    array_push($CaseValues, $AddonItemId) ;
+    foreach ($AllSizes as $Record2){
+        $SizeId = $Record2['size_id'] ;
+        $ItemActiveForThatSize = isSecure_IsYesNo(GetPostConst::Post, "__addon_size_active_$SizeId") ;
+
+        $CaseStatement_SizeActive .= "WHEN `size_id` = '$SizeId' THEN ? " ;
+        array_push($CaseValues_Total, $ItemActiveForThatSize) ;
+    }
+
+
+
+    $Query2 = "UPDATE `menu_meta_rel_size_addons_table`
+        SET `addon_price` = CASE $CaseStatement_Price END, `addon_size_active` = CASE $CaseStatement_SizeActive END
+        WHERE `addon_id` = ?  " ;
+    array_push($CaseValues_Total, $AddonItemId) ;
     try {
-        $QueryResult3 = $DBConnectionBackend->prepare($Query3);
-        $QueryResult3->execute($CaseValues);
+        $QueryResult2 = $DBConnectionBackend->prepare($Query2);
+        $QueryResult2a->execute($CaseValues_Total);
     } catch (Exception $e) {
-        throw new Exception("Problem in price update query  : ".$e) ;
+        throw new Exception("Problem in Addon Price Size update query  : ".$e) ;
     }
 
 

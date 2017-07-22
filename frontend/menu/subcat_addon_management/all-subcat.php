@@ -63,9 +63,9 @@
                                     <?php
                                     $FirstItem = true ;
                                     foreach ($ListOfAllCategories as $CategoryRecord){
-                                        $CategoryCode = $CategoryRecord['category_code'] ;
-                                        $CategoryName = $CategoryRecord['category_display_name'] ;
-                                        $HrefDivColumn = "#MainDiv_".$CategoryCode ;
+                                        $CategoryId = $CategoryRecord['category_id'] ;
+                                        $CategoryName = $CategoryRecord['category_name'] ;
+                                        $HrefDivColumn = "#MainDiv_".$CategoryId ;
 
                                         if($FirstItem){
                                             $ActiveClassString = " active " ;
@@ -106,9 +106,9 @@
                     <?php
                     $FirstItem = true ;
                     foreach ($ListOfAllCategories as $CategoryRecord) {
-                        $CategoryCode = $CategoryRecord['category_code'];
-                        $CategoryName = $CategoryRecord['category_display_name'];
-                        $NameDivColumn = "MainDiv_" . $CategoryCode;
+                        $CategoryId = $CategoryRecord['category_id'];
+                        $CategoryName = $CategoryRecord['category_name'];
+                        $NameDivColumn = "MainDiv_" . $CategoryId;
 
                         if($FirstItem){
                             $ActiveShowString = " active show" ;

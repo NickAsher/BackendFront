@@ -4,7 +4,7 @@ require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 $AddonDefaultItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addon_id') ;
 
@@ -12,7 +12,7 @@ $AddonDefaultItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__add
 $DBConnectionBackend = YOPDOSqlConnect() ;
 
 
-$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array($DBConnectionBackend, $AddonGroupRelId) ;
+$ListAllAddonItemInAddonGroup = getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnectionBackend, $AddonGroupRelId) ;
 $CaseStatement = '' ;
 $CaseValues = array() ;
 
@@ -33,7 +33,7 @@ foreach ($ListAllAddonItemInAddonGroup as $AddonItemRecord){
 
 }
 
-$Query2 = "UPDATE `menu_addons_table` SET `item_is_default` = CASE $CaseStatement END WHERE `item_id` = ? " ;
+$Query2 = "UPDATE `menu_addons_table` SET `item_is_default` = CASE $CaseStatement END  " ;
 
 try {
     $QueryResult2 = $DBConnectionBackend->prepare($Query2);

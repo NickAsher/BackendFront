@@ -3,7 +3,7 @@
 
 
 function getListOfAllCategories_Array_PDO($DBConnection){
-    $Query1 =  "SELECT * FROM `menu_meta_category_table` ORDER BY `category_id` ASC" ;
+    $Query1 =  "SELECT * FROM `menu_meta_category_table` ORDER BY `category_sr_no` ASC" ;
     try{
         $QueryResult1 = $DBConnection->query($Query1) ;
         $AllCategoriesArray  = $QueryResult1->fetchAll() ;
@@ -20,16 +20,16 @@ function getListOfAllCategories_Array_PDO($DBConnection){
 
 
 
-function getSingleCategoryInfoArray_PDO($DBConnection, $CategoryCode){
+function getSingleCategoryInfoArray_PDO($DBConnection, $CategoryId){
     /*
      * This function returns the Information of a single category like its code, its name, its size variation
      * If it is unable to fetch the info, then it will kill the page
      */
 
-    $Query1 =  "SELECT * FROM `menu_meta_category_table` WHERE `category_code` = :category_code " ;
+    $Query1 =  "SELECT * FROM `menu_meta_category_table` WHERE `category_id` = :category_id " ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $SingleCategoryInfoArray  = $QueryResult1->fetch(PDO::FETCH_ASSOC) ;
 
         return $SingleCategoryInfoArray ;
@@ -48,7 +48,7 @@ function getSingleCategoryInfoArray_PDO($DBConnection, $CategoryCode){
 
 
 
-function getListOfAllSubCategory_InACategory_Array_PDO($DBConnection, $CategoryCode){
+function getListOfAllSubCategory_InACategory_Array_PDO($DBConnection, $CategoryId){
     /*
      * This function returns all the rows of subacategory of a particular category.
      * For example, if the category code is pizza, then it will return three subcategory rows like
@@ -60,11 +60,11 @@ function getListOfAllSubCategory_InACategory_Array_PDO($DBConnection, $CategoryC
 
 
 
-    $Query1 =  "SELECT * FROM `menu_meta_rel_category-subcategory_table`
-                  WHERE `category_code` = :category_code ORDER BY `subcategory_sr_no` ASC" ;
+    $Query1 =  "SELECT * FROM `menu_meta_subcategory_table`
+                  WHERE `category_id` = :category_id ORDER BY `subcategory_sr_no` ASC" ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $CategorySubCategoriesListArray  = $QueryResult1->fetchAll() ;
 
         return $CategorySubCategoriesListArray ;
@@ -79,7 +79,7 @@ function getListOfAllSubCategory_InACategory_Array_PDO($DBConnection, $CategoryC
 function getSingleSubCategoryInfoArray_PDO($DBConnection, $SubCategoryRelId){
 
 
-    $Query1 = "SELECT * FROM `menu_meta_rel_category-subcategory_table`
+    $Query1 = "SELECT * FROM `menu_meta_subcategory_table`
                 WHERE `rel_id` = :rel_id  " ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
@@ -88,7 +88,7 @@ function getSingleSubCategoryInfoArray_PDO($DBConnection, $SubCategoryRelId){
 
         return $SubCategoriesInfoArray ;
     }catch (Exception $e){
-        throw new Exception("Unable to fetch the subcategory info from the menu_meta_rel_category-subcategory_table : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the subcategory info from the menu_meta_subcategory_table : ".$e->getMessage()) ;
     }
 
 
@@ -103,18 +103,18 @@ function getSingleSubCategoryInfoArray_PDO($DBConnection, $SubCategoryRelId){
 
 
 
-function getListOfAllAddonGroupsInACategory_Array_PDO($DBConnection, $CategoryCode){
+function getListOfAllAddonGroupsInACategory_Array_PDO($DBConnection, $CategoryId){
 
-    $Query1 =  "SELECT * FROM `menu_meta_rel_category-addon_table`
-                WHERE `category_code` = :category_code ORDER BY `addon_group_sr_no` ASC" ;
+    $Query1 =  "SELECT * FROM `menu_meta_addongroups_table`
+                WHERE `category_id` = :category_id ORDER BY `addon_group_sr_no` ASC" ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $CategoryAddonGroupsListArray  = $QueryResult1->fetchAll() ;
 
         return $CategoryAddonGroupsListArray ;
     }catch (Exception $e){
-        throw new Exception("Unable to fetch the Addons Group list from the menu_meta_rel_category-addon_table : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the Addons Group list from the menu_meta_addongroups_table : ".$e->getMessage()) ;
     }
 
 
@@ -129,7 +129,7 @@ function getSingleAddonGroupInfoArray_PDO($DBConnection, $AddonGroupRelId){
      */
 
 
-    $Query1 = "SELECT * FROM `menu_meta_rel_category-addon_table` WHERE `rel_id` = :rel_id " ;
+    $Query1 = "SELECT * FROM `menu_meta_addongroups_table` WHERE `rel_id` = :rel_id " ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
         $QueryResult1->execute(['rel_id'=>$AddonGroupRelId]) ;
@@ -137,7 +137,7 @@ function getSingleAddonGroupInfoArray_PDO($DBConnection, $AddonGroupRelId){
 
         return $SingleAddonGroupInfoArray ;
     }catch (Exception $e){
-        throw new Exception("Unable to fetch the Addon-Group info from the menu_meta_rel_category-addon_table : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the Addon-Group info from the menu_meta_addongroups_table : ".$e->getMessage()) ;
     }
 
 }
@@ -164,11 +164,11 @@ function getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnection, $AddonGroup
 }
 
 
-function getListOfAllAddonItemsInCategoryArray_PDO($DBConnection, $CategoryCode){
-    $Query1 = "SELECT * FROM `menu_addons_table` WHERE `item_category_code` = :category_code ORDER BY `item_sr_no` ASC " ;
+function getListOfAllAddonItemsInCategoryArray_PDO($DBConnection, $CategoryId){
+    $Query1 = "SELECT * FROM `menu_addons_table` WHERE `item_category_id` = :category_id ORDER BY `item_sr_no` ASC " ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $AddonItemsInGroupArray  = $QueryResult1->fetchAll() ;
 
         return $AddonItemsInGroupArray ;
@@ -203,7 +203,7 @@ function getSingleAddonItemInfoArray_PDO($DBConnection, $AddonItemId){
 function getSingleAddonItemPriceInfoArray_PDO($DBConnection, $AddonItemId, $SizeId){
 
 
-    $Query1 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = :addon_id AND `size_id` = :size_id  " ;
+    $Query1 = "SELECT * FROM `menu_meta_rel_size_addons_table` WHERE `addon_id` = :addon_id AND `size_id` = :size_id  " ;
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
         $QueryResult1->execute(['addon_id'=>$AddonItemId, 'size_id'=>$SizeId]) ;
@@ -217,17 +217,17 @@ function getSingleAddonItemPriceInfoArray_PDO($DBConnection, $AddonItemId, $Size
 
 
 
-function getListOfAllSizesInCategory_PDO($DBConnection, $CategoryCode){
+function getListOfAllSizesInCategory_PDO($DBConnection, $CategoryId){
 
-    $Query1 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = :category_code ORDER BY `size_sr_no` ";
+    $Query1 = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_id` = :category_id ORDER BY `size_sr_no` ";
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $ListOfAllSizesInCategory  = $QueryResult1->fetchAll() ;
 
         return $ListOfAllSizesInCategory ;
     }catch (Exception $e){
-        throw new Exception("Unable to fetch the Sizes for the category $CategoryCode : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the Sizes for the category $CategoryId : ".$e->getMessage()) ;
     }
 }
 
@@ -252,17 +252,17 @@ function getSingleSizeInfoArray_PDO($DBConnection, $SizeId){
 
 
 
-function getListOfAllMenuItemsInCategory_Array_PDO($DBConnection, $CategoryCode) {
+function getListOfAllMenuItemsInCategory_Array_PDO($DBConnection, $CategoryId) {
 
-    $Query1 = "SELECT * FROM `menu_items_table` WHERE `item_category_code` = :category_code ORDER BY `item_id` ";
+    $Query1 = "SELECT * FROM `menu_items_table` WHERE `item_category_id` = :category_id ORDER BY `item_id` ";
     try{
         $QueryResult1 = $DBConnection->prepare($Query1) ;
-        $QueryResult1->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult1->execute(['category_id'=>$CategoryId]) ;
         $ListOfMenuItemsInCategory  = $QueryResult1->fetchAll() ;
 
         return $ListOfMenuItemsInCategory ;
     }catch (Exception $e){
-        throw new Exception("Unable to fetch the Menu Item for the category $CategoryCode : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the Menu Item for the category $CategoryId : ".$e->getMessage()) ;
     }
 }
 
@@ -312,9 +312,9 @@ function getSingleMenuItemInfo_EXTRAArray_PDO($DBConnection, $MenuItemId){
         $QueryResult1->execute(['item_id'=>$MenuItemId]) ;
         $SingleMenuItemInfoArray  = $QueryResult1->fetch(PDO::FETCH_ASSOC) ;
 
-        $CategoryName = getSingleCategoryInfoArray_PDO($DBConnection, $SingleMenuItemInfoArray['item_category_code'])['category_display_name'] ;
+        $CategoryName = getSingleCategoryInfoArray_PDO($DBConnection, $SingleMenuItemInfoArray['item_category_id'])['category_name'] ;
         $SubCategoryName = getSingleSubCategoryInfoArray_PDO($DBConnection, $SingleMenuItemInfoArray['item_subcategory_rel_id']) ['subcategory_display_name'] ;
-        $SingleMenuItemInfoArray['category_display_name'] = $CategoryName ;
+        $SingleMenuItemInfoArray['category_name'] = $CategoryName ;
         $SingleMenuItemInfoArray['subcategory_display_name'] = $SubCategoryName ;
 
 

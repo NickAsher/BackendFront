@@ -38,7 +38,7 @@
     $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
     $AddonGroupInfoArray = getSingleAddonGroupInfoArray_PDO($DBConnectionBackend, $AddonGroupRelId) ;
-    $CategoryCode = $AddonGroupInfoArray['category_code'] ;
+    $CategoryId = $AddonGroupInfoArray['category_id'] ;
     $AddonGroupName = $AddonGroupInfoArray['addon_group_display_name'] ;
     $AddonGroupType = $AddonGroupInfoArray['addon_group_type'] ;
     $AddonGroupIsActive = $AddonGroupInfoArray['addon_group_is_active'] ;
@@ -101,7 +101,7 @@
                     <div class="col-md-10" >
                         <form action="process-edit-addongroup.php" method="post">
 
-                            <input name="__category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?>'>
+                            <input name="__category_id" type="hidden" value='<?php echo "$CategoryId" ; ?>'>
                             <input name="__addongroup_rel_id" type="hidden" value='<?php echo "$AddonGroupRelId" ; ?>'>
 
 
@@ -131,12 +131,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="input-addon-ordering-no" class="col-3 col-form-label">Addon-Group Sr No</label>
-                                <div class="col-md-9">
-                                    <input name="__addongroup_sr_no" id="input-addon-ordering-no" class="form-control" type="number" value="<?php echo $AddonGroupSrNo ?>">
-                                </div>
-                            </div>
+
 
 
 

@@ -1,11 +1,11 @@
 <?php
 
-function getItemPriceString_PDO($DBConnection, $CategoryCode, $ItemId){
+function getItemPriceString_PDO($DBConnection, $CategoryId, $ItemId){
     $PriceString = '' ;
     /*
      * returns --> String
      * arg1 --> $DBConnection : a database connection
-     * arg2 --> $CategoryCode : The category_code of the item
+     * arg2 --> $CategoryId : The category_id of the item
      * arg3 --> $ItemId : the id of item for which the price string should be finded
      *
      *
@@ -24,17 +24,17 @@ function getItemPriceString_PDO($DBConnection, $CategoryCode, $ItemId){
      *
      */
 
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = :category_code ORDER BY `size_sr_no` " ;
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_id` = :category_id ORDER BY `size_sr_no` " ;
     try{
         $QueryResult = $DBConnection->prepare($Query) ;
-        $QueryResult->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult->execute(['category_id'=>$CategoryId]) ;
         $AllSizes = $QueryResult->fetchAll() ;
 
 
         foreach ($AllSizes as $Record){
             $SizeRelId = $Record['size_id'] ;
 //            $CategorySizeCode = $Record['size_code'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = :item_id AND `size_id` = '$SizeRelId' " ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size_items_table` WHERE `item_id` = :item_id AND `size_id` = '$SizeRelId' " ;
             try{
                 $QueryResult2 = $DBConnection->prepare($Query2) ;
                 $QueryResult2->execute(['item_id'=>$ItemId]) ;
@@ -69,12 +69,12 @@ function getItemPriceString_PDO($DBConnection, $CategoryCode, $ItemId){
 
 
 
-function getAddonPriceString_PDO($DBConnection, $CategoryCode, $AddonId){
+function getAddonPriceString_PDO($DBConnection, $CategoryId, $AddonId){
     $PriceString = '' ;
     /*
      * returns --> String
      * arg1 --> $DBConnection : a database connection
-     * arg2 --> $CategoryCode : The category_code of the item
+     * arg2 --> $CategoryId : The category_id of the item
      * arg3 --> $AddonId : the id of addon for which the price string should be finded
      *
      *
@@ -94,17 +94,17 @@ function getAddonPriceString_PDO($DBConnection, $CategoryCode, $AddonId){
      *
      */
 
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = :category_code ORDER BY `size_sr_no` " ;
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_id` = :category_id ORDER BY `size_sr_no` " ;
     try{
         $QueryResult = $DBConnection->prepare($Query) ;
-        $QueryResult->execute(['category_code'=>$CategoryCode]) ;
+        $QueryResult->execute(['category_id'=>$CategoryId]) ;
         $AllSizes = $QueryResult->fetchAll() ;
     } catch(Exception $e) {
-        throw new Exception("Unable to fetch the different sizes for the category $CategoryCode : ".$e->getMessage()) ;
+        throw new Exception("Unable to fetch the different sizes for the category $CategoryId : ".$e->getMessage()) ;
     }
         foreach ($AllSizes as $Record){
             $SizeRelId = $Record['size_id'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = :addon_id AND `size_id` = '$SizeRelId' " ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size_addons_table` WHERE `addon_id` = :addon_id AND `size_id` = '$SizeRelId' " ;
 
             try{
                 $QueryResult2 = $DBConnection->prepare($Query2) ;

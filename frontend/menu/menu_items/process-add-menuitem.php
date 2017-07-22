@@ -22,7 +22,7 @@ $DBConnectionBackend_Old = YOLOSqlConnect() ;
 
 $ItemName = isSecure_IsValidText(GetPostConst::Post, '__item_name') ;
 $ItemDescription = isSecure_IsValidText(GetPostConst::Post, '__item_description') ;
-$ItemCategory = isSecure_IsValidItemCode(GetPostConst::Post, '__item_category') ;
+$ItemCategory = isSecure_isValidPositiveInteger(GetPostConst::Post, '__item_category') ;
 $ItemSubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__item_subcategory_rel_id') ;
 $ItemIsActive = isSecure_IsYesNo(GetPostConst::Post, '__item_is_active') ;
 
@@ -35,7 +35,7 @@ $ItemIsActive = isSecure_IsYesNo(GetPostConst::Post, '__item_is_active') ;
 $ImageFileArrayVariable = $_FILES['__item_image'] ;
 $Item_ImageName = moveImageToImageFolder($DBConnectionBackend_Old, "$IMAGE_FOLDER_FILE_PATH/", $ImageFileArrayVariable);
 if($Item_ImageName == -1){
-    die("error in image uoloading") ;
+    die("error in image uploading") ;
 }
 
 
@@ -46,7 +46,7 @@ try{
 
 
 
-        $Query = "INSERT INTO `menu_items_table` (`item_sr_no`, `item_id`, `item_name`, `item_description`, `item_image_name`, `item_category_code`, `item_subcategory_rel_id`, `item_is_active` )
+        $Query = "INSERT INTO `menu_items_table` (`item_sr_no`, `item_id`, `item_name`, `item_description`, `item_image_name`, `item_category_id`, `item_subcategory_rel_id`, `item_is_active` )
       SELECT COALESCE( (MAX( `item_sr_no` ) + 1), 1) , '', :item_name, :item_description, :item_imagename, :item_category, :item_sub_rel_id, :item_is_active
       FROM `menu_items_table` WHERE `item_subcategory_rel_id` = :item_sub_rel_id_02    " ;
 
@@ -74,24 +74,27 @@ try{
 
 
     $AllSizesOfCategory = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $ItemCategory) ;
-    $ValuesPrepareString = '' ;
-    $ValuesExecuteArray = array() ;
+
+    $ValuesString = '' ;
+    $ValuesArray = array() ;
 
     foreach ($AllSizesOfCategory as $Record2){
         $SizeId = $Record2['size_id'] ;
         $ItemPriceForThatSize = isSecure_IsValidPositiveDecimal(GetPostConst::Post, "__item_price_size_$SizeId") ;
+        $ItemActiveForThatSize = isSecure_IsYesNo(GetPostConst::Post, "__item_size_active_$SizeId") ;
 
-        $ValuesPrepareString .= "('', '$NewItemId',  ?, '$SizeId', ?), " ;
-        array_push($ValuesExecuteArray, $ItemPriceForThatSize) ;
-        array_push($ValuesExecuteArray, $ItemCategory) ;
+        $ValuesString .= "('', '$NewItemId',  ?, ?, '$SizeId', ?), " ;
+        array_push($ValuesArray, $ItemPriceForThatSize, $ItemActiveForThatSize,  $ItemCategory) ;
     }
 
+    $ValuesString = rtrim($ValuesString, ", ") ;
 
-    $ValuesPrepareString = rtrim($ValuesPrepareString, ", ") ;
-    $Query3 = "INSERT INTO `menu_meta_rel_size-items_table` VALUES $ValuesPrepareString " ;
+
+
+    $Query3 = "INSERT INTO `menu_meta_rel_size_items_table` VALUES $ValuesString " ;
     try {
         $QueryResult3 = $DBConnectionBackend->prepare($Query3);
-        $QueryResult3->execute($ValuesExecuteArray);
+        $QueryResult3->execute($ValuesArray);
     }catch(Exception $e){
         throw new Exception("Problem in price size insert query ".$e->getMessage() ) ;
     }

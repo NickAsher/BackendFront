@@ -1,11 +1,11 @@
 <?php
 
-function getItemPriceString($DBConnection, $CategoryCode, $ItemId){
+function getItemPriceString($DBConnection, $CategoryId, $ItemId){
     $PriceString = '' ;
     /*
      * returns --> String
      * arg1 --> $DBConnection : a database connection
-     * arg2 --> $CategoryCode : The category_code of the item
+     * arg2 --> $CategoryId : The category_id of the item
      * arg3 --> $ItemId : the id of item for which the price string should be finded
      *
      *
@@ -24,13 +24,13 @@ function getItemPriceString($DBConnection, $CategoryCode, $ItemId){
      *
      */
 
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` " ;
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_id` = '$CategoryId' ORDER BY `size_sr_no` " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
         foreach ($QueryResult as $Record){
             $SizeRelId = $Record['size_id'] ;
 //            $CategorySizeCode = $Record['size_code'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$ItemId' AND `size_id` = '$SizeRelId' " ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size_items_table` WHERE `item_id` = '$ItemId' AND `size_id` = '$SizeRelId' " ;
             $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
             if($QueryResult2){
                 if(mysqli_num_rows($QueryResult2) == 0){
@@ -59,12 +59,12 @@ function getItemPriceString($DBConnection, $CategoryCode, $ItemId){
 
 
 
-function getAddonPriceString($DBConnection, $CategoryCode, $AddonId){
+function getAddonPriceString($DBConnection, $CategoryId, $AddonId){
     $PriceString = '' ;
     /*
      * returns --> String
      * arg1 --> $DBConnection : a database connection
-     * arg2 --> $CategoryCode : The category_code of the item
+     * arg2 --> $CategoryId : The category_id of the item
      * arg3 --> $AddonId : the id of addon for which the price string should be finded
      *
      *
@@ -84,12 +84,12 @@ function getAddonPriceString($DBConnection, $CategoryCode, $AddonId){
      *
      */
 
-    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_code` = '$CategoryCode' ORDER BY `size_sr_no` " ;
+    $Query = "SELECT * FROM `menu_meta_size_table` WHERE `size_category_id` = '$CategoryId' ORDER BY `size_sr_no` " ;
     $QueryResult = mysqli_query($DBConnection, $Query) ;
     if($QueryResult){
         foreach ($QueryResult as $Record){
             $SizeRelId = $Record['size_id'] ;
-            $Query2 = "SELECT * FROM `menu_meta_rel_size-addons_table` WHERE `addon_id` = '$AddonId' AND `size_id` = '$SizeRelId' " ;
+            $Query2 = "SELECT * FROM `menu_meta_rel_size_addons_table` WHERE `addon_id` = '$AddonId' AND `size_id` = '$SizeRelId' " ;
             $QueryResult2 = mysqli_query($DBConnection, $Query2) ;
             if($QueryResult2){
                 if(mysqli_num_rows($QueryResult2) == 0){
@@ -111,7 +111,7 @@ function getAddonPriceString($DBConnection, $CategoryCode, $AddonId){
         $PriceString = rtrim($PriceString, " - ") ;
         return $PriceString ;
     } else {
-        return "Unable to fetch the different sizes for the category $CategoryCode : ".mysqli_error($DBConnection) ;
+        return "Unable to fetch the different sizes for the category $CategoryId : ".mysqli_error($DBConnection) ;
     }
 
 }

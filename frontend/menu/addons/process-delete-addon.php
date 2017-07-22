@@ -21,7 +21,7 @@ try{
     $DBConnectionBackend->beginTransaction() ;
 
     $Table1 = "menu_addons_table" ;
-    $Table2 = "menu_meta_rel_size-addons_table" ;
+    $Table2 = "menu_meta_rel_size_addons_table" ;
 
     $Query1 = "DELETE `$Table1` , `$Table2`  FROM `$Table1` INNER JOIN `$Table2`
       ON `$Table1`.`item_id` =  `$Table2`.`addon_id` 
@@ -39,7 +39,7 @@ try{
 
 
     $AllAddonItemsInThisGroup = getListOfAllAddonItemsInAddonGroup_Array_PDO($DBConnectionBackend, $AddonGroupRelId) ;
-    if(count($AllAddonItemsInThisGroup) != 0) {
+    if( count($AllAddonItemsInThisGroup) != 0) {
 
 
         $CaseStatement = '';
@@ -51,7 +51,7 @@ try{
             $RealSortNo++;
         }
 
-        $Query3 = "UPDATE `$Table1` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_addon_group_rel_id` = '$AddonGroupRelId'  ";
+        $Query3 = "UPDATE `$Table1` SET `item_sr_no` = CASE $CaseStatement END WHERE `item_addon_group_rel_id` = :addongroup_rel_id  ";
         try {
             $QueryResult3 = $DBConnectionBackend->prepare($Query3);
             $QueryResult3->execute(['addongroup_rel_id' => $AddonGroupRelId]);

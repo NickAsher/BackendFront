@@ -6,7 +6,7 @@ require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code');
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id');
 $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__addongroup_rel_id') ;
 
 
@@ -19,9 +19,9 @@ try{
     $DBConnectionBackend->beginTransaction() ;
 
 
-    $Table1 = "menu_meta_rel_category-addon_table" ;
+    $Table1 = "menu_meta_addongroups_table" ;
     $Table2 = "menu_addons_table" ;
-    $Table3 = "menu_meta_rel_size-addons_table" ;
+    $Table3 = "menu_meta_rel_size_addons_table" ;
 
 
 
@@ -66,7 +66,7 @@ try{
      * This query is used to re-sort the Sr No of the addongroups
      */
 
-    $ListOfAddonGroupsInCategory = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
+    $ListOfAddonGroupsInCategory = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryId) ;
 
     if(count($ListOfAddonGroupsInCategory) != 0) {
 
@@ -78,10 +78,10 @@ try{
             $RealSortNo++;
         }
 
-        $Query = "UPDATE `$Table1` SET `addon_group_sr_no` = CASE $CaseStatement END WHERE `category_code` = :category_code  ";
+        $Query = "UPDATE `$Table1` SET `addon_group_sr_no` = CASE $CaseStatement END WHERE `category_id` = :category_id  ";
         try {
             $QueryResult = $DBConnectionBackend->prepare($Query);
-            $QueryResult->execute(['category_code' => $CategoryCode]);
+            $QueryResult->execute(['category_id' => $CategoryId]);
         }catch (Exception $e){
             throw new Exception("Error in sorting the new AddonGroups: " . $e->getMessage());
         }

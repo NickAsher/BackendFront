@@ -171,31 +171,7 @@ function isSecure_IsValidImageName($Type, $Input){
 
 
 
-function isSecure_IsValidItemCode($Type, $Input){
 
-    if($Type == GetPostConst::Post){
-        $RealInput = isSecure_checkPostInput_String($Input) ;
-    } else if ($Type == GetPostConst::Get){
-        $RealInput = isSecure_checkGetInput_string($Input) ;
-    } else if ($Type == GetPostConst::None){
-        $RealInput = $Input ;
-    } else {
-        die("Unknown type") ;
-    }
-
-    $RealInput = trim($RealInput) ;
-
-    $RegExpression = "/^[\w\s]+$/" ;
-    if(preg_match($RegExpression, $RealInput) ){
-        return $RealInput ;
-    } else{
-        die("Security errory : The input value \$_GETPOST['$Input']  failed Backend Validation ") ;
-    }
-
-
-
-
-}
 
 
 function isSecure_IsYesNo($Type, $Input){

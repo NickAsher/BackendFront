@@ -25,12 +25,12 @@
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Get, '___category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___category_id') ;
     $AddonItemId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___addon_item_id') ;
 
     $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
+    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryId) ;
     $AddonItemDetailInfoArray = getSingleAddonItemInfoArray_PDO($DBConnectionBackend, $AddonItemId) ;
 
 
@@ -107,30 +107,60 @@
                         <div id="Div_Price">
                             <?php
 
-                            $ListOfAllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
+                            $Query = "SELECT `a`.`size_name`, `b`.*
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size_addons_table` AS `b`
+                                ON `a`.`size_id` = `b`.`size_id` 
+                                WHERE `b`.`addon_id` = :addon_id  ORDER BY `a`.`size_sr_no` ASC  " ;
 
-                            foreach ($ListOfAllSizes as $Record) {
-                                $SizeName = $Record['size_name'];
-                                $SizeId = $Record['size_id'];
+                            try {
+                                $QueryResult = $DBConnectionBackend->prepare($Query);
+                                $QueryResult->execute([
+                                    'addon_id' => $AddonItemId
+                                ]);
+                                $AllSizesPriceList = $QueryResult->fetchAll();
+                            }catch (Exception $e){
+                                die("Error in getting the size price list : ".$e->getMessage()) ;
+                            }
 
+                            foreach ($AllSizesPriceList as $Record){
+                                $SizeName = $Record['size_name'] ;
+                                $SizeId = $Record['size_id'] ;
+                                $AddonPrice = $Record['addon_price'] ;
+                                $IsActive = $Record['addon_size_active'] ;
 
-                                $AddonSizePriceInfo = getSingleAddonItemPriceInfoArray_PDO($DBConnectionBackend, $AddonItemId, $SizeId);
+                                $ItemSizeActiveString = '' ;
+                                if($IsActive == 'yes'){
+                                    $ItemSizeActiveString =   "checked='checked' ";
+                                } else if($IsActive == 'no') {
+                                    $ItemSizeActiveString = '' ;
+                                }
 
-                                    $ItemPrice = $AddonSizePriceInfo['addon_price'];
-
-                                    echo "
-                                            <div class='form-group row'>
-                                                <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Addon Price ($SizeName)</label>
-                                                <div class='col-md-9'>
-                                                    <input id='input-addon-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' readonly>
-                                                </div>
-                                            </div>  
-                                            ";
-
-
-
+                                if($AddonPrice == '0.0' || $IsActive == 'no'){
+                                    ?>
+                                    <div class="form-group row">
+                                        <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Addon Price (<?php echo $SizeName ?>) </label>
+                                        <div class="col-md-9 input-group">
+                                            <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' <?php echo $ItemSizeActiveString ?> disabled data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                            <input id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; ' placeholder="Empty"  readonly>
+                                        </div>
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="form-group row">
+                                        <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Addon Price (<?php echo $SizeName ?>) </label>
+                                        <div class="col-md-9 input-group">
+                                            <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' <?php echo $ItemSizeActiveString ?> disabled data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                            <input id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; ' value='<?php echo $AddonPrice ?>' readonly>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
 
                             }
+
+
+
 
                             ?>
                         </div>
@@ -142,7 +172,7 @@
 
                         <div class="row">
                             <div class="col-4" ></div>
-                            <a id="btn-edit" class="col-4 btn btn-info" href="edit-addon.php?<?php echo "___addon_item_id=$AddonItemId&___category_code=$CategoryCode" ; ?>"  >Edit this Item</a>
+                            <a id="btn-edit" class="col-4 btn btn-info" href="edit-addon.php?<?php echo "___addon_item_id=$AddonItemId&___category_id=$CategoryId" ; ?>"  >Edit this Item</a>
                             <div class="col-4" ></div>
                         </div>
 

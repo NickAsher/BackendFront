@@ -5,7 +5,7 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 
 $SortedIdsArray = isSecure_checkPostInput('__sortarray') ;
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 
 
 foreach ($SortedIdsArray as $sortNo=>$ItemId){
@@ -39,8 +39,8 @@ foreach ($SortedIdsArray as $sortNo=>$RelId){
 
 
 
-$Query = "UPDATE `menu_meta_size_table` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_code` = ?  " ;
-array_push($CaseValues, $CategoryCode) ;
+$Query = "UPDATE `menu_meta_size_table` SET `size_sr_no` = CASE $CaseStatement END WHERE `size_category_id` = ?  " ;
+array_push($CaseValues, $CategoryId) ;
 
 try{
     $QueryResult = $DBConnection->prepare($Query) ;

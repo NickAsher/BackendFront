@@ -38,8 +38,8 @@
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
     $MenuItemDescription = $MenuItemInfoArray['item_description'] ;
     $MenuItemImage = $MenuItemInfoArray['item_image_name'] ;
-    $MenuItemCategoryCode = $MenuItemInfoArray['item_category_code'] ;
-    $CategoryName = $MenuItemInfoArray['category_display_name'] ;
+    $MenuItemCategoryCode = $MenuItemInfoArray['item_category_id'] ;
+    $CategoryName = $MenuItemInfoArray['category_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
 
@@ -152,14 +152,16 @@
                             <div id="Div_Price">
                                 <?php
 
-                                $Query = "SELECT `b`.*, `a`.`size_name` 
-                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size-items_table` AS `b`
+                                $Query = "SELECT  `a`.`size_name`,`b`.*
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size_items_table` AS `b`
                                 ON `a`.`size_id` = `b`.`size_id`  
                                 WHERE `b`.`item_id` = :item_id ORDER BY `a`.`size_sr_no` ASC  " ;
 
                                 try {
                                     $QueryResult = $DBConnectionBackend->prepare($Query);
-                                    $QueryResult->execute(['item_id' => $MenuItemId]);
+                                    $QueryResult->execute([
+                                        'item_id' => $MenuItemId
+                                    ]);
                                     $AllSizesPriceList = $QueryResult->fetchAll();
                                 }catch (Exception $e){
                                     die("Error in getting the size price list : ".$e->getMessage()) ;
@@ -169,27 +171,33 @@
                                     $SizeName = $Record['size_name'] ;
                                     $SizeId = $Record['size_id'] ;
                                     $ItemPrice = $Record['item_price'] ;
+                                    $IsActive = $Record['item_size_active'] ;
 
-
-                                    if($ItemPrice == '-1'){
-                                        echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' placeholder='Empty' >
-                                            </div>
-                                        </div>  
-                                        " ;
-                                    } else {
-                                        echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice'>
-                                            </div>
-                                        </div>  
-                                        " ;
+                                    $ItemSizeActiveString = '' ;
+                                    if($IsActive == 'yes'){
+                                        $ItemSizeActiveString =   "checked='checked' ";
+                                    } else if($IsActive == 'no') {
+                                        $ItemSizeActiveString = '' ;
                                     }
+
+
+
+
+
+
+                                        ?>
+                                        <div class="form-group row">
+                                            <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Item Price (<?php echo $SizeName ?>) </label>
+                                            <div class="col-md-9 input-group">
+                                                <input name = '__item_size_active_<?php echo $SizeId ?>' id='input-item-size-active_<?php echo $SizeId ?>' class='form-control' type='hidden' value='<?php echo $IsActive ?>' >
+                                                <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' <?php echo $ItemSizeActiveString ?>  data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                                <input name='__item_price_size_<?php echo $SizeId ?>' id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; ' value='<?php echo $ItemPrice ?>' >
+                                                <input  id='input-item-price-size-presentation_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ;' placeholder='Empty' disabled >
+
+                                            </div>
+                                        </div>
+                                        <?php
+
 
 
 
@@ -282,7 +290,11 @@
 <script type="text/javascript"  src="../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
 
 <script type="text/javascript"  src="../../../lib/t3/t3.js"></script>
-<script>
+<script type="text/javascript">
+
+
+
+
     $('#btn-file-choose').click(function (event) {
         event.preventDefault() ;
         $('#hidden-file-chooser').click();
@@ -309,6 +321,58 @@
         });
     }
     setupToggleButton('input-item-active-presentation', 'input-item-active-hidden') ;
+
+
+
+
+
+    function setUpToggleButtonForSizeActive(SizeActiveInputId_Presentation, SizeActiveInputId, PriceInputId, PriceInputId_Presentaion){
+        var OriginalPriceVal = $('#' + PriceInputId).val() ;
+        var SizeActiveVal =  $('#' + SizeActiveInputId).val() ;
+
+
+
+        if (OriginalPriceVal == '0.0' || SizeActiveVal == 'no'){
+            $('#' + PriceInputId).hide() ;
+            $('#' + PriceInputId_Presentaion).show() ;
+        } else if (OriginalPriceVal != '0.0' && SizeActiveVal == 'yes') {
+            $('#' + PriceInputId).show() ;
+            $('#' + PriceInputId_Presentaion).hide() ;
+        }
+
+
+        $('#' + SizeActiveInputId_Presentation).on('change', function() {
+            if(this.checked){
+                $('#' + SizeActiveInputId).val('yes') ;
+                $('#' + PriceInputId).val(OriginalPriceVal) ;
+                $('#' + PriceInputId).prop('readonly', false) ;
+                $('#' + PriceInputId).show() ;
+                $('#' + PriceInputId_Presentaion).hide() ;
+
+
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + SizeActiveInputId).val('no') ;
+                $('#' + PriceInputId).val('0.0') ;
+                $('#' + PriceInputId).prop('readonly', true) ;
+                $('#' + PriceInputId).hide() ;
+                $('#' + PriceInputId_Presentaion).show() ;
+
+
+            }
+        });
+    }
+
+    var ItemSizePriceActive_Array = JSON.parse('<?php echo json_encode($AllSizesPriceList) ?>') ;
+    for(i = 0;i<ItemSizePriceActive_Array.length; i++){
+        var ItemId = ItemSizePriceActive_Array[i]['size_id'] ;
+        console.log(ItemId) ;
+
+        setUpToggleButtonForSizeActive('input-item-size-active-presentation_'+ItemId, 'input-item-size-active_'+ItemId, "input-item-price-size_" + ItemId, "input-item-price-size-presentation_"+ItemId ) ;
+
+    }
+
+
 
 
 

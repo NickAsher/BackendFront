@@ -25,7 +25,7 @@
 
     <?php
     require_once '../../utils/constants.php';
-    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection.php'  ;
+    require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php'  ;
 
     $DBConnectionFCM = YOPDOSqlFCMConnect() ;
 

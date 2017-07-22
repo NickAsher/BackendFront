@@ -1,8 +1,8 @@
 
 <?php
-$CategorySubCategoriesListArray = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
-$CategoryAddonsListArray = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryCode) ;
-$CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode) ;
+$CategorySubCategoriesListArray = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend, $CategoryId) ;
+$CategoryAddonsListArray = getListOfAllAddonGroupsInACategory_Array_PDO($DBConnectionBackend, $CategoryId) ;
+$CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryId) ;
 
 
 ?>
@@ -17,7 +17,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
         <div style="display: block">
             <h1 style="display: inline-block; float: left;" >All Sub-Categories </h1>
             <form action="subcategory_management/sort-subcategory.php" method="post">
-                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input name="__category_id" type="hidden" value="<?php echo $CategoryId ?>">
                 <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
             </form>
             <br><br>
@@ -30,7 +30,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
             <tr class="table-info">
                 <th>Sr. No</th>
                 <th>SubCategory Name</th>
-                <th>No of Menu-Items</th>
                 <th>SubCategory Active</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -45,7 +44,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                 $SubCategoryRelId = $Record['rel_id'] ;
                 $SubCategorySrNo = $Record['subcategory_sr_no'] ;
                 $SubCategoryDisplayName = $Record['subcategory_display_name'] ;
-                $NoOfMenuItems = $Record['subcategory_no_of_menuitems'] ;
 
                 $SubCategoryActive = $Record['subcategory_is_active'] ;
                 $ActiveButton = '' ;
@@ -59,11 +57,10 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                 <tr>
                     <td>$SubCategorySrNo</td>
                     <td>$SubCategoryDisplayName</td>
-                    <td>$NoOfMenuItems</td>
                     <td>$ActiveButton</td>
                     <td>
                         <form action='subcategory_management/edit-subcategory.php' method='post'>
-                            <input name='__category_code' type='hidden' value='$CategoryCode'>
+                            <input name='__category_id' type='hidden' value='$CategoryId'>
                             <input name='__subcategory_rel_id' type='hidden' value='$SubCategoryRelId'>
                             <button class='btn btn-info' type='submit'>
                                 <i class='fa fa-edit'></i>  &nbsp; | &nbsp; Edit
@@ -72,7 +69,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                     </td>
                     <td>
                         <form action='subcategory_management/confirm-delete-subcategory.php' method='post'>
-                            <input name='__category_code' type='hidden' value='$CategoryCode'>
+                            <input name='__category_id' type='hidden' value='$CategoryId'>
                             <input name='__subcategory_rel_id' type='hidden' value='$SubCategoryRelId'>
                             <button class='btn btn-danger' type='submit'>
                                 <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete
@@ -96,7 +93,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
         <br><br>
         <br><br>
         <form action='subcategory_management/add-subcategory.php' method='post'>
-            <input name='__category_code' type='hidden' value='<?php echo "$CategoryCode" ; ?>'>
+            <input name='__category_id' type='hidden' value='<?php echo "$CategoryId" ; ?>'>
             <div class='row'>
                 <div class='col-md-4'></div>
                 <button class='col-md-4 btn btn-info' type='submit'>Add new Category</button>
@@ -121,7 +118,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
         <div style="display: block">
             <h1 style="display: inline-block; float: left;" >All Addon Groups</h1>
             <form action="addon_management/sort-addongroup.php" method="post">
-                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input name="__category_id" type="hidden" value="<?php echo $CategoryId ?>">
                 <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
             </form>
             <br><br>
@@ -136,7 +133,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                 <th>Sr. No</th>
                 <th>Addon-Group Name</th>
                 <th>Addon-Group Type</th>
-                <th>No of Addon-Items</th>
                 <td>Addon Active</td>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -151,7 +147,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
             $AddonGroupRelId = $Record['rel_id'] ;
             $AddonGroupCategorySrNo = $Record['addon_group_sr_no'] ;
             $AddonGroupDisplayName = $Record['addon_group_display_name'] ;
-            $NoOfItems = $Record['addon_group_no_of_items'] ;
 
             $AddonGroupType = $Record['addon_group_type'] ;
             $AddonGroupTypeString = '' ;
@@ -176,7 +171,6 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                     <td>$AddonGroupCategorySrNo</td>
                     <td>$AddonGroupDisplayName</td>
                     <td>$AddonGroupTypeString</td>
-                    <td>$NoOfItems</td>
                     <td>$ActiveButton</td>
                     <td>
                         <form action='addon_management/edit-addongroup.php' method='post'>
@@ -188,7 +182,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                     </td>
                     <td>
                         <form action='addon_management/confirm-delete-addongroup.php' method='post'>
-                            <input name='__category_code' type='hidden' value='$CategoryCode'>
+                            <input name='__category_id' type='hidden' value='$CategoryId'>
                             <input name='__addongroup_rel_id' type='hidden' value='$AddonGroupRelId'>
                             <button class='btn btn-danger' type='submit'>
                                 <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete
@@ -208,7 +202,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
 
         <br><br>
         <form action='addon_management/add-addongroup.php' method='post'>
-            <input name='__category_code' type='hidden' value='<?php echo "$CategoryCode" ; ?>'>
+            <input name='__category_id' type='hidden' value='<?php echo "$CategoryId" ; ?>'>
             <div class='row'>
                 <div class='col-md-4'></div>
                 <button class='col-md-4 btn btn-info' type='submit'>Add new Addon-Group</button>
@@ -234,7 +228,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
         <div style="display: block">
             <h1 style="display: inline-block; float: left;" >All Sizes</h1>
             <form action="size_management/sort-size.php" method="post">
-                <input name="__category_code" type="hidden" value="<?php echo $CategoryCode ?>">
+                <input name="__category_id" type="hidden" value="<?php echo $CategoryId ?>">
                 <input type="submit" class="btn btn -info" style="display: inline-block;float: right" value="Sort This">
             </form>
             <br><br>
@@ -247,6 +241,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
 
                 <tr class="table-info">
                     <th>Sr. No</th>
+                    <th>Size Image</th>
                     <th>Size  Name</th>
                     <th>Size  Abbreviated Name</th>
                     <th>Is Default</th>
@@ -261,7 +256,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
 
                 <?php
                 foreach ($CategorySizesListArray as $Record){
-
+                    $SizeImage = $Record['size_image'] ;
                     $SizeId = $Record['size_id'] ;
                     $SizeSrNo = $Record['size_sr_no'] ;
                     $SizeName = $Record['size_name'] ;
@@ -280,7 +275,11 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
 
                     echo "
                         <tr>
+                            
                             <td>$SizeSrNo</td>
+                            <td>
+                                <img src='$IMAGE_BACKENDFRONT_LINK_PATH/$SizeImage' class='img-fluid' width = '80px' >
+                            </td>
                             <td>$SizeName</td>
                             <td>$SizeAbbrName</td>
                             <td>$SizeIsDefault</td>
@@ -288,7 +287,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                             <td>
                                 <form action='size_management/edit-size.php' method='post'>
                                     <input name='__size_id' type='hidden' value='$SizeId'>
-                                    <input name='__category_code' type='hidden' value='$CategoryCode'>
+                                    <input name='__category_id' type='hidden' value='$CategoryId'>
 
                                     <button class='btn btn-info' type='submit'>
                                         <i class='fa fa-edit'></i>  &nbsp; | &nbsp; Edit
@@ -299,7 +298,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
                             <td>
                                 <form action='size_management/confirm-delete-size.php' method='post'>
                                     <input name='__size_id' type='hidden' value='$SizeId'>
-                                    <input name='__category_code' type='hidden' value='$CategoryCode' >
+                                    <input name='__category_id' type='hidden' value='$CategoryId' >
                                     <button class='btn btn-danger' type='submit'>
                                         <i class='fa fa-trash'></i>  &nbsp; | &nbsp; Delete
                                     </button>
@@ -316,7 +315,7 @@ $CategorySizesListArray = getListOfAllSizesInCategory_PDO($DBConnectionBackend, 
 
             <br><br>
             <form action='size_management/add_size.php' method='post'>
-                <input name='__category_code' type='hidden' value='<?php echo "$CategoryCode" ; ?>'>
+                <input name='__category_id' type='hidden' value='<?php echo "$CategoryId" ; ?>'>
                 <div class='row'>
                     <div class='col-md-4'></div>
                     <button class='col-md-4 btn btn-info' type='submit'>Add new Size-Variation</button>

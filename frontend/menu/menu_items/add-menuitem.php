@@ -33,16 +33,16 @@
 
     $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Get, '___category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___category_id') ;
     try {
 
-    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
-    $ListoFSubCatetgoriesForCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend ,$CategoryCode) ;
-    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode);
+    $CategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryId) ;
+    $ListoFSubCatetgoriesForCategory = getListOfAllSubCategory_InACategory_Array_PDO($DBConnectionBackend ,$CategoryId) ;
+    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryId);
     } catch (Exception $e) {
         die($e) ;
     }
-    $CategoryName = $CategoryInfoArray['category_display_name'] ;
+    $CategoryName = $CategoryInfoArray['category_name'] ;
 
 
     ?>
@@ -80,7 +80,7 @@
                             <div class="form-group row">
                                 <label for="input-item-category" class="col-3 col-form-label">Category</label>
                                 <div class="col-md-9">
-                                    <input name="__item_category" id="input-item-category" class="form-control" type="text" value="<?php echo $CategoryCode ; ?>" readonly>
+                                    <input name="__item_category" id="input-item-category" class="form-control" type="text" value="<?php echo $CategoryId ; ?>" readonly>
                                 </div>
                             </div>
 
@@ -124,14 +124,20 @@
                                     foreach ($AllSizes as $Record){
                                         $SizeName = $Record['size_name'] ;
                                         $SizeId = $Record['size_id'] ;
-                                        echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input name='__item_price_size_$SizeId' id='input-item-price-size_$SizeId' class='form-control' type='text' placeholder='ex. 20'>
+                                        ?>
+
+                                        <div class="form-group row">
+                                            <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Item Price (<?php echo $SizeName ?>) </label>
+                                            <div class="col-md-9 input-group">
+                                                <input name = '__item_size_active_<?php echo $SizeId ?>' id='input-item-size-active_<?php echo $SizeId ?>' class='form-control' type='hidden' value='yes' >
+                                                <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' checked="checked"  data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                                <input name='__item_price_size_<?php echo $SizeId ?>' id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; '  >
+                                                <input  id='input-item-price-size-presentation_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ;' placeholder='Empty' disabled >
+
                                             </div>
-                                        </div>  
-                                    " ;
+                                        </div>
+
+                                        <?php
                                     }
 
 
@@ -250,6 +256,41 @@
     setupToggleButton('input-item-active-presentation', 'input-item-active-hidden') ;
 
 
+    function setUpToggleButtonForSizeActive(SizeActiveInputId_Presentation, SizeActiveInputId, PriceInputId, PriceInputId_Presentaion){
+
+            $('#' + PriceInputId_Presentaion).hide() ;
+
+
+
+        $('#' + SizeActiveInputId_Presentation).on('change', function() {
+            if(this.checked){
+                $('#' + SizeActiveInputId).val('yes') ;
+                $('#' + PriceInputId).prop('readonly', false) ;
+                $('#' + PriceInputId).show() ;
+                $('#' + PriceInputId_Presentaion).hide() ;
+
+
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + SizeActiveInputId).val('no') ;
+                $('#' + PriceInputId).val('0.0') ;
+                $('#' + PriceInputId).prop('readonly', true) ;
+                $('#' + PriceInputId).hide() ;
+                $('#' + PriceInputId_Presentaion).show() ;
+
+
+            }
+        });
+    }
+
+    var AllSizeArray = JSON.parse('<?php echo json_encode($AllSizes) ?>') ;
+    for(i = 0; i<AllSizeArray.length; i++){
+        var SizeId = AllSizeArray[i]['size_id'] ;
+        console.log(SizeId) ;
+
+        setUpToggleButtonForSizeActive('input-item-size-active-presentation_'+SizeId, 'input-item-size-active_'+SizeId, "input-item-price-size_" + SizeId, "input-item-price-size-presentation_"+SizeId ) ;
+
+    }
 
 
 

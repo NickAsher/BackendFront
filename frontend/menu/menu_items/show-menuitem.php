@@ -39,8 +39,8 @@
     $MenuItemName = $MenuItemInfoArray['item_name'] ;
     $MenuItemDescription = $MenuItemInfoArray['item_description'] ;
     $MenuItemImage = $MenuItemInfoArray['item_image_name'] ;
-    $MenuItemCategoryCode = $MenuItemInfoArray['item_category_code'] ;
-    $CategoryName = $MenuItemInfoArray['category_display_name'] ;
+    $MenuItemCategoryCode = $MenuItemInfoArray['item_category_id'] ;
+    $CategoryName = $MenuItemInfoArray['category_name'] ;
     $SubCategoryName = $MenuItemInfoArray['subcategory_display_name'] ;
     $MenuItemActive = $MenuItemInfoArray['item_is_active'] ;
 //    print_r($MenuItemInfoArray) ;
@@ -146,20 +146,25 @@
                         </div>
 
 
+                                <br><Br><Br>
+
+
 
 
 
                         <div id="Div_Price">
                             <?php
 
-                            $Query = "SELECT `b`.*, `a`.`size_name` 
-                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size-items_table` AS `b`
+                            $Query = "SELECT  `a`.`size_name`,`b`.*
+                                FROM `menu_meta_size_table` AS `a` INNER JOIN `menu_meta_rel_size_items_table` AS `b`
                                 ON `a`.`size_id` = `b`.`size_id`  
                                 WHERE `b`.`item_id` = :item_id ORDER BY `a`.`size_sr_no` ASC  " ;
 
                             try {
                                 $QueryResult = $DBConnectionBackend->prepare($Query);
-                                $QueryResult->execute(['item_id' => $MenuItemId]);
+                                $QueryResult->execute([
+                                    'item_id' => $MenuItemId
+                                ]);
                                 $AllSizesPriceList = $QueryResult->fetchAll();
                             }catch (Exception $e){
                                 die("Error in getting the size price list : ".$e->getMessage()) ;
@@ -169,17 +174,36 @@
                                 $SizeName = $Record['size_name'] ;
                                 $SizeId = $Record['size_id'] ;
                                 $ItemPrice = $Record['item_price'] ;
+                                $IsActive = $Record['item_size_active'] ;
 
+                                $ItemSizeActiveString = '' ;
+                                if($IsActive == 'yes'){
+                                    $ItemSizeActiveString =   "checked='checked' ";
+                                } else if($IsActive == 'no') {
+                                    $ItemSizeActiveString = '' ;
+                                }
 
-                                echo "
-                                        <div class='form-group row'>
-                                            <label for='input-item-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input id='input-item-price-size_$SizeId' class='form-control' type='text' value='$ItemPrice' readonly>
-                                            </div>
-                                        </div>  
-                                        " ;
-
+                                if($ItemPrice == '0.0' || $IsActive == 'no'){
+                                   ?>
+                                    <div class="form-group row">
+                                        <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Item Price (<?php echo $SizeName ?>) </label>
+                                        <div class="col-md-9 input-group">
+                                            <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' <?php echo $ItemSizeActiveString ?> disabled data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                            <input id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; ' placeholder="Empty"  readonly>
+                                        </div>
+                                    </div>
+                                    <?php
+                                } else {
+                                    ?>
+                                    <div class="form-group row">
+                                        <label for="input-item-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Item Price (<?php echo $SizeName ?>) </label>
+                                        <div class="col-md-9 input-group">
+                                            <input id='input-item-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' <?php echo $ItemSizeActiveString ?> disabled data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                            <input id='input-item-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; ' value='<?php echo $ItemPrice ?>'   readonly>
+                                        </div>
+                                    </div>
+                                    <?php
+                                }
 
                             }
 

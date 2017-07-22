@@ -6,7 +6,7 @@ function parseOrderDescriptionString($DBConnectionBackend, $IndividualOrderCartI
 
     $ItemInformation = getItemInformation($DBConnectionBackend, $ItemId) ;
     $ItemName = $ItemInformation['item_name'] ;
-    $ItemCategory = $ItemInformation['item_category_code'] ;
+    $ItemCategory = $ItemInformation['item_category_id'] ;
 
     $DescriptionString = null ;
     $CustomizationString = parseOrderDescription_ItemCustomizationString($DBConnectionBackend, $IndividualOrderCartItemArray, $ItemCategory) ;

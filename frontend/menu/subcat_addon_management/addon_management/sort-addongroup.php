@@ -35,9 +35,9 @@
 
 
     $DBConnectionBackend = YOLOSqlConnect() ;
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 
-    $AllAddonGroupInCategoryListArray = getListOfAllAddonGroupsInACategory_Array($DBConnectionBackend, $CategoryCode) ;
+    $AllAddonGroupInCategoryListArray = getListOfAllAddonGroupsInACategory_Array($DBConnectionBackend, $CategoryId) ;
 
 
     ?>
@@ -176,11 +176,11 @@
 
     $('#SaveBtn').click(function(){
         var sortedarray = $('#sorting').sortable("toArray") ;
-        var categoryCode = '<?php echo $CategoryCode ?> ' ;
+        var categoryCode = '<?php echo $CategoryId ?> ' ;
         $.ajax({
             url: "process-save-sort.php",
             method: "POST",
-            data: { '__sortarray': sortedarray, '__category_code': categoryCode},
+            data: { '__sortarray': sortedarray, '__category_id': categoryCode},
             success:function(data, status, xhr) {
                 $('#MessageContainer').html("<p class='green'>Success acheived : " + data + "</p>") ;
 

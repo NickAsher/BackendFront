@@ -30,12 +30,12 @@
 
     $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
     $SubCategoryRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__subcategory_rel_id') ;
 
     $SubCategoryInfoArray = getSingleSubCategoryInfoArray_PDO($DBConnectionBackend, $SubCategoryRelId) ;
     $RelId = $SubCategoryInfoArray['rel_id'] ;
-    $CategoryCode = $SubCategoryInfoArray['category_code'] ;
+    $CategoryId = $SubCategoryInfoArray['category_id'] ;
     $SubCategoryName = $SubCategoryInfoArray['subcategory_display_name'] ;
     $SubCategoryIsActive = $SubCategoryInfoArray['subcategory_is_active'] ;
     $SubCategorySrNo = $SubCategoryInfoArray['subcategory_sr_no'] ;

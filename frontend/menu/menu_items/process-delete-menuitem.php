@@ -30,7 +30,7 @@ try {
 
 
     $Table1 = "menu_items_table";
-    $Table2 = "menu_meta_rel_size-items_table";
+    $Table2 = "menu_meta_rel_size_items_table";
 
     $Query1 = "DELETE `$Table1` , `$Table2`  FROM `$Table1` INNER JOIN `$Table2`
       ON `$Table1`.`item_id` =  `$Table2`.`item_id` 

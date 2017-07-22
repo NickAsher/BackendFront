@@ -48,7 +48,7 @@ function parseReceipt_Cart($DBConnection, $CartArray){
         }
 
 
-        $Query = "SELECT * FROM `menu_meta_rel_size-items_table` WHERE `item_id` = '$ItemId' AND `size_id`  = '$ItemSizeId' " ;
+        $Query = "SELECT * FROM `menu_meta_rel_size_items_table` WHERE `item_id` = '$ItemId' AND `size_id`  = '$ItemSizeId' " ;
         $QueryResult = $DBConnection->query($Query) ;
         $ItemBasePrice = $QueryResult->fetch(PDO::FETCH_ASSOC)['item_price'] ;
 

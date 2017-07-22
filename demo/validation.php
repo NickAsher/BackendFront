@@ -59,7 +59,7 @@
                     <div class = col-md-1></div>
 
                     <div id="Section_AddNewItemForm" class="col-md-10" >
-                        <form id="yoloform" action="process-add-menuitem.php" method="post" enctype="multipart/form-data">
+                        <form id="yoloform"  method="post" enctype="multipart/form-data">
 
 
 
@@ -107,6 +107,13 @@
                                 <label for='__item_email' class='col-3 col-form-label'>Email </label>
                                 <div class='col-md-9'>
                                     <input name='__item_email' id='__item_email' class='form-control' type='text' >
+                                </div>
+                            </div>
+
+                            <div class='form-group row'>
+                                <label for='__item_active' class='col-3 col-form-label'>Is Active </label>
+                                <div class='col-md-9'>
+                                    <input name='__item_active' id='__item_active' class='form-control' type='text' >
                                 </div>
                             </div>
 
@@ -182,6 +189,8 @@
 <script type="text/javascript"  src="../lib/bootstrap4/bootstrap_addon.js" ></script>
 <script type="text/javascript"  src="../lib/t3/t3.js"></script>
 <script type="text/javascript"  src="../lib/validate/jquery.validate.js"></script>
+<script type="text/javascript"  src="../lib/validate/jquery-validate-addon.js"></script>
+
 
 <script >
 
@@ -215,6 +224,7 @@
 //        }
 //    });
 
+
     $("#yoloform").validate({
 
         rules: {
@@ -226,7 +236,12 @@
             },
             __item_price_size: {
                 required: true,
-                number: true
+                number: true,
+                isSecure_IsValidPositiveDecimal: true
+            },
+            __item_active :{
+                required:true,
+                isSecure_ValidYesNo:true,
             },
             __item_email: {
                 required: true,
@@ -276,7 +291,7 @@
 
         },
 //        errorElement: 'span',
-        errorClass: 'form-control-feedback',
+        errorClass: 'form-control-feedback'
 //        errorPlacement: function(error, element) {
 //            if(element.parent('.input-group').length) {
 //                error.insertAfter(element.parent());

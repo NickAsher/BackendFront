@@ -5,10 +5,9 @@ require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
 
 $DBConnectionBackend = YOPDOSqlConnect() ;
 
-$CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '__category_code') ;
+$CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id') ;
 $AddonGroupDisplayName = isSecure_IsValidText(GetPostConst::Post, '__addongroup_name') ;
 $AddonGroupType = isSecure_IsValidText(GetPostConst::Post, '__addongroup_type') ;
-$AddonGroupNoOfItems = 0 ;
 $AddonGroupIsActive = isSecure_IsYesNo(GetPostConst::Post, '__addongroup_is_active') ;
 
 
@@ -16,9 +15,9 @@ $AddonGroupIsActive = isSecure_IsYesNo(GetPostConst::Post, '__addongroup_is_acti
 
 
 
-$Query = "INSERT INTO `menu_meta_rel_category-addon_table` (`addon_group_sr_no`, `rel_id`, `category_code`, `addon_group_display_name`, `addon_group_type`, `addon_group_no_of_items`, `addon_group_is_active` )
-  SELECT COALESCE( (MAX( `addon_group_sr_no` ) + 1), 1), '', :category_code, :adngrp_displayname, :adngrp_type, :adngrp_noitems, :adngrp_isactive 
-  FROM `menu_meta_rel_category-addon_table` WHERE `category_code` = :category_code_02  " ;
+$Query = "INSERT INTO `menu_meta_addongroups_table` (`addon_group_sr_no`, `rel_id`, `category_id`, `addon_group_display_name`, `addon_group_type`, `addon_group_is_active` )
+  SELECT COALESCE( (MAX( `addon_group_sr_no` ) + 1), 1), '', :category_id, :adngrp_displayname, :adngrp_type, :adngrp_isactive 
+  FROM `menu_meta_addongroups_table` WHERE `category_id` = :category_id_02  " ;
 
 
 
@@ -26,12 +25,11 @@ try{
 
     $QueryResult = $DBConnectionBackend->prepare($Query) ;
     $QueryResult->execute([
-        'category_code'=>$CategoryCode,
+        'category_id'=>$CategoryId,
         'adngrp_displayname'=>$AddonGroupDisplayName,
         'adngrp_type'=>$AddonGroupType,
-        'adngrp_noitems'=>$AddonGroupNoOfItems,
         'adngrp_isactive'=>$AddonGroupIsActive,
-        'category_code_02'=>$CategoryCode
+        'category_id_02'=>$CategoryId
 
     ]) ;
 

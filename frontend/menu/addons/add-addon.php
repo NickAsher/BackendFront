@@ -30,14 +30,13 @@
     require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils-pdo.php';
 
-    $CategoryCode = isSecure_IsValidItemCode(GetPostConst::Post, '___category_code') ;
-    $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Post, '___addongroup_rel_id') ;
+    $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___category_id') ;
+    $AddonGroupRelId = isSecure_isValidPositiveInteger(GetPostConst::Get, '___addongroup_rel_id') ;
 
 
     $DBConnectionBackend = YOPDOSqlConnect() ;
 
-    $SingleCategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryCode) ;
-//    $NoOfSizeVariations = intval($SingleCategoryInfoArray['category_no_of_size_variations']) ;
+    $SingleCategoryInfoArray = getSingleCategoryInfoArray_PDO($DBConnectionBackend, $CategoryId) ;
 
 
     
@@ -71,7 +70,7 @@
                         <form action="process-add-addon.php" method="post">
 
 
-                            <input name="__addon_category_code" type="hidden" value='<?php echo "$CategoryCode" ; ?> '>
+                            <input name="__addon_category_code" type="hidden" value='<?php echo "$CategoryId" ; ?> '>
                             <input name="___addongroup_rel_id" type="hidden" value='<?php echo "$AddonGroupRelId" ; ?> '>
 
 
@@ -99,23 +98,31 @@
                             <div id="Div_Price">
                                 <?php
                                 try {
-                                    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryCode);
+                                    $AllSizes = getListOfAllSizesInCategory_PDO($DBConnectionBackend, $CategoryId);
                                 } catch (Exception $e) {
                                     die($e) ;
                                 }
 
-                                    foreach ($AllSizes as $Record){
-                                        $SizeName = $Record['size_name'] ;
-                                        $SizeId = $Record['size_id'] ;
-                                        echo "
-                                        <div class='form-group row'>
-                                            <label for='input-addon-price-size_$SizeId' class='col-3 col-form-label'>Item Price ($SizeName)</label>
-                                            <div class='col-md-9'>
-                                                <input name='__addon_price_size_$SizeId' id='input-addon-price-size_$SizeId' class='form-control' type='text' placeholder='ex. 20'>
-                                            </div>
-                                        </div>  
-                                    " ;
-                                    }
+
+                                foreach ($AllSizes as $Record){
+                                $SizeName = $Record['size_name'] ;
+                                $SizeId = $Record['size_id'] ;
+                                ?>
+
+                                <div class="form-group row">
+                                    <label for="input-addon-size-active_<?php echo $SizeId ?>" class="col-3 col-form-label">Addon Price (<?php echo $SizeName ?>) </label>
+                                    <div class="col-md-9 input-group">
+                                        <input name = '__addon_size_active_<?php echo $SizeId ?>' id='input-addon-size-active_<?php echo $SizeId ?>' class='form-control' type='hidden' value='yes' >
+                                        <input id='input-addon-size-active-presentation_<?php echo $SizeId ?>' type='checkbox' class='form-control' checked="checked"  data-toggle='toggle' data-width='50' data-onstyle='success' data-offstyle='danger' data-on="<i class='fa fa-check'></i>" data-off="<i class='fa fa-times'></i>" >
+                                        <input name='__addon_price_size_<?php echo $SizeId ?>' id='input-addon-price-size_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ; '  >
+                                        <input  id='input-addon-price-size-presentation_<?php echo $SizeId ?>' class='form-control' type='text' style='margin-left: 20px; ;' placeholder='Empty' disabled >
+
+                                    </div>
+                                </div>
+
+                                <?php
+                                }
+
 
 
 
@@ -191,15 +198,59 @@
     function setupToggleButton(PresentationInputId, HiddenInputId){
         $('#' + PresentationInputId).on('change', function() {
             if(this.checked){
-                $('#' + HiddenInputId).val('true') ;
+                $('#' + HiddenInputId).val('yes') ;
             } else {
                 // this is necessary if user checked it and then unchecked it.
-                $('#' + HiddenInputId).val('false') ;
+                $('#' + HiddenInputId).val('no') ;
             }
         });
     }
 
 
     setupToggleButton('input-addon-active-presentation', 'input-addon-active-hidden') ;
+
+
+
+
+
+
+    function setUpToggleButtonForSizeActive(SizeActiveInputId_Presentation, SizeActiveInputId, PriceInputId, PriceInputId_Presentaion){
+
+        $('#' + PriceInputId_Presentaion).hide() ;
+
+
+
+        $('#' + SizeActiveInputId_Presentation).on('change', function() {
+            if(this.checked){
+                $('#' + SizeActiveInputId).val('yes') ;
+                $('#' + PriceInputId).prop('readonly', false) ;
+                $('#' + PriceInputId).show() ;
+                $('#' + PriceInputId_Presentaion).hide() ;
+
+
+            } else {
+                // this is necessary if user checked it and then unchecked it.
+                $('#' + SizeActiveInputId).val('no') ;
+                $('#' + PriceInputId).val('0.0') ;
+                $('#' + PriceInputId).prop('readonly', true) ;
+                $('#' + PriceInputId).hide() ;
+                $('#' + PriceInputId_Presentaion).show() ;
+
+
+            }
+        });
+    }
+
+    var AllSizeArray = JSON.parse('<?php echo json_encode($AllSizes) ?>') ;
+    for(i = 0; i<AllSizeArray.length; i++){
+        var SizeId = AllSizeArray[i]['size_id'] ;
+        console.log(SizeId) ;
+
+        setUpToggleButtonForSizeActive('input-addon-size-active-presentation_'+SizeId, 'input-addon-size-active_'+SizeId, "input-addon-price-size_" + SizeId, "input-addon-price-size-presentation_"+SizeId ) ;
+
+    }
+
+
+
 </script>
 </html>
