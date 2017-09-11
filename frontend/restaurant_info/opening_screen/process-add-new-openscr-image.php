@@ -20,8 +20,8 @@ if($NewImageName == -1){
 
 
 
-$Query = "INSERT INTO `opening_screen_image_table` (`item_sr_no`, `item_id`, `item_image`)
-  SELECT COALESCE( (MAX( `item_sr_no` ) + 1), 1), ``, :new_image_name FROM `opening_screen_image_table` " ;
+$Query = "INSERT INTO `opening_screen_images_table` (`item_sr_no`, `item_id`, `item_image`)
+  SELECT COALESCE( (MAX( `item_sr_no` ) + 1), 1), '', :new_image_name FROM `opening_screen_images_table` " ;
 try {
     $QueryResult = $DBConnectionBackend->prepare($Query);
     $QueryResult->execute(['new_image_name' => $NewImageName]);

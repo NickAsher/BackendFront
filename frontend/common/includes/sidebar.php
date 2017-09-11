@@ -179,6 +179,11 @@
                             <span><i class="fa fa-phone"></i></span>&nbsp; About Us
                         </a>
                     </li>
+                    <li>
+                        <a class="" id="link_openingScr_Images" href='<?php echo "$RootLinkPath/frontend/restaurant_info/opening_screen/all-openscr-images.php" ; ?>' >
+                            <span><i class="fa fa-archive"></i></span>&nbsp; Welcome Images
+                        </a>
+                    </li>
                 </ul>
 
             </div>

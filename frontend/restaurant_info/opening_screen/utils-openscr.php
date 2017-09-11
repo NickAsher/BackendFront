@@ -2,7 +2,7 @@
 
 
 function getAllOpeningScreenImages($DBConnection){
-    $Query = "SELECT * FROM `opening_screen_image_table` ORDER BY `item_sr_no` ASC " ;
+    $Query = "SELECT * FROM `opening_screen_images_table` ORDER BY `item_sr_no` ASC " ;
     try {
         $QueryResult = $DBConnection->query($Query);
         $AllOpeningScrImages = $QueryResult->fetchAll();

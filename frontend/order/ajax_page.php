@@ -15,8 +15,8 @@ $Date = '' ;
 if(isset($_GET['date']) && !empty($_GET['date']) ){
     $Date = $_GET['date'] ;
 } else {
-    $Date = date('Y-m-d') ;
-//    $Date = '2017-06-27' ;
+//    $Date = date('Y-m-d') ;
+    $Date = '2017-06-28' ;
 
 }
 

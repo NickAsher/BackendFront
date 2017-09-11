@@ -130,7 +130,7 @@
 
             <div class="row">
                 <div class="col-4"></div>
-                <a href="send-new-notification.php" class="col-4 btn btn-outline-info" >
+                <a href="legacy-send-new-notification.php" class="col-4 btn btn-outline-info" >
                     Add New Item
                 </a>
                 <div class="col-4"></div>

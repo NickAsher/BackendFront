@@ -48,6 +48,7 @@
     $SizeIsActive = $Record['size_is_active'] ;
     $SizeSrNo = $Record['size_sr_no'] ;
     $SizeImage = $Record['size_image'] ;
+    $SizeDescription = $Record['size_description'] ;
 
 
 
@@ -111,6 +112,13 @@
                                 <label for="input-size-name_abbr" class="col-3 col-form-label">Size Name Abbreviated</label>
                                 <div class="col-md-9">
                                     <input name="__size_name_abbr" id="input-size-name_abbr" class="form-control" type="text"  value="<?php echo $SizeNameAbbr ?>" >
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="input-size-name_abbr" class="col-3 col-form-label">Size Description</label>
+                                <div class="col-md-9">
+                                    <textarea name="__size_description" id="input-size-description" class="form-control"><?php echo $SizeDescription; ?></textarea>
                                 </div>
                             </div>
 
@@ -200,6 +208,8 @@
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_addon.js" ></script>
 <script type="text/javascript"  src="../../../../lib/t3/t3.js"></script>
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
+<script type="text/javascript" src='../../../../lib/tinymce/js/tinymce/tinymce.min.js'></script>
+
 
 <script>
 
@@ -230,22 +240,23 @@
 
 
 
+
+
+    tinymce.init({
+        selector: '#input-size-description',
+        height: 200,
+        theme: 'modern',
+
+        toolbar1: 'undo redo | insert | styleselect | bold italic  ',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ]
+    });
+
+
+
 </script>
-<script >
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 </html>

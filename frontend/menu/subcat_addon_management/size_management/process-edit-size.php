@@ -14,6 +14,8 @@ $SizeName = isSecure_IsValidText(GetPostConst::Post, '__size_name') ;
 $SizeNameAbbr = isSecure_IsValidText(GetPostConst::Post, '__size_name_abbr') ;
 $SizeIsActive = isSecure_IsYesNo(GetPostConst::Post, '__size_is_active') ;
 
+$SizeDescription = isSecure_checkPostInput('__size_description') ;
+
 
 
 
@@ -31,7 +33,7 @@ try{
     $DBConnectionBackend->beginTransaction() ;
 
     $Query = "UPDATE `menu_meta_size_table` 
-        SET `size_name` = :size_name , `size_name_short` = :size_name_abbr, `size_is_active` = :size_is_active , `size_image`= :size_image
+        SET `size_name` = :size_name , `size_name_short` = :size_name_abbr, `size_is_active` = :size_is_active , `size_image`= :size_image , `size_description` = :size_description
         WHERE `size_id` = :size_id   " ;
     try {
         $QueryResult = $DBConnectionBackend->prepare($Query);
@@ -40,7 +42,8 @@ try{
             'size_name_abbr' => $SizeNameAbbr,
             'size_is_active' => $SizeIsActive,
             'size_id' => $SizeId,
-            'size_image'=>$ImageUpdater->getInsertedImageName()
+            'size_image'=>$ImageUpdater->getInsertedImageName(),
+            'size_description'=>$SizeDescription
         ]);
 
 

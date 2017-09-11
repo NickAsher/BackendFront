@@ -12,6 +12,7 @@ $CategoryId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__category_id
 $SizeName = isSecure_IsValidText(GetPostConst::Post, '__size_name') ;
 $SizeNameAbbr = isSecure_IsValidText(GetPostConst::Post, '__size_name_abbr') ;
 $SizeIsActive = isSecure_IsYesNo(GetPostConst::Post, '__size_is_active') ;
+$SizeDescription = isSecure_checkPostInput('__size_description') ;
 
 $SizeIsDefault = 'false' ;
 
@@ -31,8 +32,8 @@ try{
 
 
 
-    $Query = "INSERT INTO `menu_meta_size_table` (`size_sr_no`, `size_id`, `size_category_id`, `size_name`, `size_name_short`, `size_is_default`, `size_is_active`, `size_image`)
-      SELECT COALESCE( (MAX( `size_sr_no` ) + 1), 1), '', :category_id , :size_name , :size_name_abbr , '$SizeIsDefault', :size_is_active , :size_image
+    $Query = "INSERT INTO `menu_meta_size_table` (`size_sr_no`, `size_id`, `size_category_id`, `size_name`, `size_name_short`, `size_description`,  `size_is_default`, `size_is_active`, `size_image`)
+      SELECT COALESCE( (MAX( `size_sr_no` ) + 1), 1), '', :category_id , :size_name , :size_name_abbr , :size_description, '$SizeIsDefault', :size_is_active , :size_image
       FROM `menu_meta_size_table` WHERE `size_category_id` = '$CategoryId'    " ;
 
     try {
@@ -41,6 +42,7 @@ try{
             'category_id'=>$CategoryId,
             'size_name'=>$SizeName,
             'size_name_abbr'=>$SizeNameAbbr,
+            'size_description'=>$SizeDescription,
             'size_is_active'=>$SizeIsActive,
             'size_image'=>$Size_ImageName
         ]);

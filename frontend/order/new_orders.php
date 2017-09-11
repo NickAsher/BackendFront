@@ -9,6 +9,7 @@
         <th>Comments</th>
         <th>Order Time</th>
         <th>Accept</th>
+        <th>Accepted Notification</th>
         <th>Cancel</th>
         <th></th>
     </tr>
@@ -27,7 +28,7 @@
 
         $UserId = $Record['user_id']   ;
         $UserInformation = getUserProfileInformation($DBConnectionBackend, $UserId) ;
-        $UserString = $UserInformation['user_name'].'<br>'.$UserInformation['user_phone'].'<br>' ;
+        $UserString = $UserInformation['user_firstname'].'<br>'.$UserInformation['user_phone'].'<br>' ;
 
         $OrderAddressString =  parseOrderAddress($Record['order_address']  ) ;
         $Order_date = $Record['order_date']   ;
@@ -51,7 +52,7 @@
         echo "<td class='text-size-small'> $DescriptionString </td>" ;
         echo "<td class='text-size-small'> 'comments' </td>" ;
         echo "<td class='text-size-small'> $Order_time </td>" ;
-
+        echo "<td><button id='$OrderId-new_order_accept'  class='btn btn-info btn-sm text-white notf-btn'>Send Notf</button></td>" ;
         echo "<td><button id='$OrderId-new_order_accept'  class='btn btn-info btn-sm text-white order-btn'>Accept</button></td>" ;
         echo "<td><button id='$OrderId-new_order_cancel' class='btn btn-sm btn-danger text-white order-btn' href='#'>Cancel</button></td>" ;
         echo "</tr>" ;

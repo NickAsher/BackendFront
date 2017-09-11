@@ -94,6 +94,14 @@
                             </div>
 
                             <div class="form-group row">
+                                <label for="input-size-name_abbr" class="col-3 col-form-label">Size Description</label>
+                                <div class="col-md-9">
+                                    <textarea name="__size_description" id="input-size-description" class="form-control"  placeholder="Write your content here" ></textarea>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
                                 <label for="input-size-active-hidden" class="col-3 col-form-label">Size Active</label>
                                 <div class="col-md-9">
                                     <input name="__size_is_active" id="input-size-active-hidden" class="form-control" type="hidden" value="no" >
@@ -172,6 +180,8 @@
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_addon.js" ></script>
 <script type="text/javascript"  src="../../../../lib/t3/t3.js"></script>
 <script type="text/javascript"  src="../../../../lib/bootstrap4/bootstrap_toggle.js" ></script>
+<script type="text/javascript" src='../../../../lib/tinymce/js/tinymce/tinymce.min.js'></script>
+
 
 <script>
 
@@ -200,6 +210,21 @@
         });
     }
     setupToggleButton('input-size-active-presentation', 'input-size-active-hidden') ;
+
+
+
+    tinymce.init({
+        selector: '#input-size-description',
+        height: 200,
+        theme: 'modern',
+
+        toolbar1: 'undo redo | insert | styleselect | bold italic  ',
+        image_advtab: true,
+        templates: [
+            { title: 'Test template 1', content: 'Test 1' },
+            { title: 'Test template 2', content: 'Test 2' }
+        ]
+    });
 
 
 

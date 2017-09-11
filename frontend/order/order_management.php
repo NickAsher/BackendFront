@@ -22,6 +22,8 @@
     require_once '../../utils/constants.php';
     require_once $ROOT_FOLDER_PATH.'/utils/menu-utils.php' ;
     require_once 'utils/utils-order-parsing.php';
+    require_once $ROOT_FOLDER_PATH.'/utils/notification_utils.php' ;
+
     ?>
 
 </head>
@@ -284,6 +286,34 @@
                     console.log("return code is not success") ;
                     console.log(returnString) ;
                 }
+            },
+            error : function (xhr, status, errorMsg) {
+                console.log("Error cattched: " +  errorMsg) ;
+            }
+        }) ;
+    }) ;
+
+
+    $('#TabContentPanel').on('click','.notf-btn', function (event) {
+        event.preventDefault() ;
+        // ElementId id of form   OrderId-new_order_accept
+        var ElementId =  $(this).attr('id') ;
+        var splitarray = ElementId.split("-");
+        var OrderId = splitarray[0] ;
+        var Operation = splitarray[1] ;
+        console.log("Id of the Selected Element is " + OrderId) ;
+
+
+
+        var builtURL = 'http://localhost/BackendFront/frontend/order/controller/process-send-order-notification.php?__order_id=' +  OrderId ;
+        console.log(builtURL) ;
+
+
+
+        $.ajax({
+            url: builtURL,
+            success: function (returnString) {
+                console.log("Successo " + returnString) ;
             },
             error : function (xhr, status, errorMsg) {
                 console.log("Error cattched: " +  errorMsg) ;

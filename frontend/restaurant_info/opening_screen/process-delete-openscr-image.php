@@ -4,6 +4,7 @@ require_once '../../../utils/constants.php';
 require_once $ROOT_FOLDER_PATH.'/sql/sqlconnection2.php' ;
 require_once $ROOT_FOLDER_PATH.'/utils/image-utils.php' ;
 require_once $ROOT_FOLDER_PATH.'/security/input-security.php' ;
+require_once 'utils-openscr.php' ;
 
 
 $ItemId = isSecure_isValidPositiveInteger(GetPostConst::Post, '__item_id') ;
@@ -17,7 +18,7 @@ try{
 
 
 
-    $Query = "SELECT * FROM `opening_screen_image_table` WHERE `item_id` = :item_id " ;
+    $Query = "SELECT * FROM `opening_screen_images_table` WHERE `item_id` = :item_id " ;
     try {
         $QueryResult = $DBConnectionBackend->prepare($Query);
         $QueryResult->execute(['item_id'=>$ItemId]) ;
@@ -38,7 +39,7 @@ try{
 
 
 
-    $Query2 = "DELETE FROM `opening_screen_image_table` WHERE `item_id` = :item_id  " ;
+    $Query2 = "DELETE FROM `opening_screen_images_table` WHERE `item_id` = :item_id  " ;
     try {
         $QueryResult2 = $DBConnectionBackend->prepare($Query2);
         $QueryResult2->execute(['item_id' => $ItemId]);
@@ -63,7 +64,7 @@ try{
             $RealSortNo ++ ;
         }
 
-        $Query3 = "UPDATE `opening_screen_image_table` SET `item_sr_no` = CASE $CaseStatement END   " ;
+        $Query3 = "UPDATE `opening_screen_images_table` SET `item_sr_no` = CASE $CaseStatement END   " ;
         try {
             $QueryResult3 = $DBConnectionBackend->query($Query3);
         }catch (Exception $e){
